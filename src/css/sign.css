@@ -1,0 +1,110 @@
+html,
+body {
+    height: 100vh;
+
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: #E5E5E5;
+}
+
+.navbarDev {
+    background-color: #ffffff;
+    border: 1px solid #C4C4C4;
+    font-family: 'Open Sans', sans-serif;
+    color: #000000;
+}
+
+a {
+    text-decoration: none;
+    color: #000000;
+    /*        font-size: 14px;*/
+}
+
+
+.searchDev::placeholder {
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.5);
+
+
+}
+
+.sign-in {
+    border: 1px solid #CCCCCC;
+    border-radius: 5px;
+    font-weight: 700;
+}
+
+.sign-in:hover{
+     -webkit-box-shadow: 0px 0px 8px -5px #000000; 
+box-shadow: 0px 0px 8px -5px #000000;
+}
+
+.sign-up {
+    background-color: #7F0303;
+    border-radius: 5px;
+    color: #ffffff;
+    font-weight: 700;
+}
+.sign-up:hover {
+    background-color: #ffffff;
+    color: #7F0303;
+    border: 1px solid #7F0303;
+}
+
+
+.rowContainer {
+    height: 100%;
+}
+
+
+.signContainer {
+    background: #ffffff;
+    border: 0.5px solid #B8B8B8;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.signInTxt {
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+
+    color: #000000;
+}
+
+.btnSign {
+    background: #7F0303;
+    border-radius: 5px;
+    color: #ffffff;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    text-align: center;
+}
+
+.txtForgot {
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+    color: #7F0303;
+}
+
+.txtNoAcc{
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+    color: #000000;
+}
+.signUpBottom{
+    color: #7F0303;
+    font-weight: 700;
+    cursor: pointer;
+}
+.signUpBottom:hover{
+    color: #7F0303;
+}
+
