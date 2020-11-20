@@ -38,9 +38,9 @@ a {
     font-weight: 700;
 }
 
-.sign-in:hover{
-     -webkit-box-shadow: 0px 0px 8px -5px #000000; 
-box-shadow: 0px 0px 8px -5px #000000;
+.sign-in:hover {
+    -webkit-box-shadow: 0px 0px 8px -5px #000000;
+    box-shadow: 0px 0px 8px -5px #000000;
 }
 
 .sign-up {
@@ -49,6 +49,7 @@ box-shadow: 0px 0px 8px -5px #000000;
     color: #ffffff;
     font-weight: 700;
 }
+
 .sign-up:hover {
     background-color: #ffffff;
     color: #7F0303;
@@ -94,17 +95,18 @@ box-shadow: 0px 0px 8px -5px #000000;
     color: #7F0303;
 }
 
-.txtNoAcc{
+.txtNoAcc {
     font-family: 'Open Sans', sans-serif;
     text-align: center;
     color: #000000;
 }
-.signUpBottom{
+
+.signUpBottom {
     color: #7F0303;
     font-weight: 700;
     cursor: pointer;
 }
-.signUpBottom:hover{
+
+.signUpBottom:hover {
     color: #7F0303;
 }
-
