@@ -3,41 +3,45 @@ const password = document.getElementById('password');
 const confirmPassword = document.getElementById('confirmPass');
 const signUp = document.getElementById('sign-up');
 const match = document.getElementById('match');
-const search = document.getElementById('search');
-var lg = 992;
-
-window.onresize = () => {
-    if (document.documentElement.clientWidth < lg) {
-        if (!search.classList.contains('col-8')) {
-            search.classList.add('col-8')
-        }
-    }
-    else
-        search.classList.remove('col-8')
-}
-if (document.documentElement.clientWidth < lg) {
-    if (document.documentElement.clientWidth < lg) {
-        if (!search.classList.contains('col-8')) {
-            console.log('add')
-            search.classList.add('col-8')
-        }
-    }
-    else
-        search.classList.remove('col-8')
-}
+let passMatch = false
+const auth = firebase.auth()
 
 const handleConfirm = () => {
-    
-    if(confirmPassword.value == password.value && (password.value != ''||password.value != '')){
+    if (confirmPassword.value == password.value && (password.value != '' || password.value != '')) {
         match.classList.remove('d-none');
-    }
-    else{
+        passMatch = true
+    } else {
         match.classList.add('d-none');
+        passMatch = false
     }
 
 }
-
 
 confirmPassword.addEventListener('keyup', handleConfirm);
 password.addEventListener('keyup', handleConfirm);
 
+
+const verifyEmail = () => {
+    auth.currentUser.sendEmailVerification().then(() => {
+        window.location.assign('../../home')
+    })
+}
+
+
+signUp.onclick = (e) => {
+    e.preventDefault()
+    if (passMatch) {
+        auth.createUserWithEmailAndPassword(email.value, password.value)
+            .then((user) => {
+                verifyEmail()
+            })
+            .catch((error) => {
+                var errorMessage = error.message;
+                alert(errorMessage)
+                console.log(errorMessage)
+            });
+    } else {
+        e.preventDefault();
+        alert("Passwords should match")
+    }
+}

@@ -1,0 +1,46 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    height: 100vh;
+    background: #f2f2f2;
+    font-family: 'Open Sans', sans-serif;
+    color: #000000;
+
+}
+
+
+.navbarDev {
+    background-color: #ffffff;
+    border: 1px solid #C4C4C4;
+}
+
+.searchDev::placeholder {
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.5);
+
+}
+
+.myCourses {
+    font-weight: 600;
+    font-size: 14px;
+
+}
+
+.avatar {
+    height: 40px;
+    width: 40px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    text-align: center;
+}
+
+.txtLatest {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.latest {
+    background-color: aquamarine;
+}

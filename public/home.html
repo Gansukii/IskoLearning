@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="">
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
@@ -7,7 +7,7 @@
     <title>IskoLearning</title>
 
     <link rel="stylesheet" href="src/css/bootstrap.css">
-    <link rel="stylesheet" href="src/css/">
+    <link rel="stylesheet" href="src/css/home.css">
     <!-- GOOGLE FONTS   -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600;700&display=swap" rel="stylesheet">
@@ -17,8 +17,8 @@
 </head>
 
 <body>
-   
-    <nav class="navbar fixed-top navbar-expand-lg navbar-light navbarDev">
+
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light navbarDev">
         <a class="navbar-brand" href="#">Navbar</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -50,14 +50,32 @@
                     </form>
                 </li>
             </ul>
-            <a class="btn sign-in mr-3" href="sign-in" id="btnNavIn">Sign in</a>
-            <a class="btn sign-up" href="sign-up" id="btnNavUp">Sign up</a>
-
+            <div class="d-flex align-items-center">
+                <a class="btn sign-in mr-2" href="sign-in" id="btnNavIn">My Courses</a>
+                <i class="far fa-bell fa-lg notif mr-3"></i>
+                <div class="avatar">AV</div>
+            </div>
         </div>
     </nav>
-    
-    home
-    
+
+    <div class="row w-100 m-0 mt-5 d-flex">
+        <div class="row w-100 d-flex justify-content-center ">
+            <div class="col-9 p-0">
+                <div class="col-12 p-0 txtLatest">Latest</div>
+                <div class="col-12 latest">asdf</div>
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="/__/firebase/8.0.2/firebase-app.js"></script>
     <script src="/__/firebase/8.0.2/firebase-auth.js"></script>
@@ -72,5 +90,6 @@
     <script src="js/bootstrapJs/bootstrap.bundle.js"></script>
     <script src="js/bootstrapJs/bootstrap.js"></script>
     <script src="js/home/home.js"></script>
+    <script src="js/nav/nav.js"></script>
 
 </body></html>

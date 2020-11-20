@@ -1,15 +1,21 @@
 html,
 body {
-    height: 100vh;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: #E5E5E5;
+    height: 100%;
 
 }
 
+/*
 body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     background: #E5E5E5;
 }
+*/
 
 .navbarDev {
     background-color: #ffffff;
@@ -57,9 +63,11 @@ a {
 }
 
 
+/*
 .rowContainer {
     height: 100%;
 }
+*/
 
 
 .signContainer {
