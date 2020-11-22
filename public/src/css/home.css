@@ -13,6 +13,7 @@ body {
 .navbarDev {
     background-color: #ffffff;
     border: 1px solid #C4C4C4;
+    /*    position: relative;*/
 }
 
 .searchDev::placeholder {
@@ -27,6 +28,11 @@ body {
 
 }
 
+.menuContainer {
+    position: relative;
+
+}
+
 .avatar {
     height: 40px;
     width: 40px;
@@ -34,6 +40,53 @@ body {
     border-radius: 50%;
     display: inline-block;
     text-align: center;
+}
+
+.menu {
+    position: absolute;
+    background-color: #ffffff;
+    left: -100px;
+    -webkit-box-shadow: 0px 3px 10px -2px #000000;
+    box-shadow: 0px 3px 10px -2px #000000;
+    z-index: 1;
+
+}
+
+.menuOption {
+    border-bottom: 1px solid black;
+    text-align: center;
+}
+
+.menuOpen {
+    animation: animateMenuOpen .5s forwards;
+}
+
+.menuClose {
+    animation: animateMenuClose .5s forwards;
+}
+
+@keyframes animateMenuOpen {
+    from {
+        opacity: 0;
+        top: 0px
+    }
+
+    to {
+        opacity: 1;
+        top: 40px;
+    }
+}
+
+@keyframes animateMenuClose {
+    from {
+        opacity: 1;
+        top: 40px
+    }
+
+    to {
+        opacity: 0;
+        top: 0px;
+    }
 }
 
 .txtLatest {

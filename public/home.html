@@ -45,16 +45,26 @@
                 <li class="nav-item ">
                     <form class="form-inline my-2 my-lg-0 ">
                         <input class=" form-control searchDev" id="search" type="search" placeholder="What do you want to learn?">
-
                         <button class="btn  my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+
                     </form>
                 </li>
             </ul>
             <div class="d-flex align-items-center">
                 <a class="btn sign-in mr-2" href="sign-in" id="btnNavIn">My Courses</a>
                 <i class="far fa-bell fa-lg notif mr-3"></i>
-                <div class="avatar">AV</div>
+                <div class="position-relative">
+                    <button class="btn avatar" id="avatar">AV</button>
+                    <div class="menu p-2 d-none flex-column rounded" id="menuPop">
+                        <div class="menuOption p-1"><a href="">option 1</a></div>
+                        <div class="menuOption p-1"><a href="">option 2</a></div>
+                        <div class="menuOption p-1"><a href="">option 3</a></div>
+                        <button class="btn " id="sign-out" >Sign out</button>
+                    </div>
+                </div>
+
             </div>
+
         </div>
     </nav>
 
@@ -92,4 +102,6 @@
     <script src="js/home/home.js"></script>
     <script src="js/nav/nav.js"></script>
 
-</body></html>
+</body>
+
+</html>
