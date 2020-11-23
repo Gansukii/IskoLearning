@@ -8,21 +8,6 @@ body {
 
 }
 
-/*
-body {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    background: #E5E5E5;
-}
-*/
-
-.navbarDev {
-    background-color: #ffffff;
-    border: 1px solid #C4C4C4;
-    font-family: 'Open Sans', sans-serif;
-    color: #000000;
-}
 
 a {
     text-decoration: none;

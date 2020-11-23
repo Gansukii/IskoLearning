@@ -11,16 +11,7 @@
       {
         "source": "**",
         "destination": "/sign-in.html"
-      },
-//        {
-//        "source": "/sign-up",
- //       "destination": "/sign-up.html"
-   //   },
-       {
-       "source": "/dashboard",
-        "destination": "/html/Dashboard/dashboard.html"
       }
-      
     ]
   },
   "database": {

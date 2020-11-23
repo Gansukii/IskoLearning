@@ -1,19 +1,6 @@
-body {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    height: 100vh;
-    background: #f2f2f2;
-    font-family: 'Open Sans', sans-serif;
-    color: #000000;
-
-}
-
-
-.navbarDev {
+nav {
     background-color: #ffffff;
-    border: 1px solid #C4C4C4;
-    /*    position: relative;*/
+    border-bottom: 1px solid #C4C4C4;
 }
 
 .searchDev::placeholder {
@@ -48,7 +35,7 @@ body {
     left: -100px;
     -webkit-box-shadow: 0px 3px 10px -2px #000000;
     box-shadow: 0px 3px 10px -2px #000000;
-    z-index: 1;
+    z-index: 0;
 
 }
 
@@ -74,26 +61,22 @@ body {
     to {
         opacity: 1;
         top: 40px;
+        z-index: 100;
     }
 }
 
 @keyframes animateMenuClose {
     from {
         opacity: 1;
-        top: 40px
+        top: 40px;
+        pointer-events: none;
+        z-index: 100;
     }
 
     to {
         opacity: 0;
         top: 0px;
+        pointer-events: none;
+        z-index: 0;
     }
-}
-
-.txtLatest {
-    font-weight: bold;
-    font-size: 20px;
-}
-
-.latest {
-    background-color: aquamarine;
 }

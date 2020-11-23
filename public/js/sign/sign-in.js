@@ -11,7 +11,7 @@ signIn.onclick = (e) => {
     e.preventDefault()
     auth.signInWithEmailAndPassword(email.value, password.value)
         .then((user) => {
-            window.location.assign('../../home')
+            window.location.assign('../../get-started')
         })
         .catch((error) => {
             var errorMessage = error.message;
@@ -26,7 +26,7 @@ btnGoogle.onclick = (e) => {
     e.preventDefault()
     auth.signInWithPopup(provider).then(function (result) {
         user = result.user;
-        window.location.assign('../../home')
+        window.location.assign('../../get-started')
     }).catch(function (error) {
         var errorMessage = error.message;
         console.log(errorMessage)

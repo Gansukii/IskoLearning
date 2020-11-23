@@ -23,6 +23,7 @@ if (document.documentElement.clientWidth < lg) {
 }
 
 avatar ? avatar.onclick = () => {
+    
     if (!isOpen) {
         menuPop.classList.remove("d-none");
         menuPop.classList.remove("menuClose");

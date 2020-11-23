@@ -23,7 +23,7 @@ password.addEventListener('keyup', handleConfirm);
 
 const verifyEmail = () => {
     auth.currentUser.sendEmailVerification().then(() => {
-        window.location.assign('../../home')
+        window.location.assign('../../get-started')
     })
 }
 
