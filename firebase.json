@@ -10,7 +10,7 @@
     "rewrites": [
       {
         "source": "**",
-        "destination": "/sign-in.html"
+        "destination": "/get-started.html"
       }
     ]
   },
