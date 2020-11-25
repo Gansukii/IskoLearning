@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="src/css/nav.css">
     <!-- GOOGLE FONTS   -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <!--  FONTAWESOME  -->
     <script src="https://kit.fontawesome.com/7d591f1481.js" crossorigin="anonymous"></script>
 
@@ -58,11 +58,25 @@
                 <div class="position-relative">
                     <button class="btn avatar" id="avatar">69</button>
                     <div class="menu p-2 d-none flex-column rounded" id="menuPop">
-                        <div>User Name</div>
-                        <div class="menuOption p-1"><a href="">option 1</a></div>
-                        <div class="menuOption p-1"><a href="">option 2</a></div>
-                        <div class="menuOption p-1"><a href="">option 3</a></div>
-                        <button class="btn " id="sign-out">Sign out</button>
+<!--                        <div class="row d-flex p-1 p-sm-2 menuHeader">-->
+                            <div class="container w-100 d-flex align-items-center menuHeader pt-2 pb-2 pb-sm-3 px-1">
+                                <div class="menuAvatar" id="avatar">69</div>
+                                <div class="col mx-2">
+                                    <div class="row menuName">
+                                        Full Name
+                                    </div>
+                                    <div class="row">
+                                        <span class="badge badge-pill menuBadge px-2">STUDENT</span>
+                                    </div>
+                                </div>
+                            </div>
+<!--                        </div>-->
+                        <div class="list-group list-group-flush p-0">
+                            <a href="#" class="list-group-item list-group-item-action px-2">Profile</a>
+                            <a href="#" class="list-group-item list-group-item-action px-2">Account Settings</a>
+                            <a href="#" class="list-group-item list-group-item-action px-2" id="sign-out"><i class="fas fa-sign-out-alt mr-1"></i>Sign out</a>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -126,7 +140,7 @@
                                 </div>
                             </div>
                         </div>
-                       <div class='col-6 col-lg-4 px-2 mt-2'>
+                        <div class='col-6 col-lg-4 px-2 mt-2'>
                             <div class="card rounded courseCard">
                                 <div class="courseThumb"></div>
                                 <div class="card-body py-2 px-3">
@@ -136,7 +150,7 @@
                                 </div>
                             </div>
                         </div>
-                       
+
 
                         <div class="arrowRight h-100 d-none d-flex align-items-center" id="arrowRightCat"><i class="fas fa-chevron-right fa-3x"></i></div>
 

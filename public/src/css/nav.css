@@ -4,7 +4,7 @@ body {
     box-sizing: border-box;
     height: 100vh;
     background: #f2f2f2;
-     font-weight: 600;
+    font-weight: 600;
     font-family: 'Open Sans', sans-serif;
     color: #000000;
 
@@ -65,19 +65,45 @@ nav {
     text-align: center;
 }
 
+.menuAvatar {
+    height: 50px;
+    width: 50px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    text-align: center;
+}
+
 .menu {
     position: absolute;
     background-color: #ffffff;
-    left: -100px;
+    left: -225px;
     -webkit-box-shadow: 0px 3px 10px -2px #000000;
     box-shadow: 0px 3px 10px -2px #000000;
+    width: 225px;
     z-index: 0;
+    font-family: 'Lato', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: #000000;
 
 }
 
-.menuOption {
-    border-bottom: 1px solid black;
-    text-align: center;
+.menuBadge {
+    font-size: 9px;
+    font-weight: 400;
+    border: 0.552632px solid #7F0303;
+}
+
+.menuHeader {
+    border-bottom: 0.75px solid #C4C4C4;
+}
+
+.menuName {
+    font-weight: 700;
+}
+#sign-out{
+    font-weight: 600;
 }
 
 .menuOpen {
