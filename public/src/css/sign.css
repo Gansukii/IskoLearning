@@ -10,60 +10,65 @@ body {
 }
 */
 
-
 a {
-    text-decoration: none;
-    color: #000000;
+  text-decoration: none;
+  color: #000000;
 }
 
-
 .signContainer {
-    background: #ffffff;
-    border: 0.5px solid #B8B8B8;
-    box-sizing: border-box;
-    border-radius: 10px;
+  background: #ffffff;
+  border: 0.5px solid #b8b8b8;
+  box-sizing: border-box;
+  border-radius: 10px;
 }
 
 .signInTxt {
-    font-family: 'Open Sans', sans-serif;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 20px;
-    text-align: center;
-    color: #000000;
+  font-family: "Open Sans", sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+  color: #000000;
+}
+
+option {
+  font-size: 14px;
 }
 
 .btnSign {
-    background: #7F0303;
-    border-radius: 5px;
-    color: #ffffff;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: bold;
-    font-size: 14px;
-    text-align: center;
+  background: #7f0303;
+  border-radius: 5px;
+  color: #ffffff;
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+  text-align: center;
 }
 
 .signUpBottom {
-    color: #7F0303;
-    font-weight: 700;
-    cursor: pointer;
+  color: #7f0303;
+  font-weight: 700;
+  cursor: pointer;
 }
-
-/*
-.signUpBottom:hover {
-    color: #7F0303;
-}
-*/
 
 .txtForgot {
-    font-family: 'Open Sans', sans-serif;
-    text-align: center;
-    color: #7F0303;
+  font-family: "Open Sans", sans-serif;
+  text-align: center;
+  color: #7f0303;
 }
 
 .txtNoAcc {
-    font-family: 'Open Sans', sans-serif;
-    text-align: center;
-    color: #000000;
+  font-family: "Open Sans", sans-serif;
+  text-align: center;
+  color: #000000;
 }
 
+.signUpBottom {
+  color: #7f0303;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.signUpBottom:hover {
+  color: #7f0303;
+}

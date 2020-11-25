@@ -1,90 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>IskoLearning</title>
 
-    <link rel="stylesheet" href="src/css/bootstrap.css">
-    <link rel="stylesheet" href="src/css/nav.css">
-    <link rel="stylesheet" href="src/css/sign.css">
+    <link rel="stylesheet" href="src/css/bootstrap.css" />
+    <link rel="stylesheet" href="src/css/nav.css" />
+    <link rel="stylesheet" href="src/css/sign.css" />
     <!-- GOOGLE FONTS   -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
     <!--  FONTAWESOME  -->
-    <script src="https://kit.fontawesome.com/7d591f1481.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/7d591f1481.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
 
-</head>
-
-<body>
-
+  <body>
     <nav class="navbar fixed-top navbar-expand-lg navbar-light">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <div class="dropdown">
-                        <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Categories
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                    </div>
-                </li>
-                <li class="nav-item mx-3">
-                    <a class="nav-link" href="/dashboard">Forum</a>
-                </li>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <div class="dropdown">
+              <button
+                class="btn dropdown-toggle"
+                type="button"
+                id="dropdownMenuButton"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                Categories
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item mx-3">
+            <a class="nav-link" href="/dashboard">Forum</a>
+          </li>
 
-                <li class="nav-item ">
-                    <form class="form-inline my-2 my-lg-0 ">
-                        <input class=" form-control searchDev" id="search" type="search" placeholder="What do you want to learn?">
+          <li class="nav-item">
+            <form class="form-inline my-2 my-lg-0">
+              <input
+                class="form-control searchDev"
+                id="search"
+                type="search"
+                placeholder="What do you want to learn?"
+              />
 
-                        <button class="btn  my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
-                    </form>
-                </li>
-            </ul>
-            <a class="btn sign-in mr-3" href="sign-in" id="btnNavIn">Sign in</a>
-            <a class="btn sign-up" href="sign-up" id="btnNavUp">Sign up</a>
-
-        </div>
+              <button class="btn my-2 my-sm-0" type="submit">
+                <i class="fas fa-search"></i>
+              </button>
+            </form>
+          </li>
+        </ul>
+        <a class="btn sign-in mr-3" href="sign-in" id="btnNavIn">Sign in</a>
+        <a class="btn sign-up" href="sign-up" id="btnNavUp">Sign up</a>
+      </div>
     </nav>
     <div class="row h-100 w-100 m-0 d-flex">
-        <div class="col-10  col-md-5 col-lg-3 d-flex m-auto justify-content-center signContainer">
-            <form action="" class="d-flex justify-content-center py-2 px-4">
-                <div class="row">
-                    <div class="col-md-12 signInTxt p-0 mt-5 mb-4">Sign In</div>
-                    <div class="row">
-                        <div class="col-md-12 form-group">
-                            <input type="email" class="form-control" id="email" placeholder="Email">
-                        </div>
-                        <div class="col-md-12 mt-1 form-group">
-                            <input type="password" class="form-control" id="password" placeholder="Password">
-                        </div>
-                    </div>
-                    <div class="col-md-12 p-0 mt-2">
-                        <button class="btn btn-danger btn-block py-2 m-0 btnSign" id="sign-in" type="submit">Sign In</button>
-                        <!--                        <button class="btn btnGoogle" id="googleSign">Sign in with Google</button>-->
-                        <div class="col-12 mt-2 p-0">
-                            <button class="btn btn-outline-dark w-100" role="button" id="googleSign" style="text-transform:none">
-                                <img width="20px" style="margin-bottom:3px; margin-right:5px" alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
-                                Login with Google
-                            </button>
-                        </div>
-                    </div>
-                    <div class="col-md-12 small txtForgot mt-3 mb-5">Forgot password?</div>
-                    <div class="col-md-12 small txtNoAcc mb-3">Don't have an account? <a class="signUpBottom" href="sign-up">Sign up.</a></div>
-                </div>
-            </form>
-
-        </div>
+      <div
+        class="col-10 col-md-5 col-lg-3 d-flex m-auto justify-content-center signContainer"
+      >
+        <form action="" class="d-flex justify-content-center py-2 px-4">
+          <div class="row">
+            <div class="col-md-12 signInTxt p-0 mt-5 mb-4">Sign In</div>
+            <div class="row">
+              <div class="col-md-12 form-group">
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  placeholder="Email"
+                />
+              </div>
+              <div class="col-md-12 mt-1 form-group">
+                <input
+                  type="password"
+                  class="form-control"
+                  id="password"
+                  placeholder="Password"
+                />
+              </div>
+            </div>
+            <div class="col-md-12 p-0 mt-2">
+              <button
+                class="btn btn-danger btn-block py-2 m-0 btnSign"
+                id="sign-in"
+                type="submit"
+              >
+                Sign In
+              </button>
+              <!--                        <button class="btn btnGoogle" id="googleSign">Sign in with Google</button>-->
+              <div class="col-12 mt-2 p-0">
+                <button
+                  class="btn btn-outline-dark w-100"
+                  role="button"
+                  id="googleSign"
+                  style="text-transform: none"
+                >
+                  <img
+                    width="20px"
+                    style="margin-bottom: 3px; margin-right: 5px"
+                    alt="Google sign-in"
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"
+                  />
+                  Login with Google
+                </button>
+              </div>
+            </div>
+            <div class="col-md-12 small txtForgot mt-3 mb-5">
+              Forgot password?
+            </div>
+            <div class="col-md-12 small txtNoAcc mb-3">
+              Don't have an account?
+              <a class="signUpBottom" href="sign-up">Sign up.</a>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -104,4 +160,5 @@
     <script src="js/nav/nav.js"></script>
 
     <!--index.html,1605829165551,128b85c34c2aa902d86381b8174da0c08fa09cf96609b9e3689a2ee90b189561-->
-</body></html>
+  </body>
+</html>
