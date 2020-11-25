@@ -18,7 +18,9 @@
     font-weight: 600;
     font-size: 11px;
 }
-
+.askQuestionPaper{
+    max-height: 130px;
+}
 .btnAsk {
     font-size: 16px;
     color: #C4C4C4;
@@ -29,11 +31,18 @@
 
 .txtModal {
     font-weight: 600;
-    font-size: 14px;
+    font-size: 15px;
 }
 
-#questionTitle::placeholder {
+#questionTitle::placeholder,
+#questionTags::placeholder {
     font-weight: 600;
     font-size: 14px;
     color: #C4C4C4;
+}
+
+.btnPostAsk {
+    background-color: #7F0303;
+    border-radius: 5px;
+    color: #ffffff;
 }

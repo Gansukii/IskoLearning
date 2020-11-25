@@ -87,20 +87,31 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row mt-1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam laboriosam doloribus corrupti! Reprehenderit repudiandae quisquam asperiores eos sunt sed excepturi error, doloremque sit facilis ipsa, earum iusto nesciunt non aliquid.</div>
                 </div>
+                <hr>
+                <div class="col-12 my-3">
+                    <div class="row d-flex align-items-center">
+                        <button class="btn avatar" id="avatar">Av</button>
+                        <div class="col mx-2">
+                            <div class="row questionName">
+                                Full Name
+                            </div>
+                            <div class="row questionTime">
+                                5 hours ago
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam laboriosam doloribus corrupti! Reprehenderit repudiandae quisquam asperiores eos sunt sed excepturi error, doloremque sit facilis ipsa, earum iusto nesciunt non aliquid.</div>
+                </div>
+
 
             </div>
 
-            <div class="col-12 col-md-3 mx-2 px-4 py-3 rounded paper">
+            <div class="col-12 col-md-4 mx-2 px-4 py-3 rounded paper askQuestionPaper">
                 <div class="col-12  p-0 txtPaper"> Ask a Question</div>
                 <div class="col-12 my-2 p-0">
-                    <!--
-                    <form action="" >
-                        <div class="form-group">
-                            <textarea class="form-control" placeholder="What is your question?" rows="3"></textarea>
-                        </div>
-                    </form>
--->
+
                     <button class="btn btn-block pb-4 btnAsk" data-toggle="modal" data-target="#askQuestion">What is your question</button>
 
                 </div>
@@ -112,23 +123,28 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <div class="modal-body">
+                            <div class="modal-body pt-0">
                                 <div class="row px-sm-4 px-2">
-                                   <form action="" class="w-100">
-                                    <div class="form-group">
-                                        <label for="questionTitle" class="txtModal">Title</label>
-                                        <input type="text" class="form-control" id="questionTitle" placeholder="Start your question with “Why”, “What”, “How”, etc.">
-                                        
-                                    </div>
-                                       
-                                       
-                                   </form>
-                                    
+                                    <form action="" class="w-100">
+                                        <div class="form-group">
+                                            <label for="questionTitle" class="txtModal">Title</label>
+                                            <input type="text" class="form-control" id="questionTitle" placeholder="Start your question with “Why”, “What”, “How”, etc.">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="questionBody" class="txtModal">Body</label>
+                                            <textarea class="form-control" id="questionBody" rows="5"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="questionTags" class="txtModal">Tags</label>
+                                            <input type="text" class="form-control" id="questionTags" placeholder="Add tag/s">
+                                        </div>
+                                    </form>
+
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
+                                <button type="button" class="btn btn-light px-2 px-sm-4 btnPostAsk">Ask Question</button>
                             </div>
                         </div>
                     </div>
