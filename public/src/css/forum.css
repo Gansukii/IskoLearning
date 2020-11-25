@@ -1,0 +1,39 @@
+.paper {
+    background-color: #ffffff;
+    border: 0.75px solid #C4C4C4;
+}
+
+.txtPaper {
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.questionName {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 19px;
+}
+
+.questionTime {
+    font-weight: 600;
+    font-size: 11px;
+}
+
+.btnAsk {
+    font-size: 16px;
+    color: #C4C4C4;
+    border: 0.75px solid #C4C4C4;
+    border-radius: 5px;
+    text-align: left;
+}
+
+.txtModal {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+#questionTitle::placeholder {
+    font-weight: 600;
+    font-size: 14px;
+    color: #C4C4C4;
+}
