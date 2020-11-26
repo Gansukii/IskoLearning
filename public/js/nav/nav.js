@@ -9,21 +9,29 @@ window.onresize = () => {
     if (document.documentElement.clientWidth < lg) {
         if (!search.classList.contains('col-8')) {
             search.classList.add('col-8');
+            avatar.classList.add()
+            menuPop.style.left = "-100px";
         }
-    } else
+    } else {
         search.classList.remove('col-8');
+        menuPop.removeAttribute("style")
+    }
 }
 if (document.documentElement.clientWidth < lg) {
     if (document.documentElement.clientWidth < lg) {
         if (!search.classList.contains('col-8')) {
             search.classList.add('col-8');
+            avatar.classList.add()
+            menuPop.style.left = "-100px";
         }
-    } else
+    } else {
         search.classList.remove('col-8');
+        menuPop.removeAttribute("style")
+    }
 }
 
 avatar ? avatar.onclick = () => {
-    
+
     if (!isOpen) {
         menuPop.classList.remove("d-none");
         menuPop.classList.remove("menuClose");
@@ -39,10 +47,10 @@ avatar ? avatar.onclick = () => {
 } : null
 
 signOut ? signOut.onclick = () => {
-    firebase.auth().signOut().then(function () {
-        window.location.assign('../../sign-in')
-    }).catch(function (error) {
-        alert("Error occured")
-    });
-}
-: null
+        firebase.auth().signOut().then(function () {
+            window.location.assign('../../sign-in')
+        }).catch(function (error) {
+            alert("Error occured")
+        });
+    } :
+    null

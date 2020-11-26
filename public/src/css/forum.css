@@ -8,6 +8,10 @@
     font-size: 16px;
 }
 
+.questionIcons {
+    color: #A1A1A1;
+}
+
 .questionName {
     font-weight: 600;
     font-size: 14px;
@@ -18,15 +22,21 @@
     font-weight: 600;
     font-size: 11px;
 }
-.askQuestionPaper{
+
+.askQuestionPaper {
     max-height: 130px;
 }
+
 .btnAsk {
     font-size: 16px;
     color: #C4C4C4;
     border: 0.75px solid #C4C4C4;
     border-radius: 5px;
     text-align: left;
+}
+
+.upvoted {
+    color: #7F0303;
 }
 
 .txtModal {
