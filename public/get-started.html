@@ -1,60 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>IskoLearning</title>
 
-    <link rel="stylesheet" href="src/css/bootstrap.css">
-    <link rel="stylesheet" href="src/css/nav.css">
-    <link rel="stylesheet" href="src/css/get-started.css">
+    <link rel="stylesheet" href="src/css/bootstrap.css" />
+    <link rel="stylesheet" href="src/css/nav.css" />
+    <link rel="stylesheet" href="src/css/get-started.css" />
     <!-- GOOGLE FONTS   -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
     <!--  FONTAWESOME  -->
-    <script src="https://kit.fontawesome.com/7d591f1481.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/7d591f1481.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
 
-</head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-<body>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto d-flex align-items-lg-center">
+          <li class="nav-item">
+            <div class="dropdown">
+              <button
+                class="btn dropdown-toggle categories"
+                type="button"
+                id="dropdownMenuButton"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                Categories
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item mx-3">
+            <a class="nav-link" href="/dashboard">Forum</a>
+          </li>
 
-
-    <nav class="navbar navbar-expand-lg navbar-light ">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <div class="dropdown">
-                        <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Categories
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                    </div>
-                </li>
-                <li class="nav-item mx-3">
-                    <a class="nav-link" href="/dashboard">Forum</a>
-                </li>
-
-                <li class="nav-item ">
-                    <form class="form-inline my-2 my-lg-0 ">
-                        <input class=" form-control searchDev" id="search" type="search" placeholder="What do you want to learn?">
-                        <button class="btn  my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
-
-                    </form>
-                </li>
-            </ul>
-            <a class="btn sign-in mr-3" href="sign-in" id="btnNavIn">Sign in</a>
-            <a class="btn sign-up" href="sign-up" id="btnNavUp">Sign up</a>
-<!--
+          <li class="nav-item searchContainer">
+            <form class="my-lg-0">
+              <div class="row d-flex align-items-center">
+                <div class="col-8 pr-0">
+                  <input
+                    class="form-control searchDev"
+                    type="search"
+                    placeholder="What do you want to learn?"
+                  />
+                </div>
+                <div class="col pl-0">
+                  <button class="btn my-2 my-sm-0" type="submit">
+                    <i class="fas fa-search"></i>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </li>
+        </ul>
+        <a class="btn sign-in mr-3" href="sign-in" id="btnNavIn">Sign in</a>
+        <a class="btn sign-up" href="sign-up" id="btnNavUp">Sign up</a>
+        <!--
             <div class="d-flex align-items-center">
                 <a class="btn sign-in mr-2" href="sign-in" id="btnNavIn">My Courses</a>
                 <i class="far fa-bell fa-lg notif mr-3"></i>
@@ -70,174 +98,188 @@
                 </div>
             </div>
 -->
-        </div>
+      </div>
     </nav>
 
-
     <div class="row m-0 mt-5 d-flex">
-        <div class="container d-flex flex-wrap justify-content-center ">
-            <div class="col-11 p-0">
-                <div class="row">
-                    <div class="col-12 p-0 txtTitle">Latest</div>
-                    <div class="col-12 p-0 d-flex justify-content-between latest" id="latest">
-                        
-                        <div class="arrowLeft h-100 d-none align-items-center" id="arrowLeft"><i class="fas fa-chevron-left fa-3x"></i></div>
-                        <div class='col-6 col-lg-3 px-1 mt-2'>
-                            <div class="card rounded">
-                                <div class="thumb"></div>
-                                <div class="card-body py-2 px-3">
-                                    <p class="courseDate mb-1">Added 1 days ago</p>
-                                    <p class="courseTitle">System Integration &amp; Architecture</p>
-                                    <p class="courseProf mb-1">prof. ramos</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class='col-6 col-lg-3 px-1 mt-2'>
-                            <div class="card rounded">
-                                <div class="thumb"></div>
-                                <div class="card-body py-2 px-3">
-                                    <p class="courseDate mb-1">Added 2 days ago</p>
-                                    <p class="courseTitle">System Integration &amp; Architecture</p>
-                                    <p class="courseProf mb-1">prof. ramos</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class='col-6 col-lg-3 px-1 mt-2'>
-                            <div class="card rounded">
-                                <div class="thumb"></div>
-                                <div class="card-body py-2 px-3">
-                                    <p class="courseDate mb-1">Added 3 days ago</p>
-                                    <p class="courseTitle">System Integration &amp; Architecture</p>
-                                    <p class="courseProf mb-1">prof. ramos</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class='col-6 col-lg-3 px-1 mt-2'>
-                            <div class="card rounded">
-                                <div class="thumb"></div>
-                                <div class="card-body py-2 px-3">
-                                    <p class="courseDate mb-1">Added 4 days ago</p>
-                                    <p class="courseTitle">System Integration &amp; Architecture</p>
-                                    <p class="courseProf mb-1">prof. ramos</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class='col-6 col-lg-3 px-1 mt-2'>
-                            <div class="card rounded">
-                                <div class="thumb"></div>
-                                <div class="card-body py-2 px-3">
-                                    <p class="courseDate mb-1">Added 5 days ago</p>
-                                    <p class="courseTitle">System Integration &amp; Architecture</p>
-                                    <p class="courseProf mb-1">prof. ramos</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class='col-6 col-lg-3 px-1 mt-2'>
-                            <div class="card rounded">
-                                <div class="thumb"></div>
-                                <div class="card-body py-2 px-3">
-                                    <p class="courseDate mb-1">Added 6 days ago</p>
-                                    <p class="courseTitle">System Integration &amp; Architecture</p>
-                                    <p class="courseProf mb-1">prof. ramos</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class='col-6 col-lg-3 px-1 mt-2'>
-                            <div class="card rounded">
-                                <div class="thumb"></div>
-                                <div class="card-body py-2 px-3">
-                                    <p class="courseDate mb-1">Added 7 days ago</p>
-                                    <p class="courseTitle">System Integration &amp; Architecture</p>
-                                    <p class="courseProf mb-1">prof. ramos</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class='col-6 col-lg-3 px-1 mt-2'>
-                            <div class="card rounded">
-                                <div class="thumb"></div>
-                                <div class="card-body py-2 px-3">
-                                    <p class="courseDate mb-1">Added 8 days ago</p>
-                                    <p class="courseTitle">System Integration &amp; Architecture</p>
-                                    <p class="courseProf mb-1">prof. ramos</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class='col-6 col-lg-3 px-1 mt-2'>
-                            <div class="card rounded">
-                                <div class="thumb"></div>
-                                <div class="card-body py-2 px-3">
-                                    <p class="courseDate mb-1">Added 9 days ago</p>
-                                    <p class="courseTitle">System Integration &amp; Architecture</p>
-                                    <p class="courseProf mb-1">prof. ramos</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="arrowRight h-100 d-none d-flex align-items-center" id="arrowRight"><i class="fas fa-chevron-right fa-3x"></i></div>
-
-
-
-
-
-
-                    </div>
+      <div class="container d-flex flex-wrap justify-content-center">
+        <div class="col-11 p-0">
+          <div class="row">
+            <div class="col-12 p-0 txtTitle">Latest</div>
+            <div
+              class="col-12 p-0 d-flex justify-content-between latest"
+              id="latest"
+            >
+              <div
+                class="arrowLeft h-100 d-none align-items-center"
+                id="arrowLeft"
+              >
+                <i class="fas fa-chevron-left fa-3x"></i>
+              </div>
+              <div class="col-6 col-lg-3 px-1 mt-2">
+                <div class="card rounded">
+                  <div class="thumb"></div>
+                  <div class="card-body py-2 px-3">
+                    <p class="courseDate mb-1">Added 1 days ago</p>
+                    <p class="courseTitle">
+                      System Integration &amp; Architecture
+                    </p>
+                    <p class="courseProf mb-1">prof. ramos</p>
+                  </div>
                 </div>
-                <div class="row my-5">
-                    <div class="col-12 p-0 txtTitle">Category</div>
-                    <div class="col-12 p-0 d-flex flex-wrap justify-content-between">
-
-
-
-                        <div class='col-6 col-lg-3 p-2 mt-2 '>
-                            <div class="card categoryContainer ">
-                                <div class="categoryThumb"></div>
-                            </div>
-                        </div>
-                        <div class='col-6 col-lg-3 p-2 mt-2 '>
-                            <div class="card categoryContainer ">
-                                <div class="categoryThumb"></div>
-                            </div>
-                        </div>
-                        <div class='col-6 col-lg-3 p-2 mt-2 '>
-                            <div class="card categoryContainer ">
-                                <div class="categoryThumb"></div>
-                            </div>
-                        </div>
-                        <div class='col-6 col-lg-3 p-2 mt-2 '>
-                            <div class="card categoryContainer ">
-                                <div class="categoryThumb"></div>
-                            </div>
-                        </div>
-                        <div class='col-6 col-lg-3 p-2 mt-2 '>
-                            <div class="card categoryContainer ">
-                                <div class="categoryThumb"></div>
-                            </div>
-                        </div>
-                        <div class='col-6 col-lg-3 p-2 mt-2 '>
-                            <div class="card categoryContainer ">
-                                <div class="categoryThumb"></div>
-                            </div>
-                        </div>
-                        <div class='col-6 col-lg-3 p-2 mt-2 '>
-                            <div class="card categoryContainer ">
-                                <div class="categoryThumb"></div>
-                            </div>
-                        </div>
-                        <div class='col-6 col-lg-3 p-2 mt-2 '>
-                            <div class="card categoryContainer ">
-                                <div class="categoryThumb"></div>
-                            </div>
-                        </div>
-
-
-
-
-                    </div>
+              </div>
+              <div class="col-6 col-lg-3 px-1 mt-2">
+                <div class="card rounded">
+                  <div class="thumb"></div>
+                  <div class="card-body py-2 px-3">
+                    <p class="courseDate mb-1">Added 2 days ago</p>
+                    <p class="courseTitle">
+                      System Integration &amp; Architecture
+                    </p>
+                    <p class="courseProf mb-1">prof. ramos</p>
+                  </div>
                 </div>
+              </div>
+              <div class="col-6 col-lg-3 px-1 mt-2">
+                <div class="card rounded">
+                  <div class="thumb"></div>
+                  <div class="card-body py-2 px-3">
+                    <p class="courseDate mb-1">Added 3 days ago</p>
+                    <p class="courseTitle">
+                      System Integration &amp; Architecture
+                    </p>
+                    <p class="courseProf mb-1">prof. ramos</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-lg-3 px-1 mt-2">
+                <div class="card rounded">
+                  <div class="thumb"></div>
+                  <div class="card-body py-2 px-3">
+                    <p class="courseDate mb-1">Added 4 days ago</p>
+                    <p class="courseTitle">
+                      System Integration &amp; Architecture
+                    </p>
+                    <p class="courseProf mb-1">prof. ramos</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-lg-3 px-1 mt-2">
+                <div class="card rounded">
+                  <div class="thumb"></div>
+                  <div class="card-body py-2 px-3">
+                    <p class="courseDate mb-1">Added 5 days ago</p>
+                    <p class="courseTitle">
+                      System Integration &amp; Architecture
+                    </p>
+                    <p class="courseProf mb-1">prof. ramos</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-lg-3 px-1 mt-2">
+                <div class="card rounded">
+                  <div class="thumb"></div>
+                  <div class="card-body py-2 px-3">
+                    <p class="courseDate mb-1">Added 6 days ago</p>
+                    <p class="courseTitle">
+                      System Integration &amp; Architecture
+                    </p>
+                    <p class="courseProf mb-1">prof. ramos</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-lg-3 px-1 mt-2">
+                <div class="card rounded">
+                  <div class="thumb"></div>
+                  <div class="card-body py-2 px-3">
+                    <p class="courseDate mb-1">Added 7 days ago</p>
+                    <p class="courseTitle">
+                      System Integration &amp; Architecture
+                    </p>
+                    <p class="courseProf mb-1">prof. ramos</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-lg-3 px-1 mt-2">
+                <div class="card rounded">
+                  <div class="thumb"></div>
+                  <div class="card-body py-2 px-3">
+                    <p class="courseDate mb-1">Added 8 days ago</p>
+                    <p class="courseTitle">
+                      System Integration &amp; Architecture
+                    </p>
+                    <p class="courseProf mb-1">prof. ramos</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6 col-lg-3 px-1 mt-2">
+                <div class="card rounded">
+                  <div class="thumb"></div>
+                  <div class="card-body py-2 px-3">
+                    <p class="courseDate mb-1">Added 9 days ago</p>
+                    <p class="courseTitle">
+                      System Integration &amp; Architecture
+                    </p>
+                    <p class="courseProf mb-1">prof. ramos</p>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="arrowRight h-100 d-none d-flex align-items-center"
+                id="arrowRight"
+              >
+                <i class="fas fa-chevron-right fa-3x"></i>
+              </div>
             </div>
+          </div>
+          <div class="row my-5">
+            <div class="col-12 p-0 txtTitle">Category</div>
+            <div class="col-12 p-0 d-flex flex-wrap justify-content-between">
+              <div class="col-6 col-lg-3 p-2 mt-2">
+                <div class="card categoryContainer">
+                  <div class="categoryThumb"></div>
+                </div>
+              </div>
+              <div class="col-6 col-lg-3 p-2 mt-2">
+                <div class="card categoryContainer">
+                  <div class="categoryThumb"></div>
+                </div>
+              </div>
+              <div class="col-6 col-lg-3 p-2 mt-2">
+                <div class="card categoryContainer">
+                  <div class="categoryThumb"></div>
+                </div>
+              </div>
+              <div class="col-6 col-lg-3 p-2 mt-2">
+                <div class="card categoryContainer">
+                  <div class="categoryThumb"></div>
+                </div>
+              </div>
+              <div class="col-6 col-lg-3 p-2 mt-2">
+                <div class="card categoryContainer">
+                  <div class="categoryThumb"></div>
+                </div>
+              </div>
+              <div class="col-6 col-lg-3 p-2 mt-2">
+                <div class="card categoryContainer">
+                  <div class="categoryThumb"></div>
+                </div>
+              </div>
+              <div class="col-6 col-lg-3 p-2 mt-2">
+                <div class="card categoryContainer">
+                  <div class="categoryThumb"></div>
+                </div>
+              </div>
+              <div class="col-6 col-lg-3 p-2 mt-2">
+                <div class="card categoryContainer">
+                  <div class="categoryThumb"></div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
-
-
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="/__/firebase/8.0.2/firebase-app.js"></script>
@@ -256,8 +298,5 @@
     <script src="js/arrows/arrows.js"></script>
     <script src="js/get-started/get-started.js"></script>
     <script src="js/nav/nav.js"></script>
-
-
-</body>
-
+  </body>
 </html>

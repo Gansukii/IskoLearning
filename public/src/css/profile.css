@@ -1,0 +1,139 @@
+.header {
+  background-color: #494949;
+}
+.profileAvatar {
+  height: 90px;
+  width: 90px;
+  background: #c4c4c4;
+  border-radius: 50%;
+  display: inline-block;
+  text-align: center;
+}
+
+.profileName {
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.profileBadge {
+  font-size: 12px;
+  font-weight: 400;
+  border: 0.552632px solid #b7b7b7;
+  color: #b7b7b7;
+}
+
+.btnEditProfile {
+  border: 1px solid #b7b7b7;
+  border-radius: 6px;
+  font-size: 13px;
+  text-align: center;
+  color: #b7b7b7;
+}
+
+.tabs {
+  color: #ffffff;
+  font-weight: 500;
+  border-bottom: 3px solid #494949;
+}
+
+.activeTab {
+  border-bottom: 3px solid #ffffff;
+}
+
+.modal-title {
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.editProfileAvatar {
+  height: 130px;
+  width: 130px;
+  border-radius: 50%;
+  display: inline-block;
+  background: #5f5f5f;
+  color: #ffffff;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.btnSave {
+  background: #7f0303;
+  border-radius: 5px;
+  color: #ffffff;
+}
+
+.btnCancel {
+  border: 0.5px solid #000000;
+  border-radius: 5px;
+  color: #6d6d6d;
+}
+
+.editIconContainer {
+  position: absolute;
+  top: -10px;
+  right: 10px;
+}
+
+.editIcon {
+  font-size: 25px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.thumb {
+  background: url(https://cms-assets.tutsplus.com/uploads/users/798/posts/27376/preview_image/firebase@2x.png)
+    no-repeat center;
+  background-size: cover;
+  max-width: 175px;
+  height: 100px;
+  border-radius: 5px;
+}
+
+.courseTitle {
+  font-weight: 900;
+  font-size: 16px;
+}
+
+.courseSubHead {
+  font-weight: 400;
+  font-size: 12px;
+}
+.currentStatus {
+  font-weight: 600;
+  font-size: 13px;
+}
+.progress {
+  height: 12px;
+}
+.progressComplete {
+  background-color: #7f0303 !important;
+}
+.txtProgress {
+  font-weight: 600;
+  font-size: 12px;
+  color: #8a8a8a;
+}
+.btnAction {
+  background: #f1c618;
+  border-radius: 5px;
+  font-size: 14px;
+  color: #ffffff;
+  width: 113px;
+}
+.btnActionComplete {
+  background-color: #7f0303;
+  line-height: 1;
+}
+.btnAction:hover {
+  color: #ffffff;
+  -webkit-box-shadow: 0px 0px 6px 1px #c09e13;
+  box-shadow: 0px 0px 6px 1px #c09e13;
+}
+
+.fa-ellipsis-h {
+  font-size: 15px;
+  color: #848484;
+}

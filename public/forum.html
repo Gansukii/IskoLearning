@@ -1,196 +1,273 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>IskoLearning</title>
 
     <link rel="stylesheet" href="src/css/bootstrap.css" />
-    <link rel="stylesheet" href="src/css/forum.css" />
     <link rel="stylesheet" href="src/css/nav.css" />
+    <link rel="stylesheet" href="src/css/forum.css" />
     <!-- GOOGLE FONTS   -->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600;700&family=Lato:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
     <!--  FONTAWESOME  -->
-    <script src="https://kit.fontawesome.com/7d591f1481.js" crossorigin="anonymous"></script>
-</head>
+    <script
+      src="https://kit.fontawesome.com/7d591f1481.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
 
-<body>
+  <body>
     <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <div class="dropdown">
-                        <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Categories
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                    </div>
-                </li>
-                <li class="nav-item mx-3">
-                    <a class="nav-link" href="/dashboard">Forum</a>
-                </li>
-
-                <li class="nav-item">
-                    <form class="form-inline my-2 my-lg-0">
-                        <input class="form-control searchDev" id="search" type="search" placeholder="What do you want to learn?" />
-                        <button class="btn my-2 my-sm-0" type="submit">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </form>
-                </li>
-            </ul>
-            <div class="d-flex align-items-center">
-                <a class="btn mr-2" id="btnNavIn">My Courses</a>
-                <i class="far fa-bell fa-lg notif mr-3"></i>
-                <div class="position-relative">
-                    <button class="btn avatar" id="avatar">69</button>
-                    <div class="menu p-2 d-none flex-column rounded" id="menuPop">
-                        <!--                        <div class="row d-flex p-1 p-sm-2 menuHeader">-->
-                        <div class="container w-100 d-flex align-items-center menuHeader pt-2 pb-2 pb-sm-3 px-1">
-                            <div class="menuAvatar" id="avatar">69</div>
-                            <div class="col mx-2">
-                                <div class="row menuName">Full Name</div>
-                                <div class="row">
-                                    <span class="badge badge-pill menuBadge px-2">STUDENT</span>
-                                </div>
-                            </div>
-                        </div>
-                        <!--                        </div>-->
-                        <div class="list-group list-group-flush p-0">
-                            <a href="#" class="list-group-item list-group-item-action px-2">Profile</a>
-                            <a href="#" class="list-group-item list-group-item-action px-2">Account Settings</a>
-                            <a href="#" class="list-group-item list-group-item-action px-2" id="sign-out"><i class="fas fa-sign-out-alt mr-1"></i>Sign out</a>
-                        </div>
-                    </div>
-                </div>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto d-flex align-items-lg-center">
+          <li class="nav-item">
+            <div class="dropdown">
+              <button
+                class="btn dropdown-toggle categories"
+                type="button"
+                id="dropdownMenuButton"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                Categories
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
             </div>
+          </li>
+          <li class="nav-item mx-3">
+            <a class="nav-link" href="/dashboard">Forum</a>
+          </li>
+
+          <li class="nav-item searchContainer">
+            <form class="my-lg-0">
+              <div class="row d-flex align-items-center">
+                <div class="col-8 pr-0">
+                  <input
+                    class="form-control searchDev"
+                    type="search"
+                    placeholder="What do you want to learn?"
+                  />
+                </div>
+                <div class="col pl-0">
+                  <button class="btn my-2 my-sm-0" type="submit">
+                    <i class="fas fa-search"></i>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </li>
+        </ul>
+        <div class="d-flex align-items-center">
+          <a class="btn mr-2" id="btnNavIn">My Courses</a>
+          <i class="far fa-bell fa-lg notif mr-3"></i>
+          <div class="position-relative">
+            <button class="btn avatar" id="avatar">69</button>
+            <div class="menu p-2 d-none flex-column rounded" id="menuPop">
+              <div
+                class="container w-100 d-flex align-items-center menuHeader pt-2 pb-2 pb-sm-3 px-1"
+              >
+                <div class="menuAvatar" id="avatar">69</div>
+                <div class="col mx-2">
+                  <div class="row menuName">Full Name</div>
+                  <div class="row">
+                    <span class="badge badge-pill menuBadge px-2">STUDENT</span>
+                  </div>
+                </div>
+              </div>
+              <div class="list-group list-group-flush p-0">
+                <a
+                  href="profile"
+                  class="list-group-item list-group-item-action px-2"
+                  >Profile</a
+                >
+                <a href="#" class="list-group-item list-group-item-action px-2"
+                  >Account Settings</a
+                >
+                <a
+                  href="#"
+                  class="list-group-item list-group-item-action px-2"
+                  id="sign-out"
+                  ><i class="fas fa-sign-out-alt mr-1"></i>Sign out</a
+                >
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </nav>
 
     <div class="row m-0 mt-5 px-5 d-flex justify-content-center">
-        <div class="row w-100 d-flex justify-content-center mb-5">
-            <div class="col-12 col-md-7 mx-2 px-4 py-3 rounded paper">
-                <div class="col-12 p-0 txtPaper">Questions</div>
-                <div class="col-12 my-3">
-                    <div class="row d-flex align-items-center">
-                        <button class="btn avatar" id="avatar">Av</button>
-                        <div class="col mx-2">
-                            <div class="row questionName">Full Name</div>
-                            <div class="row questionTime">3 hours ago</div>
-                        </div>
-                    </div>
-                    <div class="row mt-1">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam
-                        laboriosam doloribus corrupti! Reprehenderit repudiandae quisquam
-                        asperiores eos sunt sed excepturi error, doloremque sit facilis
-                        ipsa, earum iusto nesciunt non aliquid.
-                    </div>
-                </div>
-                <hr class="mb-1" />
-                <div class="col-12 mb-3">
-                    <div class="row mb-3 questionIcons">
-                        <div class="d-flex align-items-center mr-3">
-                            <i class="far fa-caret-square-up mr-1"></i>1
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <i class="far fa-comment mr-1"></i>3
-                        </div>
-                    </div>
-                    <div class="row d-flex align-items-center">
-                        <button class="btn avatar" id="avatar">Av</button>
-                        <div class="col mx-2">
-                            <div class="row questionName">Full Name</div>
-                            <div class="row questionTime">5 hours ago</div>
-                        </div>
-                    </div>
-                    <div class="row mt-1">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam
-                        laboriosam doloribus corrupti! Reprehenderit repudiandae quisquam
-                        asperiores eos sunt sed excepturi error, doloremque sit facilis
-                        ipsa, earum iusto nesciunt non aliquid.
-                    </div>
-                </div>
-                <hr class="mb-1" />
-                <div class="col-12 mb-3">
-                    <div class="row mb-3 questionIcons">
-                        <div class="d-flex align-items-center mr-3 upvoted">
-                            <i class="far fa-caret-square-up mr-1 "></i>1
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <i class="far fa-comment mr-1"></i>3
-                        </div>
-                    </div>
-                    <div class="row d-flex align-items-center">
-                        <button class="btn avatar" id="avatar">Av</button>
-                        <div class="col mx-2">
-                            <div class="row questionName">Full Name</div>
-                            <div class="row questionTime">10 hours ago</div>
-                        </div>
-                    </div>
-                    <div class="row mt-1">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam
-                        laboriosam doloribus corrupti! Reprehenderit repudiandae quisquam
-                        asperiores eos sunt sed excepturi error, doloremque sit facilis
-                        ipsa, earum iusto nesciunt non aliquid.
-                    </div>
-                </div>
+      <div class="row w-100 d-flex justify-content-center mb-5">
+        <div class="col-12 col-md-7 mx-2 px-4 py-3 rounded paper">
+          <div class="col-12 p-0 txtPaper">Questions</div>
+          <div class="col-12 my-3">
+            <div class="row d-flex align-items-center">
+              <button class="btn avatar" id="avatar">Av</button>
+              <div class="col mx-2">
+                <div class="row questionName">Full Name</div>
+                <div class="row questionTime">3 hours ago</div>
+              </div>
             </div>
-
-            <div class="col-12 col-md-4 mx-2 px-4 py-3 rounded paper askQuestionPaper">
-                <div class="col-12 p-0 txtPaper">Ask a Question</div>
-                <div class="col-12 my-2 p-0">
-                    <button class="btn btn-block pb-4 btnAsk" data-toggle="modal" data-target="#askQuestion">
-                        What is your question
-                    </button>
-                </div>
-                <div class="modal fade" id="askQuestion" tabindex="-1" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header p-0 pt-1 pr-2">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body pt-0">
-                                <div class="row px-sm-4 px-2">
-                                    <form action="" class="w-100">
-                                        <div class="form-group">
-                                            <label for="questionTitle" class="txtModal">Title</label>
-                                            <input type="text" class="form-control" id="questionTitle" placeholder="Start your question with “Why”, “What”, “How”, etc." />
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="questionBody" class="txtModal">Body</label>
-                                            <textarea class="form-control" id="questionBody" rows="5"></textarea>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="questionTags" class="txtModal">Tags</label>
-                                            <input type="text" class="form-control" id="questionTags" placeholder="Add tag/s" />
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-light px-2 px-sm-4 btnPostAsk">
-                                    Ask Question
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="row mt-1">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam
+              laboriosam doloribus corrupti! Reprehenderit repudiandae quisquam
+              asperiores eos sunt sed excepturi error, doloremque sit facilis
+              ipsa, earum iusto nesciunt non aliquid.
             </div>
+          </div>
+          <hr class="mb-1" />
+          <div class="col-12 mb-3">
+            <div class="row mb-3 questionIcons">
+              <div class="d-flex align-items-center mr-3">
+                <i class="far fa-caret-square-up mr-1"></i>1
+              </div>
+              <div class="d-flex align-items-center">
+                <i class="far fa-comment mr-1"></i>3
+              </div>
+            </div>
+            <div class="row d-flex align-items-center">
+              <button class="btn avatar" id="avatar">Av</button>
+              <div class="col mx-2">
+                <div class="row questionName">Full Name</div>
+                <div class="row questionTime">5 hours ago</div>
+              </div>
+            </div>
+            <div class="row mt-1">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam
+              laboriosam doloribus corrupti! Reprehenderit repudiandae quisquam
+              asperiores eos sunt sed excepturi error, doloremque sit facilis
+              ipsa, earum iusto nesciunt non aliquid.
+            </div>
+          </div>
+          <hr class="mb-1" />
+          <div class="col-12 mb-3">
+            <div class="row mb-3 questionIcons">
+              <div class="d-flex align-items-center mr-3 upvoted">
+                <i class="far fa-caret-square-up mr-1"></i>1
+              </div>
+              <div class="d-flex align-items-center">
+                <i class="far fa-comment mr-1"></i>3
+              </div>
+            </div>
+            <div class="row d-flex align-items-center">
+              <button class="btn avatar" id="avatar">Av</button>
+              <div class="col mx-2">
+                <div class="row questionName">Full Name</div>
+                <div class="row questionTime">10 hours ago</div>
+              </div>
+            </div>
+            <div class="row mt-1">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam
+              laboriosam doloribus corrupti! Reprehenderit repudiandae quisquam
+              asperiores eos sunt sed excepturi error, doloremque sit facilis
+              ipsa, earum iusto nesciunt non aliquid.
+            </div>
+          </div>
         </div>
+
+        <div
+          class="col-12 col-md-4 mx-2 px-4 py-3 rounded paper askQuestionPaper"
+        >
+          <div class="col-12 p-0 txtPaper">Ask a Question</div>
+          <div class="col-12 my-2 p-0">
+            <button
+              class="btn btn-block pb-4 btnAsk"
+              data-toggle="modal"
+              data-target="#askQuestion"
+            >
+              What is your question
+            </button>
+          </div>
+          <div
+            class="modal fade"
+            id="askQuestion"
+            tabindex="-1"
+            role="dialog"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header p-0 pt-1 pr-2">
+                  <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body pt-0">
+                  <div class="row px-sm-4 px-2">
+                    <form action="" class="w-100">
+                      <div class="form-group">
+                        <label for="questionTitle" class="txtModal"
+                          >Title</label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="questionTitle"
+                          placeholder="Start your question with “Why”, “What”, “How”, etc."
+                        />
+                      </div>
+
+                      <div class="form-group">
+                        <label for="questionBody" class="txtModal">Body</label>
+                        <textarea
+                          class="form-control"
+                          id="questionBody"
+                          rows="5"
+                        ></textarea>
+                      </div>
+                      <div class="form-group">
+                        <label for="questionTags" class="txtModal">Tags</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="questionTags"
+                          placeholder="Add tag/s"
+                        />
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-light px-2 px-sm-4 btnPostAsk"
+                  >
+                    Ask Question
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -207,9 +284,7 @@
     <script src="js/bootstrapJs/bootstrap.bundle.js"></script>
     <script src="js/bootstrapJs/bootstrap.js"></script>
     <script src="js/isSigned/isSigned.js"></script>
-    <script src="js/arrows/arrows.js"></script>
-    <script src="js/get-started/get-started.js"></script>
+    <!--    <script src="js/get-started/get-started.js"></script>-->
     <script src="js/nav/nav.js"></script>
-</body>
-
+  </body>
 </html>

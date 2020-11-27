@@ -11,7 +11,7 @@ a {
 }
 
 .signInTxt {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Lato", sans-serif;
   font-style: normal;
   font-weight: bold;
   font-size: 20px;
@@ -27,7 +27,7 @@ option {
   background: #7f0303;
   border-radius: 5px;
   color: #ffffff;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Lato", sans-serif;
   font-weight: bold;
   font-size: 14px;
   text-align: center;
@@ -40,13 +40,13 @@ option {
 }
 
 .txtForgot {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Lato", sans-serif;
   text-align: center;
   color: #7f0303;
 }
 
 .txtNoAcc {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Lato", sans-serif;
   text-align: center;
   color: #000000;
 }

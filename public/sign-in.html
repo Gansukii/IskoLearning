@@ -37,11 +37,11 @@
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav mr-auto d-flex align-items-lg-center">
           <li class="nav-item">
             <div class="dropdown">
               <button
-                class="btn dropdown-toggle"
+                class="btn dropdown-toggle categories"
                 type="button"
                 id="dropdownMenuButton"
                 data-toggle="dropdown"
@@ -61,18 +61,22 @@
             <a class="nav-link" href="/dashboard">Forum</a>
           </li>
 
-          <li class="nav-item">
-            <form class="form-inline my-2 my-lg-0">
-              <input
-                class="form-control searchDev"
-                id="search"
-                type="search"
-                placeholder="What do you want to learn?"
-              />
-
-              <button class="btn my-2 my-sm-0" type="submit">
-                <i class="fas fa-search"></i>
-              </button>
+          <li class="nav-item searchContainer">
+            <form class="my-lg-0">
+              <div class="row d-flex align-items-center">
+                <div class="col-8 pr-0">
+                  <input
+                    class="form-control searchDev"
+                    type="search"
+                    placeholder="What do you want to learn?"
+                  />
+                </div>
+                <div class="col pl-0">
+                  <button class="btn my-2 my-sm-0" type="submit">
+                    <i class="fas fa-search"></i>
+                  </button>
+                </div>
+              </div>
             </form>
           </li>
         </ul>

@@ -1,50 +1,37 @@
-/*
-body {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    height: 100vh;
-    background: #f2f2f2;
-    font-family: 'Open Sans', sans-serif;
-    color: #000000;
-
-}
-*/
-
-
 .txtTitle {
-    font-weight: bold;
-    font-size: 20px;
+  font-weight: bold;
+  font-size: 20px;
 }
 
 .badgeDev {
-    font-weight: 600;
-    font-size: 14px;
-    color: #7E7E7E;
-    border: 0.75px solid #7E7E7E;
+  font-weight: 600;
+  font-size: 14px;
+  color: #7e7e7e;
+  border: 0.75px solid #7e7e7e;
 }
 
-.courseCard{
-    min-height: 335px;
+.courseCard {
+  min-height: 335px;
 }
 
 .courseThumb {
-    background: url(https://cms-assets.tutsplus.com/uploads/users/798/posts/27376/preview_image/firebase@2x.png) no-repeat center;
-    background-size: cover;
-    height: 150px;
+  background: url(https://cms-assets.tutsplus.com/uploads/users/798/posts/27376/preview_image/firebase@2x.png)
+    no-repeat center;
+  background-size: cover;
+  height: 150px;
 }
 
 .courseDes {
-    font-weight: 400;
-    font-size: 12px;
-    max-height: 100px;
-    overflow: auto;
+  font-weight: 400;
+  font-size: 12px;
+  max-height: 100px;
+  overflow: auto;
 }
 
 .courseDes::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
 }
 
 .courseDes::-webkit-scrollbar {
@@ -53,100 +40,101 @@ body {
 
 .courseDes::-webkit-scrollbar-thumb {
   border-radius: 10px;
-  background-color: #7F0303;
+  background-color: #7f0303;
 }
 
-
-
 .card {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .card:hover {
-    transform: scale(1.01);
-    -webkit-box-shadow: 0px 0px 6px -2px #000000;
-    box-shadow: 0px 0px 6px -2px #000000;
+  transform: scale(1.01);
+  -webkit-box-shadow: 0px 0px 6px -2px #000000;
+  box-shadow: 0px 0px 6px -2px #000000;
 }
 
-
 .thumb {
-    background: url(https://froala.com/wp-content/uploads/2019/11/post41.svg) no-repeat center;
-    background-size: cover;
-    height: 150px;
+  background: url(https://froala.com/wp-content/uploads/2019/11/post41.svg)
+    no-repeat center;
+  background-size: cover;
+  height: 150px;
 }
 
 .courseDate {
-    font-weight: 400;
-    font-size: 12px;
+  font-weight: 400;
+  font-size: 12px;
 }
 
 .courseTitle {
-    font-weight: 700;
-    font-size: 16px;
-    color: #000000;
+  font-weight: 700;
+  font-size: 16px;
+  color: #000000;
 }
 
 .courseProf {
-    font-weight: 400;
-    font-size: 12px;
-    text-transform: uppercase;
+  font-weight: 400;
+  font-size: 12px;
+  text-transform: uppercase;
 }
 
 .categoryContainer {
-    border-radius: 8px;
-    overflow: hidden;
-    cursor: pointer;
-
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
 }
 
-
 .categoryThumb {
-    background: url(https://www.cmu.edu/brand/brand-guidelines/images/colors-steel-gray-600x600.png) no-repeat center;
-    background-size: cover;
-    height: 150px;
+  background: url(https://www.cmu.edu/brand/brand-guidelines/images/colors-steel-gray-600x600.png)
+    no-repeat center;
+  background-size: cover;
+  height: 150px;
 }
 
 .latest,
 .myCourses {
-    overflow-y: hidden;
-    overflow-x: auto;
+  overflow-y: hidden;
+  overflow-x: auto;
 }
 
 .latest::-webkit-scrollbar,
 .myCourses::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
 .latest,
 .myCourses {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .arrowRight {
-    -webkit-text-stroke: 1px #000;
-    color: #ffffff;
-    position: -webkit-sticky;
-    position: sticky;
-    right: 0;
-    z-index: 50;
-    cursor: pointer;
+  -webkit-text-stroke: 1px #000;
+  color: #ffffff;
+  position: -webkit-sticky;
+  position: sticky;
+  right: 0;
+  z-index: 50;
+  cursor: pointer;
 }
 
 .arrowLeft {
-    -webkit-text-stroke: 1px #000;
-    color: #ffffff;
-    position: -webkit-sticky;
-    position: sticky;
-    left: 0;
-    z-index: 50;
-    cursor: pointer;
+  -webkit-text-stroke: 1px #000;
+  color: #ffffff;
+  position: -webkit-sticky;
+  position: sticky;
+  left: 0;
+  z-index: 50;
+  cursor: pointer;
 }
 
 .arrowRight:hover,
 .arrowLeft:hover {
-    background: rgb(255, 255, 255);
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
-    -webkit-text-stroke: 1px #ffffff;
-    color: #000;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
+  -webkit-text-stroke: 1px #ffffff;
+  color: #000;
 }
