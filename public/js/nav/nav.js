@@ -1,9 +1,10 @@
 const search = document.getElementById("search");
 const avatar = document.getElementById("avatar");
+const menuAvatar = document.getElementById("menuAvatar");
 const menuPop = document.getElementById("menuPop");
 const signOut = document.getElementById("sign-out");
-// const navFullName = document.getElementById("navFullName");
-// const navUserType = document.getElementById("navUserType");
+const navFullName = document.getElementById("navFullName");
+const navUserType = document.getElementById("navUserType");
 let isOpen = false;
 var lg = 992;
 
@@ -12,7 +13,18 @@ var lg = 992;
 //   console.log(menuPop);
 // });
 
+firebase.auth().onAuthStateChanged(function (user) {
+  if (user) {
+    if (user.photoURL) {
+      avatar.style = `background: url(${user.photoURL}) no-repeat center; background-size: cover;`;
+      menuAvatar.style = `background: url(${user.photoURL}) no-repeat center; background-size: cover;`;
+    }
+  }
+});
+
 if (menuPop) {
+  navFullName.innerHTML = localStorage.getItem("fullname");
+  navUserType.innerHTML = localStorage.getItem("user_type");
   window.onresize = () => {
     if (document.documentElement.clientWidth < lg) {
       menuPop.style.left = "-100px";
@@ -45,24 +57,13 @@ avatar
     })
   : null;
 
-firebase.auth().onAuthStateChanged(function (user) {
-  if (user) {
-    // if (user.displayName) localStorage.setItem("displayName", user.displayName);
-    // else {
-    //   let randomDisplayName =
-    //     "user" + Math.floor(Math.random() * 999).toString();
-    //   user.updateProfile({ displayName: randomDisplayName });
-    //   localStorage.setItem("displayName", randomDisplayName);
-    // }
-    // navFullName.innerHTML = localStorage.getItem("fullname");
-    // navUserType.innerHTML = localStorage.getItem("username");
-    console.log("update nav");
-  }
-  // else {
-  //   alert("Please sign-up or sign-in to an existing account");
-  //   window.location.assign("../../sign-in");
-  // }
-});
+// firebase.auth().onAuthStateChanged(function (user) {
+//   if (user) {
+
+//     console.log("update nav");
+//   }
+
+// });
 
 signOut
   ? (signOut.onclick = () => {

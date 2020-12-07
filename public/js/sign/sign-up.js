@@ -52,6 +52,9 @@ const verifyEmail = () => {
 signUp.onclick = (e) => {
   e.preventDefault();
   if (passMatch) {
+    signUp.innerHTML = `<div class="spinner-border spinner-border-sm text-light" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>`;
     auth
       .createUserWithEmailAndPassword(email.value, password.value)
       .then((user) => {
@@ -67,6 +70,7 @@ signUp.onclick = (e) => {
       })
       .catch((error) => {
         var errorMessage = error.message;
+        signUp.innerHTML = "Sign Up";
         alert(errorMessage);
         console.log(errorMessage);
       });

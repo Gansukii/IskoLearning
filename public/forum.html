@@ -84,18 +84,18 @@
           <a class="btn mr-2" id="btnNavIn">My Courses</a>
           <i class="far fa-bell fa-lg notif mr-3"></i>
           <div class="position-relative">
-            <button class="btn avatar" id="avatar">69</button>
+            <button class="btn avatar" id="avatar"></button>
             <div class="menu p-2 d-none flex-column rounded" id="menuPop">
               <div
                 class="container w-100 d-flex align-items-center menuHeader pt-2 pb-2 pb-sm-3 px-1"
               >
-                <div class="menuAvatar" id="avatar">69</div>
+                <div class="menuAvatar" id="menuAvatar"></div>
                 <div class="col mx-2">
-                  <div class="row menuName" id="fullNameNav">Full Name</div>
+                  <div class="row menuName" id="navFullName">Full Name</div>
                   <div class="row">
                     <span
                       class="badge badge-pill menuBadge px-2"
-                      id="userTypeNav"
+                      id="navUserType"
                       >STUDENT</span
                     >
                   </div>
@@ -289,11 +289,23 @@
       </div>
     </div>
 
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="/__/firebase/8.1.2/firebase-app.js"></script>
+    <script src="/__/firebase/8.1.2/firebase-auth.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="/__/firebase/8.1.2/firebase-analytics.js"></script>
+    <script src="/__/firebase/8.1.2/firebase-database.js"></script>
+    <script src="/__/firebase/8.1.2/firebase-storage.js"></script>
+
+    <!-- Initialize Firebase -->
+    <script src="/__/firebase/init.js?useEmulator=true"></script>
     <script src="js/jquery/jquery-3.5.1.min.js"></script>
     <script src="js/bootstrapJs/bootstrap.bundle.js"></script>
     <script src="js/bootstrapJs/bootstrap.js"></script>
     <script src="js/isSigned/isSigned.js"></script>
-    <script src="js/forum/forum.js"></script>
+    <!-- <script src="js/forum/forum.js"></script> -->
     <script src="js/nav/nav.js"></script>
   </body>
 </html>

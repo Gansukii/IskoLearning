@@ -84,16 +84,20 @@
           <a class="btn mr-2" id="btnNavIn">My Courses</a>
           <i class="far fa-bell fa-lg notif mr-3"></i>
           <div class="position-relative">
-            <button class="btn avatar" id="avatar">69</button>
+            <button class="btn avatar" id="avatar"></button>
             <div class="menu p-2 d-none flex-column rounded" id="menuPop">
               <div
                 class="container w-100 d-flex align-items-center menuHeader pt-2 pb-2 pb-sm-3 px-1"
               >
-                <div class="menuAvatar" id="avatar">69</div>
+                <div class="menuAvatar" id="menuAvatar"></div>
                 <div class="col mx-2">
-                  <div class="row menuName">Full Name</div>
+                  <div class="row menuName" id="navFullName">Full Name</div>
                   <div class="row">
-                    <span class="badge badge-pill menuBadge px-2">STUDENT</span>
+                    <span
+                      class="badge badge-pill menuBadge px-2"
+                      id="navUserType"
+                      >STUDENT</span
+                    >
                   </div>
                 </div>
               </div>
@@ -130,13 +134,14 @@
             <div class="col ml-0 ml-sm-4">
               <div
                 class="row profileName d-flex justify-content-center justify-content-sm-start"
-              >
-                Full Name
-              </div>
+                id="profileFullName"
+              ></div>
               <div
                 class="row d-flex justify-content-center justify-content-sm-start"
               >
-                <span class="badge badge-pill profileBadge px-2 mt-1"
+                <span
+                  class="badge badge-pill profileBadge px-2 mt-1"
+                  id="profileUserType"
                   >STUDENT</span
                 >
               </div>
@@ -180,18 +185,33 @@
                           <span>Profile Photo</span>
                         </div>
                         <div class="col d-flex justify-content-sm-start">
-                          <label class="editProfileAvatar" for="imageUpload">
+                          <label
+                            class="editProfileAvatar"
+                            for="imageUpload"
+                            id="editProfileAvatar"
+                          >
                             + Upload Profile Photo
                             <input
                               type="file"
                               accept="image/*"
                               id="imageUpload"
                               hidden
-                              onChange="{onChangeHandler}"
                             />
                           </label>
                         </div>
+                        <div class="col-12 d-none" id="progressContainer">
+                          <div class="progress">
+                            <div
+                              class="progress-bar progress-bar-striped"
+                              role="progressbar"
+                              aria-valuemin="0"
+                              aria-valuemax="100"
+                              id="uploadProgressBar"
+                            ></div>
+                          </div>
+                        </div>
                       </div>
+
                       <div class="row w-100 mt-2 mt-sm-4">
                         <label for="fullName" class="col-4 col-form-label"
                           >Full Name</label
@@ -200,7 +220,7 @@
                           <input
                             type="text"
                             class="form-control"
-                            id="fullName"
+                            id="modalFullName"
                             placeholder="Full Name"
                           />
                         </div>
@@ -213,7 +233,7 @@
                           <input
                             type="text"
                             class="form-control"
-                            id="userName"
+                            id="modalUserName"
                             placeholder="@username"
                           />
                         </div>
@@ -224,7 +244,9 @@
                     <button class="btn btnCancel px-3" data-dismiss="modal">
                       Cancel
                     </button>
-                    <button class="btn btn-danger btnSave px-4">Save</button>
+                    <button class="btn btn-danger btnSave px-4" id="btnSave">
+                      Save
+                    </button>
                   </div>
                 </div>
               </div>
@@ -610,6 +632,8 @@
     <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
     <script src="/__/firebase/8.1.2/firebase-analytics.js"></script>
+    <script src="/__/firebase/8.1.2/firebase-database.js"></script>
+    <script src="/__/firebase/8.1.2/firebase-storage.js"></script>
 
     <!-- Initialize Firebase -->
     <script src="/__/firebase/init.js?useEmulator=true"></script>
@@ -617,7 +641,9 @@
     <script src="js/bootstrapJs/bootstrap.bundle.js"></script>
     <script src="js/bootstrapJs/bootstrap.js"></script>
     <script src="js/isSigned/isSigned.js"></script>
-    <script src="js/get-started/get-started.js"></script>
+    <script src="js/profile/profile.js"></script>
+
+    <!-- <script src="js/get-started/get-started.js"></script> -->
     <script src="js/nav/nav.js"></script>
   </body>
 </html>

@@ -10,14 +10,21 @@ var user;
 
 signIn.onclick = (e) => {
   e.preventDefault();
+  signIn.innerHTML = `<div class="spinner-border spinner-border-sm text-light" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>`;
   auth
     .signInWithEmailAndPassword(email.value, password.value)
     .then((user) => {
+      //   signIn.innerHTML = `<div class="spinner-border spinner-border-sm text-light" role="status">
+      //   <span class="sr-only">Loading...</span>
+      // </div>`;
       getUserData(user.user);
       // window.location.assign("../../home");
     })
     .catch((error) => {
       var errorMessage = error.message;
+      signIn.innerHTML = "Sign In";
       alert(errorMessage);
     });
 };
@@ -28,6 +35,9 @@ btnGoogle.onclick = (e) => {
     .signInWithPopup(provider)
     .then(function (result) {
       user = result.user;
+      btnGoogle.innerHTML = `<div class="spinner-border spinner-border-sm text-success" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>`;
       writeUserData(user.uid, user.displayName, user.email, "Student");
       // window.location.assign("../../home");
     })
@@ -35,20 +45,25 @@ btnGoogle.onclick = (e) => {
       var errorMessage = error.message;
       console.log(errorMessage);
       alert(errorMessage);
+      btnGoogle.innerHTML = "Sign In";
     });
 };
 
 function writeUserData(userId, name, email, userType) {
-  database.ref("users/" + userId).set({
-    fullname: name,
-    username: name,
-    email: email,
-    user_type: userType,
-  });
-  localStorage.setItem("fullname", name);
-  localStorage.setItem("username", name);
-  localStorage.setItem("user_type", userType);
-  window.location.assign("../../home");
+  database
+    .ref("users/" + userId)
+    .set({
+      fullname: name,
+      username: name,
+      email: email,
+      user_type: userType,
+    })
+    .then((snapshot) => {
+      localStorage.setItem("fullname", name);
+      localStorage.setItem("username", name);
+      localStorage.setItem("user_type", userType);
+      window.location.assign("../../home");
+    });
 }
 
 function getUserData(user) {
