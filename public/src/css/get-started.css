@@ -15,8 +15,9 @@
 }
 
 .courseThumb {
-  background: url(https://cms-assets.tutsplus.com/uploads/users/798/posts/27376/preview_image/firebase@2x.png)
-    no-repeat center;
+  /* background: url(https://cms-assets.tutsplus.com/uploads/users/798/posts/27376/preview_image/firebase@2x.png) */
+  /* no-repeat center; */
+  background-color: aqua;
   background-size: cover;
   height: 150px;
 }
@@ -54,8 +55,9 @@
 }
 
 .thumb {
-  background: url(https://froala.com/wp-content/uploads/2019/11/post41.svg)
-    no-repeat center;
+  /* background: url(https://froala.com/wp-content/uploads/2019/11/post41.svg)
+    no-repeat center; */
+  background-color: honeydew;
   background-size: cover;
   height: 150px;
 }
@@ -84,8 +86,9 @@
 }
 
 .categoryThumb {
-  background: url(https://www.cmu.edu/brand/brand-guidelines/images/colors-steel-gray-600x600.png)
-    no-repeat center;
+  /* background: url(https://www.cmu.edu/brand/brand-guidelines/images/colors-steel-gray-600x600.png)
+    no-repeat center; */
+  background-color: gray;
   background-size: cover;
   height: 150px;
 }

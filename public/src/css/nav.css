@@ -75,6 +75,10 @@ nav {
   text-align: center;
 }
 
+#navUserType {
+  text-transform: uppercase;
+}
+
 .menuAvatar {
   height: 50px;
   width: 50px;
