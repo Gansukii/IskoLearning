@@ -5,13 +5,13 @@ var database = firebase.database();
 // navUserType.innerHTML = localStorage.getItem("username");
 
 firebase.auth().onAuthStateChanged(function (user) {
-  console.log(user);
   if (user) {
     database
       .ref("users/" + user.uid)
       .once("value")
       .then((snapshot) => {
         let userInfo = snapshot.val();
+        console.log();
         localStorage.setItem("fullname", userInfo.fullname);
         localStorage.setItem("username", userInfo.username);
         localStorage.setItem("user_type", userInfo.user_type);

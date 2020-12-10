@@ -6,24 +6,6 @@ const match = document.getElementById("match");
 const selectType = document.getElementById("selectType");
 let passMatch = false;
 const auth = firebase.auth();
-// const firebaseConfig = {
-//   apiKey: "AIzaSyB6AKJ00dXzFcWZ3fDRofoBj1ryXUYr-R4",
-//   authDomain: "iskolearning.firebaseapp.com",
-//   databaseURL: "https://iskolearning.firebaseio.com",
-//   projectId: "iskolearning",
-//   storageBucket: "iskolearning.appspot.com",
-//   messagingSenderId: "218405436604",
-//   appId: "1:218405436604:web:59cb8c1ee9b9a2777d24b9",
-//   measurementId: "G-C1QSFZTCJ4",
-// };
-
-// var config = {
-//   apiKey: "AIzaSyB6AKJ00dXzFcWZ3fDRofoBj1ryXUYr-R4",
-//   authDomain: "iskolearning.firebaseapp.com",
-//   databaseURL: "https://iskolearning.firebaseio.com",
-//   storageBucket: "iskolearning.appspot.com",
-// };
-// firebase.initializeApp(config);
 
 var database = firebase.database();
 
@@ -82,7 +64,7 @@ signUp.onclick = (e) => {
 
 function writeUserData(userId, name, email, userType) {
   database.ref("users/" + userId).set({
-    fullName: name,
+    fullname: name,
     username: name,
     email: email,
     user_type: userType,

@@ -15,7 +15,7 @@ var lg = 992;
 
 firebase.auth().onAuthStateChanged(function (user) {
   if (user) {
-    if (user.photoURL) {
+    if (user.photoURL && avatar) {
       avatar.style = `background: url(${user.photoURL}) no-repeat center; background-size: cover;`;
       menuAvatar.style = `background: url(${user.photoURL}) no-repeat center; background-size: cover;`;
     }

@@ -43,6 +43,10 @@ body {
   color: #7f0303;
 }
 
+.iconToggle {
+  cursor: pointer;
+}
+
 .txtModal {
   font-weight: 600;
   font-size: 15px;

@@ -16,9 +16,6 @@ signIn.onclick = (e) => {
   auth
     .signInWithEmailAndPassword(email.value, password.value)
     .then((user) => {
-      //   signIn.innerHTML = `<div class="spinner-border spinner-border-sm text-light" role="status">
-      //   <span class="sr-only">Loading...</span>
-      // </div>`;
       getUserData(user.user);
       // window.location.assign("../../home");
     })
@@ -74,7 +71,7 @@ function getUserData(user) {
     .then((snapshot) => {
       let userInfo = snapshot.val();
       console.log(userInfo);
-      localStorage.setItem("fullname", userInfo.fullName);
+      localStorage.setItem("fullname", userInfo.fullname);
       localStorage.setItem("username", userInfo.username);
       localStorage.setItem("user_type", userInfo.user_type);
       window.location.assign("../../home");

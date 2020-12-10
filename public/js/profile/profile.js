@@ -54,7 +54,6 @@ btnSave.onclick = () => {
       if (imageFile) {
         progressContainer.classList.remove("d-none");
         btnSave.setAttribute("disabled", "");
-        console.log(imageFile);
         let storageRef = firebase.storage().ref("profileImage/" + user.uid);
         let task = storageRef.put(imageFile);
         task.on(
@@ -74,20 +73,19 @@ btnSave.onclick = () => {
           },
           function complete() {
             uploadProgressBar.innerHTML = "Upload Complete!";
-            console.log("complete. Get na");
             let starsRef = firebase
               .storage()
               .ref()
               .child(`profileImage/${user.uid}`);
             starsRef.getDownloadURL().then(function (url) {
-              console.log("NGAAKA");
+              database.ref("users/" + user.uid).update({
+                photoUrl: url,
+              });
               user
                 .updateProfile({
                   photoURL: url,
                 })
                 .then(function () {
-                  console.log("update successful");
-                  console.log(user.photoURL);
                   alert("Updated profile will be shown in a few seconds");
                   location.reload();
                 })
@@ -103,7 +101,7 @@ btnSave.onclick = () => {
         .ref("users/" + user.uid)
         .update({
           username: modalUserName.value.slice(1),
-          fullName: modalFullName.value,
+          fullname: modalFullName.value,
         })
         .then(() => {
           if (!imageFile) {
