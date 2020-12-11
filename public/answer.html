@@ -84,18 +84,18 @@
           <a class="btn mr-2" id="btnNavIn">My Courses</a>
           <i class="far fa-bell fa-lg notif mr-3"></i>
           <div class="position-relative">
-            <button class="btn avatar" id="avatar">69</button>
+            <button class="btn avatar" id="avatar"></button>
             <div class="menu p-2 d-none flex-column rounded" id="menuPop">
               <div
                 class="container w-100 d-flex align-items-center menuHeader pt-2 pb-2 pb-sm-3 px-1"
               >
-                <div class="menuAvatar" id="avatar">69</div>
+                <div class="menuAvatar" id="menuAvatar"></div>
                 <div class="col mx-2">
-                  <div class="row menuName" id="fullNameNav">Full Name</div>
+                  <div class="row menuName" id="navFullName">Full Name</div>
                   <div class="row">
                     <span
                       class="badge badge-pill menuBadge px-2"
-                      id="userTypeNav"
+                      id="navUserType"
                       >STUDENT</span
                     >
                   </div>
@@ -127,7 +127,14 @@
       <div class="row w-100 d-flex justify-content-center mb-5">
         <div class="col-12 col-lg-8">
           <div class="col-12 px-4 py-3 rounded-top paper">
-            <div class="col-12" id="questionContainer"></div>
+            <div class="col-12" id="questionContainer">
+              <div
+                class="w-100 d-flex justify-content-center d-none"
+                id="spinnerContainer"
+              >
+                <div class="spinner-grow spinner-grow-sm" role="status"></div>
+              </div>
+            </div>
           </div>
           <div
             class="col-12 px-4 py-3 mb-3 mb-md-4 rounded-bottom commentPaper"
@@ -139,7 +146,7 @@
                   <textarea
                     class="form-control"
                     placeholder="Write your answer here"
-                    id="commentBody"
+                    id="answerBody"
                     rows="2"
                   ></textarea>
                 </div>
@@ -180,9 +187,13 @@
     <script src="js/bootstrapJs/bootstrap.js"></script>
     <!-- <script src="js/isSigned/isSigned.js"></script> -->
     <script src="js/forum/getUserUpvotes.js"></script>
-    <script src="js/forum/addQuestion.js"></script>
+    <script src="js/forum/getTimeAgo.js"></script>
+    <!-- <script src="js/forum/addQuestion.js"></script> -->
     <script src="js/forum/getQuestion.js"></script>
-    <script src="js/forum/forum.js"></script>
+    <script src="js/forum/answer/addAnswer.js"></script>
+    <script src="js/forum/answer/getQuestionById.js"></script>
+    <script src="js/forum/answer/answer.js"></script>
+    <!-- <script src="js/forum/forum.js"></script> -->
     <script src="js/nav/nav.js"></script>
   </body>
 </html>

@@ -21,6 +21,10 @@
   font-weight: 600;
   font-size: 11px;
 }
+.questionTitle {
+  font-weight: 700;
+  font-size: 18px;
+}
 
 .iconToggle {
   cursor: pointer;

@@ -5,9 +5,7 @@ let userUpvotesArr = [];
 
 firebase.auth().onAuthStateChanged(function (user) {
   if (user) {
-    getUserUpvotes(user, userUpvotesArr);
-    // getQuestions(user.uid, userUpvotesArr);
-
+    getUserUpvotes(user, null, userUpvotesArr);
     btnAskQuestion.onclick = () => {
       if (
         questionBody.value.trim() !== "" &&

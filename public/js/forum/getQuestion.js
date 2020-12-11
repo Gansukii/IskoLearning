@@ -29,32 +29,21 @@ function getQuestions(uid, userUpvotesArr) {
               questionsArr.forEach((data) => {
                 let dateDiff =
                   Math.abs(currDate - new Date(data.created_datetime)) / 1000;
-                let hh = Math.floor(dateDiff / 3600);
-                dateDiff -= hh * 3600;
-                let mm = Math.floor(dateDiff / 60);
-                dateDiff -= mm * 60;
-                let ss = Math.floor(dateDiff);
-                dateDiff -= ss;
-                let timeAgo;
-                if (hh < 1 && mm < 1) {
-                  timeAgo = "few seconds ago";
-                } else if (hh < 1) {
-                  if (mm == 1) timeAgo = "1 minute ago";
-                  else timeAgo = mm.toString() + " minutes ago";
-                } else if (hh < 24) {
-                  timeAgo = hh.toString() + " hours ago";
-                } else if (hh <= 48) {
-                  timeAgo = "1 day ago";
-                } else {
-                  console.log(hh);
-                  var days = Math.floor(hh / 24);
-                  timeAgo = days.toString() + " days ago";
-                }
-                let node = document.createElement("div");
+                let timeAgo = getTimeAgo(dateDiff);
+
                 let isUpvoted = userUpvotesArr.includes(data.question_id)
                   ? "upvoted"
                   : null;
-                node.innerHTML = `<div class='col-12 mb-3'>
+
+                let node = document.createElement("div");
+                firebase
+                  .database()
+                  .ref("users/" + data.user)
+                  .once("value")
+                  .then((snapshot) => {
+                    let userInfo = snapshot.val();
+                    if (userInfo) {
+                      node.innerHTML = `<div class='col-12 mb-3'>
                       <div class='row mb-3 questionIcons' key=${data.question_id} time='12'>
                         <div class='p-0 d-flex align-items-center mr-3 iconToggle ${isUpvoted}' onClick='upvote(this)'>
                           <i class='far fa-caret-square-up mr-1'></i><div>${data.upvote_count}</div>
@@ -64,9 +53,9 @@ function getQuestions(uid, userUpvotesArr) {
                         </div>
                       </div>
                       <div class='row d-flex align-items-center'>
-                        <button class='btn avatar' style='background: url(${data.user.photoURL}) no-repeat center; background-size: cover;' id='avatar'></button>
+                        <button class='btn avatar' style='background: url(${userInfo.photoUrl}) no-repeat center; background-size: cover;' id='avatar'></button>
                         <div class='col mx-2'>
-                          <div class='row questionName'>${data.user.fullname}</div>
+                          <div class='row questionName'>${userInfo.fullname}</div>
                           <div class='row questionTime'>${timeAgo}</div>
                         </div>
                       </div>
@@ -78,6 +67,8 @@ function getQuestions(uid, userUpvotesArr) {
                       </div>
                     </div>
                     <hr class='mb-1' />`;
+                    }
+                  });
 
                 questionsContainer.appendChild(node);
               });
@@ -148,9 +139,7 @@ function upvote(e) {
 
 function comment(e) {
   let forumId = e.parentNode.getAttribute("key");
-  // let time = e.parentNode.getAttribute("time");
-  let isUp = 0;
-  if (e.previousElementSibling.classList.contains("upvoted")) isUp = 1;
-  console.log(isUp);
-  window.location.assign(`/answer?id=${forumId}&isUp=${isUp}`);
+  // let isUp = 0;
+  // if (e.previousElementSibling.classList.contains("upvoted")) isUp = 1;
+  window.location.assign(`/answer?id=${forumId}`);
 }

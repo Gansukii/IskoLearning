@@ -6,12 +6,7 @@ function addQuestion(user, title, body) {
     .set(
       {
         question_id: newQuestionKey,
-        user: {
-          userId: user.uid,
-          fullname: localStorage.getItem("fullname"),
-          username: localStorage.getItem("username"),
-          photoURL: user.photoURL,
-        },
+        user: user.uid,
         question_title: title,
         question_body: body,
         upvote_count: 0,

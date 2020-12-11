@@ -1,4 +1,4 @@
-function getUserUpvotes(user, userUpvotesArr) {
+function getUserUpvotes(user, question_id, userUpvotesArr) {
   firebase
     .database()
     .ref("upvotes/" + user.uid)
@@ -9,6 +9,9 @@ function getUserUpvotes(user, userUpvotesArr) {
       });
     })
     .then(() => {
-      getQuestions(user.uid, userUpvotesArr);
+      let url = new URL(window.location.href);
+      if (url.searchParams.get("id"))
+        getQuestionById(question_id, userUpvotesArr);
+      else getQuestions(user.uid, userUpvotesArr);
     });
 }
