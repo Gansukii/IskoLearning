@@ -1,10 +1,13 @@
 const btnAskQuestion = document.getElementById("btnAskQuestion");
 const questionBody = document.getElementById("questionBody");
 const questionTitle = document.getElementById("questionTitle");
+let userUpvotesArr = [];
 
 firebase.auth().onAuthStateChanged(function (user) {
   if (user) {
-    getQuestions(user.uid);
+    getUserUpvotes(user, userUpvotesArr);
+    // getQuestions(user.uid, userUpvotesArr);
+
     btnAskQuestion.onclick = () => {
       if (
         questionBody.value.trim() !== "" &&
@@ -12,13 +15,6 @@ firebase.auth().onAuthStateChanged(function (user) {
       ) {
         btnAskQuestion.setAttribute("disabled", "");
         addQuestion(user, questionTitle.value, questionBody.value);
-        // if (success) {
-        //   console.log("Successfully added");
-        //   //   location.reload()
-        // } else {
-        //   btnAskQuestion.removeAttribute("disabled");
-        //   alert("An error has occured. Please try again");
-        // }
       } else {
         console.log("Fields could not be empty");
       }
