@@ -22,8 +22,7 @@ function getQuestionById(question_id, userUpvotesArr) {
                 .classList.remove("d-flex");
               let question = snapshot.val();
               let timeAgo = getTimeAgo(
-                Math.abs(new Date() - new Date(question.created_datetime)) /
-                  1000
+                Math.abs(currDate - new Date(question.created_datetime)) / 1000
               );
               let isUpvoted = userUpvotesArr.includes(question.question_id)
                 ? "upvoted"

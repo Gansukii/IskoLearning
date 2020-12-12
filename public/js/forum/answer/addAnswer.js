@@ -27,7 +27,7 @@ function addAnswer(user, questionId, body) {
               console.log(error);
               alert(error);
             } else {
-              // location.reload();
+              location.reload();
             }
           }
         );

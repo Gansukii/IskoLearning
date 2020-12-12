@@ -1,4 +1,3 @@
-const answersContainer = document.getElementById("answersContainer");
 const answerBody = document.getElementById("answerBody");
 const btnSubmitAns = document.getElementById("btnSubmitAns");
 

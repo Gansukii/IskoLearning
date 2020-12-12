@@ -10,8 +10,9 @@ function getUserUpvotes(user, question_id, userUpvotesArr) {
     })
     .then(() => {
       let url = new URL(window.location.href);
-      if (url.searchParams.get("id"))
+      if (url.searchParams.get("id")) {
         getQuestionById(question_id, userUpvotesArr);
-      else getQuestions(user.uid, userUpvotesArr);
+        getAnswers(question_id);
+      } else getQuestions(user.uid, userUpvotesArr);
     });
 }
