@@ -62,6 +62,16 @@ nav {
   font-size: 20px;
 }
 
+.notifTitle {
+  font-size: 25px;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.notifItem:hover {
+  background-color: #bbbbbb;
+}
+
 .menuContainer {
   position: relative;
 }

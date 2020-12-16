@@ -10,6 +10,7 @@ var user;
 
 signIn.onclick = (e) => {
   e.preventDefault();
+  signIn.setAttribute("disabled", "");
   signIn.innerHTML = `<div class="spinner-border spinner-border-sm text-light" role="status">
       <span class="sr-only">Loading...</span>
     </div>`;
@@ -21,6 +22,7 @@ signIn.onclick = (e) => {
     })
     .catch((error) => {
       var errorMessage = error.message;
+      signIn.removeAttribute("disabled");
       signIn.innerHTML = "Sign In";
       alert(errorMessage);
     });
@@ -55,7 +57,7 @@ function writeUserData(userId, name, email, userType) {
       email: email,
       user_type: userType,
     })
-    .then((snapshot) => {
+    .then(() => {
       localStorage.setItem("fullname", name);
       localStorage.setItem("username", name);
       localStorage.setItem("user_type", userType);
@@ -64,13 +66,14 @@ function writeUserData(userId, name, email, userType) {
 }
 
 function getUserData(user) {
-  console.log(user);
+  // console.log(user);
   database
     .ref("users/" + user.uid)
     .once("value")
     .then((snapshot) => {
       let userInfo = snapshot.val();
       console.log(userInfo);
+      userCache.add("userInfo.photoUrl");
       localStorage.setItem("fullname", userInfo.fullname);
       localStorage.setItem("username", userInfo.username);
       localStorage.setItem("user_type", userInfo.user_type);

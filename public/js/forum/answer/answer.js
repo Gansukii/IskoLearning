@@ -10,7 +10,6 @@ let userUpvotesArr = [];
 
 firebase.auth().onAuthStateChanged(function (user) {
   if (user) {
-    // getQuestionById(question_id, isUp);
     getUserUpvotes(user, question_id, userUpvotesArr);
 
     btnSubmitAns.onclick = () => {

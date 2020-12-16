@@ -80,8 +80,6 @@ function getQuestions(uid, userUpvotesArr) {
 function upvote(e) {
   const user = firebase.auth().currentUser;
   const question_id_key = e.parentNode.getAttribute("key");
-  // const newUpvoteKey = firebase.database().ref().child("upvotes").push().key;
-
   let questionDb = firebase.database().ref("questions/" + question_id_key);
   if (e.classList.contains("upvoted")) {
     e.lastElementChild.innerHTML = parseInt(e.lastElementChild.textContent) - 1;
@@ -113,9 +111,14 @@ function upvote(e) {
         }
       }
     );
+    firebase
+      .database()
+      .ref("user-questions/" + user.uid + "/" + question_id_key)
+      .update({ upvote_count: firebase.database.ServerValue.increment(-1) });
   } else {
     e.lastElementChild.innerHTML = parseInt(e.lastElementChild.textContent) + 1;
     e.classList.add("upvoted");
+
     questionDb.update(
       {
         upvote_count: firebase.database.ServerValue.increment(1),
@@ -134,6 +137,10 @@ function upvote(e) {
         }
       }
     );
+    firebase
+      .database()
+      .ref("user-questions/" + user.uid + "/" + question_id_key)
+      .update({ upvote_count: firebase.database.ServerValue.increment(1) });
   }
 }
 

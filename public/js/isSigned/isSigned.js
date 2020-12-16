@@ -1,4 +1,3 @@
-var database = firebase.database();
 // const navFullName = document.getElementById("navFullName");
 // const navUserType = document.getElementById("navUserType");
 // navFullName.innerHTML = localStorage.getItem("fullname");
@@ -6,7 +5,8 @@ var database = firebase.database();
 
 firebase.auth().onAuthStateChanged(function (user) {
   if (user) {
-    database
+    firebase
+      .database()
       .ref("users/" + user.uid)
       .once("value")
       .then((snapshot) => {
@@ -19,6 +19,7 @@ firebase.auth().onAuthStateChanged(function (user) {
     // localStorage.setItem("photoURL", user.photoURL);
   } else {
     alert("Please sign-up or sign-in to an existing account");
+    localStorage.clear();
     window.location.assign("../../sign-in");
   }
 });
