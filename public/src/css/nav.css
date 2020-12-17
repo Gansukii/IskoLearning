@@ -62,14 +62,23 @@ nav {
   font-size: 20px;
 }
 
+.notifBoxContainer {
+  width: 270px;
+}
 .notifTitle {
-  font-size: 25px;
+  font-size: 20px;
   font-weight: 900;
   letter-spacing: 1px;
 }
-
+.notifData {
+  font-size: 15px;
+  font-weight: 900;
+}
+.notifItem {
+  font-size: 15px;
+}
 .notifItem:hover {
-  background-color: #bbbbbb;
+  background-color: #f5f5f5;
 }
 
 .menuContainer {

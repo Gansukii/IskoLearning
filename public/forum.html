@@ -91,14 +91,19 @@
             >
               <i class="far fa-bell fa-lg"></i>
             </button>
-            <div class="dropdown-menu">
-              <!-- <div class=" p-2"> -->
+            <div class="dropdown-menu notifBoxContainer">
               <div class="col-12 mt-2 notifTitle">Notification</div>
+              <div class="dropdown-divider my-0"></div>
 
-              <div class="col-12 mt-2 px-0" id="notificationsContainer">
-                <div class="btn mx-0 my-1 col-12 notifItem">
-                  qwerqerqfadsfdsafafdaqerqerq ewrqewrqwerqwesf
+              <div class="col-12 px-0" id="notificationsContainer">
+                <div class="btn mx-0 my-0 py-3 col-12 text-left notifItem">
+                  <span class="notifData" id="notifFullName">FullName</span>
+                  posted an answer to your question:
+                  <span class="notifData" id="notifQuestionTitle"
+                    >Question Title</span
+                  >
                 </div>
+                <div class="dropdown-divider my-0"></div>
                 <div class="btn mx-0 my-1 col-12 notifItem">
                   qwerqerqfadsfdsafafdaqerqerq ewrqewrqwerqwesf
                 </div>
@@ -106,6 +111,7 @@
 
               <!-- <a class="dropdown-item" href="#">Action</a>
               <a class="dropdown-item" href="#">Another action</a> -->
+              <!-- </div> -->
             </div>
           </div>
           <div class="position-relative">
@@ -273,7 +279,7 @@
     <script src="js/bootstrapJs/bootstrap.bundle.js"></script>
     <script src="js/bootstrapJs/bootstrap.js"></script>
     <!-- <script src="js/isSigned/isSigned.js"></script> -->
-    <script src="js/isSigned/notif.js"></script>
+    <script src="js/isSigned/getNotif.js"></script>
     <script src="js/forum/getUserUpvotes.js"></script>
     <script src="js/forum/getTimeAgo.js"></script>
     <script src="js/forum/addQuestion.js"></script>

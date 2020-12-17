@@ -57,6 +57,10 @@ function getQuestionById(question_id, userUpvotesArr) {
                 </div>
               </div>`;
                 });
+
+              document
+                .getElementById("btnSubmitAns")
+                .removeAttribute("disabled");
             });
         });
     });

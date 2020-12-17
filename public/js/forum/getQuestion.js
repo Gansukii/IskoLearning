@@ -95,18 +95,15 @@ function upvote(e) {
           firebase
             .database()
             .ref("upvotes/" + user.uid)
+            .orderByChild("question_id")
+            .equalTo(question_id_key)
             .once("value")
             .then((snapshot) => {
-              snapshot.forEach((singleSnapshot) => {
-                const snapKey = singleSnapshot.key;
-                if (singleSnapshot.val().question_id === question_id_key) {
-                  firebase
-                    .database()
-                    .ref()
-                    .child("upvotes/" + user.uid + "/" + snapKey)
-                    .remove();
-                }
-              });
+              const removeKey = Object.keys(snapshot.val())[0];
+              firebase
+                .database()
+                .ref("upvotes/" + user.uid + "/" + removeKey)
+                .remove();
             });
         }
       }

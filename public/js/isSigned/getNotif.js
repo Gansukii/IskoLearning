@@ -3,18 +3,22 @@ firebase.auth().onAuthStateChanged(function (user) {
   if (user) {
     firebase
       .database()
-      .ref("upvotes/" + user.uid)
+      .ref("answers")
       .on("child_added", (data) => {
         console.log(initialLoadDone);
-        if (initialLoadDone) addNotif(data.val().question_id, user.uid);
+        if (initialLoadDone) {
+          // console.log(data.key;
+          console.log(data.val());
+        }
+        // addNotif(data.val().question_id, user.uid);
         initialLoadDone = true;
       });
   }
 });
 
 const addNotif = (questionId, userId) => {
-  let questionTitle;
-  let questionBody;
+  // let questionTitle;
+  // let questionBody;
   firebase
     .database()
     .ref("questions/" + questionId)

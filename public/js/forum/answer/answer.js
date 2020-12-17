@@ -13,7 +13,10 @@ firebase.auth().onAuthStateChanged(function (user) {
     getUserUpvotes(user, question_id, userUpvotesArr);
 
     btnSubmitAns.onclick = () => {
-      addAnswer(user, question_id, answerBody.value);
+      if (answerBody.value.trim() !== "") {
+        addAnswer(user, question_id, answerBody.value);
+        btnSubmitAns.setAttribute("disabled", "");
+      } else alert("field cannot be empty");
     };
   }
 });

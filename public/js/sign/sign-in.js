@@ -73,7 +73,7 @@ function getUserData(user) {
     .then((snapshot) => {
       let userInfo = snapshot.val();
       console.log(userInfo);
-      userCache.add("userInfo.photoUrl");
+      // userCache.add("userInfo.photoUrl");
       localStorage.setItem("fullname", userInfo.fullname);
       localStorage.setItem("username", userInfo.username);
       localStorage.setItem("user_type", userInfo.user_type);
