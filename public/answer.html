@@ -79,7 +79,30 @@
         </ul>
         <div class="d-flex align-items-center">
           <a class="btn mr-2" id="btnNavIn">My Courses</a>
-          <i class="far fa-bell fa-lg notif mr-3"></i>
+          <div class="btn-group dropleft" id="notifDrop">
+            <button
+              class="btn rounded-circle p-1 text-center mr-3 dropdown-toggle"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+              id="notifToggle"
+            >
+              <i class="far fa-bell fa-lg position-relative" id="notifIcon"> </i>
+            </button>
+            <div class="dropdown-menu notifBoxContainer">
+              <div class="col-12 mt-2 notifTitle">Notification</div>
+              <div class="dropdown-divider my-0"></div>
+
+              <div class="col-12 px-0" id="notificationsContainer">
+                <div
+                  class="d-flex justify-content-center align-items-center notifSpinner"
+                  id="notifSpinner"
+                >
+                  <div class="spinner-border spinner-border-sm" role="status"></div>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="position-relative">
             <button class="btn avatar" id="avatar"></button>
             <div class="menu p-2 d-none flex-column rounded" id="menuPop">
@@ -171,9 +194,6 @@
     <script src="js/util/currDate.js"></script>
     <script src="js/forum/getUserUpvotes.js"></script>
     <script src="js/forum/getTimeAgo.js"></script>
-    <!-- <script src="js/forum/addQuestion.js"></script> -->
-    <!-- <script src="js/isSigned/notif.js"></script> -->
-    <!-- <script src="js/forum/getQuestion.js"></script> -->
     <script src="js/isSigned/getNotif.js"></script>
     <script src="js/forum/answer/addAnswer.js"></script>
     <script src="js/forum/answer/getQuestionById.js"></script>

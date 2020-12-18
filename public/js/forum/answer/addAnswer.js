@@ -60,7 +60,7 @@ function notifyUser(uid, questionId) {
           .database()
           .ref("user_answer_notif/" + data.user + "/" + newAnswerNotifKey)
           .set({
-            notif_key: newAnswerNotifKey,
+            // notif_key: newAnswerNotifKey,
             user: uid,
             notif_datetime: firebase.database.ServerValue.TIMESTAMP,
             item: data.question_id,

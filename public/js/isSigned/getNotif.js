@@ -7,23 +7,26 @@ const notifToggle = document.getElementById("notifToggle");
 // const removeNotif = document.getElementById("removeNotif");
 // const notifReminder = document.getElementById("notifReminder");
 let isNewNotif = false;
+let userId;
+let noData = true;
 
 firebase.auth().onAuthStateChanged(function (user) {
   if (user) {
+    userId = user.uid;
     let currDate;
-    // const currDate = localStorage.getItem("timestamp");
     firebase
       .database()
       .ref("user_answer_notif/" + user.uid)
       .on("child_added", (data) => {
+        noData = false;
         if (notificationsContainer.contains(notifSpinner))
           notificationsContainer.removeChild(notifSpinner);
         if (!data.val()) {
           notificationsContainer.innerHTML = `<div class="p-2 text-muted text-center" id="noNotif">no notification to show</div>`;
           return;
         }
+        if (document.getElementById("noNotif")) document.getElementById("noNotif").remove();
         // snapshot.forEach((data) => {
-
         const notifData = data.val();
         const node = document.createElement("div");
         firebase
@@ -36,7 +39,6 @@ firebase.auth().onAuthStateChanged(function (user) {
               .ref("/date")
               .once("value")
               .then((snapshot) => {
-                // localStorage.setItem("timestamp", );
                 currDate = snapshot.val().currTime;
               })
               .then(() => {
@@ -54,8 +56,8 @@ firebase.auth().onAuthStateChanged(function (user) {
                   class="btn mx-0 my-0 pl-3 py-3 col-12 text-left position-relative notifItem ${unseen}"
                   id="btnNotifItem"
                 >
-                  <div class="position-absolute removeNotif" onclick="removeNotif(event)">
-                    <i class="fas fa-times"></i>
+                  <div class="position-absolute removeNotif" >
+                    <i class="fas fa-times" notifId="${data.key}" onclick="removeNotif(event)"></i>
                   </div>
                   <div class="row w-100 pt-1 mx-0">
                     <div class="col-11 px-0 mx-0">
@@ -72,7 +74,9 @@ firebase.auth().onAuthStateChanged(function (user) {
                       <div class="col-12 px-0 mt-1 text-left notifTimeAgo">${timeAgo}</div>
                     </div>
                     <div class="col-1 px-0 mx-0 d-flex align-items-center">
-                      <i class="${iconRead} fa-circle" onclick="unread(event)"></i>
+                      <i class="${iconRead} fa-circle" notifId="${
+                      data.key
+                    }" onclick="unread(event)"></i>
                     </div>
                   </div>
                   <div class="row w-100"></div>
@@ -101,6 +105,12 @@ firebase.auth().onAuthStateChanged(function (user) {
               });
           });
       });
+
+    if (noData) {
+      if (notificationsContainer.contains(notifSpinner))
+        notificationsContainer.removeChild(notifSpinner);
+      notificationsContainer.innerHTML = `<div class="p-2 text-muted text-center" id="noNotif">no notification to show</div>`;
+    }
   }
 });
 
@@ -115,34 +125,30 @@ notifToggle.onclick = () => {
   }
 };
 
-// markRead.onclick = (e) => {
-//   e.stopPropagation();
-//   if (e.target.classList.contains("fas")) {
-//     e.target.classList.remove("fas");
-//     e.target.classList.add("far");
-//     // console.log(e.target.parentNode.parentNode.parentNode.classList);
-//     e.target.parentNode.parentNode.parentNode.classList.remove("unseen");
-//   }
-// };
-// removeNotif.onclick = (e) => {
-//   e.stopPropagation();
-// };
-
 function unread(e) {
   e.stopPropagation();
   let element = e.target;
-
   if (element.classList.contains("fas")) {
     element.classList.remove("fas");
     element.classList.add("far");
     element.parentNode.parentNode.parentNode.classList.remove("unseen");
-    // firebase.database().ref("user_answer_notif").orderByChild("notif_key")
+    firebase
+      .database()
+      .ref("user_answer_notif/" + userId + "/" + element.getAttribute("notifId"))
+      .update({
+        seen: true,
+      });
   }
 }
 
 function removeNotif(e) {
   e.stopPropagation();
   let element = e.target;
+  let notifId = element.getAttribute("notifId");
+  firebase
+    .database()
+    .ref("user_answer_notif/" + userId + "/" + notifId)
+    .remove();
   notificationsContainer.removeChild(element.parentNode.parentNode.parentNode);
   if (notificationsContainer.children.length === 0) {
     notificationsContainer.innerHTML = `<div class="p-2 text-muted text-center" id="noNotif">no notification to show</div>`;

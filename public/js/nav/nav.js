@@ -5,6 +5,7 @@ const menuPop = document.getElementById("menuPop");
 const signOut = document.getElementById("sign-out");
 const navFullName = document.getElementById("navFullName");
 const navUserType = document.getElementById("navUserType");
+const notifDrop = document.getElementById("notifDrop");
 // const markRead = document.getElementById("markRead");
 // const removeNotif = document.getElementById("removeNotif");
 const btnNotifItem = document.getElementById("btnNotifItem");
@@ -36,11 +37,11 @@ if (menuPop) {
     }
   };
   if (document.documentElement.clientWidth < lg) {
-    if (document.documentElement.clientWidth < lg) {
-      menuPop.style.left = "-100px";
-    } else {
-      menuPop.removeAttribute("style");
-    }
+    menuPop.style.left = "-100px";
+    notifDrop.classList.remove("dropleft");
+    notifDrop.classList.add("dropdown");
+  } else {
+    menuPop.removeAttribute("style");
   }
 }
 avatar

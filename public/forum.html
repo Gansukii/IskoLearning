@@ -79,7 +79,7 @@
         </ul>
         <div class="d-flex align-items-center">
           <a class="btn mr-2" id="btnNavIn">My Courses</a>
-          <div class="btn-group dropleft">
+          <div class="btn-group position-relative dropleft" id="notifDrop">
             <button
               class="btn rounded-circle p-1 text-center mr-3 dropdown-toggle"
               data-toggle="dropdown"
@@ -89,7 +89,7 @@
             >
               <i class="far fa-bell fa-lg position-relative" id="notifIcon"> </i>
             </button>
-            <div class="dropdown-menu notifBoxContainer">
+            <div class="dropdown-menu position-absolute notifBoxContainer" style="left: -50px">
               <div class="col-12 mt-2 notifTitle">Notification</div>
               <div class="dropdown-divider my-0"></div>
 
@@ -100,30 +100,6 @@
                 >
                   <div class="spinner-border spinner-border-sm" role="status"></div>
                 </div>
-                <!-- <div class="dropdown-divider my-0"></div>
-                <div
-                  class="btn mx-0 my-0 pl-3 py-3 col-12 text-left position-relative notifItem unseen"
-                  id="btnNotifItem"
-                >
-                  <div class="position-absolute removeNotif" id="removeNotif">
-                    <i class="fas fa-times"></i>
-                  </div>
-                  <div class="row w-100 pt-1 mx-0">
-                    <div class="col-11 px-0 mx-0">
-                      <div class="col-12 pl-0 mx-0">
-                        <span class="notifData" id="notifFullName">FullName</span>
-                        posted an answer to your question:
-                        <span class="notifData" id="notifQuestionTitle">Question Title</span>
-                      </div>
-
-                      <div class="col-12 px-0 mt-1 text-left notifTimeAgo">6 hours ago</div>
-                    </div>
-                    <div class="col-1 px-0 mx-0 d-flex align-items-center">
-                      <i class="fas fa-circle" id="markRead"></i>
-                    </div>
-                  </div>
-                  <div class="row w-100"></div>
-                </div> -->
               </div>
             </div>
           </div>
