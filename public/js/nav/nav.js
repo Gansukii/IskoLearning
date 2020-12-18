@@ -5,6 +5,9 @@ const menuPop = document.getElementById("menuPop");
 const signOut = document.getElementById("sign-out");
 const navFullName = document.getElementById("navFullName");
 const navUserType = document.getElementById("navUserType");
+// const markRead = document.getElementById("markRead");
+// const removeNotif = document.getElementById("removeNotif");
+const btnNotifItem = document.getElementById("btnNotifItem");
 let isOpen = false;
 var lg = 992;
 
@@ -56,14 +59,6 @@ avatar
       }
     })
   : null;
-
-// firebase.auth().onAuthStateChanged(function (user) {
-//   if (user) {
-
-//     console.log("update nav");
-//   }
-
-// });
 
 signOut
   ? (signOut.onclick = () => {

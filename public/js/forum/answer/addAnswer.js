@@ -32,12 +32,10 @@ function addAnswer(user, questionId, body) {
               (error) => {
                 if (error) {
                   console.log(error);
-                  document
-                    .getElementById("btnSubmitAns")
-                    .removeAttribute("disabled");
+                  document.getElementById("btnSubmitAns").removeAttribute("disabled");
                   alert(error);
                 } else {
-                  // location.reload();
+                  location.reload();
                 }
               }
             );
@@ -62,6 +60,7 @@ function notifyUser(uid, questionId) {
           .database()
           .ref("user_answer_notif/" + data.user + "/" + newAnswerNotifKey)
           .set({
+            notif_key: newAnswerNotifKey,
             user: uid,
             notif_datetime: firebase.database.ServerValue.TIMESTAMP,
             item: data.question_id,
