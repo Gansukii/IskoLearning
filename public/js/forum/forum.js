@@ -7,10 +7,7 @@ firebase.auth().onAuthStateChanged(function (user) {
   if (user) {
     getUserUpvotes(user, null, userUpvotesArr);
     btnAskQuestion.onclick = () => {
-      if (
-        questionBody.value.trim() !== "" &&
-        questionTitle.value.trim() !== ""
-      ) {
+      if (questionBody.value.trim() !== "" && questionTitle.value.trim() !== "") {
         btnAskQuestion.setAttribute("disabled", "");
         addQuestion(user, questionTitle.value, questionBody.value);
       } else {
@@ -18,6 +15,6 @@ firebase.auth().onAuthStateChanged(function (user) {
       }
     };
   } else {
-    alert("An error has occured. Please try again");
+    alert("An error has occured. Please try again. Maybe you're not signed in");
   }
 });

@@ -53,8 +53,11 @@ firebase.auth().onAuthStateChanged(function (user) {
 
                     node.innerHTML = `<div class="dropdown-divider my-0"></div>
                 <div
-                  class="btn mx-0 my-0 pl-3 py-3 col-12 text-left position-relative notifItem ${unseen}"
+                  class="btn mx-0 my-0 pl-3 py-3 col-12 text-left position-relative notifItem ${unseen}" qId=${
+                      notifData.item
+                    }
                   id="btnNotifItem"
+                  onclick='goToItem(this)'
                 >
                   <div class="position-absolute removeNotif" >
                     <i class="fas fa-times" notifId="${data.key}" onclick="removeNotif(event)"></i>
@@ -153,4 +156,16 @@ function removeNotif(e) {
   if (notificationsContainer.children.length === 0) {
     notificationsContainer.innerHTML = `<div class="p-2 text-muted text-center" id="noNotif">no notification to show</div>`;
   }
+}
+
+function goToItem(element) {
+  let questionId = element.getAttribute("qId");
+  let notifId = element.firstElementChild.firstElementChild.getAttribute("notifId");
+  firebase
+    .database()
+    .ref("user_answer_notif/" + userId + "/" + notifId)
+    .update({
+      seen: true,
+    });
+  window.location.assign(`/answer?id=${questionId}`);
 }

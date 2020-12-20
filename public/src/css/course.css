@@ -1,0 +1,89 @@
+body {
+  background-color: #ffffff;
+}
+
+.courseHeader {
+  background-color: #7f0303;
+  color: #ffffff;
+}
+
+.txtCourseTitle {
+  font-size: 36px;
+  font-weight: 700;
+}
+
+.txtCourseProf {
+  font-size: 16px;
+  font-weight: 400;
+}
+.btnEnroll {
+  background-color: #ffffff;
+  color: #7f0303;
+  font-size: 18px;
+  font-weight: bold;
+}
+.btnEnroll:hover {
+  -webkit-box-shadow: 0px 0px 10px -3px #ffffff;
+  box-shadow: 0px 0px 10px -3px #ffffff;
+}
+.txtInfoTitle {
+  font-size: 24px;
+  font-weight: 900;
+}
+.txtInfoTitle p {
+  font-weight: 400;
+  font-size: 16px;
+  text-align: justify;
+}
+.ratingContainer {
+  border: 0.75px solid #c4c4c4;
+  border-radius: 5px;
+  max-height: 556px;
+}
+.ratingNumber {
+  font-size: 58px;
+  font-weight: 900;
+}
+.fa-star {
+  color: #ffc700;
+}
+.txtReviews {
+  font-size: 14px;
+}
+.dividerReview {
+  width: 75%;
+  border: 0.75px solid #b9b9b9;
+}
+.txtRatingTitle {
+  font-size: 18px;
+}
+.txtRatingValue {
+  font-size: 28px;
+  font-weight: 900;
+}
+/* .rotate-icon { */
+/* animation: rotate ; */
+/* transform: rotate(180deg); */
+/* } */
+.accordionHeaderText {
+  font-size: 18px;
+  font-weight: 700;
+}
+.fa-play-circle,
+.fa-file-alt {
+  font-size: 24px;
+  width: 24px;
+}
+.accordionSubItemText {
+  font-size: 18px;
+  font-weight: 700;
+}
+.lh-1 {
+  line-height: 1;
+}
+
+@media screen and (max-width: 576px) {
+  .rowChangeWidth {
+    width: 100% !important;
+  }
+}

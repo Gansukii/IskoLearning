@@ -15,10 +15,7 @@
       rel="stylesheet"
     />
     <!--  FONTAWESOME  -->
-    <script
-      src="https://kit.fontawesome.com/7d591f1481.js"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://kit.fontawesome.com/7d591f1481.js" crossorigin="anonymous"></script>
   </head>
 
   <body>
@@ -82,7 +79,30 @@
         </ul>
         <div class="d-flex align-items-center">
           <a class="btn mr-2" id="btnNavIn">My Courses</a>
-          <i class="far fa-bell fa-lg notif mr-3"></i>
+          <div class="btn-group position-relative dropleft" id="notifDrop">
+            <button
+              class="btn rounded-circle p-1 text-center mr-3 dropdown-toggle"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+              id="notifToggle"
+            >
+              <i class="far fa-bell fa-lg position-relative" id="notifIcon"> </i>
+            </button>
+            <div class="dropdown-menu position-absolute notifBoxContainer" style="left: -50px">
+              <div class="col-12 mt-2 notifTitle">Notification</div>
+              <div class="dropdown-divider my-0"></div>
+
+              <div class="col-12 px-0" id="notificationsContainer">
+                <div
+                  class="d-flex justify-content-center align-items-center notifSpinner"
+                  id="notifSpinner"
+                >
+                  <div class="spinner-border spinner-border-sm" role="status"></div>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="position-relative">
             <button class="btn avatar" id="avatar"></button>
             <div class="menu p-2 d-none flex-column rounded" id="menuPop">
@@ -93,25 +113,14 @@
                 <div class="col mx-2">
                   <div class="row menuName" id="navFullName">Full Name</div>
                   <div class="row">
-                    <span
-                      class="badge badge-pill menuBadge px-2"
-                      id="navUserType"
-                      >STUDENT</span
-                    >
+                    <span class="badge badge-pill menuBadge px-2" id="navUserType">STUDENT</span>
                   </div>
                 </div>
               </div>
               <div class="list-group list-group-flush p-0">
-                <a href="#" class="list-group-item list-group-item-action px-2"
-                  >Profile</a
-                >
-                <a href="#" class="list-group-item list-group-item-action px-2"
-                  >Account Settings</a
-                >
-                <a
-                  href="#"
-                  class="list-group-item list-group-item-action px-2"
-                  id="sign-out"
+                <a href="#" class="list-group-item list-group-item-action px-2">Profile</a>
+                <a href="#" class="list-group-item list-group-item-action px-2">Account Settings</a>
+                <a href="#" class="list-group-item list-group-item-action px-2" id="sign-out"
                   ><i class="fas fa-sign-out-alt mr-1"></i>Sign out</a
                 >
               </div>
@@ -127,29 +136,20 @@
           <div
             class="col-12 col-sm-6 d-m-0 mb-3 px-0 px-md-2 d-flex align-items-center flex-column flex-sm-row"
           >
-            <div
-              class="profileAvatar d-flex flex-auto"
-              id="profileAvatar"
-            ></div>
+            <div class="profileAvatar d-flex flex-auto" id="profileAvatar"></div>
             <div class="col ml-0 ml-sm-4">
               <div
                 class="row profileName d-flex justify-content-center justify-content-sm-start"
                 id="profileFullName"
               ></div>
-              <div
-                class="row d-flex justify-content-center justify-content-sm-start"
-              >
-                <span
-                  class="badge badge-pill profileBadge px-2 mt-1"
-                  id="profileUserType"
+              <div class="row d-flex justify-content-center justify-content-sm-start">
+                <span class="badge badge-pill profileBadge px-2 mt-1" id="profileUserType"
                   >STUDENT</span
                 >
               </div>
             </div>
           </div>
-          <div
-            class="col-12 col-sm-6 d-sm-flex justify-content-sm-end align-items-center"
-          >
+          <div class="col-12 col-sm-6 d-sm-flex justify-content-sm-end align-items-center">
             <button
               class="btn py-1 btnEditProfile d-none d-sm-flex"
               data-toggle="modal"
@@ -169,12 +169,7 @@
                 <div class="modal-content">
                   <div class="modal-header">
                     <h5 class="modal-title">Edit Profile</h5>
-                    <button
-                      type="button"
-                      class="close"
-                      data-dismiss="modal"
-                      aria-label="Close"
-                    >
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
@@ -185,18 +180,9 @@
                           <span>Profile Photo</span>
                         </div>
                         <div class="col d-flex justify-content-sm-start">
-                          <label
-                            class="editProfileAvatar"
-                            for="imageUpload"
-                            id="editProfileAvatar"
-                          >
+                          <label class="editProfileAvatar" for="imageUpload" id="editProfileAvatar">
                             + Upload Profile Photo
-                            <input
-                              type="file"
-                              accept="image/*"
-                              id="imageUpload"
-                              hidden
-                            />
+                            <input type="file" accept="image/*" id="imageUpload" hidden />
                           </label>
                         </div>
                         <div class="col-12 d-none" id="progressContainer">
@@ -213,9 +199,7 @@
                       </div>
 
                       <div class="row w-100 mt-2 mt-sm-4">
-                        <label for="fullName" class="col-4 col-form-label"
-                          >Full Name</label
-                        >
+                        <label for="fullName" class="col-4 col-form-label">Full Name</label>
                         <div class="col pr-0">
                           <input
                             type="text"
@@ -226,9 +210,7 @@
                         </div>
                       </div>
                       <div class="row w-100 mt-2 mt-sm-4">
-                        <label for="userName" class="col-4 col-form-label"
-                          >Username</label
-                        >
+                        <label for="userName" class="col-4 col-form-label">Username</label>
                         <div class="col pr-0">
                           <input
                             type="text"
@@ -241,12 +223,8 @@
                     </div>
                   </div>
                   <div class="modal-footer">
-                    <button class="btn btnCancel px-3" data-dismiss="modal">
-                      Cancel
-                    </button>
-                    <button class="btn btn-danger btnSave px-4" id="btnSave">
-                      Save
-                    </button>
+                    <button class="btn btnCancel px-3" data-dismiss="modal">Cancel</button>
+                    <button class="btn btn-danger btnSave px-4" id="btnSave">Save</button>
                   </div>
                 </div>
               </div>
@@ -261,9 +239,7 @@
           </button>
         </div>
         <div class="row mt-2 mx-0">
-          <div
-            class="col-12 px-0 d-flex flex-row justify-content-between justify-content-sm-start"
-          >
+          <div class="col-12 px-0 d-flex flex-row justify-content-between justify-content-sm-start">
             <div class="tabs mr-sm-3 px-1 px-sm-3 activeTab">ALL COURSES</div>
             <div class="tabs mx-sm-3 px-1 px-sm-3">IN PROGRESS</div>
             <div class="tabs mx-sm-3 px-1 px-sm-3">COMPLETED</div>
@@ -291,23 +267,17 @@
               <div class="col pl-2 pr-0 d-flex align-items-sm-center">
                 <div class="row">
                   <div class="col-12 pr-0">
-                    <div class="courseTitle">
-                      System Inegration & Architecture Longer
-                    </div>
+                    <div class="courseTitle">System Inegration & Architecture Longer</div>
                     <div class="courseSubHead">PROF. RAMOS</div>
                     <div class="courseSubHead">Opened 1 day ago</div>
                   </div>
                 </div>
               </div>
             </div>
-            <div
-              class="col-12 col-md-4 m-1 m-sm-0 pl-0 pr-4 d-flex align-items-center"
-            >
+            <div class="col-12 col-md-4 m-1 m-sm-0 pl-0 pr-4 d-flex align-items-center">
               <div class="pl-2">
                 <div class="row m-0">
-                  <div class="currentStatus">
-                    Chapter 13: Current Chapter Title Here
-                  </div>
+                  <div class="currentStatus">Chapter 13: Current Chapter Title Here</div>
                 </div>
                 <div class="progress my-1">
                   <div
@@ -324,16 +294,12 @@
                 </div>
               </div>
             </div>
-            <div
-              class="col-12 col-md-4 m-1 m-sm-0 pl-0 pl-sm-2 d-flex align-items-center"
-            >
+            <div class="col-12 col-md-4 m-1 m-sm-0 pl-0 pl-sm-2 d-flex align-items-center">
               <div class="row w-100 m-0 pl-2 pl-sm-0">
                 <div class="col-6 p-0">
                   <button class="btn px-4 btnAction">Resume</button>
                 </div>
-                <div
-                  class="col-6 p-0 d-none d-md-flex align-items-center justify-content-end"
-                >
+                <div class="col-6 p-0 d-none d-md-flex align-items-center justify-content-end">
                   <i
                     class="btn p-0 dropdown fas fa-ellipsis-h"
                     id="courseMenuAction"
@@ -349,9 +315,7 @@
               </div>
             </div>
           </div>
-          <div
-            class="col-1 dropleft m-0 p-0 d-flex d-md-none align-items-center"
-          >
+          <div class="col-1 dropleft m-0 p-0 d-flex d-md-none align-items-center">
             <i
               class="btn p-0 dropdown fas fa-ellipsis-h"
               id="courseMenuAction"
@@ -376,23 +340,17 @@
               <div class="col pl-2 pr-0 d-flex align-items-sm-center">
                 <div class="row">
                   <div class="col-12 pr-0">
-                    <div class="courseTitle">
-                      System Inegration & Architecture Longer
-                    </div>
+                    <div class="courseTitle">System Inegration & Architecture Longer</div>
                     <div class="courseSubHead">PROF. RAMOS</div>
                     <div class="courseSubHead">Opened 1 day ago</div>
                   </div>
                 </div>
               </div>
             </div>
-            <div
-              class="col-12 col-md-4 m-1 m-sm-0 pl-0 pr-4 d-flex align-items-center"
-            >
+            <div class="col-12 col-md-4 m-1 m-sm-0 pl-0 pr-4 d-flex align-items-center">
               <div class="pl-2">
                 <div class="row m-0">
-                  <div class="currentStatus">
-                    Chapter 13: Current Chapter Title Here
-                  </div>
+                  <div class="currentStatus">Chapter 13: Current Chapter Title Here</div>
                 </div>
                 <div class="progress my-1">
                   <div
@@ -409,16 +367,12 @@
                 </div>
               </div>
             </div>
-            <div
-              class="col-12 col-md-4 m-1 m-sm-0 pl-0 pl-sm-2 d-flex align-items-center"
-            >
+            <div class="col-12 col-md-4 m-1 m-sm-0 pl-0 pl-sm-2 d-flex align-items-center">
               <div class="row w-100 m-0 pl-2 pl-sm-0">
                 <div class="col-6 p-0">
                   <button class="btn px-4 btnAction">Resume</button>
                 </div>
-                <div
-                  class="col-6 p-0 d-none d-md-flex align-items-center justify-content-end"
-                >
+                <div class="col-6 p-0 d-none d-md-flex align-items-center justify-content-end">
                   <i
                     class="btn p-0 dropdown fas fa-ellipsis-h"
                     id="courseMenuAction"
@@ -434,9 +388,7 @@
               </div>
             </div>
           </div>
-          <div
-            class="col-1 dropleft m-0 p-0 d-flex d-md-none align-items-center"
-          >
+          <div class="col-1 dropleft m-0 p-0 d-flex d-md-none align-items-center">
             <i
               class="btn p-0 dropdown fas fa-ellipsis-h"
               id="courseMenuAction"
@@ -461,23 +413,17 @@
               <div class="col pl-2 pr-0 d-flex align-items-sm-center">
                 <div class="row">
                   <div class="col-12 pr-0">
-                    <div class="courseTitle">
-                      System Inegration & Architecture Longer
-                    </div>
+                    <div class="courseTitle">System Inegration & Architecture Longer</div>
                     <div class="courseSubHead">PROF. RAMOS</div>
                     <div class="courseSubHead">Opened 1 day ago</div>
                   </div>
                 </div>
               </div>
             </div>
-            <div
-              class="col-12 col-md-4 m-1 m-sm-0 pl-0 pr-4 d-flex align-items-center"
-            >
+            <div class="col-12 col-md-4 m-1 m-sm-0 pl-0 pr-4 d-flex align-items-center">
               <div class="pl-2">
                 <div class="row m-0">
-                  <div class="currentStatus">
-                    Chapter 13: Current Chapter Title Here
-                  </div>
+                  <div class="currentStatus">Chapter 13: Current Chapter Title Here</div>
                 </div>
                 <div class="progress my-1">
                   <div
@@ -494,16 +440,12 @@
                 </div>
               </div>
             </div>
-            <div
-              class="col-12 col-md-4 m-1 m-sm-0 pl-0 pl-sm-2 d-flex align-items-center"
-            >
+            <div class="col-12 col-md-4 m-1 m-sm-0 pl-0 pl-sm-2 d-flex align-items-center">
               <div class="row w-100 m-0 pl-2 pl-sm-0">
                 <div class="col-6 p-0">
                   <button class="btn px-4 btnAction">Resume</button>
                 </div>
-                <div
-                  class="col-6 p-0 d-none d-md-flex align-items-center justify-content-end"
-                >
+                <div class="col-6 p-0 d-none d-md-flex align-items-center justify-content-end">
                   <i
                     class="btn p-0 dropdown fas fa-ellipsis-h"
                     id="courseMenuAction"
@@ -519,9 +461,7 @@
               </div>
             </div>
           </div>
-          <div
-            class="col-1 dropleft m-0 p-0 d-flex d-md-none align-items-center"
-          >
+          <div class="col-1 dropleft m-0 p-0 d-flex d-md-none align-items-center">
             <i
               class="btn p-0 dropdown fas fa-ellipsis-h"
               id="courseMenuAction"
@@ -546,23 +486,17 @@
               <div class="col pl-2 pr-0 d-flex align-items-sm-center">
                 <div class="row">
                   <div class="col-12 pr-0">
-                    <div class="courseTitle">
-                      System Inegration & Architecture Longer
-                    </div>
+                    <div class="courseTitle">System Inegration & Architecture Longer</div>
                     <div class="courseSubHead">PROF. RAMOS</div>
                     <div class="courseSubHead">Opened 1 day ago</div>
                   </div>
                 </div>
               </div>
             </div>
-            <div
-              class="col-12 col-md-4 m-1 m-sm-0 pl-0 pr-4 d-flex align-items-center"
-            >
+            <div class="col-12 col-md-4 m-1 m-sm-0 pl-0 pr-4 d-flex align-items-center">
               <div class="pl-2">
                 <div class="row m-0">
-                  <div class="currentStatus">
-                    Chapter 13: Current Chapter Title Here
-                  </div>
+                  <div class="currentStatus">Chapter 13: Current Chapter Title Here</div>
                 </div>
                 <div class="progress my-1">
                   <div
@@ -579,18 +513,12 @@
                 </div>
               </div>
             </div>
-            <div
-              class="col-12 col-md-4 m-1 m-sm-0 pl-0 pl-sm-2 d-flex align-items-center"
-            >
+            <div class="col-12 col-md-4 m-1 m-sm-0 pl-0 pl-sm-2 d-flex align-items-center">
               <div class="row w-100 m-0 pl-2 pl-sm-0">
                 <div class="col-6 p-0">
-                  <button class="btn px-4 btnAction btnActionComplete">
-                    Download Certificate
-                  </button>
+                  <button class="btn px-4 btnAction btnActionComplete">Download Certificate</button>
                 </div>
-                <div
-                  class="col-6 p-0 d-none d-md-flex align-items-center justify-content-end"
-                >
+                <div class="col-6 p-0 d-none d-md-flex align-items-center justify-content-end">
                   <i
                     class="btn p-0 dropdown fas fa-ellipsis-h"
                     id="courseMenuAction"
@@ -606,9 +534,7 @@
               </div>
             </div>
           </div>
-          <div
-            class="col-1 dropleft m-0 p-0 d-flex d-md-none align-items-center"
-          >
+          <div class="col-1 dropleft m-0 p-0 d-flex d-md-none align-items-center">
             <i
               class="btn p-0 dropdown fas fa-ellipsis-h"
               id="courseMenuAction"

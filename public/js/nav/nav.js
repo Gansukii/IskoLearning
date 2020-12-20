@@ -5,12 +5,15 @@ const menuPop = document.getElementById("menuPop");
 const signOut = document.getElementById("sign-out");
 const navFullName = document.getElementById("navFullName");
 const navUserType = document.getElementById("navUserType");
+// const notifToggle = document.getElementById("notifToggle");
 const notifDrop = document.getElementById("notifDrop");
 // const markRead = document.getElementById("markRead");
 // const removeNotif = document.getElementById("removeNotif");
 const btnNotifItem = document.getElementById("btnNotifItem");
+const notifBoxContainer = document.getElementById("notifBoxContainer");
 let isOpen = false;
 var lg = 992;
+var sm = 768;
 
 // $(document).click(function (event) {
 //   console.log(isOpen);
@@ -32,8 +35,18 @@ if (menuPop) {
   window.onresize = () => {
     if (document.documentElement.clientWidth < lg) {
       menuPop.style.left = "-100px";
+      notifDrop.classList.remove("dropleft");
+      notifDrop.classList.add("dropdown");
     } else {
       menuPop.removeAttribute("style");
+      notifDrop.classList.add("dropleft");
+      notifDrop.classList.remove("dropdown");
+    }
+    if (document.documentElement.clientWidth < sm) {
+      notifDrop.classList.remove("dropleft");
+      notifBoxContainer.style = "width: 90vw; left: -100px;";
+    } else {
+      notifBoxContainer.removeAttribute("style");
     }
   };
   if (document.documentElement.clientWidth < lg) {
@@ -42,6 +55,14 @@ if (menuPop) {
     notifDrop.classList.add("dropdown");
   } else {
     menuPop.removeAttribute("style");
+    notifDrop.classList.add("dropleft");
+    notifDrop.classList.remove("dropdown");
+  }
+  if (document.documentElement.clientWidth < sm) {
+    notifDrop.classList.remove("dropleft");
+    notifBoxContainer.style = "width: 90vw; left: -100px;";
+  } else {
+    notifBoxContainer.removeAttribute("style");
   }
 }
 avatar
