@@ -1,0 +1,86 @@
+.txtTitle {
+  font-size: 22px;
+  font-weight: 900;
+}
+.btnNewCourse {
+  font-weight: 700;
+  font-size: 14px;
+  margin-left: auto;
+  background-color: #7f0303;
+}
+.tabList {
+  list-style: none;
+}
+.tabItem {
+  font-weight: 600;
+  font-size: 16px;
+  color: #505050;
+  border-radius: 0;
+}
+.activeTab {
+  color: #7f0303;
+  border-bottom: 5px solid #7f0303;
+}
+
+.paperCourse {
+  background: #ffffff;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+}
+.thumb {
+  background: #e8e8e8;
+  border-radius: 5px;
+  max-width: 170px;
+  height: 100px;
+}
+.courseTitle {
+  font-weight: 900;
+  font-size: 20px;
+}
+.badgeDev {
+  font-weight: 600;
+  font-size: 13px;
+  color: #f1c618;
+  border: 0.75px solid #f1c618;
+  box-sizing: border-box;
+  border-radius: 20px;
+}
+
+@media screen and (min-width: 992px) {
+  .tabItem {
+    width: 145px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .tabList {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .tabItem {
+    font-size: 11px;
+    padding: 4px 6px;
+  }
+  .btnNewCourse {
+    font-size: 11px;
+  }
+  .txtTitle {
+    font-size: 18px;
+  }
+  .activeTab {
+    color: #7f0303;
+    border-bottom: 3px solid #7f0303;
+  }
+  .thumb {
+    height: 65px;
+  }
+  .courseTitle {
+    font-size: 14px;
+  }
+  .badgeDev {
+    font-size: 8px;
+  }
+}

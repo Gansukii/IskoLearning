@@ -30,6 +30,7 @@ body {
   font-size: 24px;
   font-weight: 900;
 }
+
 .txtInfoTitle p {
   font-weight: 400;
   font-size: 16px;
@@ -81,7 +82,24 @@ body {
 .lh-1 {
   line-height: 1;
 }
-
+.reviewBox {
+  border: 1px solid #b9b9b9;
+  border-radius: 5px;
+}
+.reviewStar i {
+  font-size: 20px;
+}
+.reviewDate {
+  margin-left: auto;
+  font-size: 14px;
+  color: #7d7d7d;
+}
+.reviewName {
+  font-weight: 900;
+}
+.btnMoreReviews {
+  background: #7f0303;
+}
 @media screen and (max-width: 576px) {
   .rowChangeWidth {
     width: 100% !important;

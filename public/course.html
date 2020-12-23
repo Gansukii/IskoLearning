@@ -139,7 +139,7 @@
           </div>
         </div>
         <div
-          class="col-12 col-sm-4 p-0 mt-5 mt-md-0 d-flex justify-content-md-start justify-content-md-end align-items-center"
+          class="col-12 col-md-4 p-0 mt-5 mt-md-0 d-flex justify-content-md-start justify-content-md-end align-items-center"
         >
           <button class="btn btnEnroll py-2" id="btnEnroll">Enroll for Free</button>
         </div>
@@ -148,7 +148,7 @@
 
     <div class="row mx-0 px-4 px-md-5 d-flex my-4 justify-content-center">
       <div class="row my-4 w-75 rowChangeWidth">
-        <div class="col-12 col-lg-8 p-0">
+        <div class="col-12 col-lg-8 p-0" id="contentContainer">
             <div class="col-12 p-0">
                 <div class="row mx-0 w-100">
                     <div class="col-12 p-0 txtInfoTitle">
@@ -174,16 +174,20 @@
                     </div>
                 </div>
             </div>
+          <div class="col-12 p-0" id="rowReview"></div>
+
+
+
             <div class="col-12 mt-4 mt-lg-5 px-0">
                 <div class="row w-100 mx-0">
-                    <div class="col-12 p-0 mb-3 txtInfoTitle">
+                    <div class="col-12 p-0 mb-3 txtInfoTitle" style="font-size: 26px;">
                     Course Content
                     </div>
-                    <div class="col-12 pr-0">
+                    <div class="col-12 px-0 pl-sm-3">
 
                       <div class="accordion md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
                         <div class="card">
-                          <button class="btn p-0" data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne1" aria-expanded="true" aria-controls="collapseOne1">
+                          <button class="btn p-0" data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne1" aria-expanded="false" aria-controls="collapseOne1">
                             <div class="card-header" role="tab" id="headingOne1">
                               <div class="w-100 mb-0 d-flex justify-content-between align-items-center">
                                 <div class="row text-left">
@@ -194,7 +198,7 @@
                               </div>
                             </div>
                           </button>
-                          <div id="collapseOne1" class="collapse show" role="tabpanel" aria-labelledby="headingOne1" data-parent="#accordionEx">
+                          <div id="collapseOne1" class="collapse " role="tabpanel" aria-labelledby="headingOne1" data-parent="#accordionEx">
                             <div class="card-body p-0">
                               <div class="row mx-0">
                                 <div class="col-12 py-2">
@@ -245,7 +249,7 @@
 
                       <div class="accordion md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
                         <div class="card">
-                          <button class="btn p-0" data-toggle="collapse" data-parent="#accordionEx" href="#collapseTwo2" aria-expanded="true" aria-controls="collapseTwo2">
+                          <button class="btn p-0" data-toggle="collapse" data-parent="#accordionEx" href="#collapseTwo2" aria-expanded="false" aria-controls="collapseTwo2">
                             <div class="card-header" role="tab" id="headingOne1">
                               <div class="w-100 mb-0 d-flex justify-content-between align-items-center">
                                 <div class="row text-left">
@@ -256,7 +260,7 @@
                               </div>
                             </div>
                           </button>
-                          <div id="collapseTwo2" class="collapse show" role="tabpanel" aria-labelledby="headingOne1" data-parent="#accordionEx">
+                          <div id="collapseTwo2" class="collapse" role="tabpanel" aria-labelledby="headingOne1" data-parent="#accordionEx">
                             <div class="card-body p-0">
                               <div class="row mx-0">
                                 <div class="col-12 py-2">
@@ -310,11 +314,81 @@
                     </div>
                 </div>
             </div>
+
+            <div class="col-12">
+              <div class="row mt-5">
+                <div class="col-12 p-0 mb-2 txtInfoTitle"> Reviews </div>
+                <div class="col-12 p-0 "><span class="txtInfoTitle">4.7</span> out of 5 (27 reviews)</div>
+                <div class="col-12 p-0">
+                <i class="fas fa-star star1"></i>
+                <i class="fas fa-star star2"></i>
+                <i class="fas fa-star star3"></i>
+                <i class="fas fa-star star4"></i>
+                <i class="far fa-star star5"></i>
+              </div>
+              </div>
+              <div class="row " id="reviewsContainer">
+                <div class="col-12 mt-3">
+                  <div class="row py-3 px-4 reviewBox">
+                     <div class="col-12 d-flex p-0 reviewStar">
+                      <i class="fas fa-star star1"></i>
+                      <i class="fas fa-star star2"></i>
+                      <i class="fas fa-star star3"></i>
+                      <i class="fas fa-star star4"></i>
+                      <i class="far fa-star star5"></i>
+                      <div class="reviewDate">11/26/20</div>
+                    </div>
+                    <div class="col-12 p-0 mt-3 text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut efficitur, diam non vehicula tempus, leo odio vehicula ante, id consectetur elit mi eget justo.</div>
+                    <div class="col-12 p-0 mt-1 reviewName">-Full N.</div>
+                  </div>
+
+
+
+                </div>
+                <div class="col-12 mt-3">
+                  <div class="row py-3 px-4 reviewBox">
+                     <div class="col-12 d-flex p-0 reviewStar">
+                      <i class="fas fa-star star1"></i>
+                      <i class="fas fa-star star2"></i>
+                      <i class="fas fa-star star3"></i>
+                      <i class="fas fa-star star4"></i>
+                      <i class="far fa-star star5"></i>
+                      <div class="reviewDate">11/26/20</div>
+                    </div>
+                    <div class="col-12 p-0 mt-3 text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut efficitur, diam non vehicula tempus, leo odio vehicula ante, id consectetur elit mi eget justo.</div>
+                    <div class="col-12 p-0 mt-1 reviewName">-Full N.</div>
+                  </div>
+                </div>
+                <div class="col-12 mt-3">
+                  <div class="row py-3 px-4 reviewBox">
+                     <div class="col-12 d-flex p-0 reviewStar">
+                      <i class="fas fa-star star1"></i>
+                      <i class="fas fa-star star2"></i>
+                      <i class="fas fa-star star3"></i>
+                      <i class="fas fa-star star4"></i>
+                      <i class="far fa-star star5"></i>
+                      <div class="reviewDate">11/26/20</div>
+                    </div>
+                    <div class="col-12 p-0 mt-3 text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut efficitur, diam non vehicula tempus, leo odio vehicula ante, id consectetur elit mi eget justo.</div>
+                    <div class="col-12 p-0 mt-1 reviewName">-Full N.</div>
+                  </div>
+                </div>
+
+                <div class="col-12 mt-5 p-0">
+                  <button class="btn btn-danger d-flex m-auto btnMoreReviews" id="btnMoreReviews">
+                    See More Reviews
+                  </button>
+                </div>
+
+              </div>
+            </div>
+
         </div>
+
         <div
-          class="col-12 pl-0 pl-lg-5 col-lg-4 p-0 mt-5 mt-md-0 d-flex justify-content-center justify-content-md-end"
+          class="col-12 col-lg-4 pl-0 pl-lg-5  p-0 mt-5 mt-md-0 d-flex justify-content-center justify-content-md-end" id="reviewColumn"
         >
-          <div class="container px-0 w-100 ratingContainer">
+          <div class="container px-0 w-100 ratingContainer" id="ratingContainer">
             <div class="row mx-0 w-100 py-5">
               <div class="col-12 text-center ratingNumber lh-1">4.7</div>
               <div class="col-12 text-center">
@@ -364,5 +438,6 @@
     <script src="js/isSigned/isSigned.js"></script>
     <script src="js/isSigned/getNotif.js"></script>
     <script src="js/nav/nav.js"></script>
+    <script src="js/course/course.js"></script>
   </body>
 </html>
