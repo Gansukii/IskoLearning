@@ -102,7 +102,7 @@
                 <div class="row w-100 mx-0 py-3 px-4" id="chapterItemContainer">
                   <div class="row w-100 mx-0">
                     <div class="mb-3 mb-sm-0 d-flex px-0 txtChapter">Chapter 1:</div>
-                    <div class="col">
+                    <div class="col pr-sm-0">
                       <div class="w-100">
                         <div class="form-group">
                           <input
@@ -129,10 +129,76 @@
                           <button
                             class="btn mr-3 btnAdd"
                             data-toggle="modal"
-                            data-target="#addVideoModal"
+                            data-target="#addVideoModal-1"
                           >
                             <i class="fas fa-plus-circle"></i> Video Link
                           </button>
+                          <div
+                            class="modal fade"
+                            id="addVideoModal-1"
+                            tabindex="-1"
+                            role="dialog"
+                            aria-hidden="true"
+                          >
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <div class="txtTitle">Add Video</div>
+                                  <button
+                                    type="button"
+                                    class="close"
+                                    data-dismiss="modal"
+                                    aria-label="Close"
+                                  >
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                  <div class="row w-100 mx-0">
+                                    <div class="col-9 px-0">
+                                      <label for="videoLinkInput">Video Link</label>
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        id="videoLinkInput"
+                                        placeholder="Paste video link here"
+                                      />
+                                    </div>
+                                    <div
+                                      class="col px-0 d-flex justify-content-end align-items-end"
+                                    >
+                                      <button
+                                        class="btn btnModalContinue"
+                                        id="btnModalContinue"
+                                        disabled
+                                      >
+                                        Continue
+                                      </button>
+                                    </div>
+
+                                    <div class="row w-100 mx-0 my-3" id="validVidContainer"></div>
+                                  </div>
+                                </div>
+                                <div class="modal-footer">
+                                  <button
+                                    type="button"
+                                    class="btn px-3 py-1 btnModalCancel"
+                                    data-dismiss="modal"
+                                  >
+                                    Cancel
+                                  </button>
+                                  <button
+                                    type="button"
+                                    class="btn px-3 py-1 btnModalAdd"
+                                    id="btnModalAdd-1"
+                                    disabled
+                                  >
+                                    Add Video
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                           <button class="btn btnAdd">
                             <i class="fas fa-plus-circle"></i> Quiz
                           </button>
@@ -140,9 +206,10 @@
                       </div>
                     </div>
                   </div>
+                  <hr class="w-100 m-0" />
                 </div>
               </div>
-              <hr class="w-100 m-0" />
+              <!-- <hr class="w-100 m-0" /> -->
               <div class="row w-100 mx-0 p-4">
                 <button class="btn w-100 btnAddChapter" id="btnAddChapter">
                   <i class="fas fa-plus-circle"></i>Add Chapter
@@ -155,80 +222,6 @@
     </div>
     <br />
     <!-- <i class="far fa-check-circle"></i> -->
-
-    <div
-      class="modal fade"
-      id="addVideoModal"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="exampleModalCenterTitle"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <div class="txtTitle">Add Video</div>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <div class="row w-100 mx-0">
-              <div class="col-9 px-0">
-                <label for="videoLinkInput">Video Link</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="videoLinkInput"
-                  placeholder="Paste video link here"
-                />
-              </div>
-              <div class="col px-0 d-flex justify-content-end align-items-end">
-                <button class="btn btnModalContinue" id="btnModalContinue" disabled>
-                  Continue
-                </button>
-              </div>
-
-              <div class="row w-100 mx-0 my-3" id="validVidContainer">
-                <div class="col-12 px-0">
-                  <label for="videoTitleInput">Video Title</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="videoTitleInput"
-                    placeholder="Video Title (based on video link title)"
-                  />
-                </div>
-                <div class="col-12 px-0 mt-3">
-                  <iframe
-                    src="https://www.youtube.com/embed/zRdi0ZFVbyI"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen
-                    id="iframe"
-                  ></iframe>
-                </div>
-                <div class="col-12 px-0 mt-3">
-                  <label for="videoDescriptionInput">Description</label>
-                  <textarea
-                    class="form-control"
-                    id="videoDescriptionInput"
-                    rows="2"
-                    placeholder="Add Description Here"
-                  ></textarea>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn px-3 py-1 btnModalCancel" data-dismiss="modal">
-              Cancel
-            </button>
-            <button type="button" class="btn px-3 py-1 btnModalAdd" disabled>Add Video</button>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="/__/firebase/8.1.2/firebase-app.js"></script>

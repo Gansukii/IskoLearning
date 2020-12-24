@@ -102,6 +102,9 @@
 .btnModalAdd:hover {
   color: #ffffff;
 }
+.btnAddActive {
+  background: #7f0303;
+}
 @media screen and (max-width: 576px) {
   body,
   .btnSave,

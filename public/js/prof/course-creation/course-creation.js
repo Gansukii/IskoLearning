@@ -11,6 +11,8 @@ const btnAddChapter = document.getElementById("btnAddChapter");
 const chapterItemContainer = document.getElementById("chapterItemContainer");
 const btnModalContinue = document.getElementById("btnModalContinue");
 const videoLinkInput = document.getElementById("videoLinkInput");
+const validVidContainer = document.getElementById("validVidContainer");
+let chapterCount = 1;
 
 btnDetails.onclick = () => {
   btnDetails.firstElementChild.classList.remove("fa-circle");
@@ -47,6 +49,12 @@ btnContent.onclick = () => {
 
 btnAddChapter.onclick = () => {
   console.log(chapterContainer.children.length);
+  let addbtnDel = document.createElement("div");
+  addbtnDel.className = "col-12 px-0 mb-3 d-flex justify-content-end";
+  addbtnDel.innerHTML = `<i class="far fa-times-circle" style="font-size: 20px"></i>`;
+  let newNode = chapterItemContainer.cloneNode(true);
+  newNode.firstElementChild.prepend(addbtnDel);
+  chapterContainer.appendChild(newNode);
 };
 
 const checkDetailsFields = () => {
@@ -89,53 +97,47 @@ const checkValidVid = () => {
   let img = new Image();
   img.src = "http://img.youtube.com/vi/" + vidId + "/mqdefault.jpg";
   img.onload = function () {
-    // checkThumbnail(this.width);
     if (this.width !== 120) {
-      console.log("ngak");
-    } else console.log("yoen");
+      validVidContainer.innerHTML = getIframe(chapterCount, vidId);
+      document.getElementById("btnModalAdd-1").removeAttribute("disabled");
+      document.getElementById("btnModalAdd-1").classList.add("btnAddActive");
+      document.getElementById("btnModalAdd-1").onclick = () => {
+        console.log("gakdmgka");
+      };
+    } else {
+      validVidContainer.innerHTML = `<div class="small text-center" style="color: #f00"> Invalid Video URL</div>`;
+      document.getElementById("btnModalAdd-1").setAttribute("disabled", "");
+      document.getElementById("btnModalAdd-1").classList.remove("btnAddActive");
+    }
   };
 };
 
-{
-  /* <div class="col-12 py-2 d-flex justify-content-end">
-                  <i class="far fa-times-circle" style="font-size: 20px"></i>
-                </div>
-                <div class="row w-100 mx-0 py-3 px-4">
-                  <div class="row w-100 mx-0">
-                    <div class="">Chapter 1:</div>
-                    <div class="col">
-                      <form class="w-100">
-                        <div class="form-group">
-                          <input
-                            type="text"
-                            class="form-control"
-                            id="chapterTitleInput"
-                            placeholder="Enter a title"
-                          />
-                        </div>
-
-                        <div class="form-group">
-                          <label for="chapterDescriptionInput">Description</label>
-                          <textarea
-                            class="form-control"
-                            id="chapterDescriptionInput"
-                            rows="2"
-                            placeholder="Max of x characters"
-                          ></textarea>
-                        </div>
-                        <div class="form-group">
-                          <label>Content</label>
-                          <div class>
-                            <button class="btn mr-3 btnAdd">
-                              <i class="fas fa-plus-circle"></i> Video Link
-                            </button>
-                            <button class="btn btnAdd">
-                              <i class="fas fa-plus-circle"></i> Quiz
-                            </button>
-                          </div>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                </div> */
-}
+const getIframe = (count, src) => {
+  return `<div class="col-12 px-0">
+          <label for="videoTitleInput">Video Title</label>
+          <input
+            type="text"
+            class="form-control"
+            id="videoTitleInput"
+            placeholder="Video Title (based on video link title)"
+          />
+        </div>
+        <div class="col-12 px-0 mt-3">
+          <iframe
+            src="https://www.youtube.com/embed/${src}"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            id="iframe${count}"
+          ></iframe>
+        </div>
+        <div class="col-12 px-0 mt-3">
+          <label for="videoDescriptionInput">Description</label>
+          <textarea
+            class="form-control"
+            id="videoDescriptionInput"
+            rows="2"
+            placeholder="Add Description Here"
+          ></textarea>
+        </div>`;
+};
