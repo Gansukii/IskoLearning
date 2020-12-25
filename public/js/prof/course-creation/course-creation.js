@@ -143,7 +143,7 @@ btnAddChapter.onclick = () => {
                                       <button
                                         class="btn btnModalContinue"
                                         id="btnModalContinue-${chapterCount}"
-                                         onclick="checkValidVid(this)"
+                                         onclick="checkValidVid(this,'add')"
                                         disabled
                                       >
                                         Continue
@@ -218,8 +218,8 @@ const checkDetailsFields = () => {
 
 function videoLinkFilled(e) {
   // checkValidVid();
-  let count = e.id.split("-")[1];
-  let btnModalContinue = document.getElementById(`btnModalContinue-${count}`);
+  let id = e.id.split("-")[1];
+  let btnModalContinue = document.getElementById(`btnModalContinue-${id}`);
   if (e.value === "") {
     btnModalContinue.setAttribute("disabled", "");
     btnModalContinue.classList.remove("btnModalContinueActive");
@@ -229,11 +229,11 @@ function videoLinkFilled(e) {
   }
 }
 
-function checkValidVid(e) {
-  let count = e.id.split("-")[1];
-  let videoLinkInput = document.getElementById(`videoLinkInput-${count}`);
-  let validVidContainer = document.getElementById(`validVidContainer-${count}`);
-  let btnModalAdd = document.getElementById(`btnModalAdd-${count}`);
+function checkValidVid(e, action) {
+  let id = e.id.split("-")[1];
+  let videoLinkInput = document.getElementById(`videoLinkInput-${id}`);
+  let validVidContainer = document.getElementById(`validVidContainer-${id}`);
+  let btnModalAdd = document.getElementById(`btnModalAdd-${id}`);
   let vidId = "";
   let newval = "";
   if ((newval = videoLinkInput.value.match(/(\?|&)v=([^&#]+)/))) {
@@ -248,12 +248,15 @@ function checkValidVid(e) {
   img.src = "http://img.youtube.com/vi/" + vidId + "/mqdefault.jpg";
   img.onload = function () {
     if (this.width !== 120) {
-      validVidContainer.innerHTML = getIframe(chapterCount, vidId);
+      validVidContainer.innerHTML = "";
+      validVidContainer.innerHTML = getIframe(id, vidId);
       btnModalAdd.removeAttribute("disabled");
       btnModalAdd.classList.add("btnAddActive");
-      btnModalAdd.onclick = () => {
-        addNewItem(btnModalAdd, count, vidId);
-      };
+      if (action === "add") {
+        btnModalAdd.onclick = () => {
+          addNewItem(id, vidId, action);
+        };
+      }
     } else {
       validVidContainer.innerHTML = `<div class="small text-center" style="color: #f00"> Invalid Video URL</div>`;
       btnModalAdd.setAttribute("disabled", "");
@@ -262,13 +265,13 @@ function checkValidVid(e) {
   };
 }
 
-const getIframe = (count, src) => {
+const getIframe = (id, src) => {
   return `<div class="col-12 px-0">
-          <label for="videoTitleInput-${count}">Video Title</label>
+          <label for="videoTitleInput-${id}">Video Title</label>
           <input
             type="text"
             class="form-control"
-            id="videoTitleInput-${count}"
+            id="videoTitleInput-${id}"
             placeholder="Video Title (based on video link title)"
           />
         </div>
@@ -278,34 +281,43 @@ const getIframe = (count, src) => {
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen
-            id="iframe${count}"
+            id="iframe${id}"
           ></iframe>
         </div>
         <div class="col-12 px-0 mt-3">
           <label for="videoDescriptionInput">Description</label>
           <textarea
             class="form-control"
-            id="videoDescriptionInput-${count}"
+            id="videoDescriptionInput-${id}"
             rows="2"
             placeholder="Add Description Here"
           ></textarea>
         </div>`;
 };
 
-function addNewItem(e, count, vidId) {
-  let newItem = document.createElement("div");
-  let itemId = randomId() + "-" + randomId() + "-" + randomId() + "-" + randomId();
-  newItem.innerHTML = `<button
+function addNewItem(id, vidId, action) {
+  let newNode;
+  let itemId;
+  if (action === "add") {
+    newNode = document.createElement("div");
+    itemId = randomId() + "0" + randomId() + "0" + randomId() + "0" + randomId();
+    newNode.id = itemId;
+  } else {
+    newNode = document.getElementById(id);
+    itemId = id;
+  }
+  newNode.innerHTML = `<button
                         class="btn mt-2 mb-4 w-100 d-flex justify-content-between align-items-center btnAdd itemAdded"
                         data-toggle="modal"
                         data-target="#editVideoModal-${itemId}"
                         itemId= ${itemId}
-                        onclick="editItem(this,${count})"
+                        id="addedItemButton-${itemId}"
+                        onclick="editItem(this)"
                         
                         >
-                          <i class="far fa-play-circle mr-2" ></i> ${
-                            document.getElementById(`videoTitleInput-${count}`).value
-                          }
+                          <i class="far fa-play-circle mr-2" ></i> 
+                          <div>${document.getElementById(`videoTitleInput-${id}`).value}
+                          </div>
                           <i
                           class="far fa-times-circle ml-auto"
                           style="font-size: 20px; cursor: pointer"
@@ -336,29 +348,29 @@ function addNewItem(e, count, vidId) {
                                 <div class="modal-body">
                                   <div class="row w-100 mx-0">
                                     <div class="col-9 px-0">
-                                      <label for="videoLinkInputEdit-1">Video Link</label>
+                                      <label for="videoLinkInput-1">Video Link</label>
                                       <input
                                         type="text"
                                         class="form-control"
-                                        id="videoLinkInputEdit-${itemId}"
+                                        id="videoLinkInput-${itemId}"
                                         placeholder="Paste video link here"
-                                        onkeyup="{videoLinkFilled(this)}"
+                                        onkeyup="{videoLinkFilled(this,'edit')}"
                                       />
                                     </div>
                                     <div
                                       class="col px-0 d-flex justify-content-end align-items-end"
                                     >
                                       <button
-                                        class="btn btnModalContinue"
-                                        id="btnModalContinueEdit-${itemId}"
-                                        onclick="checkValidVid(this)"
-                                        disabled
+                                        class="btn btnModalContinue btnModalContinueActive"
+                                        id="btnModalContinue-${itemId}"
+                                        onclick="checkValidVid(this,'edit')"
+                                        
                                       >
                                         Continue
                                       </button>
                                     </div>
 
-                                    <div class="row w-100 mx-0 my-3" id="validVidContainerEdit-${itemId}"></div>
+                                    <div class="row w-100 mx-0 my-3" id="validVidContainer-${itemId}"></div>
                                   </div>
                                 </div>
                                 <div class="modal-footer">
@@ -372,8 +384,9 @@ function addNewItem(e, count, vidId) {
                                   <button
                                     type="button"
                                     class="btn px-3 py-1 btnModalAdd btnAddActive"
-                                    id="btnModalEdit-1"
+                                    id="btnModalAdd-${itemId}"
                                     data-dismiss="modal"
+                                    onclick={saveChanges(this)}
                                   >
                                     Save Changes
                                   </button>
@@ -381,28 +394,35 @@ function addNewItem(e, count, vidId) {
                               </div>
                             </div>
                           </div>`;
-  document.getElementById(`vidQuizContainer-${chapterCount}`).appendChild(newItem);
-  let data = {
-    video: true,
-    itemId: itemId,
-    chapter: count,
-    title: document.getElementById(`videoTitleInput-${count}`).value,
-    desciption: document.getElementById(`videoDescriptionInput-${count}`).value,
-    videoId: vidId,
-  };
-  formData.push(data);
 
-  // reset the buttons for modal
-  document.getElementById(`videoLinkInput-${count}`).value = "";
-  document.getElementById(`videoDescriptionInput-${count}`).value = "";
-  document.getElementById(`videoTitleInput-${count}`).value = "";
-  let btnModalContinue = document.getElementById(`btnModalContinue-${count}`);
-  let btnModalAdd = document.getElementById(`btnModalAdd-${count}`);
-  btnModalContinue.setAttribute("disabled", "");
-  btnModalContinue.classList.remove("btnModalContinueActive");
-  btnModalAdd.setAttribute("disabled", "");
-  btnModalAdd.classList.remove("btnAddActive");
-  document.getElementById(`validVidContainer-${count}`).innerHTML = "";
+  document.getElementById(`vidQuizContainer-${chapterCount}`).appendChild(newNode);
+  document.getElementById(`validVidContainer-${itemId}`).innerHTML = getIframe(itemId, vidId);
+  if (action === "add") {
+    let data = {
+      video: true,
+      itemId: itemId,
+      chapter: id,
+      title: document.getElementById(`videoTitleInput-${id}`).value,
+      desciption: document.getElementById(`videoDescriptionInput-${id}`).value,
+      videoId: vidId,
+    };
+
+    formData.push(data);
+    console.log(formData);
+
+    // reset the buttons for modal
+    document.getElementById(`videoLinkInput-${id}`).value = "";
+
+    document.getElementById(`videoDescriptionInput-${id}`).value = "";
+    document.getElementById(`videoTitleInput-${id}`).value = "";
+    let btnModalContinue = document.getElementById(`btnModalContinue-${id}`);
+    let btnModalAdd = document.getElementById(`btnModalAdd-${id}`);
+    btnModalContinue.setAttribute("disabled", "");
+    btnModalContinue.classList.remove("btnModalContinueActive");
+    btnModalAdd.setAttribute("disabled", "");
+    btnModalAdd.classList.remove("btnAddActive");
+    document.getElementById(`validVidContainer-${id}`).innerHTML = "";
+  }
 }
 
 function randomId() {
@@ -419,10 +439,30 @@ function removeItem(ele, e) {
   });
 }
 
-function editItem(element, count) {
+function editItem(element) {
   let itemId = element.getAttribute("itemId");
   let data = formData.filter((data) => {
     if (data.itemId === itemId) return data;
   });
-  console.log(data);
+  // console.log(data);
+  document.getElementById(`videoTitleInput-${itemId}`).value = data[0].title;
+  document.getElementById(`videoDescriptionInput-${itemId}`).value = data[0].desciption;
+}
+
+function saveChanges(element) {
+  let itemId = element.id.split("-")[1];
+  formData.forEach((data) => {
+    if (data.itemId === itemId) {
+      data.title = document.getElementById(`videoTitleInput-${itemId}`).value;
+      data.desciption = document.getElementById(`videoDescriptionInput-${itemId}`).value;
+      document.getElementById(
+        `addedItemButton-${itemId}`
+      ).children[1].innerHTML = document.getElementById(`videoTitleInput-${itemId}`).value;
+      document.getElementById(`validVidContainer-${itemId}`).innerHTML = getIframe(
+        itemId,
+        data.videoId
+      );
+    }
+  });
+  console.log(formData);
 }
