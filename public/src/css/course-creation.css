@@ -109,6 +109,14 @@
   background: #f5f5f5;
   border: 0.75px solid #c4c4c4;
 }
+.deleteQuiz {
+  font-size: 14px;
+  color: #696969;
+  cursor: pointer;
+}
+.deleteQuiz:hover {
+  color: #000000;
+}
 @media screen and (max-width: 576px) {
   body,
   .btnSave,

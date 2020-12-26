@@ -12,6 +12,7 @@ const chapterItemContainer = document.getElementById("chapterItemContainer");
 // const btnModalContinue = document.getElementById("btnModalContinue");
 // const videoLinkInput = document.getElementById("videoLinkInput");
 // const validVidContainer = document.getElementById("validVidContainer");
+let isDetailsDone = false;
 let chapterCount = 1;
 let formData = [];
 // let vidsPerChapter = [];
@@ -39,7 +40,7 @@ btnContent.onclick = () => {
   courseDetails.classList.add("d-none");
   courseContent.classList.add("d-flex");
 
-  let isDetailsDone = checkDetailsFields();
+  isDetailsDone = checkDetailsFields();
   if (isDetailsDone) {
     btnDetails.firstElementChild.classList.remove("fa-circle");
     btnDetails.firstElementChild.classList.add("fa-check-circle");
@@ -47,6 +48,17 @@ btnContent.onclick = () => {
     btnDetails.firstElementChild.classList.add("fa-circle");
     btnDetails.firstElementChild.classList.remove("fa-check-circle");
   }
+};
+
+const checkDetailsFields = () => {
+  if (
+    courseTitleInput.value.trim() !== "" &&
+    courseBriefInput.value.trim() !== "" &&
+    categoryInput.value.trim() &&
+    unitsInput.value.trim()
+  ) {
+    return true;
+  } else return false;
 };
 
 // ####################### ADD AND DELETING CHAPTER ############################
@@ -204,17 +216,6 @@ function createDeleteBtn(count) {
 }
 
 // **************************************************************************
-
-const checkDetailsFields = () => {
-  if (
-    courseTitleInput.value.trim() !== "" &&
-    courseBriefInput.value.trim() !== "" &&
-    categoryInput.value.trim() &&
-    unitsInput.value.trim()
-  ) {
-    return true;
-  } else return false;
-};
 
 function videoLinkFilled(e) {
   // checkValidVid();
@@ -422,6 +423,7 @@ function addNewItem(id, vidId, action) {
     btnModalAdd.setAttribute("disabled", "");
     btnModalAdd.classList.remove("btnAddActive");
     document.getElementById(`validVidContainer-${id}`).innerHTML = "";
+    $(`#addVideoModal-${id}`).modal("toggle");
   }
 }
 
@@ -465,4 +467,80 @@ function saveChanges(element) {
     }
   });
   console.log(formData);
+}
+
+// ############################# QUIZ HANDLER ####################################
+
+function addQuestionItem(element) {
+  let id = element.id.split("-")[1];
+  let quizItemsContainer = document.getElementById(`quizItemsContainer-${id}`);
+  let questionNumber = quizItemsContainer.children.length + 1;
+
+  let newQuestionitem = document.createElement("div");
+  newQuestionitem.className = "row w-100 mx-0";
+  newQuestionitem.id = `questionItem-${questionNumber}-${id}`;
+  newQuestionitem.innerHTML = `<div >${questionNumber}.</div>
+                                <div class="col">
+                                  <div class="row w-100 mx-0">
+                                    <div class="col-12 px-0">
+                                      <label for="question${questionNumber}-${id}">Question</label>
+                                      <textarea
+                                        class="form-control"
+                                        id="question${questionNumber}-${id}"
+                                        rows="2"
+                                      ></textarea>
+                                    </div>
+                                    <div class="col-12 mt-3 px-0">
+                                      <label for="answer${questionNumber}-${id}">Answer</label>
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        id="answer${questionNumber}-${id}"
+                                      />
+                                    </div>
+                                  </div>
+                                  <div
+                                    class="col-12 px-0 mt-3 d-flex justify-content-end"
+                                    
+                                  >
+                                    <div class="deleteQuiz" id="btnTrash-${questionNumber}-${id}" onclick="deleteQuestionItem(this)">
+                                      <i class="far fa-trash-alt"></i> Delete Question
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>`;
+
+  quizItemsContainer.appendChild(newQuestionitem);
+}
+
+function deleteQuestionItem(element) {
+  let questionNumber = element.id.split("-")[1];
+  let id = element.id.split("-")[2];
+  let quizItemsContainer = document.getElementById(`quizItemsContainer-${id}`);
+
+  document.getElementById(`questionItem-${questionNumber}-${id}`).remove();
+
+  let elementArr = Array.from(quizItemsContainer.children);
+
+  for (let i = 0; i < elementArr.length; i++) {
+    let element = elementArr[i];
+    let elementCount = i + 1;
+    let elementNumber = element.id.split("-")[1];
+    let elementId = element.id.split("-")[2];
+
+    element.firstElementChild.innerHTML = `${elementCount}.`;
+    element.querySelector(
+      `#question${elementNumber}-${elementId}`
+    ).id = `question${elementCount}-${elementId}`;
+
+    element.querySelector(
+      `#answer${elementNumber}-${elementId}`
+    ).id = `answer${elementCount}-${elementId}`;
+
+    element.querySelector(
+      `#btnTrash-${elementNumber}-${elementId}`
+    ).id = `btnTrash-${elementCount}-${elementId}`;
+
+    element.id = `questionItem-${elementCount}-${elementId}`;
+  }
 }
