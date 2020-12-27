@@ -2,6 +2,14 @@
   background: #ffffff;
   box-shadow: 0px 4px 4px rgba(120, 120, 120, 0.25);
 }
+.fa-chevron-left {
+  cursor: pointer;
+}
+.fa-chevron-left:hover {
+  transform: translateX(-5px);
+  text-shadow: 0px 0px 10px #ce5937;
+  color: #000000;
+}
 .courseTitle {
   font-weight: 900;
   font-size: 22px;

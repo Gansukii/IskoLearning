@@ -21,7 +21,8 @@
   <body>
     <div class="row w-100 mx-0 mb-5 py-2 py-sm-3 px-4 d-flex justify-content-between headerRow">
       <div class="d-flex align-items-center">
-        <i class="fas fa-chevron-left"></i><span class="ml-4 courseTitle">Untitled Course</span>
+        <i class="fas fa-chevron-left" id="btnBack"></i
+        ><span class="ml-4 courseTitle" id="headerCourseTitle">Untitled Course</span>
       </div>
       <button class="btn btn-warning pt-1 px-4 btnSave" id="btnSave">Save</button>
     </div>
@@ -110,16 +111,16 @@
                           <input
                             type="text"
                             class="form-control"
-                            id="chapterTitleInput"
+                            id="chapterTitleInput-1"
                             placeholder="Enter a title"
                           />
                         </div>
 
                         <div class="form-group">
-                          <label for="chapterDescriptionInput">Description</label>
+                          <label for="chapterDescriptionInput-1">Description</label>
                           <textarea
                             class="form-control"
-                            id="chapterDescriptionInput"
+                            id="chapterDescriptionInput-1"
                             rows="2"
                             placeholder="Max of x characters"
                           ></textarea>
@@ -361,7 +362,7 @@
       </div>
     </div>
     <br />
-    <!-- <i class="far fa-check-circle"></i> -->
+    <div id="alertContainer"></div>
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="/__/firebase/8.1.2/firebase-app.js"></script>

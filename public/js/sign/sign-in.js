@@ -77,6 +77,7 @@ function getUserData(user) {
       localStorage.setItem("fullname", userInfo.fullname);
       localStorage.setItem("username", userInfo.username);
       localStorage.setItem("user_type", userInfo.user_type);
-      window.location.assign("../../home");
+      if (userInfo.user_type === "Professor") window.location.assign("../../professor/home");
+      else window.location.assign("../../home");
     });
 }

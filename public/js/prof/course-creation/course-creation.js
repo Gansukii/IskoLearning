@@ -1,3 +1,5 @@
+const btnBack = document.getElementById("btnBack");
+const headerCourseTitle = document.getElementById("headerCourseTitle");
 const btnDetails = document.getElementById("btnDetails");
 const btnContent = document.getElementById("btnContent");
 const courseDetails = document.getElementById("courseDetails");
@@ -6,6 +8,7 @@ const courseTitleInput = document.getElementById("courseTitleInput");
 const courseBriefInput = document.getElementById("courseBriefInput");
 const categoryInput = document.getElementById("categoryInput");
 const unitsInput = document.getElementById("unitsInput");
+const prerequisiteInput = document.getElementById("prerequisiteInput");
 const chapterContainer = document.getElementById("chapterContainer");
 const btnAddChapter = document.getElementById("btnAddChapter");
 const chapterItemContainer = document.getElementById("chapterItemContainer");
@@ -17,6 +20,10 @@ let isDetailsDone = false;
 let chapterCount = 1;
 let formData = {};
 // let vidsPerChapter = [];
+
+btnBack.onclick = () => {
+  window.history.back();
+};
 
 btnDetails.onclick = () => {
   btnDetails.firstElementChild.classList.remove("fa-circle");
@@ -50,6 +57,10 @@ btnContent.onclick = () => {
     btnDetails.firstElementChild.classList.remove("fa-check-circle");
   }
 };
+courseTitleInput.onkeyup = () => {
+  headerCourseTitle.innerHTML =
+    courseTitleInput.value.trim() !== "" ? courseTitleInput.value.trim() : "Untitled Course";
+};
 
 const checkDetailsFields = () => {
   if (
@@ -70,14 +81,6 @@ btnAddChapter.onclick = () => {
   if (chapterCount > 2) {
     document.getElementById(`close-${chapterCount - 1}`).remove();
   }
-  // let newNode = chapterItemContainer.cloneNode(true);
-  // newNode.firstElementChild.prepend(btnDel);
-  // newNode.firstElementChild.children[1].innerHTML = `Chapter ${chapterCount}`;
-  // newNode.querySelector("#btnModalAdd-1").id = `btnModalAdd-${chapterCount}`;
-  // newNode.querySelector("#videoLinkInput-1").id = `videoLinkInput-${chapterCount}`;
-  // newNode.querySelector(`#videoLinkInput-${chapterCount}`).onkeyup = (e) => {
-  //   videoLinkFilled;
-  // };
 
   let newChapter = document.createElement("div");
   newChapter.className = "row w-100 mx-0 py-3 px-4";
@@ -90,16 +93,16 @@ btnAddChapter.onclick = () => {
                           <input
                             type="text"
                             class="form-control"
-                            id="chapterTitleInput"
+                            id="chapterTitleInput-${chapterCount}"
                             placeholder="Enter a title"
                           />
                         </div>
 
                         <div class="form-group">
-                          <label for="chapterDescriptionInput">Description</label>
+                          <label for="chapterDescriptionInput-${chapterCount}">Description</label>
                           <textarea
                             class="form-control"
-                            id="chapterDescriptionInput"
+                            id="chapterDescriptionInput-${chapterCount}"
                             rows="2"
                             placeholder="Max of x characters"
                           ></textarea>
@@ -794,5 +797,43 @@ function saveQuizChanges(element) {
 }
 
 btnSubmit.onclick = () => {
-  console.log(formData);
+  if (!isDetailsDone) {
+    document.getElementById(
+      "alertContainer"
+    ).innerHTML = `<div class="alert alert-danger alert-dismissible fade show position-fixed" style="bottom: 0" role="alert">
+  Ooops! Looks like missed something on <strong>Course Details</strong>.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>`;
+    setTimeout(() => $(".alert").alert("close"), 3000);
+    return;
+  }
+  let courseData = {
+    course_title: courseTitleInput.value.trim(),
+    course_brief: courseBriefInput.value.trim(),
+    category: categoryInput.value.trim(),
+    units: unitsInput.value.trim(),
+    prerequisite: prerequisiteInput.value.trim(),
+    contents: [],
+  };
+
+  for (let i = 1; i <= chapterCount; i++) {
+    let chapterObj = {};
+    chapterObj[`chapter${i}`] = {
+      chapter_number: i,
+      chapter_title: document.getElementById(`chapterTitleInput-${i}`).value,
+      chapter_description: document.getElementById(`chapterDescriptionInput-${i}`).value,
+      chapter_contents: formData[`chapter${i}`],
+    };
+    courseData.contents.push(chapterObj);
+  }
+
+  courseTitleInput.value.trim();
+  courseBriefInput.value.trim();
+  categoryInput.value.trim();
+  unitsInput.value.trim();
+  prerequisiteInput.value.trim();
+
+  console.log(courseData);
 };
