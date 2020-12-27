@@ -9,12 +9,13 @@ const unitsInput = document.getElementById("unitsInput");
 const chapterContainer = document.getElementById("chapterContainer");
 const btnAddChapter = document.getElementById("btnAddChapter");
 const chapterItemContainer = document.getElementById("chapterItemContainer");
+const btnSubmit = document.getElementById("btnSubmit");
 // const btnModalContinue = document.getElementById("btnModalContinue");
 // const videoLinkInput = document.getElementById("videoLinkInput");
 // const validVidContainer = document.getElementById("validVidContainer");
 let isDetailsDone = false;
 let chapterCount = 1;
-let formData = [];
+let formData = {};
 // let vidsPerChapter = [];
 
 btnDetails.onclick = () => {
@@ -186,9 +187,129 @@ btnAddChapter.onclick = () => {
                               </div>
                             </div>
                           </div>
-                          <button class="btn btnAdd">
+                          <button 
+                            class="btn btnAdd"
+                            data-toggle="modal"
+                            data-target="#addQuizModal-${chapterCount}">
                             <i class="fas fa-plus-circle"></i> Quiz
                           </button>
+                          <div
+                            class="modal fade"
+                            id="addQuizModal-${chapterCount}"
+                            tabindex="-1"
+                            role="dialog"
+                            aria-hidden="true"
+                          >
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <div class="txtTitle">Create Quiz</div>
+                                  <button
+                                    type="button"
+                                    class="close"
+                                    data-dismiss="modal"
+                                    aria-label="Close"
+                                  >
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body pb-0">
+                                  <div class="row w-100 mx-0">
+                                    <div class="col-12 px-0">
+                                      <label for="quizTitleInput-${chapterCount}">Quiz Title</label>
+                                      <input
+                                        type="text"
+                                        class="form-control"
+                                        id="quizTitleInput-${chapterCount}"
+                                        placeholder="Quiz Title Here"
+                                      />
+                                    </div>
+                                    <div class="col-12 px-0 mt-4">
+                                      <label for="quizInstructionsInput-${chapterCount}">Instructions</label>
+                                      <textarea
+                                        class="form-control"
+                                        id="quizInstructionsInput-${chapterCount}"
+                                        rows="3"
+                                      ></textarea>
+                                    </div>
+                                  </div>
+                                  <hr class="w-100" />
+                                  <div class="row w-100 mx-0">
+                                    <div class="row w-100 mx-0" id="quizItemsContainer-${chapterCount}">
+                                      <div class="row w-100 mx-0" id="questionItem-1-${chapterCount}">
+                                        <div>1.</div>
+                                        <div class="col">
+                                          <div class="row w-100 mx-0">
+                                            <div class="col-12 px-0">
+                                              <label for="question1-${chapterCount}">Question</label>
+                                              <textarea
+                                                class="form-control"
+                                                id="question1-${chapterCount}"
+                                                rows="2"
+                                              ></textarea>
+                                            </div>
+                                            <div class="col-12 mt-3 px-0">
+                                              <label for="answer1-${chapterCount}">Answer</label>
+                                              <input
+                                                type="text"
+                                                class="form-control"
+                                                id="answer1-${chapterCount}"
+                                              />
+                                            </div>
+                                          </div>
+                                          <div class="col-12 px-0 mt-3 d-flex justify-content-end">
+                                            <div
+                                              class="deleteQuestion"
+                                              id="btnTrash-1-${chapterCount}"
+                                              onclick="deleteQuestionItem(this)"
+                                            >
+                                              <i class="far fa-trash-alt"></i> Delete Question
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <hr class="w-100 mb-0" />
+                                    <div class="col-12 p-3">
+                                      <button
+                                        class="btn w-100 btnAddChapter"
+                                        id="addQuestion-${chapterCount}"
+                                        onclick="addQuestionItem(this)"
+                                      >
+                                        <i class="fas fa-plus-circle"></i> Add Question
+                                      </button>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="modal-footer">
+                                  <div
+                                    class="mr-auto deleteQuiz"
+                                    id="btnDel-1-${chapterCount}"
+                                    onclick="deleteQuiz(this)"
+                                  >
+                                    <i class="far fa-trash-alt"></i> Delete Quiz
+                                  </div>
+                                  <button
+                                    type="button"
+                                    class="btn px-3 py-1 mr-2 btnModalCancel"
+                                    data-dismiss="modal"
+                                  >
+                                    Cancel
+                                  </button>
+                                  <button
+                                    type="button"
+                                    class="btn px-3 py-1 btnModalAdd btnAddActive"
+                                    id="btnModalQuizAdd-${chapterCount}"
+                                    data-dismiss="modal"
+                                    onclick="addQuiz(this, 'add')"
+
+                                  >
+                                    Save
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -257,6 +378,9 @@ function checkValidVid(e, action) {
         btnModalAdd.onclick = () => {
           addNewItem(id, vidId, action);
         };
+      } else {
+        let chapterId = e.getAttribute("chap");
+        formData[`chapter${chapterId}`][id].videoId = vidId;
       }
     } else {
       validVidContainer.innerHTML = `<div class="small text-center" style="color: #f00"> Invalid Video URL</div>`;
@@ -313,6 +437,7 @@ function addNewItem(id, vidId, action) {
                         data-target="#editVideoModal-${itemId}"
                         itemId= ${itemId}
                         id="addedItemButton-${itemId}"
+                        chap = ${id}
                         onclick="editItem(this)"
                         
                         >
@@ -364,6 +489,7 @@ function addNewItem(id, vidId, action) {
                                       <button
                                         class="btn btnModalContinue btnModalContinueActive"
                                         id="btnModalContinue-${itemId}"
+                                        chap=${id}
                                         onclick="checkValidVid(this,'edit')"
                                         
                                       >
@@ -387,6 +513,7 @@ function addNewItem(id, vidId, action) {
                                     class="btn px-3 py-1 btnModalAdd btnAddActive"
                                     id="btnModalAdd-${itemId}"
                                     data-dismiss="modal"
+                                    chap=${id}
                                     onclick={saveChanges(this)}
                                   >
                                     Save Changes
@@ -396,7 +523,7 @@ function addNewItem(id, vidId, action) {
                             </div>
                           </div>`;
 
-  document.getElementById(`vidQuizContainer-${chapterCount}`).appendChild(newNode);
+  document.getElementById(`vidQuizContainer-${id}`).appendChild(newNode);
   document.getElementById(`validVidContainer-${itemId}`).innerHTML = getIframe(itemId, vidId);
   if (action === "add") {
     let data = {
@@ -408,8 +535,9 @@ function addNewItem(id, vidId, action) {
       videoId: vidId,
     };
 
-    formData.push(data);
-    console.log(formData);
+    let chapterKey = `chapter${id}`;
+    if (formData[chapterKey] === undefined) formData[chapterKey] = {};
+    formData[chapterKey][itemId] = data;
 
     // reset the buttons for modal
     document.getElementById(`videoLinkInput-${id}`).value = "";
@@ -432,41 +560,43 @@ function randomId() {
 }
 function removeItem(ele, e) {
   e.stopPropagation();
+  let id = ele.parentNode.getAttribute("chap");
   let deleteItemId = ele.parentNode.getAttribute("itemId");
   ele.parentNode.remove();
-  formData = formData.filter((data) => {
-    if (data.itemId !== deleteItemId) {
-      return data;
-    }
-  });
+
+  delete formData[`chapter${id}`][deleteItemId];
 }
 
 function editItem(element) {
   let itemId = element.getAttribute("itemId");
-  let data = formData.filter((data) => {
-    if (data.itemId === itemId) return data;
-  });
+  let id = element.getAttribute("chap");
+  // let data = formData.filter((data) => {
+  //   if (data.itemId === itemId) return data;
+  // });
+  let data = formData[`chapter${id}`][itemId];
+
   // console.log(data);
-  document.getElementById(`videoTitleInput-${itemId}`).value = data[0].title;
-  document.getElementById(`videoDescriptionInput-${itemId}`).value = data[0].desciption;
+  document.getElementById(`videoTitleInput-${itemId}`).value = data.title;
+  document.getElementById(`videoDescriptionInput-${itemId}`).value = data.desciption;
 }
 
 function saveChanges(element) {
   let itemId = element.id.split("-")[1];
-  formData.forEach((data) => {
-    if (data.itemId === itemId) {
-      data.title = document.getElementById(`videoTitleInput-${itemId}`).value;
-      data.desciption = document.getElementById(`videoDescriptionInput-${itemId}`).value;
-      document.getElementById(
-        `addedItemButton-${itemId}`
-      ).children[1].innerHTML = document.getElementById(`videoTitleInput-${itemId}`).value;
-      document.getElementById(`validVidContainer-${itemId}`).innerHTML = getIframe(
-        itemId,
-        data.videoId
-      );
-    }
-  });
-  console.log(formData);
+  let id = element.getAttribute("chap");
+
+  formData[`chapter${id}`][itemId].title = document.getElementById(
+    `videoTitleInput-${itemId}`
+  ).value;
+  formData[`chapter${id}`][itemId].desciption = document.getElementById(
+    `videoDescriptionInput-${itemId}`
+  ).value;
+  document.getElementById(
+    `addedItemButton-${itemId}`
+  ).children[1].innerHTML = document.getElementById(`videoTitleInput-${itemId}`).value;
+  document.getElementById(`validVidContainer-${itemId}`).innerHTML = getIframe(
+    itemId,
+    formData[`chapter${id}`][itemId].videoId
+  );
 }
 
 // ############################# QUIZ HANDLER ####################################
@@ -503,7 +633,7 @@ function addQuestionItem(element) {
                                     class="col-12 px-0 mt-3 d-flex justify-content-end"
                                     
                                   >
-                                    <div class="deleteQuiz" id="btnTrash-${questionNumber}-${id}" onclick="deleteQuestionItem(this)">
+                                    <div class="deleteQuestion" id="btnTrash-${questionNumber}-${id}" onclick="deleteQuestionItem(this)">
                                       <i class="far fa-trash-alt"></i> Delete Question
                                     </div>
                                   </div>
@@ -544,3 +674,125 @@ function deleteQuestionItem(element) {
     element.id = `questionItem-${elementCount}-${elementId}`;
   }
 }
+
+function addQuiz(element, action) {
+  element.setAttribute("disabled", "");
+  let chapterNumber = element.id.split("-")[1];
+  let newNode;
+  let itemId;
+  if (action === "add") {
+    newNode = document.createElement("div");
+    itemId = randomId() + "0" + randomId() + "0" + randomId() + "0" + randomId();
+    newNode.id = itemId;
+  } else {
+    newNode = document.getElementById(id);
+    itemId = id;
+  }
+
+  $(`#addQuizModal-${chapterNumber}`).modal("toggle");
+  let quizItemsContainer = document.getElementById(`quizItemsContainer-${chapterNumber}`);
+  let questionNumber = quizItemsContainer.children.length;
+
+  newNode.innerHTML = `<button
+                        class="btn mt-2 mb-4 w-100 d-flex justify-content-between align-items-center btnAdd itemAdded"
+                        data-toggle="modal"
+                        data-target="#editQuizModal-${itemId}"
+                        itemId= ${itemId}
+                        id="addedItemButton-${itemId}"
+                        chap = ${chapterNumber}
+                        >
+                          <i class="far fa-file-alt mr-2" ></i> 
+                          <div>${document.getElementById(`quizTitleInput-${chapterNumber}`).value}
+                          </div>
+                          <i
+                          class="far fa-times-circle ml-auto"
+                          style="font-size: 20px; cursor: pointer"
+                          onclick="removeItem(this,event)"
+                          ></i>
+                        </button>`;
+
+  document.getElementById(`vidQuizContainer-${chapterNumber}`).appendChild(newNode);
+
+  let newModal = document.getElementById(`addQuizModal-${chapterNumber}`).cloneNode(true);
+
+  newNode.appendChild(newModal);
+
+  newModal.id = `editQuizModal-${itemId}`;
+  newModal.style = "display: none";
+
+  document.getElementById(`quizTitleInput-${chapterNumber}`).id = `quizTitleInput-${itemId}`;
+  document.getElementById(
+    `quizInstructionsInput-${chapterNumber}`
+  ).id = `quizInstructionsInput-${itemId}`;
+
+  document.getElementById(
+    `quizItemsContainer-${chapterNumber}`
+  ).id = `quizItemsContainer-${itemId}`;
+
+  let items = {};
+  for (let i = 1; i <= questionNumber; i++) {
+    items[i] = {
+      question: document.getElementById(`question${i}-${chapterNumber}`).value,
+      answer: document.getElementById(`answer${i}-${chapterNumber}`).value,
+    };
+    document.getElementById(
+      `questionItem-${i}-${chapterNumber}`
+    ).id = `questionItem-${i}-${itemId}`;
+    document.getElementById(`question${i}-${chapterNumber}`).id = `question${i}-${itemId}`;
+    document.getElementById(`answer${i}-${chapterNumber}`).id = `answer${i}-${itemId}`;
+    document.getElementById(`btnTrash-${i}-${chapterNumber}`).id = `btnTrash-${i}-${itemId}`;
+  }
+
+  let data = {
+    video: false,
+    itemId: itemId,
+    chapter: chapterNumber,
+    title: document.getElementById(`quizTitleInput-${chapterNumber}`).value,
+    instructions: document.getElementById(`quizInstructionsInput-${chapterNumber}`).value,
+    questions: items,
+  };
+
+  let chapterKey = `chapter${chapterNumber}`;
+  if (formData[chapterKey] === undefined) formData[chapterKey] = {};
+  formData[chapterKey][itemId] = data;
+
+  document.getElementById(`addQuestion-${chapterNumber}`).id = `addQuestion-${itemId}`;
+  document.getElementById(`btnModalQuizAdd-${chapterNumber}`).id = `btnModalQuizAdd-${itemId}`;
+  document
+    .getElementById(`btnModalQuizAdd-${itemId}`)
+    .setAttribute("onclick", "saveQuizChanges(this)");
+  document.getElementById(`btnModalQuizAdd-${itemId}`).setAttribute("chap", chapterNumber);
+
+  element.removeAttribute("disabled");
+  document.getElementById(`btnModalQuizAdd-${itemId}`).removeAttribute("disabled");
+
+  let mainItemContainer = document.getElementById(`quizItemsContainer-${chapterNumber}`);
+
+  for (let i = mainItemContainer.children.length; i > 1; i--) {
+    document.getElementById(`questionItem-${i}-${chapterNumber}`).remove();
+  }
+
+  document.getElementById(`question1-${chapterNumber}`).value = "";
+  document.getElementById(`answer1-${chapterNumber}`).value = "";
+  document.getElementById(`quizTitleInput-${chapterNumber}`).value = "";
+  document.getElementById(`quizInstructionsInput-${chapterNumber}`).value = "";
+}
+
+function saveQuizChanges(element) {
+  let itemId = element.id.split("-")[1];
+  let id = element.getAttribute("chap");
+
+  formData[`chapter${id}`][itemId].title = document.getElementById(
+    `quizTitleInput-${itemId}`
+  ).value;
+  formData[`chapter${id}`][itemId].instructions = document.getElementById(
+    `quizInstructionsInput-${itemId}`
+  ).value;
+  document.getElementById(
+    `addedItemButton-${itemId}`
+  ).children[1].innerHTML = document.getElementById(`quizTitleInput-${itemId}`).value;
+}
+
+btnSubmit.onclick = () => {
+  console.log(formData);
+};

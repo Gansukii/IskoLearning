@@ -111,10 +111,16 @@
 }
 .deleteQuiz {
   font-size: 14px;
+  color: #8f8f8f;
+  cursor: pointer;
+}
+.deleteQuestion {
+  font-size: 14px;
   color: #696969;
   cursor: pointer;
 }
-.deleteQuiz:hover {
+.deleteQuiz:hover,
+.deleteQuestion:hover {
   color: #000000;
 }
 @media screen and (max-width: 576px) {
