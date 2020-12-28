@@ -16,6 +16,11 @@ const btnSubmit = document.getElementById("btnSubmit");
 // const btnModalContinue = document.getElementById("btnModalContinue");
 // const videoLinkInput = document.getElementById("videoLinkInput");
 // const validVidContainer = document.getElementById("validVidContainer");
+let currentUser;
+firebase.auth().onAuthStateChanged(function (user) {
+  currentUser = user;
+});
+
 let isDetailsDone = false;
 let chapterCount = 1;
 let formData = {};
@@ -404,7 +409,7 @@ const getIframe = (id, src) => {
           />
         </div>
         <div class="col-12 px-0 mt-3">
-          <iframe
+           <iframe
             src="https://www.youtube.com/embed/${src}"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -797,6 +802,8 @@ function saveQuizChanges(element) {
 }
 
 btnSubmit.onclick = () => {
+  isDetailsDone = checkDetailsFields();
+
   if (!isDetailsDone) {
     document.getElementById(
       "alertContainer"
@@ -808,32 +815,91 @@ btnSubmit.onclick = () => {
 </div>`;
     setTimeout(() => $(".alert").alert("close"), 3000);
     return;
+  } else {
+    document.getElementById(
+      "submitModalContainer"
+    ).innerHTML = `<div class="modal fade" id="submitModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Confirm Submission</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div>Are you sure this is done? </div>
+      </div>
+      <div class="modal-footer py-0">
+        <button type="button" class="btn mr-2" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn px-3 py-1 btnModalAdd btnAddActive" onclick="btnConfirmSubmit()">Confirm</button>
+      </div>
+    </div>
+  </div>
+</div>`;
+    // if (currentUser) saveToDb(currentUser);
   }
+  // let courseData = {
+  //   course_title: courseTitleInput.value.trim(),
+  //   course_brief: courseBriefInput.value.trim(),
+  //   category: categoryInput.value.trim(),
+  //   units: unitsInput.value.trim(),
+  //   prerequisite: prerequisiteInput.value.trim(),
+  //   contents: [],
+  // };
+
+  // for (let i = 1; i <= chapterCount; i++) {
+  //   let chapterObj = {};
+  //   chapterObj[`chapter${i}`] = {
+  //     chapter_number: i,
+  //     chapter_title: document.getElementById(`chapterTitleInput-${i}`).value,
+  //     chapter_description: document.getElementById(`chapterDescriptionInput-${i}`).value,
+  //     chapter_contents: formData[`chapter${i}`],
+  //   };
+  //   courseData.contents.push(chapterObj);
+  // }
+
+  // courseTitleInput.value.trim();
+  // courseBriefInput.value.trim();
+  // categoryInput.value.trim();
+  // unitsInput.value.trim();
+  // prerequisiteInput.value.trim();
+
+  // console.log(courseData);
+};
+
+function btnConfirmSubmit() {
+  let user = currentUser;
+  let newCourseKey = firebase.database().ref().child("courses").push().key;
+  let newCourseChapterKey = firebase.database().ref().child("course_chapters").push().key;
+
   let courseData = {
     course_title: courseTitleInput.value.trim(),
     course_brief: courseBriefInput.value.trim(),
     category: categoryInput.value.trim(),
+    chapter_number: chapterCount,
     units: unitsInput.value.trim(),
     prerequisite: prerequisiteInput.value.trim(),
     contents: [],
   };
+  courseData.contents = newCourseChapterKey;
 
+  let chapterObj = {};
   for (let i = 1; i <= chapterCount; i++) {
-    let chapterObj = {};
     chapterObj[`chapter${i}`] = {
       chapter_number: i,
       chapter_title: document.getElementById(`chapterTitleInput-${i}`).value,
       chapter_description: document.getElementById(`chapterDescriptionInput-${i}`).value,
       chapter_contents: formData[`chapter${i}`],
     };
-    courseData.contents.push(chapterObj);
+    // courseData.contents.push(chapterObj);
   }
 
-  courseTitleInput.value.trim();
-  courseBriefInput.value.trim();
-  categoryInput.value.trim();
-  unitsInput.value.trim();
-  prerequisiteInput.value.trim();
+  let updates = {};
 
-  console.log(courseData);
-};
+  updates["courses/" + newCourseKey] = courseData;
+  updates["user_course/" + user.uid + "/" + newCourseKey] = courseData;
+  updates["course_chapters/" + newCourseChapterKey] = chapterObj;
+  firebase.database().ref().update(updates);
+  window.history.back();
+}

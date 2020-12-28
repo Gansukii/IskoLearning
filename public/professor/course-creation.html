@@ -37,9 +37,15 @@
             <div class="btn text-left txtCol1 px-1 py-2 mt-3" id="btnContent">
               <i class="far fa-circle mx-2"></i> Course Content
             </div>
-            <button class="btn btn-danger mt-3 mt-sm-auto btnSubmit" id="btnSubmit">
+            <button
+              class="btn btn-danger mt-3 mt-sm-auto btnSubmit"
+              id="btnSubmit"
+              data-toggle="modal"
+              data-target="#submitModal"
+            >
               Submit for Review
             </button>
+            <div id="submitModalContainer"></div>
           </div>
           <div class="col-12 col-sm-9 pl-0 pl-md-4 mt-4 mt-sm-0" id="courseDetails">
             <div class="row w-100 mx-0 paperMain">
@@ -66,7 +72,7 @@
                       <input type="text" class="form-control" id="categoryInput" />
                     </div>
                     <div class="col">
-                      <label for="unitsInput">Inputs</label>
+                      <label for="unitsInput">Units</label>
                       <input type="number" class="form-control" id="unitsInput" />
                     </div>
                   </div>
