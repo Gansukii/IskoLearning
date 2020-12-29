@@ -42,6 +42,7 @@
               id="btnSubmit"
               data-toggle="modal"
               data-target="#submitModal"
+              disabled
             >
               Submit for Review
             </button>
@@ -86,10 +87,24 @@
                   <div class="row w-100 my-3 mx-0">
                     <div class="col-12 px-0 my-2">Thumbnail</div>
                     <div
-                      class="col-12 col-md-6 thumb d-flex align-items-center justify-content-center"
+                      class="col-12 col-md-6 thumb d-flex align-items-center justify-content-center position-relative"
                       id="thumb"
                     >
-                      <label class="m-0" for="thumbUpload" id="editProfileAvatar"
+                      <button
+                        class="btn p-1 position-absolute"
+                        style="right: 0; top: 0"
+                        id="deleteImage"
+                      >
+                        <i
+                          class="far fa-times-circle"
+                          style="
+                            -webkit-text-stroke: 1px black;
+                            -webkit-text-fill-color: white;
+                            font-size: 18px;
+                          "
+                        ></i>
+                      </button>
+                      <label class="m-0" for="thumbUpload"
                         >+ Upload Thumbnail
                         <input type="file" accept="image/*" id="thumbUpload" hidden />
                       </label>

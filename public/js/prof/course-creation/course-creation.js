@@ -9,6 +9,9 @@ const courseBriefInput = document.getElementById("courseBriefInput");
 const categoryInput = document.getElementById("categoryInput");
 const unitsInput = document.getElementById("unitsInput");
 const prerequisiteInput = document.getElementById("prerequisiteInput");
+const thumbUpload = document.getElementById("thumbUpload");
+const deleteImage = document.getElementById("deleteImage");
+const thumb = document.getElementById("thumb");
 const chapterContainer = document.getElementById("chapterContainer");
 const btnAddChapter = document.getElementById("btnAddChapter");
 const chapterItemContainer = document.getElementById("chapterItemContainer");
@@ -19,11 +22,14 @@ const btnSubmit = document.getElementById("btnSubmit");
 let currentUser;
 firebase.auth().onAuthStateChanged(function (user) {
   currentUser = user;
+  btnSubmit.removeAttribute("disabled");
 });
 
 let isDetailsDone = false;
 let chapterCount = 1;
 let formData = {};
+let imageFile;
+let hasImage = false;
 // let vidsPerChapter = [];
 
 btnBack.onclick = () => {
@@ -78,6 +84,19 @@ const checkDetailsFields = () => {
   } else return false;
 };
 
+// ###############################  HANDLE UPLOAD IMAGE  ################################
+thumbUpload.onchange = (e) => {
+  imageFile = e.target.files[0];
+  imageUrl = URL.createObjectURL(imageFile);
+  thumb.style = `background: url(${imageUrl}) no-repeat center; background-size: cover;`;
+  hasImage = true;
+};
+deleteImage.onclick = (e) => {
+  e.preventDefault();
+  hasImage = false;
+  imageFile = null;
+  if (thumb.hasAttribute("style")) thumb.removeAttribute("style");
+};
 // ####################### ADD AND DELETING CHAPTER ############################
 
 btnAddChapter.onclick = () => {
@@ -804,11 +823,11 @@ function saveQuizChanges(element) {
 btnSubmit.onclick = () => {
   isDetailsDone = checkDetailsFields();
 
-  if (!isDetailsDone) {
+  if (!isDetailsDone || formData.chapter1 === undefined) {
     document.getElementById(
       "alertContainer"
     ).innerHTML = `<div class="alert alert-danger alert-dismissible fade show position-fixed" style="bottom: 0" role="alert">
-  Ooops! Looks like missed something on <strong>Course Details</strong>.
+  Ooops! Looks like missed something on <strong>Course Details</strong> or <strong>Course Content</strong>.
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
@@ -828,11 +847,31 @@ btnSubmit.onclick = () => {
         </button>
       </div>
       <div class="modal-body">
-        <div>Are you sure this is done? </div>
+        <div id="modalConfirmTxt">Are you sure this is done? </div>
+
+        <div class="d-none" id="loadingContainer">
+          <div class="text-center">
+            <div class="spinner-border" style="width: 2rem; height: 2rem;" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+          </div>
+        <div class="text-center my-3" id="txtLoading" style="font-size: 1rem;">Creating Course</div>
+        <div class="col-12 mb-3 d-none" id="progressContainer">
+            <div class="progress">
+              <div
+                class="progress-bar progress-bar-striped"
+                role="progressbar"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                id="uploadProgressBar"
+              ></div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="modal-footer py-0">
         <button type="button" class="btn mr-2" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn px-3 py-1 btnModalAdd btnAddActive" onclick="btnConfirmSubmit()">Confirm</button>
+        <button type="button" class="btn px-3 py-1 btnModalAdd btnAddActive" onclick="btnConfirmSubmit(this)">Confirm</button>
       </div>
     </div>
   </div>
@@ -868,11 +907,46 @@ btnSubmit.onclick = () => {
   // console.log(courseData);
 };
 
-function btnConfirmSubmit() {
+function btnConfirmSubmit(element) {
   let user = currentUser;
   let newCourseKey = firebase.database().ref().child("courses").push().key;
-  let newCourseChapterKey = firebase.database().ref().child("course_chapters").push().key;
+  element.setAttribute("disabled", "");
+  document.getElementById("modalConfirmTxt").remove();
+  document.getElementById("loadingContainer").classList.remove("d-none");
+  if (hasImage) {
+    progressContainer.classList.remove("d-none");
+    const uploadProgressBar = document.getElementById("uploadProgressBar");
+    let storageRef = firebase.storage().ref("courseThumbnail/" + newCourseKey);
+    let task = storageRef.put(imageFile);
+    task.on(
+      "state_changed",
+      function progress(snapshot) {
+        let percentage = Math.floor((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+        uploadProgressBar.style.width = `${percentage}%`;
+        uploadProgressBar.innerHTML = `Uploading image ${percentage}%`;
+        if (percentage === 100) uploadProgressBar.innerHTML = "Upload Complete!";
+      },
+      function error(err) {
+        console.log(err);
+        alert("error uploading image" + err);
+      },
+      function complete() {
+        uploadProgressBar.innerHTML = "Upload Complete!";
+        let starsRef = firebase.storage().ref().child(`courseThumbnail/${newCourseKey}`);
+        starsRef.getDownloadURL().then(function (url) {
+          saveToDb(url, newCourseKey);
+        });
+      }
+    );
+  } else {
+    saveToDb(null, newCourseKey);
+  }
+}
 
+function saveToDb(url, newCourseKey) {
+  let user = currentUser;
+
+  let newCourseChapterKey = firebase.database().ref().child("course_chapters").push().key;
   let courseData = {
     course_title: courseTitleInput.value.trim(),
     course_brief: courseBriefInput.value.trim(),
@@ -880,6 +954,8 @@ function btnConfirmSubmit() {
     chapter_number: chapterCount,
     units: unitsInput.value.trim(),
     prerequisite: prerequisiteInput.value.trim(),
+    chapter_thumbnail: url,
+    student_count: 0,
     contents: [],
   };
   courseData.contents = newCourseChapterKey;
@@ -896,10 +972,11 @@ function btnConfirmSubmit() {
   }
 
   let updates = {};
-
   updates["courses/" + newCourseKey] = courseData;
   updates["user_course/" + user.uid + "/" + newCourseKey] = courseData;
   updates["course_chapters/" + newCourseChapterKey] = chapterObj;
   firebase.database().ref().update(updates);
-  window.history.back();
+  setTimeout(() => {
+    window.history.back();
+  }, 500);
 }
