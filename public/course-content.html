@@ -19,7 +19,7 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light">
+    <nav class="navbar navbar-expand-lg navbar-light" id="nav">
       <a class="navbar-brand" href="#">Navbar</a>
       <button
         class="navbar-toggler"
@@ -130,9 +130,9 @@
       </div>
     </nav>
 
-    <div class="px-4 py-3 header">
+    <div class="px-4 py-3 w-100 sticky-top header" id="header">
       <div class="row w-100 mx-0 d-flex justify-content-between">
-        <div class="col-12 col-sm-8 txtCourse text-center text-sm-left">
+        <div class="col-12 col-sm-8 px-0 px-sm-2 txtCourse text-center text-sm-left">
           Systems Integration and Architecture I
         </div>
         <div
@@ -147,20 +147,82 @@
         </div>
       </div>
     </div>
-
-    <div class="sideNav px-2 py-4 position-fixed">
-      <div class="row w-10 mx-0">
+    <div class="sideNav px-2 py-4 d-none d-md-flex position-fixed" id="sideNav">
+      <div class="row w-100 mx-0">
         <div class="col-12" id="chapter1">
           <div class="txtChapter mb-2">Chapter 1: Title</div>
           <div class="chapterContents">
             <button
               class="btn w-100 text-left d-flex align-items-center btnSideItem btnSideItemActive"
+              onclick="changeActive(this)"
             >
               <i class="far fa-play-circle mr-2"></i>Lesson 1: Title
             </button>
-            <button class="btn w-100 text-left d-flex align-items-center btnSideItem">
+            <button
+              class="btn w-100 text-left d-flex align-items-center btnSideItem"
+              onclick="changeActive(this)"
+            >
               <i class="far fa-play-circle mr-2"></i>Lesson 2: Title
             </button>
+            <button
+              class="btn w-100 text-left d-flex align-items-center btnSideItem"
+              onclick="changeActive(this)"
+            >
+              <i class="far fa-play-circle mr-2"></i>Lesson 3: Title
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mainContent mx-0 ml-md-auto px-0 py-3 p-sm-5" id="mainContent">
+      <div class="px-3 w-100 h-100">
+        <div class="row w-100 mx-0 px-sm-3" id="contentItem">
+          <div class="col-12 px-0 mt-2 mb-2 mb-sm-3 mt-sm-0 txtMain">Lesson 1 Title</div>
+          <!-- <div id="questionsContainer">
+            <div class="row w-100 mx-0 py-4 px-4 paper">
+              <div class="row w-100 mx-0">
+                <div class="itemNumber">1.</div>
+                <div class="col pr-0 txtQuestion">
+                  Lorem ipsum dolor sit amet, et hinc nusquam nec, accusamus iracundia ius eu, vel
+                  utinam soluta timeam ne?
+                </div>
+                <div class="col-12 mt-4 txtQuestion">Answer:</div>
+                <input type="text" class="col-12 col-lg-5 col-md-6 ml-md-4 mt-1 form-control"></input>
+              </div>
+            </div>
+          </div> -->
+
+          <!-- <div class="row w-100 mx-0 py-3 px-4 paper">
+            <div class="col-12 px-0 points" id="points">3 points</div>
+            <div class="col-12 px-0 mt-2 mb-1 txtQuizHead">Instructions</div>
+            <div class="col-12 px-0 txtInstructions" id="intructions">
+              Cras sit amet tortor non leo rutrum ultricies. Maecenas vel libero vitae tortor
+              lobortis iaculis non venenatis diam. Phasellus vitae nisl eget dui varius mollis.
+              Aliquam erat volutpat. Aenean id ornare purus, eu consequat arcu. Proin vulputate
+              ultricies cursus. Nullam maximus non turpis non sodales.
+            </div>
+          </div>
+          <div class="col-12 px-0 mt-4 d-flex justify-content-end">
+            <button class="btn btn-danger px-4 btnStart" id="btnStartQuiz">Start Quiz</button>
+          </div> -->
+
+          <div class="thumbContainer">
+            <iframe
+              class="w-100 h-100"
+              src="https://www.youtube.com/embed/RRKJiM9Njr8"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div class="col-12 my-3 text-justify px-0 vidDescription" id="vidDescription">
+            Cillum adipisicing exercitation ea tempor duis adipisicing cupidatat. Irure amet
+            incididunt ad sit mollit qui in. Eiusmod incididunt minim excepteur et nisi duis. Elit
+            enim occaecat nisi deserunt fugiat laboris cupidatat ad velit. Quis nisi irure pariatur
+            id et ex elit dolore proident ea magna sunt eu nisi. Labore eu culpa eu est tempor Lorem
+            laborum dolore velit ullamco reprehenderit. Laboris aute deserunt ut eiusmod eu amet
+            esse amet aliqua aliqua. Ad duis elit occaecat ex labore nulla fugiat eu.
           </div>
         </div>
       </div>
@@ -182,8 +244,10 @@
     <script src="js/bootstrapJs/bootstrap.bundle.js"></script>
     <script src="js/bootstrapJs/bootstrap.js"></script>
     <script src="js/isSigned/isSigned.js"></script>
-    <script src="js/forum/getTimeAgo.js"></script>
+    <!-- <script src="js/forum/getTimeAgo.js"></script> -->
     <script src="js/isSigned/getNotif.js"></script>
     <script src="js/nav/nav.js"></script>
+    <script src="js/course-content/responsive.js"></script>
+    <script src="js/course-content/course-content.js"></script>
   </body>
 </html>
