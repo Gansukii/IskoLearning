@@ -17,7 +17,21 @@ body {
 .questionIcons {
   color: #a1a1a1;
 }
-
+.tagsPaper {
+  max-height: 400px;
+  overflow-y: scroll;
+}
+.tagsPaper::-webkit-scrollbar {
+  width: 8px;
+}
+.tagsPaper::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+.tagSelect {
+  font-size: 15px;
+  color: #7f0303;
+  border: 1px solid #7f0303;
+}
 .questionName {
   font-weight: 600;
   font-size: 14px;
@@ -32,11 +46,37 @@ body {
   font-weight: 700;
   font-size: 18px;
 }
-
+.tagItem {
+  font-size: 14px;
+  color: #7f0303;
+  border: 1px solid #7f0303;
+}
+.badgeDelete {
+  cursor: pointer;
+}
 .askQuestionPaper {
   max-height: 130px;
 }
-
+.tagSearchContainer {
+  max-height: 200%;
+  overflow-y: auto;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  background-color: #ffffff;
+  z-index: 1001;
+}
+.tagSearchContainer::-webkit-scrollbar {
+  width: 10px;
+}
+.searchTagItem {
+  font-size: 14px;
+  /* text-transform: lowercase; */
+  text-transform: capitalize;
+}
+.searchTagItem:hover {
+  background: #f5f5f5;
+  cursor: pointer;
+}
 .btnAsk {
   font-size: 16px;
   color: #c4c4c4;

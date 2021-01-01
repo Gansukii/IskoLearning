@@ -169,7 +169,7 @@
                           <label for="questionBody" class="txtModal">Body</label>
                           <textarea class="form-control" id="questionBody" rows="5"></textarea>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group position-relative">
                           <label for="questionTags" class="txtModal">Tags</label>
                           <input
                             type="text"
@@ -177,8 +177,23 @@
                             id="questionTags"
                             placeholder="Add tag/s"
                           />
+                          <div
+                            class="ml-2 w-75 position-absolute tagSearchContainer"
+                            id="tagSearchContainer"
+                          >
+                            <!-- <div class="p-1 searchTagItem">Python</div>
+                            <div class="p-1 searchTagItem">Java</div>
+                            <div class="p-1 searchTagItem">HTML</div>
+                            <div class="p-1 searchTagItem">Python</div>
+                            <div class="p-1 searchTagItem">Java</div>
+                            <div class="p-1 searchTagItem">HTML</div>
+                            <div class="p-1 searchTagItem">Python</div>
+                            <div class="p-1 searchTagItem">Java</div>
+                            <div class="p-1 searchTagItem">HTML</div> -->
+                          </div>
                         </div>
                       </form>
+                      <div class="row w-100 mx-0" id="tagsContainer"></div>
                     </div>
                   </div>
                   <div class="modal-footer">
@@ -204,8 +219,13 @@
             </div>
           </div>
         </div>
-
-        <div class="col-12 col-md-4 mx-2 px-4 py-3 rounded paper askQuestionPaper">Tags</div>
+        <div class="col-12 col-md-4">
+          <div class="row mx-0 w-100 mx-0 mt-3 mt-md-0 px-4 py-3 rounded paper tagsPaper">
+            <div class="col-12 px-0 askQuestionPaper">Tags</div>
+            <hr />
+            <div class="col-12 px-0" id="tagsPaperContainer"></div>
+          </div>
+        </div>
       </div>
     </div>
 

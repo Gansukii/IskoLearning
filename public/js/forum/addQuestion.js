@@ -1,4 +1,4 @@
-function addQuestion(user, title, body) {
+function addQuestion(user, title, body, tags) {
   let newQuestionKey = firebase.database().ref().child("questions").push().key;
   let questionForm = {
     question_id: newQuestionKey,
@@ -11,12 +11,34 @@ function addQuestion(user, title, body) {
     created_datetime: firebase.database.ServerValue.TIMESTAMP,
   };
 
-  let updates = {};
-  updates["questions/" + newQuestionKey] = questionForm;
-  updates["user-questions/" + user.uid + "/" + newQuestionKey] = questionForm;
-
-  firebase.database().ref().update(updates);
-  location.reload();
+  firebase
+    .database()
+    .ref("tags")
+    .once("value")
+    .then((snapshot) => {
+      let newTags = tags.concat(snapshot.val());
+      var seen = {};
+      let finalTags = [];
+      var j = 0;
+      for (let i = 0; i < newTags.length; i++) {
+        var item = newTags[i].toLowerCase();
+        if (seen[item] !== 1) {
+          seen[item] = 1;
+          finalTags[j] = item;
+          j++;
+        }
+      }
+      return finalTags.sort();
+    })
+    .then((finalTags) => {
+      let updates = {};
+      questionForm["tags"] = finalTags;
+      updates["questions/" + newQuestionKey] = questionForm;
+      updates["user-questions/" + user.uid + "/" + newQuestionKey] = questionForm;
+      updates["tags"] = finalTags;
+      firebase.database().ref().update(updates);
+      location.reload();
+    });
 
   // firebase
   //   .database()
