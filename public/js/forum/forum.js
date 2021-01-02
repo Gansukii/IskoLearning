@@ -31,7 +31,7 @@ firebase
     tagSearchContainer.appendChild(searchTagItem);
     let selectTag = document.createElement("div");
     selectTag.className = "badge badge-pill mx-1 mb-2 tagSelect";
-    selectTag.innerHTML = `<span class="badgeDelete ml-1" onclick="sortByTags(this)">${data.val()}</span>`;
+    selectTag.innerHTML = `<span class="badgeDelete" onclick="sortByTags(this)">${data.val()}</span>`;
     tagsPaperContainer.appendChild(selectTag);
   });
 

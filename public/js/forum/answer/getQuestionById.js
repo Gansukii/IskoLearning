@@ -1,45 +1,40 @@
 const questionContainer = document.getElementById("questionContainer");
 
-function getQuestionById(question_id, userUpvotesArr) {
+function getQuestionById(user, question_id, userUpvotesArr) {
   let currDate;
   let dateRetriever = firebase.database().ref("/date");
-  dateRetriever
-    .update({ currTime: firebase.database.ServerValue.TIMESTAMP })
-    .then(function (data) {
-      dateRetriever
-        .once("value")
-        .then((snapshot) => {
-          currDate = new Date(snapshot.val().currTime);
-        })
-        .then(() => {
-          firebase
-            .database()
-            .ref("questions/" + question_id)
-            .once("value")
-            .then((snapshot) => {
-              document
-                .getElementById("spinnerContainer")
-                .classList.remove("d-flex");
-              let question = snapshot.val();
-              let timeAgo = getTimeAgo(
-                Math.abs(currDate - new Date(question.created_datetime)) / 1000
-              );
-              let isUpvoted = userUpvotesArr.includes(question.question_id)
-                ? "upvoted"
-                : null;
-              firebase
-                .database()
-                .ref("users/" + question.user)
-                .once("value")
-                .then((snapshot) => {
-                  let userInfo = snapshot.val();
-                  questionContainer.innerHTML = `
+  dateRetriever.update({ currTime: firebase.database.ServerValue.TIMESTAMP }).then(function (data) {
+    dateRetriever
+      .once("value")
+      .then((snapshot) => {
+        currDate = new Date(snapshot.val().currTime);
+      })
+      .then(() => {
+        firebase
+          .database()
+          .ref("questions/" + question_id)
+          .once("value")
+          .then((snapshot) => {
+            document.getElementById("spinnerContainer").classList.remove("d-flex");
+            let question = snapshot.val();
+            let timeAgo = getTimeAgo(
+              Math.abs(currDate - new Date(question.created_datetime)) / 1000
+            );
+            let isUpvoted = userUpvotesArr.includes(question.question_id) ? "upvoted" : null;
+            firebase
+              .database()
+              .ref("users/" + question.user)
+              .once("value")
+              .then((snapshot) => {
+                let userInfo = snapshot.val();
+                questionContainer.innerHTML = `
                <div class='row d-flex align-items-center'>
                 <button class='btn avatar' style='background: url(${userInfo.photoUrl}) no-repeat center; background-size: cover;' id='avatar'></button>
                 <div class='col mx-2'>
                   <div class='row questionName'>${userInfo.fullname}</div>
                   <div class='row questionTime'>${timeAgo}</div>
                 </div>
+                
               </div>
                <div class='row mt-1 questionTitle'>
                         ${question.question_title}
@@ -56,12 +51,27 @@ function getQuestionById(question_id, userUpvotesArr) {
                   <i class='far fa-comment mr-1'></i><div>${question.answer_count}
                 </div>
               </div>`;
-                });
+              });
 
-              document
-                .getElementById("btnSubmitAns")
-                .removeAttribute("disabled");
-            });
-        });
-    });
+            document.getElementById("btnSubmitAns").removeAttribute("disabled");
+            // if (user.uid === question.user) {
+            //   const questionMenu = document.getElementById("questionMenu");
+            //   questionMenu.innerHTML = '<a class="dropdown-item" href="#" onclick="removeQuestion(this)">Action Here</a>';
+            // }
+          });
+      });
+  });
+}
+
+{
+  /* <div class="col-1 d-flex justify-content-end dropleft">
+  <i
+    class="btn p-0 fas fa-ellipsis-h"
+    id="questionAction"
+    data-toggle="dropdown"
+    aria-haspopup="true"
+    aria-expanded="false"
+  ></i>
+  <div class="dropdown-menu" aria-labelledby="questionAction" id="questionMenu"></div>
+</div>; */
 }
