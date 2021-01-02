@@ -46,9 +46,8 @@ firebase.auth().onAuthStateChanged(function (user) {
         console.log("Fields could not be empty");
       }
     };
-  } else {
-    alert("An error has occured. Please try again. Maybe you're not signed in");
   }
+  // else {alert("An error has occured. Please try again. Maybe you're not signed in");}
 });
 
 questionTags.onkeyup = (e) => {
@@ -95,11 +94,9 @@ function addTag(element, action) {
 }
 
 function sortByTags(element) {
-  console.log(selectedSortTag);
   selectedSortTag.classList.remove("tagSelected");
   element.parentNode.classList.add("tagSelected");
   selectedSortTag = element.parentNode;
-  console.log(selectedSortTag);
   if (element === selectedSortTag) {
     return;
   }

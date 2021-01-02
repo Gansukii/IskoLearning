@@ -19,7 +19,7 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light">
+    <!-- <nav class="navbar navbar-expand-lg navbar-light">
       <a class="navbar-brand" href="#">Navbar</a>
       <button
         class="navbar-toggler"
@@ -119,6 +119,117 @@
               </div>
               <div class="list-group list-group-flush p-0">
                 <a href="#" class="list-group-item list-group-item-action px-2">Profile</a>
+                <a href="#" class="list-group-item list-group-item-action px-2">Account Settings</a>
+                <a href="#" class="list-group-item list-group-item-action px-2" id="sign-out"
+                  ><i class="fas fa-sign-out-alt mr-1"></i>Sign out</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav> -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto d-flex align-items-lg-center">
+          <li class="nav-item">
+            <div class="dropdown">
+              <button
+                class="btn dropdown-toggle categories"
+                type="button"
+                id="dropdownMenuButton"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                Categories
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item mx-3">
+            <a class="nav-link" href="/forum">Forum</a>
+          </li>
+
+          <li class="nav-item searchContainer">
+            <form class="my-lg-0">
+              <div class="row d-flex align-items-center">
+                <div class="col-8 pr-0">
+                  <input
+                    class="form-control searchDev"
+                    type="search"
+                    placeholder="What do you want to learn?"
+                  />
+                </div>
+                <div class="col pl-0">
+                  <button class="btn my-2 my-sm-0" type="submit">
+                    <i class="fas fa-search"></i>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </li>
+        </ul>
+        <div class="d-flex align-items-center">
+          <a class="btn mr-2" id="btnNavIn">My Courses</a>
+          <div class="btn-group dropleft" id="notifDrop">
+            <button
+              class="btn rounded-circle p-1 text-center mr-3 dropdown-toggle"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+              id="notifToggle"
+            >
+              <i class="far fa-bell fa-lg position-relative" id="notifIcon"> </i>
+            </button>
+            <div class="dropdown-menu notifBoxContainer" id="notifBoxContainer">
+              <div class="col-12 mt-2 notifTitle">Notification</div>
+              <div class="dropdown-divider my-0"></div>
+
+              <div class="col-12 px-0" id="notificationsContainer">
+                <div
+                  class="d-flex justify-content-center align-items-center notifSpinner"
+                  id="notifSpinner"
+                >
+                  <div class="spinner-border spinner-border-sm" role="status"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="position-relative">
+            <button class="btn avatar" id="avatar"></button>
+            <div class="menu p-2 d-none flex-column rounded" id="menuPop">
+              <div
+                class="container w-100 d-flex align-items-center menuHeader pt-2 pb-2 pb-sm-3 px-1"
+              >
+                <div class="menuAvatar" id="menuAvatar"></div>
+                <div class="col mx-2">
+                  <div class="row menuName" id="navFullName">Full Name</div>
+                  <div class="row">
+                    <span class="badge badge-pill menuBadge px-2" id="navUserType">STUDENT</span>
+                  </div>
+                </div>
+              </div>
+              <!--                        </div>-->
+              <div class="list-group list-group-flush p-0">
+                <a href="profile" class="list-group-item list-group-item-action px-2">Profile</a>
                 <a href="#" class="list-group-item list-group-item-action px-2">Account Settings</a>
                 <a href="#" class="list-group-item list-group-item-action px-2" id="sign-out"
                   ><i class="fas fa-sign-out-alt mr-1"></i>Sign out</a
@@ -567,6 +678,8 @@
     <script src="js/bootstrapJs/bootstrap.bundle.js"></script>
     <script src="js/bootstrapJs/bootstrap.js"></script>
     <script src="js/isSigned/isSigned.js"></script>
+    <script src="js/forum/getTimeAgo.js"></script>
+    <script src="js/isSigned/getNotif.js"></script>
     <script src="js/profile/profile.js"></script>
 
     <!-- <script src="js/get-started/get-started.js"></script> -->

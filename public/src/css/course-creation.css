@@ -131,6 +131,7 @@
 .deleteQuestion:hover {
   color: #000000;
 }
+
 @media screen and (max-width: 576px) {
   body,
   .btnSave,

@@ -16,6 +16,26 @@ body {
   font-size: 16px;
   font-weight: 400;
 }
+.loading {
+  height: 30px;
+  background: linear-gradient(90deg, #580202, #7f0303, #580202, #7f0303, #580202, #7f0303, #580202);
+  background-size: 400%;
+  animation: animate 40s linear infinite;
+}
+
+@keyframes animate {
+  0% {
+    background-position: 0 0;
+  }
+
+  50% {
+    background-position: 300% 0;
+  }
+
+  100% {
+    background-position: 0 0;
+  }
+}
 .btnEnroll {
   background-color: #ffffff;
   color: #7f0303;
@@ -66,6 +86,19 @@ body {
 /* animation: rotate ; */
 /* transform: rotate(180deg); */
 /* } */
+.courseDes {
+  font-weight: 400;
+  font-size: 16px;
+}
+.loadDes p {
+  height: 16px;
+  background: linear-gradient(90deg,#E5E5E5, #f4f4f4,#E5E5E5, #f4f4f4,#E5E5E5, #f4f4f4,#E5E5E5);
+  background-size: 400%;
+  animation: animate 40s linear infinite;
+}
+
+
+}
 .accordionHeaderText {
   font-size: 18px;
   font-weight: 700;
@@ -100,6 +133,7 @@ body {
 .btnMoreReviews {
   background: #7f0303;
 }
+
 @media screen and (max-width: 576px) {
   .rowChangeWidth {
     width: 100% !important;

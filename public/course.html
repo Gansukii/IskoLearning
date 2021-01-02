@@ -134,14 +134,14 @@
       <div class="row my-4 w-75 rowChangeWidth">
         <div class="col-12 col-sm-8 p-0">
           <div class="row mx-0 w-100">
-            <div class="col-12 p-0 txtCourseTitle">Systems Integration and Architecture I</div>
-            <div class="col-12 p-0 txtCourseProf">Prof. Full Name</div>
+            <div class="col-12 p-0 txtCourseTitle loading" id="txtCourseTitle"></div>
+            <div class="col-12 p-0 txtCourseProf loading" id="txtCourseProf"></div>
           </div>
         </div>
         <div
           class="col-12 col-md-4 p-0 mt-5 mt-md-0 d-flex justify-content-md-start justify-content-md-end align-items-center"
         >
-          <button class="btn btnEnroll py-2" id="btnEnroll">Enroll for Free</button>
+          <button class="btn btnEnroll py-2" id="btnEnroll" disabled>Enroll for Free</button>
         </div>
       </div>
     </div>
@@ -149,12 +149,16 @@
     <div class="row mx-0 px-4 px-md-5 d-flex my-4 justify-content-center">
       <div class="row my-4 w-75 rowChangeWidth">
         <div class="col-12 col-lg-8 p-0" id="contentContainer">
-            <div class="col-12 p-0">
-                <div class="row mx-0 w-100">
-                    <div class="col-12 p-0 txtInfoTitle">
-                    About the Course
-                    <div class="mt-2" id="desContainer">
-                        <p>
+          <div class="col-12 p-0">
+            <div class="row mx-0 w-100">
+              <div class="col-12 p-0 txtInfoTitle">About the Course</div>
+              <div class="col-12 px-0 mt-2 text-justify courseDes" id="desContainer">
+                <div class="loadDes">
+                  <p class="my-1"></p>
+                  <p class="my-1"></p>
+                  <p class="my-1"></p>
+                </div>
+              <!-- <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut efficitur, diam non
                         vehicula tempus, leo odio vehicula ante, id consectetur elit mi eget justo.
                         Praesent eget magna vel mi finibus blandit vel a est. Cras congue efficitur arcu,
@@ -169,255 +173,286 @@
                         Aliquam erat volutpat. Aenean id ornare purus, eu consequat arcu. Proin vulputate
                         ultricies cursus. Nullam maximus non turpis non sodales. Quisque molestie sagittis
                         turpis non aliquam.
-                        </p>
-                    </div>
-                    </div>
-                </div>
+                        </p> -->
             </div>
-          <div class="col-12 p-0" id="rowReview"></div>
+          </div>
+        </div>
+        <div class="col-12 p-0" id="rowReview"></div>
 
-
-
-            <div class="col-12 mt-4 mt-lg-5 px-0">
-                <div class="row w-100 mx-0">
-                    <div class="col-12 p-0 mb-3 txtInfoTitle" style="font-size: 26px;">
-                    Course Content
-                    </div>
-                    <div class="col-12 px-0 pl-sm-3">
-
-                      <div class="accordion md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
-                        <div class="card">
-                          <button class="btn p-0" data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne1" aria-expanded="false" aria-controls="collapseOne1">
-                            <div class="card-header" role="tab" id="headingOne1">
-                              <div class="w-100 mb-0 d-flex justify-content-between align-items-center">
-                                <div class="row text-left">
-                                  <div class="col-12 accordionHeaderText lh-1">Chapter 1 Title</div>
-                                  <div class="col-12 text-muted small">2 videos, 1 quiz </div>
-                                </div> 
-                                <i class="fas fa-angle-down rotate-icon "></i>
-                              </div>
-                            </div>
-                          </button>
-                          <div id="collapseOne1" class="collapse " role="tabpanel" aria-labelledby="headingOne1" data-parent="#accordionEx">
-                            <div class="card-body p-0">
-                              <div class="row mx-0">
-                                <div class="col-12 py-2">
-                                  <button class="btn w-100">
-                                    <div class="row d-flex align-items-center">
-                                      <div>
-                                        <i class="far fa-play-circle"></i>
-                                      </div>
-                                      <div class="px-2 d-flex flex-column">
-                                       <div class="accordionSubItemText lh-1 text-left">Video 1</div>
-                                       <div class=" text-muted small text-left">3:05</div>
-                                      </div>
-                                    </div>
-                                  </button>
-                                </div>
-                                <div class="col-12 py-2">
-                                  <button class="btn w-100">
-                                    <div class="row d-flex align-items-center">
-                                      <div>
-                                        <i class="far fa-play-circle"></i>
-                                      </div>
-                                      <div class="px-2 d-flex flex-column">
-                                       <div class="accordionSubItemText lh-1 text-left">Video 2</div>
-                                       <div class=" text-muted small text-left">3:05</div>
-                                      </div>
-                                    </div>
-                                  </button>
-                                </div>
-                                <div class="col-12 py-2">
-                                  <button class="btn w-100">
-                                    <div class="row d-flex align-items-center">
-                                      <div>
-                                       <i class="far fa-file-alt"></i>
-                                      </div>
-                                      <div class="px-2 d-flex flex-column">
-                                       <div class="accordionSubItemText lh-1 text-left">Quiz</div>
-                                       <div class=" text-muted small text-left">20 questions</div>
-                                      </div>
-                                    </div>
-                                  </button>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-
-                         </div>
+        <div class="col-12 mt-4 mt-lg-5 px-0">
+          <div class="row w-100 mx-0">
+            <div class="col-12 p-0 mb-3 txtInfoTitle" style="font-size: 26px">Course Content</div>
+            <div class="col-12 px-0 pl-sm-3" id="accordionContainer">
+              <!-- <div
+                class="accordion md-accordion"
+                id="accordionEx"
+                role="tablist"
+                aria-multiselectable="true"
+              >
+                <div class="card">
+                  <button
+                    class="btn p-0"
+                    data-toggle="collapse"
+                    data-parent="#accordionEx"
+                    href="#collapseOne1"
+                    aria-expanded="false"
+                    aria-controls="collapseOne1"
+                  >
+                    <div class="card-header" role="tab" id="headingOne1">
+                      <div class="w-100 mb-0 d-flex justify-content-between align-items-center">
+                        <div class="row text-left">
+                          <div class="col-12 accordionHeaderText lh-1">Chapter 1 Title</div>
+                          <div class="col-12 text-muted small">2 videos, 1 quiz</div>
+                        </div>
+                        <i class="fas fa-angle-down rotate-icon"></i>
                       </div>
-
-                      <div class="accordion md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
-                        <div class="card">
-                          <button class="btn p-0" data-toggle="collapse" data-parent="#accordionEx" href="#collapseTwo2" aria-expanded="false" aria-controls="collapseTwo2">
-                            <div class="card-header" role="tab" id="headingOne1">
-                              <div class="w-100 mb-0 d-flex justify-content-between align-items-center">
-                                <div class="row text-left">
-                                  <div class="col-12 accordionHeaderText lh-1">Chapter 2 Title</div>
-                                  <div class="col-12 text-muted small">2 videos, 1 quiz </div>
-                                </div> 
-                                <i class="fas fa-angle-down rotate-icon "></i>
-                              </div>
-                            </div>
-                          </button>
-                          <div id="collapseTwo2" class="collapse" role="tabpanel" aria-labelledby="headingOne1" data-parent="#accordionEx">
-                            <div class="card-body p-0">
-                              <div class="row mx-0">
-                                <div class="col-12 py-2">
-                                  <button class="btn w-100">
-                                    <div class="row d-flex align-items-center">
-                                      <div>
-                                        <i class="far fa-play-circle"></i>
-                                      </div>
-                                      <div class="px-2 d-flex flex-column">
-                                       <div class="accordionSubItemText lh-1 text-left">Video 1</div>
-                                       <div class=" text-muted small text-left">3:05</div>
-                                      </div>
-                                    </div>
-                                  </button>
-                                </div>
-                                <div class="col-12 py-2">
-                                  <button class="btn w-100">
-                                    <div class="row d-flex align-items-center">
-                                      <div>
-                                        <i class="far fa-play-circle"></i>
-                                      </div>
-                                      <div class="px-2 d-flex flex-column">
-                                       <div class="accordionSubItemText lh-1 text-left">Video 2</div>
-                                       <div class=" text-muted small text-left">3:05</div>
-                                      </div>
-                                    </div>
-                                  </button>
-                                </div>
-                                <div class="col-12 py-2">
-                                  <button class="btn w-100">
-                                    <div class="row d-flex align-items-center">
-                                      <div>
-                                       <i class="far fa-file-alt"></i>
-                                      </div>
-                                      <div class="px-2 d-flex flex-column">
-                                       <div class="accordionSubItemText lh-1 text-left">Quiz</div>
-                                       <div class=" text-muted small text-left">20 questions</div>
-                                      </div>
-                                    </div>
-                                  </button>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-
-                         </div>
-                      </div>
-
-
-                        
                     </div>
-                </div>
-            </div>
-
-            <div class="col-12">
-              <div class="row mt-5">
-                <div class="col-12 p-0 mb-2 txtInfoTitle"> Reviews </div>
-                <div class="col-12 p-0 "><span class="txtInfoTitle">4.7</span> out of 5 (27 reviews)</div>
-                <div class="col-12 p-0">
-                <i class="fas fa-star star1"></i>
-                <i class="fas fa-star star2"></i>
-                <i class="fas fa-star star3"></i>
-                <i class="fas fa-star star4"></i>
-                <i class="far fa-star star5"></i>
-              </div>
-              </div>
-              <div class="row " id="reviewsContainer">
-                <div class="col-12 mt-3">
-                  <div class="row py-3 px-4 reviewBox">
-                     <div class="col-12 d-flex p-0 reviewStar">
-                      <i class="fas fa-star star1"></i>
-                      <i class="fas fa-star star2"></i>
-                      <i class="fas fa-star star3"></i>
-                      <i class="fas fa-star star4"></i>
-                      <i class="far fa-star star5"></i>
-                      <div class="reviewDate">11/26/20</div>
-                    </div>
-                    <div class="col-12 p-0 mt-3 text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut efficitur, diam non vehicula tempus, leo odio vehicula ante, id consectetur elit mi eget justo.</div>
-                    <div class="col-12 p-0 mt-1 reviewName">-Full N.</div>
-                  </div>
-
-
-
-                </div>
-                <div class="col-12 mt-3">
-                  <div class="row py-3 px-4 reviewBox">
-                     <div class="col-12 d-flex p-0 reviewStar">
-                      <i class="fas fa-star star1"></i>
-                      <i class="fas fa-star star2"></i>
-                      <i class="fas fa-star star3"></i>
-                      <i class="fas fa-star star4"></i>
-                      <i class="far fa-star star5"></i>
-                      <div class="reviewDate">11/26/20</div>
-                    </div>
-                    <div class="col-12 p-0 mt-3 text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut efficitur, diam non vehicula tempus, leo odio vehicula ante, id consectetur elit mi eget justo.</div>
-                    <div class="col-12 p-0 mt-1 reviewName">-Full N.</div>
-                  </div>
-                </div>
-                <div class="col-12 mt-3">
-                  <div class="row py-3 px-4 reviewBox">
-                     <div class="col-12 d-flex p-0 reviewStar">
-                      <i class="fas fa-star star1"></i>
-                      <i class="fas fa-star star2"></i>
-                      <i class="fas fa-star star3"></i>
-                      <i class="fas fa-star star4"></i>
-                      <i class="far fa-star star5"></i>
-                      <div class="reviewDate">11/26/20</div>
-                    </div>
-                    <div class="col-12 p-0 mt-3 text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut efficitur, diam non vehicula tempus, leo odio vehicula ante, id consectetur elit mi eget justo.</div>
-                    <div class="col-12 p-0 mt-1 reviewName">-Full N.</div>
-                  </div>
-                </div>
-
-                <div class="col-12 mt-5 p-0">
-                  <button class="btn btn-danger d-flex m-auto btnMoreReviews" id="btnMoreReviews">
-                    See More Reviews
                   </button>
+                  <div
+                    id="collapseOne1"
+                    class="collapse"
+                    role="tabpanel"
+                    aria-labelledby="headingOne1"
+                    data-parent="#accordionEx"
+                  >
+                    <div class="card-body p-0">
+                      <div class="row mx-0">
+                        <div class="col-12 py-2">
+                          <button class="btn w-100">
+                            <div class="row d-flex align-items-center">
+                              <div>
+                                <i class="far fa-play-circle"></i>
+                              </div>
+                              <div class="px-2 d-flex flex-column">
+                                <div class="accordionSubItemText lh-1 text-left">Video 1</div>
+                                <div class="text-muted small text-left">3:05</div>
+                              </div>
+                            </div>
+                          </button>
+                        </div>
+                        <div class="col-12 py-2">
+                          <button class="btn w-100">
+                            <div class="row d-flex align-items-center">
+                              <div>
+                                <i class="far fa-play-circle"></i>
+                              </div>
+                              <div class="px-2 d-flex flex-column">
+                                <div class="accordionSubItemText lh-1 text-left">Video 2</div>
+                                <div class="text-muted small text-left">3:05</div>
+                              </div>
+                            </div>
+                          </button>
+                        </div>
+                        <div class="col-12 py-2">
+                          <button class="btn w-100">
+                            <div class="row d-flex align-items-center">
+                              <div>
+                                <i class="far fa-file-alt"></i>
+                              </div>
+                              <div class="px-2 d-flex flex-column">
+                                <div class="accordionSubItemText lh-1 text-left">Quiz</div>
+                                <div class="text-muted small text-left">20 questions</div>
+                              </div>
+                            </div>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+              </div> -->
 
+              <!-- <div
+                class="accordion md-accordion"
+                id="accordionEx"
+                role="tablist"
+                aria-multiselectable="true"
+              >
+                <div class="card">
+                  <button
+                    class="btn p-0"
+                    data-toggle="collapse"
+                    data-parent="#accordionEx"
+                    href="#collapseTwo2"
+                    aria-expanded="false"
+                    aria-controls="collapseTwo2"
+                  >
+                    <div class="card-header" role="tab" id="headingOne1">
+                      <div class="w-100 mb-0 d-flex justify-content-between align-items-center">
+                        <div class="row text-left">
+                          <div class="col-12 accordionHeaderText lh-1">Chapter 2 Title</div>
+                          <div class="col-12 text-muted small">2 videos, 1 quiz</div>
+                        </div>
+                        <i class="fas fa-angle-down rotate-icon"></i>
+                      </div>
+                    </div>
+                  </button>
+                  <div
+                    id="collapseTwo2"
+                    class="collapse"
+                    role="tabpanel"
+                    aria-labelledby="headingOne1"
+                    data-parent="#accordionEx"
+                  >
+                    <div class="card-body p-0">
+                      <div class="row mx-0">
+                        <div class="col-12 py-2">
+                          <button class="btn w-100">
+                            <div class="row d-flex align-items-center">
+                              <div>
+                                <i class="far fa-play-circle"></i>
+                              </div>
+                              <div class="px-2 d-flex flex-column">
+                                <div class="accordionSubItemText lh-1 text-left">Video 1</div>
+                                <div class="text-muted small text-left">3:05</div>
+                              </div>
+                            </div>
+                          </button>
+                        </div>
+                        <div class="col-12 py-2">
+                          <button class="btn w-100">
+                            <div class="row d-flex align-items-center">
+                              <div>
+                                <i class="far fa-play-circle"></i>
+                              </div>
+                              <div class="px-2 d-flex flex-column">
+                                <div class="accordionSubItemText lh-1 text-left">Video 2</div>
+                                <div class="text-muted small text-left">3:05</div>
+                              </div>
+                            </div>
+                          </button>
+                        </div>
+                        <div class="col-12 py-2">
+                          <button class="btn w-100">
+                            <div class="row d-flex align-items-center">
+                              <div>
+                                <i class="far fa-file-alt"></i>
+                              </div>
+                              <div class="px-2 d-flex flex-column">
+                                <div class="accordionSubItemText lh-1 text-left">Quiz</div>
+                                <div class="text-muted small text-left">20 questions</div>
+                              </div>
+                            </div>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <div class="row mt-5">
+            <div class="col-12 p-0 mb-2 txtInfoTitle">Reviews</div>
+            <div class="col-12 p-0">
+              <span class="txtInfoTitle">4.7</span> out of 5 (27 reviews)
+            </div>
+            <div class="col-12 p-0">
+              <i class="fas fa-star star1"></i>
+              <i class="fas fa-star star2"></i>
+              <i class="fas fa-star star3"></i>
+              <i class="fas fa-star star4"></i>
+              <i class="far fa-star star5"></i>
+            </div>
+          </div>
+          <div class="row" id="reviewsContainer">
+            <div class="col-12 mt-3">
+              <div class="row py-3 px-4 reviewBox">
+                <div class="col-12 d-flex p-0 reviewStar">
+                  <i class="fas fa-star star1"></i>
+                  <i class="fas fa-star star2"></i>
+                  <i class="fas fa-star star3"></i>
+                  <i class="fas fa-star star4"></i>
+                  <i class="far fa-star star5"></i>
+                  <div class="reviewDate">11/26/20</div>
+                </div>
+                <div class="col-12 p-0 mt-3 text-justify">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut efficitur, diam non
+                  vehicula tempus, leo odio vehicula ante, id consectetur elit mi eget justo.
+                </div>
+                <div class="col-12 p-0 mt-1 reviewName">-Full N.</div>
+              </div>
+            </div>
+            <div class="col-12 mt-3">
+              <div class="row py-3 px-4 reviewBox">
+                <div class="col-12 d-flex p-0 reviewStar">
+                  <i class="fas fa-star star1"></i>
+                  <i class="fas fa-star star2"></i>
+                  <i class="fas fa-star star3"></i>
+                  <i class="fas fa-star star4"></i>
+                  <i class="far fa-star star5"></i>
+                  <div class="reviewDate">11/26/20</div>
+                </div>
+                <div class="col-12 p-0 mt-3 text-justify">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut efficitur, diam non
+                  vehicula tempus, leo odio vehicula ante, id consectetur elit mi eget justo.
+                </div>
+                <div class="col-12 p-0 mt-1 reviewName">-Full N.</div>
+              </div>
+            </div>
+            <div class="col-12 mt-3">
+              <div class="row py-3 px-4 reviewBox">
+                <div class="col-12 d-flex p-0 reviewStar">
+                  <i class="fas fa-star star1"></i>
+                  <i class="fas fa-star star2"></i>
+                  <i class="fas fa-star star3"></i>
+                  <i class="fas fa-star star4"></i>
+                  <i class="far fa-star star5"></i>
+                  <div class="reviewDate">11/26/20</div>
+                </div>
+                <div class="col-12 p-0 mt-3 text-justify">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut efficitur, diam non
+                  vehicula tempus, leo odio vehicula ante, id consectetur elit mi eget justo.
+                </div>
+                <div class="col-12 p-0 mt-1 reviewName">-Full N.</div>
               </div>
             </div>
 
+            <div class="col-12 mt-5 p-0">
+              <button class="btn btn-danger d-flex m-auto btnMoreReviews" id="btnMoreReviews">
+                See More Reviews
+              </button>
+            </div>
+          </div>
         </div>
+      </div>
 
-        <div
-          class="col-12 col-lg-4 pl-0 pl-lg-5  p-0 mt-5 mt-md-0 d-flex justify-content-center justify-content-md-end" id="reviewColumn"
-        >
-          <div class="container px-0 w-100 ratingContainer" id="ratingContainer">
-            <div class="row mx-0 w-100 py-5">
-              <div class="col-12 text-center ratingNumber lh-1">4.7</div>
-              <div class="col-12 text-center">
-                <i class="fas fa-star star1"></i>
-                <i class="fas fa-star star2"></i>
-                <i class="fas fa-star star3"></i>
-                <i class="fas fa-star star4"></i>
-                <i class="far fa-star star5"></i>
-              </div>
-              <div class="col-12 text-center txtReviews">27 reviews</div>
+      <div
+        class="col-12 col-lg-4 pl-0 pl-lg-5 p-0 mt-5 mt-md-0 d-flex justify-content-center justify-content-md-end"
+        id="reviewColumn"
+      >
+        <div class="container px-0 w-100 ratingContainer" id="ratingContainer">
+          <div class="row mx-0 w-100 py-5">
+            <div class="col-12 text-center ratingNumber lh-1">4.7</div>
+            <div class="col-12 text-center">
+              <i class="fas fa-star star1"></i>
+              <i class="fas fa-star star2"></i>
+              <i class="fas fa-star star3"></i>
+              <i class="fas fa-star star4"></i>
+              <i class="far fa-star star5"></i>
             </div>
-            <hr class="my-0 dividerReview" />
-            <div class="row mx-0 w-100 py-4">
-              <div class="col-12 text-center txtRatingTitle">Time to Complete</div>
-              <div class="col-12 text-center txtRatingValue">10 hours</div>
-            </div>
-            <hr class="my-0 dividerReview" />
-            <div class="row mx-0 w-100 py-4">
-              <div class="col-12 text-center txtRatingTitle">Students Enrolled</div>
-              <div class="col-12 text-center txtRatingValue">45</div>
-            </div>
-            <hr class="my-0 dividerReview" />
-            <div class="row mx-0 w-100 py-4">
-              <div class="col-12 text-center txtRatingTitle">Prerequisite</div>
-              <div class="col-12 text-center txtRatingValue">Course I</div>
-            </div>
+            <div class="col-12 text-center txtReviews">27 reviews</div>
+          </div>
+          <hr class="my-0 dividerReview" />
+          <div class="row mx-0 w-100 py-4">
+            <div class="col-12 text-center txtRatingTitle">Time to Complete</div>
+            <div class="col-12 text-center txtRatingValue">10 hours</div>
+          </div>
+          <hr class="my-0 dividerReview" />
+          <div class="row mx-0 w-100 py-4">
+            <div class="col-12 text-center txtRatingTitle">Students Enrolled</div>
+            <div class="col-12 text-center txtRatingValue">45</div>
+          </div>
+          <hr class="my-0 dividerReview" />
+          <div class="row mx-0 w-100 py-4">
+            <div class="col-12 text-center txtRatingTitle">Prerequisite</div>
+            <div class="col-12 text-center txtRatingValue">Course I</div>
+          </div>
         </div>
-    </div>
-    
+      </div>
     </div>
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -436,6 +471,7 @@
     <script src="js/bootstrapJs/bootstrap.bundle.js"></script>
     <script src="js/bootstrapJs/bootstrap.js"></script>
     <script src="js/isSigned/isSigned.js"></script>
+    <script src="js/forum/getTimeAgo.js"></script>
     <script src="js/isSigned/getNotif.js"></script>
     <script src="js/nav/nav.js"></script>
     <script src="js/course/course.js"></script>

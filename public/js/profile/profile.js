@@ -59,13 +59,10 @@ btnSave.onclick = () => {
         task.on(
           "state_changed",
           function progress(snapshot) {
-            let percentage = Math.floor(
-              (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-            );
+            let percentage = Math.floor((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
             uploadProgressBar.style.width = `${percentage}%`;
             uploadProgressBar.innerHTML = `Uploading image ${percentage}%`;
-            if (percentage === 100)
-              uploadProgressBar.innerHTML = "Upload Complete!";
+            if (percentage === 100) uploadProgressBar.innerHTML = "Upload Complete!";
           },
           function error(err) {
             console.log(err);
@@ -73,13 +70,13 @@ btnSave.onclick = () => {
           },
           function complete() {
             uploadProgressBar.innerHTML = "Upload Complete!";
-            let starsRef = firebase
-              .storage()
-              .ref()
-              .child(`profileImage/${user.uid}`);
+            let starsRef = firebase.storage().ref().child(`profileImage/${user.uid}`);
             starsRef.getDownloadURL().then(function (url) {
               database.ref("users/" + user.uid).update({
                 photoUrl: url,
+              });
+              user.updateProfile({
+                photoURL: url,
               });
               user
                 .updateProfile({
@@ -96,7 +93,17 @@ btnSave.onclick = () => {
           }
         );
       }
-
+      firebase
+        .auth()
+        .currentUser.updateProfile({
+          displayName: modalFullName.value,
+        })
+        .then(function () {
+          console.log("success");
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
       database
         .ref("users/" + user.uid)
         .update({

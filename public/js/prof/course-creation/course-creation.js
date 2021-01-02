@@ -452,7 +452,7 @@ function addNewItem(id, vidId, action) {
   let itemId;
   if (action === "add") {
     newNode = document.createElement("div");
-    itemId = randomId() + "0" + randomId() + "0" + randomId() + "0" + randomId();
+    itemId = Date.now() + "x" + randomId() + "0" + randomId() + "0" + randomId();
     newNode.id = itemId;
   } else {
     newNode = document.getElementById(id);
@@ -709,7 +709,7 @@ function addQuiz(element, action) {
   let itemId;
   if (action === "add") {
     newNode = document.createElement("div");
-    itemId = randomId() + "0" + randomId() + "0" + randomId() + "0" + randomId();
+    itemId = Date.now() + "x" + randomId() + "0" + randomId() + "0" + randomId();
     newNode.id = itemId;
   } else {
     newNode = document.getElementById(id);
@@ -755,7 +755,6 @@ function addQuiz(element, action) {
   document.getElementById(
     `quizItemsContainer-${chapterNumber}`
   ).id = `quizItemsContainer-${itemId}`;
-
   let items = {};
   for (let i = 1; i <= questionNumber; i++) {
     items[i] = {
@@ -948,17 +947,20 @@ function saveToDb(url, newCourseKey) {
 
   let newCourseChapterKey = firebase.database().ref().child("course_chapters").push().key;
   let courseData = {
+    course_id: newCourseKey,
     course_title: courseTitleInput.value.trim(),
     course_brief: courseBriefInput.value.trim(),
     category: categoryInput.value.trim(),
     chapter_number: chapterCount,
     units: unitsInput.value.trim(),
     prerequisite: prerequisiteInput.value.trim(),
-    chapter_thumbnail: url,
+    course_thumbnail: url,
     student_count: 0,
-    contents: [],
+    created_datetime: firebase.database.ServerValue.TIMESTAMP,
+    contents: newCourseChapterKey,
+    prof_name: user.displayName,
+    rating: 0,
   };
-  courseData.contents = newCourseChapterKey;
 
   let chapterObj = {};
   for (let i = 1; i <= chapterCount; i++) {

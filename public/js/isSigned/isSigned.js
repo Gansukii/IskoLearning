@@ -2,9 +2,10 @@
 // const navUserType = document.getElementById("navUserType");
 // navFullName.innerHTML = localStorage.getItem("fullname");
 // navUserType.innerHTML = localStorage.getItem("username");
-
+// var currUser = null;
 firebase.auth().onAuthStateChanged(function (user) {
   if (user) {
+    // currUser = user;
     firebase
       .database()
       .ref("users/" + user.uid)
