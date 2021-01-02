@@ -5,8 +5,11 @@ const tagsContainer = document.getElementById("tagsContainer");
 const questionTags = document.getElementById("questionTags");
 const tagSearchContainer = document.getElementById("tagSearchContainer");
 const tagsPaperContainer = document.getElementById("tagsPaperContainer");
+// const questionsContainer = document.getElementById("questionsContainerInner");
+// const questionsContainerSorted = document.getElementById("questionsContainerSorted");
 let userUpvotesArr = [];
 let tags = [];
+let selectedSortTag = document.getElementById("tagAll");
 localStorage.setItem("tags", []);
 firebase
   .database()
@@ -28,7 +31,7 @@ firebase
     tagSearchContainer.appendChild(searchTagItem);
     let selectTag = document.createElement("div");
     selectTag.className = "badge badge-pill mx-1 mb-2 tagSelect";
-    selectTag.innerHTML = `<span class="badgeDelete ml-1" onclick="">${data.val()}</span>`;
+    selectTag.innerHTML = `<span class="badgeDelete ml-1" onclick="sortByTags(this)">${data.val()}</span>`;
     tagsPaperContainer.appendChild(selectTag);
   });
 
@@ -89,4 +92,22 @@ function addTag(element, action) {
   tagsContainer.appendChild(newTag);
   questionTags.value = "";
   tagSearchContainer.classList.add("d-none");
+}
+
+function sortByTags(element) {
+  console.log(selectedSortTag);
+  selectedSortTag.classList.remove("tagSelected");
+  element.parentNode.classList.add("tagSelected");
+  selectedSortTag = element.parentNode;
+  console.log(selectedSortTag);
+  if (element === selectedSortTag) {
+    return;
+  }
+  if (element.textContent !== "all") {
+    document.getElementById("spinnerContainer").classList.add("d-flex");
+    getSortedQuestion(element.textContent, userUpvotesArr);
+  } else {
+    questionsContainer.classList.remove("d-none");
+    questionsContainerSorted.innerHTML = "";
+  }
 }

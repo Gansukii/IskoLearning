@@ -216,6 +216,8 @@
               <div class="w-100 d-flex justify-content-center d-none" id="spinnerContainer">
                 <div class="spinner-grow spinner-grow-sm" role="status"></div>
               </div>
+              <div id="questionsContainerInner"></div>
+              <div id="questionsContainerSorted"></div>
             </div>
           </div>
         </div>
@@ -223,7 +225,11 @@
           <div class="row mx-0 w-100 mx-0 mt-3 mt-md-0 px-4 py-3 rounded paper tagsPaper">
             <div class="col-12 px-0 askQuestionPaper">Tags</div>
             <hr />
-            <div class="col-12 px-0" id="tagsPaperContainer"></div>
+            <div class="col-12 px-0" id="tagsPaperContainer">
+              <div class="badge badge-pill mx-1 mb-2 tagSelect tagSelected" id="tagAll">
+                <span class="badgeDelete ml-1" onclick="sortByTags(this)">all</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -251,6 +257,7 @@
     <script src="js/forum/getUserUpvotes.js"></script>
     <script src="js/forum/addQuestion.js"></script>
     <script src="js/forum/getQuestion.js"></script>
+    <script src="js/forum/getSortedQuestion.js"></script>
     <script src="js/forum/forum.js"></script>
     <script src="js/nav/nav.js"></script>
   </body>

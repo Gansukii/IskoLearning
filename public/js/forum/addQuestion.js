@@ -8,6 +8,7 @@ function addQuestion(user, title, body, tags) {
     upvote_count: 0,
     answer_count: 0,
     answers: null,
+    tags: tags,
     created_datetime: firebase.database.ServerValue.TIMESTAMP,
   };
 
@@ -32,10 +33,14 @@ function addQuestion(user, title, body, tags) {
     })
     .then((finalTags) => {
       let updates = {};
-      questionForm["tags"] = finalTags;
+      // questionForm["tags"] = finalTags;
       updates["questions/" + newQuestionKey] = questionForm;
       updates["user-questions/" + user.uid + "/" + newQuestionKey] = questionForm;
       updates["tags"] = finalTags;
+      tags.forEach((tag) => {
+        updates["tags_questions/" + tag + "/" + newQuestionKey] = { question_id: newQuestionKey };
+      });
+      // updates["tags_questions"] = finalTags;
       firebase.database().ref().update(updates);
       location.reload();
     });

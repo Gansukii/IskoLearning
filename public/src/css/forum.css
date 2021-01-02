@@ -32,6 +32,10 @@ body {
   color: #7f0303;
   border: 1px solid #7f0303;
 }
+.tagSelected {
+  background-color: #7f0303;
+  color: #ffffff;
+}
 .questionName {
   font-weight: 600;
   font-size: 14px;
@@ -51,6 +55,7 @@ body {
   color: #7f0303;
   border: 1px solid #7f0303;
 }
+
 .badgeDelete {
   cursor: pointer;
 }

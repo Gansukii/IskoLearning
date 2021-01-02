@@ -1,49 +1,42 @@
-const questionsContainer = document.getElementById("questionsContainer");
+const questionsContainer = document.getElementById("questionsContainerInner");
 
 function getQuestions(uid, userUpvotesArr) {
   let currDate;
   let dateRetriever = firebase.database().ref("/date");
-  dateRetriever
-    .update({ currTime: firebase.database.ServerValue.TIMESTAMP })
-    .then(function (data) {
-      dateRetriever
-        .once("value")
-        .then((snapshot) => {
-          currDate = new Date(snapshot.val().currTime);
-        })
-        .then(() => {
-          firebase
-            .database()
-            .ref("/questions")
-            .once("value")
-            .then((snapshot) => {
-              document
-                .getElementById("spinnerContainer")
-                .classList.remove("d-flex");
-              if (!snapshot.val()) {
-                questionsContainer.innerHTML = `<div class="text-muted">no data found</div>`;
-                return;
-              }
-              let questionsArr = Object.values(snapshot.val()).reverse();
+  dateRetriever.update({ currTime: firebase.database.ServerValue.TIMESTAMP }).then(function (data) {
+    dateRetriever
+      .once("value")
+      .then((snapshot) => {
+        currDate = new Date(snapshot.val().currTime);
+      })
+      .then(() => {
+        firebase
+          .database()
+          .ref("/questions")
+          .once("value")
+          .then((snapshot) => {
+            document.getElementById("spinnerContainer").classList.remove("d-flex");
+            if (!snapshot.val()) {
+              questionsContainer.innerHTML = `<div class="text-muted">no data found</div>`;
+              return;
+            }
+            let questionsArr = Object.values(snapshot.val()).reverse();
 
-              questionsArr.forEach((data) => {
-                let dateDiff =
-                  Math.abs(currDate - new Date(data.created_datetime)) / 1000;
-                let timeAgo = getTimeAgo(dateDiff);
+            questionsArr.forEach((data) => {
+              let dateDiff = Math.abs(currDate - new Date(data.created_datetime)) / 1000;
+              let timeAgo = getTimeAgo(dateDiff);
 
-                let isUpvoted = userUpvotesArr.includes(data.question_id)
-                  ? "upvoted"
-                  : null;
+              let isUpvoted = userUpvotesArr.includes(data.question_id) ? "upvoted" : null;
 
-                let node = document.createElement("div");
-                firebase
-                  .database()
-                  .ref("users/" + data.user)
-                  .once("value")
-                  .then((snapshot) => {
-                    let userInfo = snapshot.val();
-                    if (userInfo) {
-                      node.innerHTML = `<div class='col-12 mb-3'>
+              let node = document.createElement("div");
+              firebase
+                .database()
+                .ref("users/" + data.user)
+                .once("value")
+                .then((snapshot) => {
+                  let userInfo = snapshot.val();
+                  if (userInfo) {
+                    node.innerHTML = `<div class='col-12 mb-3'>
                       <div class='row mb-3 questionIcons' key=${data.question_id} time='12'>
                         <div class='p-0 d-flex align-items-center mr-3 iconToggle ${isUpvoted}' onClick='upvote(this)'>
                           <i class='far fa-caret-square-up mr-1'></i><div>${data.upvote_count}</div>
@@ -67,14 +60,14 @@ function getQuestions(uid, userUpvotesArr) {
                       </div>
                     </div>
                     <hr class='mb-1' />`;
-                    }
-                  });
+                  }
+                });
 
-                questionsContainer.appendChild(node);
-              });
+              questionsContainer.appendChild(node);
             });
-        });
-    });
+          });
+      });
+  });
 }
 
 function upvote(e) {
