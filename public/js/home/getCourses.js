@@ -41,6 +41,9 @@ firebase.auth().onAuthStateChanged(function (user) {
                   </div>
                 </div>`;
                   latest.insertBefore(newNode, arrowRight);
+                  if (data.course_thumbnail === undefined) {
+                    newNode.firstElementChild.firstElementChild.removeAttribute("style");
+                  }
                 });
               });
           });

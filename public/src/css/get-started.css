@@ -57,7 +57,7 @@
 .thumb {
   /* background: url(https://froala.com/wp-content/uploads/2019/11/post41.svg)
     no-repeat center; */
-  background-color: honeydew;
+  background-color: #b9b9b9;
   background-size: cover;
   height: 150px;
 }
@@ -71,6 +71,9 @@
   font-weight: 700;
   font-size: 16px;
   color: #000000;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .courseProf {
@@ -133,11 +136,7 @@
 .arrowRight:hover,
 .arrowLeft:hover {
   background: rgb(255, 255, 255);
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(0, 0, 0, 0.4) 100%
-  );
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.4) 100%);
   -webkit-text-stroke: 1px #ffffff;
   color: #000;
 }

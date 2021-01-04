@@ -1,3 +1,4 @@
+const courseProgressContainer = document.getElementById("courseProgressContainer");
 const ratingContainer = document.getElementById("ratingContainer");
 const reviewColumn = document.getElementById("reviewColumn");
 const rowReview = document.getElementById("rowReview");
@@ -6,6 +7,13 @@ const txtCourseTitle = document.getElementById("txtCourseTitle");
 const txtCourseProf = document.getElementById("txtCourseProf");
 const desContainer = document.getElementById("desContainer");
 const accordionContainer = document.getElementById("accordionContainer");
+const txtRating = document.getElementById("txtRating");
+const reviewsCount = document.getElementById("reviewsCount");
+const starContainer = document.getElementById("starContainer");
+const reviewBoxStarContainer = document.getElementById("reviewBoxStarContainer");
+const txtChapterCount = document.getElementById("txtChapterCount");
+const txtStudentCount = document.getElementById("txtStudentCount");
+const txtPrereq = document.getElementById("txtPrereq");
 let url = new URL(window.location.href);
 const courseId = url.searchParams.get("id");
 
@@ -19,40 +27,109 @@ window.onresize = () => {
   } else reviewColumn.appendChild(ratingContainer);
 };
 
+firebase
+  .database()
+  .ref("courses/" + courseId)
+  .once("value")
+  .then((snapshot) => {
+    if (snapshot.val() !== null) {
+      btnEnroll.removeAttribute("disabled");
+    } else {
+      alert("Course Not Found!");
+      window.history.back();
+    }
+  });
+
 firebase.auth().onAuthStateChanged(function (user) {
   if (user) {
-    btnEnroll.removeAttribute("disabled");
-    btnEnroll.onclick = () => {
-      firebase
-        .database()
-        .ref("courses/" + courseId)
-        .update({ student_count: 0 });
-      // firebase.database.ServerValue.increment(1)
-      firebase
-        .database()
-        .ref("student_user_course/" + user.uid + "/" + courseId)
-        .set({ courseId: courseId }, (error) => {
-          if (error) {
-            console.log(error);
-          } else {
-            let newStudentKey = firebase
+    // ################ IF ENROLLED ######################
+    firebase
+      .database()
+      .ref("course_students/" + courseId)
+      .once("value")
+      .then((snapshot) => {
+        if (snapshot.val()) {
+          if (user.uid in snapshot.val()) {
+            firebase
               .database()
-              .ref()
-              .child("course_students/" + courseId)
-              .push().key;
-            let updates = {};
-            updates["course_students/" + courseId + "/" + newStudentKey] = {
-              user: user.uid,
-              student_key: newStudentKey,
+              .ref("student_user_course/" + user.uid + "/" + courseId)
+              .once("value")
+              .then((snapshot) => {
+                const data = snapshot.val();
+                // btnEnroll.removeAttribute("disabled");
+                btnEnroll.innerHTML = data.progress_text;
+                courseProgressContainer.classList.remove("d-none");
+                courseProgressContainer.classList.add("d-flex");
+                document.getElementById("txtProgressPercent").innerHTML = data.progress_percent;
+                document.getElementById("txtCurrentChapter").innerHTML = data.current_chapter;
+                document.getElementById(
+                  "courseProgressBar"
+                ).style = `width: ${data.progress_percent}%;`;
+
+                btnEnroll.onclick = () => {
+                  startCourse(user);
+                };
+              });
+          } else {
+            btnEnroll.onclick = () => {
+              enrollUser(user);
             };
-            firebase.database().ref().update(updates);
-            location.reload();
           }
-        });
-    };
+        } else {
+          // btnEnroll.removeAttribute("disabled");
+          btnEnroll.onclick = () => {
+            enrollUser(user);
+          };
+        }
+      });
   }
 });
 
+function enrollUser(user) {
+  firebase
+    .database()
+    .ref("courses/" + courseId)
+    .update({ student_count: firebase.database.ServerValue.increment(1) });
+
+  firebase
+    .database()
+    .ref("student_user_course/" + user.uid + "/" + courseId)
+    .set(
+      {
+        courseId: courseId,
+        progress_text: "Start Course",
+        current_chapter: 1,
+        progress_percent: 0,
+        chapter_name: "",
+      },
+      (error) => {
+        if (error) {
+          console.log(error);
+        } else {
+          // let newStudentKey = firebase
+          //   .database()
+          //   .ref()
+          //   .child("course_students/" + courseId)
+          //   .push().key;
+          let updates = {};
+          updates["course_students/" + courseId + "/" + user.uid] = {
+            user: user.uid,
+            // student_key: newStudentKey,
+          };
+
+          firebase.database().ref().update(updates);
+          location.reload();
+        }
+      }
+    );
+}
+
+function startCourse(user) {
+  console.log(user);
+  window.location.assign(`/course-content?id=${courseId}`);
+}
+
+// ######################## SHOW DATA #########################
 firebase
   .database()
   .ref("courses/" + courseId)
@@ -60,18 +137,41 @@ firebase
   .then((snapshot) => {
     txtCourseTitle.classList.remove("loading");
     txtCourseProf.classList.remove("loading");
+    txtRating.classList.remove("loadingRating");
+    txtStudentCount.classList.remove("loadingRating");
+    txtPrereq.classList.remove("loadingRating");
+    txtChapterCount.classList.remove("loadingRating");
     desContainer.innerHTML = "";
     const data = snapshot.val();
     txtCourseTitle.innerHTML = data.course_title;
     txtCourseProf.innerHTML = "Prof. " + data.prof_name;
     desContainer.innerHTML = data.course_brief;
+    txtRating.innerHTML = data.rating.toFixed(1);
+    reviewsCount.innerHTML = data.review_count + (data.review_count < 2 ? " review" : " reviews");
+    let starCount = data.rating;
+    for (let i = 0; i < 5; i++) {
+      const star = document.createElement("i");
+      star.className = i < starCount ? "fas fa-star star2" : "far fa-star star2";
+      starContainer.appendChild(star);
+    }
+    txtChapterCount.innerHTML = data.chapter_number;
+    txtStudentCount.innerHTML = data.student_count;
+    txtPrereq.innerHTML = data.prerequisite === "" ? "--" : data.prerequisite;
+    document.getElementById("txtReviewBoxNum").innerHTML = data.rating.toFixed(1);
+    document.getElementById("txtReviewBoxCount").innerHTML = data.review_count;
+
+    for (let i = 0; i < 5; i++) {
+      const star = document.createElement("i");
+      star.className = i < starCount ? "fas fa-star star2" : "far fa-star star2";
+      reviewBoxStarContainer.appendChild(star);
+    }
     firebase
       .database()
       .ref("course_chapters/" + data.contents)
       .once("value")
       .then((cSnapshot) => {
         let chapterSnapshot = Object.values(cSnapshot.val());
-        console.log(chapterSnapshot);
+        // console.log(chapterSnapshot);
         chapterSnapshot.forEach((data) => {
           const newNode = document.createElement("div");
           newNode.innerHTML = `<div
@@ -129,7 +229,9 @@ firebase
             } else {
               quizCount++;
               icon = "fa-file-alt";
-              itemDes = (chapterContents[i].questions.length - 1).toString() + " questions";
+              itemDes =
+                (chapterContents[i].questions.length - 1).toString() +
+                (chapterContents[i].questions.length - 1 < 2 ? " question" : " questions");
             }
             const itemNode = document.createElement("div");
             itemNode.className = "col-12 py-2";
@@ -154,8 +256,6 @@ firebase
           vidString = videoCount.toString() + (videoCount > 1 ? " videos" : " video");
           quizString = quizCount.toString() + (quizCount > 1 ? " quizzes" : " quiz");
           itemsCount.innerHTML = vidString + " &#x25CF; " + quizString;
-          console.log(videoCount);
-          console.log(quizCount);
         });
       });
   });

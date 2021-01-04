@@ -132,53 +132,76 @@
 
     <div class="px-4 py-3 w-100 sticky-top header" id="header">
       <div class="row w-100 mx-0 d-flex justify-content-between">
-        <div class="col-12 col-sm-8 px-0 px-sm-2 txtCourse text-center text-sm-left">
-          Systems Integration and Architecture I
+        <div
+          class="col-12 col-sm-8 px-0 px-sm-2 txtCourse text-center text-sm-left"
+          id="textCourseTitle"
+        >
+          <div class="loadingTitle"></div>
         </div>
         <div
           class="col-12 col-sm-4 mt-2 mt-sm-0 d-flex flex-row justify-content-center justify-content-sm-end"
         >
-          <div class="lessonNav px-3 d-flex align-items-center c-p prev" disabled>
+          <button class="btn lessonNav px-3 d-flex align-items-center prev" id="btnPrev" disabled>
             Previous Lesson
-          </div>
-          <div class="lessonNav px-3 d-flex align-items-center c-p next lessonNavActive">
+          </button>
+          <button
+            class="btn lessonNav px-3 d-flex align-items-center next lessonNavActive"
+            id="btnNext"
+            disabled
+          >
             Next Lesson
-          </div>
+          </button>
         </div>
       </div>
     </div>
-    <div class="sideNav px-2 py-4 d-none d-md-flex position-fixed" id="sideNav">
-      <div class="row w-100 mx-0">
-        <div class="col-12" id="chapter1">
-          <div class="txtChapter mb-2">Chapter 1: Title</div>
-          <div class="chapterContents">
-            <button
-              class="btn w-100 text-left d-flex align-items-center btnSideItem btnSideItemActive"
-              onclick="changeActive(this)"
-            >
-              <i class="far fa-play-circle mr-2"></i>Lesson 1: Title
-            </button>
-            <button
-              class="btn w-100 text-left d-flex align-items-center btnSideItem"
-              onclick="changeActive(this)"
-            >
-              <i class="far fa-play-circle mr-2"></i>Lesson 2: Title
-            </button>
-            <button
-              class="btn w-100 text-left d-flex align-items-center btnSideItem"
-              onclick="changeActive(this)"
-            >
-              <i class="far fa-play-circle mr-2"></i>Lesson 3: Title
-            </button>
-          </div>
-        </div>
+    <div class="sideNav px-2 py-4 d-none d-md-block position-fixed" id="sideNav">
+      <div class="w-100 d-flex flex-column" id="sideLoadingContainer">
+        <p class="w-100 sideLoading"></p>
+        <p class="w-100 sideLoading"></p>
+        <p class="w-100 sideLoading"></p>
+        <p class="w-100 sideLoading"></p>
+        <p class="w-100 sideLoading"></p>
       </div>
+
+      <div class="row w-100 mx-0 d-none" id="sideNavDataContainer"></div>
     </div>
 
     <div class="mainContent mx-0 ml-md-auto px-0 py-3 p-sm-5" id="mainContent">
+      <div class="w-100 d-flex justify-content-end">
+        <button class="btn py-0 btnShowChapInfo" id="btnShowChapInfo">Show Chapter Info</button>
+      </div>
       <div class="px-3 w-100 h-100">
         <div class="row w-100 mx-0 px-sm-3" id="contentItem">
-          <div class="col-12 px-0 mt-2 mb-2 mb-sm-3 mt-sm-0 txtMain">Lesson 1 Title</div>
+          <!-- <div class="row w-100 mx-0 d-none" id="chapInfoContainer1">
+            <div
+              class="col-12 px-0 mt-2 mb-2 mb-sm-3 mt-sm-0 d-none d-flex justify-content-between txtMain"
+            >
+              <span id="txtChapterTitle1">Chapter 1 Title</span>
+              <div class="d-flex align-items-center">
+                <i class="far fa-times-circle c-p" onclick="hideChapText(this)"></i>
+              </div>
+            </div>
+            <div class="col-12 my-3 text-justify px-0" id="chapterDes1">
+              "These lecture notes cover the key ideas involved in designing algorithms. We shall
+              see how\nthey depend on the design of suitable data structures, and how some
+              structures and algorithms\nare more efficient than others for the same task. We will
+              concentrate on a few basic tasks,\nsuch as storing, sorting and searching data, that
+              underlie much of computer science, but the\ntechniques discussed will be applicable
+              much more generally.\nWe will start by studying some key data structures, such as
+              arrays, lists, queues, stacks\nand trees, and then move on to explore their use in a
+              range of different searching and sorting\nalgorithms. This leads on to the
+              consideration of approaches for more efficient storage of\ndata in hash tables.
+              Finally, we will look at graph based representations and cover the kinds\nof
+              algorithms needed to work efficiently with them. Throughout, we will investigate
+              the\ncomputational efficiency of the algorithms we develop, and gain intuitions about
+              the pros and\ncons of the various potential approaches for each task.\nWe will not
+              restrict ourselves to implementing the various data structures and algorithms\nin
+              particular computer programming languages (e.g., Java, C , OCaml), but specify them
+              in\nsimple pseudocode that can easily be implemented in any appropriate language.\n"
+            </div>
+          </div> -->
+          <!-- <div class="col-12 px-0 mt-2 mb-2 mb-sm-3 mt-sm-0 txtMain">Lesson 1 Title</div> -->
+
           <!-- <div id="questionsContainer">
             <div class="row w-100 mx-0 py-4 px-4 paper">
               <div class="row w-100 mx-0">
@@ -206,23 +229,9 @@
           <div class="col-12 px-0 mt-4 d-flex justify-content-end">
             <button class="btn btn-danger px-4 btnStart" id="btnStartQuiz">Start Quiz</button>
           </div> -->
-
-          <div class="thumbContainer">
-            <iframe
-              class="w-100 h-100"
-              src="https://www.youtube.com/embed/RRKJiM9Njr8"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-            ></iframe>
-          </div>
-          <div class="col-12 my-3 text-justify px-0 vidDescription" id="vidDescription">
-            Cillum adipisicing exercitation ea tempor duis adipisicing cupidatat. Irure amet
-            incididunt ad sit mollit qui in. Eiusmod incididunt minim excepteur et nisi duis. Elit
-            enim occaecat nisi deserunt fugiat laboris cupidatat ad velit. Quis nisi irure pariatur
-            id et ex elit dolore proident ea magna sunt eu nisi. Labore eu culpa eu est tempor Lorem
-            laborum dolore velit ullamco reprehenderit. Laboris aute deserunt ut eiusmod eu amet
-            esse amet aliqua aliqua. Ad duis elit occaecat ex labore nulla fugiat eu.
+          <div class="w-100" id="loadingMain">
+            <div class="col-12 w-25 my-3 loadingTxtMain"></div>
+            <div class="thumbContainer"></div>
           </div>
         </div>
       </div>
@@ -244,7 +253,7 @@
     <script src="js/bootstrapJs/bootstrap.bundle.js"></script>
     <script src="js/bootstrapJs/bootstrap.js"></script>
     <script src="js/isSigned/isSigned.js"></script>
-    <!-- <script src="js/forum/getTimeAgo.js"></script> -->
+    <script src="js/forum/getTimeAgo.js"></script>
     <script src="js/isSigned/getNotif.js"></script>
     <script src="js/nav/nav.js"></script>
     <script src="js/course-content/responsive.js"></script>

@@ -146,6 +146,17 @@
       </div>
     </div>
 
+    <div class="row mx-0 px-4 px-md-5 mt-4 mt-md-5 w-100 d-none justify-content-center " id="courseProgressContainer">
+      <div class="row mx-0 w-75 rowChangeWidth">
+        <div class="col-12 p-0 mb-3 mb-sm-4 txtInfoTitle">Course Progress</div>
+        <div class="col-12 px-0 txtCurrentChapter" >Chapter <span id="txtCurrentChapter"></span>:</div>
+        <div class="col-12 px-0 col-sm-9 progress my-1">
+          <div class="progress-bar bg-warning " role="progressbar"  aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" id="courseProgressBar"></div>
+        </div>
+        <div class="col-12 col-sm px-0 pl-sm-3 mt-1 mt-sm-0 txtProgressPercent"><span id="txtProgressPercent"></span>% COMPLETE</div>
+      </div>
+    </div>
+
     <div class="row mx-0 px-4 px-md-5 d-flex my-4 justify-content-center">
       <div class="row my-4 w-75 rowChangeWidth">
         <div class="col-12 col-lg-8 p-0" id="contentContainer">
@@ -156,9 +167,9 @@
                 <div class="loadDes">
                   <p class="my-1"></p>
                   <p class="my-1"></p>
-                  <p class="my-1"></p>
+                  <p class="my-1 mb-4"></p>
                 </div>
-              <!-- <p>
+                <!-- <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut efficitur, diam non
                         vehicula tempus, leo odio vehicula ante, id consectetur elit mi eget justo.
                         Praesent eget magna vel mi finibus blandit vel a est. Cras congue efficitur arcu,
@@ -174,16 +185,16 @@
                         ultricies cursus. Nullam maximus non turpis non sodales. Quisque molestie sagittis
                         turpis non aliquam.
                         </p> -->
+              </div>
             </div>
           </div>
-        </div>
-        <div class="col-12 p-0" id="rowReview"></div>
+          <div class="col-12 p-0" id="rowReview"></div>
 
-        <div class="col-12 mt-4 mt-lg-5 px-0">
-          <div class="row w-100 mx-0">
-            <div class="col-12 p-0 mb-3 txtInfoTitle" style="font-size: 26px">Course Content</div>
-            <div class="col-12 px-0 pl-sm-3" id="accordionContainer">
-              <!-- <div
+          <div class="col-12 mt-4 mt-lg-5 px-0">
+            <div class="row w-100 mx-0">
+              <div class="col-12 p-0 mb-3 txtInfoTitle" style="font-size: 26px">Course Content</div>
+              <div class="col-12 px-0 pl-sm-3" id="accordionContainer">
+                <!-- <div
                 class="accordion md-accordion"
                 id="accordionEx"
                 role="tablist"
@@ -262,7 +273,7 @@
                 </div>
               </div> -->
 
-              <!-- <div
+                <!-- <div
                 class="accordion md-accordion"
                 id="accordionEx"
                 role="tablist"
@@ -340,116 +351,117 @@
                   </div>
                 </div>
               </div> -->
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <div class="row mt-5">
+              <div class="col-12 p-0 mb-2 txtInfoTitle">Reviews</div>
+              <div class="col-12 p-0">
+                <span class="txtInfoTitle" id="txtReviewBoxNum"></span> out of 5 (<span id="txtReviewBoxCount"></span> reviews)
+              </div>
+              <div class="col-12 p-0" id="reviewBoxStarContainer">
+                <!-- <i class="fas fa-star star1"></i>
+                <i class="fas fa-star star2"></i>
+                <i class="fas fa-star star3"></i>
+                <i class="fas fa-star star4"></i>
+                <i class="far fa-star star5"></i> -->
+              </div>
+            </div>
+            <div class="row" id="reviewsContainer">
+              <div class="col-12 mt-3">
+                <div class="row py-3 px-4 reviewBox">
+                  <div class="col-12 d-flex p-0 reviewStar">
+                    <i class="fas fa-star star1"></i>
+                    <i class="fas fa-star star2"></i>
+                    <i class="fas fa-star star3"></i>
+                    <i class="fas fa-star star4"></i>
+                    <i class="far fa-star star5"></i>
+                    <div class="reviewDate">11/26/20</div>
+                  </div>
+                  <div class="col-12 p-0 mt-3 text-justify">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut efficitur, diam non
+                    vehicula tempus, leo odio vehicula ante, id consectetur elit mi eget justo.
+                  </div>
+                  <div class="col-12 p-0 mt-1 reviewName">-Full N.</div>
+                </div>
+              </div>
+              <div class="col-12 mt-3">
+                <div class="row py-3 px-4 reviewBox">
+                  <div class="col-12 d-flex p-0 reviewStar">
+                    <i class="fas fa-star star1"></i>
+                    <i class="fas fa-star star2"></i>
+                    <i class="fas fa-star star3"></i>
+                    <i class="fas fa-star star4"></i>
+                    <i class="far fa-star star5"></i>
+                    <div class="reviewDate">11/26/20</div>
+                  </div>
+                  <div class="col-12 p-0 mt-3 text-justify">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut efficitur, diam non
+                    vehicula tempus, leo odio vehicula ante, id consectetur elit mi eget justo.
+                  </div>
+                  <div class="col-12 p-0 mt-1 reviewName">-Full N.</div>
+                </div>
+              </div>
+              <div class="col-12 mt-3">
+                <div class="row py-3 px-4 reviewBox">
+                  <div class="col-12 d-flex p-0 reviewStar">
+                    <i class="fas fa-star star1"></i>
+                    <i class="fas fa-star star2"></i>
+                    <i class="fas fa-star star3"></i>
+                    <i class="fas fa-star star4"></i>
+                    <i class="far fa-star star5"></i>
+                    <div class="reviewDate">11/26/20</div>
+                  </div>
+                  <div class="col-12 p-0 mt-3 text-justify">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut efficitur, diam non
+                    vehicula tempus, leo odio vehicula ante, id consectetur elit mi eget justo.
+                  </div>
+                  <div class="col-12 p-0 mt-1 reviewName">-Full N.</div>
+                </div>
+              </div>
+
+              <div class="col-12 mt-5 p-0">
+                <button class="btn btn-danger d-flex m-auto btnMoreReviews" id="btnMoreReviews">
+                  See More Reviews
+                </button>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="col-12">
-          <div class="row mt-5">
-            <div class="col-12 p-0 mb-2 txtInfoTitle">Reviews</div>
-            <div class="col-12 p-0">
-              <span class="txtInfoTitle">4.7</span> out of 5 (27 reviews)
-            </div>
-            <div class="col-12 p-0">
-              <i class="fas fa-star star1"></i>
+        <div
+          class="col-12 col-lg-4 pl-0 pl-lg-5 p-0 mt-5 mt-md-0 d-flex justify-content-center justify-content-md-end"
+          id="reviewColumn"
+        >
+          <div class="container px-0 w-100 ratingContainer" id="ratingContainer">
+            <div class="row mx-0 w-100 py-5">
+              <div class="col-12 text-center ratingNumber lh-1 loadingRating" id="txtRating"></div>
+              <div class="col-12 text-center" id="starContainer">
+                <!-- <i class="fas fa-star star1"></i>
               <i class="fas fa-star star2"></i>
               <i class="fas fa-star star3"></i>
               <i class="fas fa-star star4"></i>
-              <i class="far fa-star star5"></i>
-            </div>
-          </div>
-          <div class="row" id="reviewsContainer">
-            <div class="col-12 mt-3">
-              <div class="row py-3 px-4 reviewBox">
-                <div class="col-12 d-flex p-0 reviewStar">
-                  <i class="fas fa-star star1"></i>
-                  <i class="fas fa-star star2"></i>
-                  <i class="fas fa-star star3"></i>
-                  <i class="fas fa-star star4"></i>
-                  <i class="far fa-star star5"></i>
-                  <div class="reviewDate">11/26/20</div>
-                </div>
-                <div class="col-12 p-0 mt-3 text-justify">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut efficitur, diam non
-                  vehicula tempus, leo odio vehicula ante, id consectetur elit mi eget justo.
-                </div>
-                <div class="col-12 p-0 mt-1 reviewName">-Full N.</div>
+              <i class="far fa-star star5"></i> -->
               </div>
+              <div class="col-12 text-center txtReviews" id="reviewsCount">
             </div>
-            <div class="col-12 mt-3">
-              <div class="row py-3 px-4 reviewBox">
-                <div class="col-12 d-flex p-0 reviewStar">
-                  <i class="fas fa-star star1"></i>
-                  <i class="fas fa-star star2"></i>
-                  <i class="fas fa-star star3"></i>
-                  <i class="fas fa-star star4"></i>
-                  <i class="far fa-star star5"></i>
-                  <div class="reviewDate">11/26/20</div>
-                </div>
-                <div class="col-12 p-0 mt-3 text-justify">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut efficitur, diam non
-                  vehicula tempus, leo odio vehicula ante, id consectetur elit mi eget justo.
-                </div>
-                <div class="col-12 p-0 mt-1 reviewName">-Full N.</div>
-              </div>
-            </div>
-            <div class="col-12 mt-3">
-              <div class="row py-3 px-4 reviewBox">
-                <div class="col-12 d-flex p-0 reviewStar">
-                  <i class="fas fa-star star1"></i>
-                  <i class="fas fa-star star2"></i>
-                  <i class="fas fa-star star3"></i>
-                  <i class="fas fa-star star4"></i>
-                  <i class="far fa-star star5"></i>
-                  <div class="reviewDate">11/26/20</div>
-                </div>
-                <div class="col-12 p-0 mt-3 text-justify">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut efficitur, diam non
-                  vehicula tempus, leo odio vehicula ante, id consectetur elit mi eget justo.
-                </div>
-                <div class="col-12 p-0 mt-1 reviewName">-Full N.</div>
-              </div>
-            </div>
-
-            <div class="col-12 mt-5 p-0">
-              <button class="btn btn-danger d-flex m-auto btnMoreReviews" id="btnMoreReviews">
-                See More Reviews
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div
-        class="col-12 col-lg-4 pl-0 pl-lg-5 p-0 mt-5 mt-md-0 d-flex justify-content-center justify-content-md-end"
-        id="reviewColumn"
-      >
-        <div class="container px-0 w-100 ratingContainer" id="ratingContainer">
-          <div class="row mx-0 w-100 py-5">
-            <div class="col-12 text-center ratingNumber lh-1">4.7</div>
-            <div class="col-12 text-center">
-              <i class="fas fa-star star1"></i>
-              <i class="fas fa-star star2"></i>
-              <i class="fas fa-star star3"></i>
-              <i class="fas fa-star star4"></i>
-              <i class="far fa-star star5"></i>
-            </div>
-            <div class="col-12 text-center txtReviews">27 reviews</div>
           </div>
           <hr class="my-0 dividerReview" />
           <div class="row mx-0 w-100 py-4">
-            <div class="col-12 text-center txtRatingTitle">Time to Complete</div>
-            <div class="col-12 text-center txtRatingValue">10 hours</div>
+            <div class="col-12 text-center txtRatingTitle  ">Number of Chapters</div>
+            <div class="col-12 text-center txtRatingValue loadingRating" id="txtChapterCount"></div>
           </div>
           <hr class="my-0 dividerReview" />
           <div class="row mx-0 w-100 py-4">
-            <div class="col-12 text-center txtRatingTitle">Students Enrolled</div>
-            <div class="col-12 text-center txtRatingValue">45</div>
+            <div class="col-12 text-center txtRatingTitle ">Students Enrolled</div>
+            <div class="col-12 text-center txtRatingValue loadingRating" id="txtStudentCount"></div>
           </div>
           <hr class="my-0 dividerReview" />
           <div class="row mx-0 w-100 py-4">
             <div class="col-12 text-center txtRatingTitle">Prerequisite</div>
-            <div class="col-12 text-center txtRatingValue">Course I</div>
+            <div class="col-12 text-center txtRatingValue loadingRating" id="txtPrereq"></div>
           </div>
         </div>
       </div>

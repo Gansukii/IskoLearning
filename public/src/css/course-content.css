@@ -1,3 +1,16 @@
+@keyframes animate {
+  0% {
+    background-position: 0 0;
+  }
+
+  50% {
+    background-position: 300% 0;
+  }
+
+  100% {
+    background-position: 0 0;
+  }
+}
 nav {
   z-index: 2000;
 }
@@ -5,7 +18,14 @@ nav {
   background: #333333;
   border: 0.75px solid #c4c4c4;
 }
+.loadingTitle {
+  height: 20px;
+  width: 50%;
+  background: linear-gradient(90deg, #333333, #5b5b5b, #333333, #5b5b5b, #333333, #5b5b5b, #333333);
 
+  background-size: 400%;
+  animation: animate 40s linear infinite;
+}
 .txtCourse {
   font-weight: bold;
   font-size: 18px;
@@ -16,9 +36,19 @@ nav {
 }
 .lessonNav {
   font-size: 14px;
+  font-weight: 700;
+  color: #aeaeae;
+  cursor: default;
+  border-radius: 0;
+}
+.lessonNav:hover {
   color: #aeaeae;
 }
 .lessonNavActive {
+  color: #ffc700;
+  cursor: pointer;
+}
+.lessonNavActive:hover {
   color: #ffc700;
 }
 .prev {
@@ -36,13 +66,30 @@ nav {
   overflow-y: auto;
 }
 .sideNav::-webkit-scrollbar {
-  width: 10px;
+  width: 5px;
 }
+.sideNav::-webkit-scrollbar-thumb {
+  background-color: #555555;
+}
+
 .txtChapter {
   font-weight: 900;
   font-size: 16px;
   color: #000000;
 }
+.sideLoading {
+  height: 16px;
+  background: linear-gradient(90deg, #e5e5e5, #f4f4f4, #e5e5e5, #f4f4f4, #e5e5e5, #f4f4f4, #e5e5e5);
+  background-size: 400%;
+  animation: animate 20s linear infinite;
+}
+.loadingTxtMain {
+  height: 30px;
+  background: linear-gradient(90deg, #e5e5e5, #f4f4f4, #e5e5e5, #f4f4f4, #e5e5e5, #f4f4f4, #e5e5e5);
+  background-size: 400%;
+  animation: animate 20s linear infinite;
+}
+
 .btnSideItem {
   font-weight: bold;
 }
@@ -67,7 +114,9 @@ nav {
 .mainSm {
   width: 100%;
 }
-
+.btnShowChapInfo {
+  color: #7f0303;
+}
 .txtMain {
   font-weight: 900;
   font-size: 24px;

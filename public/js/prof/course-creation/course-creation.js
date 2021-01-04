@@ -558,7 +558,7 @@ function addNewItem(id, vidId, action) {
       itemId: itemId,
       chapter: id,
       title: document.getElementById(`videoTitleInput-${id}`).value,
-      desciption: document.getElementById(`videoDescriptionInput-${id}`).value,
+      description: document.getElementById(`videoDescriptionInput-${id}`).value,
       videoId: vidId,
     };
 
@@ -604,7 +604,7 @@ function editItem(element) {
 
   // console.log(data);
   document.getElementById(`videoTitleInput-${itemId}`).value = data.title;
-  document.getElementById(`videoDescriptionInput-${itemId}`).value = data.desciption;
+  document.getElementById(`videoDescriptionInput-${itemId}`).value = data.description;
 }
 
 function saveChanges(element) {
@@ -614,7 +614,7 @@ function saveChanges(element) {
   formData[`chapter${id}`][itemId].title = document.getElementById(
     `videoTitleInput-${itemId}`
   ).value;
-  formData[`chapter${id}`][itemId].desciption = document.getElementById(
+  formData[`chapter${id}`][itemId].description = document.getElementById(
     `videoDescriptionInput-${itemId}`
   ).value;
   document.getElementById(
@@ -960,6 +960,7 @@ function saveToDb(url, newCourseKey) {
     contents: newCourseChapterKey,
     prof_name: user.displayName,
     rating: 0,
+    review_count: 0,
   };
 
   let chapterObj = {};
