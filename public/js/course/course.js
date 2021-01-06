@@ -62,6 +62,7 @@ firebase.auth().onAuthStateChanged(function (user) {
                 courseProgressContainer.classList.add("d-flex");
                 document.getElementById("txtProgressPercent").innerHTML = data.progress_percent;
                 document.getElementById("txtCurrentChapter").innerHTML = data.current_chapter;
+                document.getElementById("txtChapterName").innerHTML = data.chapter_name;
                 document.getElementById(
                   "courseProgressBar"
                 ).style = `width: ${data.progress_percent}%;`;
@@ -94,13 +95,14 @@ function enrollUser(user) {
   firebase
     .database()
     .ref("student_user_course/" + user.uid + "/" + courseId)
-    .set(
+    .update(
       {
         courseId: courseId,
         progress_text: "Start Course",
         current_chapter: 1,
         progress_percent: 0,
         chapter_name: "",
+        quiz_done_count: 0,
       },
       (error) => {
         if (error) {
@@ -125,8 +127,22 @@ function enrollUser(user) {
 }
 
 function startCourse(user) {
-  console.log(user);
-  window.location.assign(`/course-content?id=${courseId}`);
+  // console.log(user);
+  firebase
+    .database()
+    .ref("student_user_course/" + user.uid + "/" + courseId)
+    .update(
+      {
+        progress_text: "Resume",
+      },
+      (error) => {
+        if (error) {
+          console.log(error);
+        } else {
+          window.location.assign(`/course-content?id=${courseId}`);
+        }
+      }
+    );
 }
 
 // ######################## SHOW DATA #########################

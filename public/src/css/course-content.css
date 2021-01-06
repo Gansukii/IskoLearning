@@ -11,6 +11,10 @@
     background-position: 0 0;
   }
 }
+html,
+body {
+  scroll-behavior: smooth;
+}
 nav {
   z-index: 2000;
 }
@@ -164,7 +168,15 @@ nav {
 .txtQuestion {
   font-size: 17px;
 }
-
+.txtResult {
+  font-size: 20px;
+  font-weight: 900;
+}
+.score {
+  font-size: 36px;
+  font-weight: 900;
+  color: #b90000;
+}
 /* RESPONSIVE */
 @media screen and (max-width: 992px) {
   .thumbContainer {
@@ -191,7 +203,11 @@ nav {
   .thumbContainer {
     height: 200px;
   }
-  .btnStart {
+  .btnStart,
+  .txtResult {
     font-size: 16px;
+  }
+  .score {
+    font-size: 28px;
   }
 }

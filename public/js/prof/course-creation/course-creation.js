@@ -965,15 +965,22 @@ function saveToDb(url, newCourseKey) {
 
   let chapterObj = {};
   for (let i = 1; i <= chapterCount; i++) {
+    let videoCount = 0;
+    let quizCount = 0;
+    for (item in formData[`chapter${i}`]) {
+      if (formData[`chapter${i}`][item].video) videoCount++;
+      else quizCount++;
+    }
     chapterObj[`chapter${i}`] = {
       chapter_number: i,
       chapter_title: document.getElementById(`chapterTitleInput-${i}`).value,
       chapter_description: document.getElementById(`chapterDescriptionInput-${i}`).value,
       chapter_contents: formData[`chapter${i}`],
+      video_count: videoCount,
+      quiz_count: quizCount,
     };
     // courseData.contents.push(chapterObj);
   }
-
   let updates = {};
   updates["courses/" + newCourseKey] = courseData;
   updates["user_course/" + user.uid + "/" + newCourseKey] = courseData;
