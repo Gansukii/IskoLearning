@@ -21,7 +21,9 @@ const courseId = url.searchParams.get("id");
 function changeActive(element) {
   disableNavBtn(element);
   currentChap = element.parentNode.getAttribute("chapNumber");
-
+  if (currentMain === questionsContainer) {
+    questionsContainer.innerHTML = "";
+  }
   btnSideItemActive.classList.remove("btnSideItemActive");
   element.classList.add("btnSideItemActive");
   currentMain.classList.add("d-none");
@@ -39,10 +41,10 @@ function changeActive(element) {
   //     break;
   //   }
 }
-
 firebase.auth().onAuthStateChanged(function (user) {
   if (user) {
     currentUser = user;
+
     firebase
       .database()
       .ref("course_students/" + courseId)
@@ -262,6 +264,7 @@ function startQuiz(element) {
   let chapter = element.getAttribute("chapNum");
   let contentKey = element.getAttribute("ckey");
   let quizTitle = element.getAttribute("qTitle");
+  questionsContainer.classList.remove("d-none");
   let answersArr = [];
   // element.setAttribute("disabled", "");
   disabler(element);
@@ -367,15 +370,12 @@ function startQuiz(element) {
             let done_count = snapshot.val().quiz_done_count;
             let quiz_done = snapshot.val().quiz_done;
             if (quiz_done) {
-              console.log("mweon na");
-              quiz_done[key] = { itemId: key, score: score };
+              quiz_done[key] = { itemId: key, score: score, over: over };
             } else {
               quiz_done = {};
-              quiz_done[key] = { itemId: key, score: score };
+              quiz_done[key] = { itemId: key, score: score, over: over };
             }
             let progress_percent = (done_count + 1 / totalQuizCount) * 100;
-            console.log(done_count);
-            console.log(totalQuizCount);
 
             firebase
               .database()
@@ -393,22 +393,43 @@ function startQuiz(element) {
                     alert(error);
                     console.log(error);
                   } else {
-                    let newAnswerKey = firebase
-                      .database()
-                      .ref()
-                      .child("course_students/" + courseId + "/" + currentUser.uid)
-                      .push().key;
-                    // firebase
-                    //   .database()
-                    //   .ref("course_students/" + courseId + "/" + currentUser.uid)
-                    //   .update({});
+                    // let newAnswerKey =
 
-                    for (el of btnSideItems) {
-                      el.removeAttribute("disabled");
-                    }
-                    window.scrollTo(0, 0);
-                    currentMain = questionsContainer;
-                    element.innerHTML = '<i class="far fa-check-circle"></i> Quiz Done';
+                    firebase
+                      .database()
+                      .ref("course_students/" + courseId + "/" + currentUser.uid)
+                      .once("value")
+                      .then((snapshot) => {
+                        let courseStudentQuiz = snapshot.val().quiz_done;
+                        if (courseStudentQuiz) {
+                          courseStudentQuiz[key] = { itemId: key, score: score, over: over };
+                        } else {
+                          courseStudentQuiz = {};
+                          courseStudentQuiz[key] = { itemId: key, score: score, over: over };
+                        }
+
+                        firebase
+                          .database()
+                          .ref("course_students/" + courseId + "/" + currentUser.uid)
+                          .update(
+                            {
+                              quiz_done: courseStudentQuiz,
+                            },
+                            (error) => {
+                              if (error) {
+                                console.log(error);
+                              } else {
+                                for (el of btnSideItems) {
+                                  el.removeAttribute("disabled");
+                                }
+                                btnSubmitQuiz.remove();
+                                window.scrollTo(0, 0);
+                                currentMain = questionsContainer;
+                                element.innerHTML = '<i class="far fa-check-circle"></i> Quiz Done';
+                              }
+                            }
+                          );
+                      });
                   }
                 }
               );
