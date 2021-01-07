@@ -8,6 +8,11 @@
   font-size: 14px;
   color: #7e7e7e;
   border: 0.75px solid #7e7e7e;
+  cursor: pointer;
+}
+.activeBadge {
+  background-color: #7e7e7e;
+  color: #ffffff;
 }
 
 .courseCard {
