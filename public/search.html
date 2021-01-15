@@ -7,7 +7,7 @@
 
     <link rel="stylesheet" href="src/css/bootstrap.css" />
     <link rel="stylesheet" href="src/css/nav.css" />
-    <link rel="stylesheet" href="src/css/answer.css" />
+    <link rel="stylesheet" href="src/css/search.css" />
     <!-- GOOGLE FONTS   -->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
@@ -55,7 +55,7 @@
             </div>
           </li>
           <li class="nav-item mx-3">
-            <a class="nav-link" href="/dashboard">Forum</a>
+            <a class="nav-link" href="forum">Forum</a>
           </li>
 
           <li class="nav-item searchContainer">
@@ -69,7 +69,7 @@
                     id="search"
                   />
                 </div>
-                <div class="col pl-0">
+                <div class="col-4 px-0">
                   <button class="btn my-2 my-sm-0" type="submit">
                     <i class="fas fa-search"></i>
                   </button>
@@ -88,9 +88,9 @@
               aria-expanded="false"
               id="notifToggle"
             >
-              <i class="far fa-bell fa-lg position-relative" id="notifIcon"> </i>
+              <i class="far fa-bell fa-lg" id="notifIcon"> </i>
             </button>
-            <div class="dropdown-menu notifBoxContainer" id="notifBoxContainer">
+            <div class="dropdown-menu position-absolute notifBoxContainer" id="notifBoxContainer">
               <div class="col-12 mt-2 notifTitle">Notification</div>
               <div class="dropdown-divider my-0"></div>
 
@@ -119,9 +119,7 @@
                 </div>
               </div>
               <div class="list-group list-group-flush p-0">
-                <a href="profile.html" class="list-group-item list-group-item-action px-2"
-                  >Profile</a
-                >
+                <a href="profile" class="list-group-item list-group-item-action px-2">Profile</a>
                 <a href="#" class="list-group-item list-group-item-action px-2">Account Settings</a>
                 <a href="#" class="list-group-item list-group-item-action px-2" id="sign-out"
                   ><i class="fas fa-sign-out-alt mr-1"></i>Sign out</a
@@ -134,46 +132,80 @@
     </nav>
 
     <div class="row m-0 mt-5 px-2 px-md-5 d-flex justify-content-center">
-      <div class="row w-100 d-flex justify-content-center mb-5">
-        <div class="col-12 col-lg-8">
-          <div class="col-12 px-4 py-3 rounded-top paper">
-            <div class="col-12" id="questionContainer">
-              <div class="w-100 d-flex justify-content-center d-none" id="spinnerContainer">
-                <div class="spinner-grow spinner-grow-sm" role="status"></div>
-              </div>
-            </div>
+      <div class="col-12 col-lg-10 my-0 my-lg-5">
+        <div class="row w-100 mx-0">
+          <div class="col-12 px-0 mb-2 txtSearch text-center text-sm-left" id="txtSearch">
+            Result for "<span class="" id="txtSearchTitle"></span>"
           </div>
-          <div class="col-12 px-4 py-3 mb-3 mb-md-4 rounded-bottom commentPaper">
-            <div class="row w-100 m-0 p-0">
-              <button class="btn commentAvatar" id="avatar"></button>
-              <div class="col pr-0">
-                <div class="form-group">
-                  <textarea
-                    class="form-control"
-                    placeholder="Write your answer here"
-                    id="answerBody"
-                    rows="2"
-                  ></textarea>
+          <div
+            class="col-12 my-1 px-0 d-flex justify-content-center justify-content-sm-start"
+            id="badgeContainer"
+          >
+            <span
+              class="badge badge-pill py-1 px-2 px-sm-3 badgeDev activeBadge"
+              id="all"
+              onclick="changePage(this)"
+              disabled
+              >All</span
+            >
+            <span
+              class="badge badge-pill py-1 px-2 px-sm-3 badgeDev mx-1 mx-sm-2"
+              id="inProgress"
+              onclick="changePage(this)"
+              >Courses</span
+            >
+            <span
+              class="badge badge-pill py-1 px-2 px-sm-3 badgeDev"
+              onclick="changePage(this)"
+              id="completed"
+              >Forum</span
+            >
+          </div>
+        </div>
+        <div class="row w-100 mx-0">
+          <div class="col-12 px-0 mt-5" id="coursesContainer">
+            <!-- <div class="text-muted">no courses found on <strong id="searchNoData">""</strong></div> -->
+            <div class="row w-75 mx-0">
+              <div class="thumb mr-2"></div>
+              <div class="col-8 py-1 pr-0">
+                <div class="row mx-0 w-100">
+                  <div class="col-10 px-0 mb-3 loadingCourseTitle"></div>
+                  <div class="col-12 px-0 my-2 loadingCourseTxt"></div>
+                  <div class="col-12 px-0 my-2 loadingCourseTxt"></div>
+                  <div class="col-12 px-0 my-2 loadingCourseTxt"></div>
                 </div>
               </div>
+              <hr class="w-100" />
             </div>
-            <div class="row w-100 m-0 p-0">
-              <button
-                class="btn btn-danger ml-auto py-0 py-lg-1 px-lg-3 btnSubmitAns"
-                id="btnSubmitAns"
-                disabled
-              >
-                Submit
-              </button>
+            <div class="row w-75 mx-0">
+              <div class="thumb mr-2"></div>
+              <div class="col-8 py-1 pr-0">
+                <div class="row mx-0 w-100">
+                  <div class="col-10 px-0 mb-3 loadingCourseTitle"></div>
+                  <div class="col-12 px-0 my-2 loadingCourseTxt"></div>
+                  <div class="col-12 px-0 my-2 loadingCourseTxt"></div>
+                  <div class="col-12 px-0 my-2 loadingCourseTxt"></div>
+                </div>
+              </div>
+              <hr class="w-100" />
             </div>
-          </div>
-
-          <div class="col-12 px-4 py-3 rounded paper">
-            <div class="col-12 p-0 mb-2 txtPaper" id="txtAnswers"></div>
-            <div id="answersContainer"></div>
+            <div class="row w-75 mx-0">
+              <div class="thumb mr-2"></div>
+              <div class="col-8 py-1 pr-0">
+                <div class="row mx-0 w-100">
+                  <div class="col-10 px-0 mb-3 loadingCourseTitle"></div>
+                  <div class="col-12 px-0 my-2 loadingCourseTxt"></div>
+                  <div class="col-12 px-0 my-2 loadingCourseTxt"></div>
+                  <div class="col-12 px-0 my-2 loadingCourseTxt"></div>
+                </div>
+              </div>
+              <hr class="w-100" />
+            </div>
           </div>
         </div>
       </div>
+
+      <div class="col-12 col-lg-10 my-0 my-lg-5 txtSearch"></div>
     </div>
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -192,17 +224,14 @@
     <script src="js/bootstrapJs/bootstrap.bundle.js"></script>
     <script src="js/bootstrapJs/bootstrap.js"></script>
     <!-- <script src="js/isSigned/isSigned.js"></script> -->
-    <script src="js/util/currDate.js"></script>
-    <script src="js/forum/getUserUpvotes.js"></script>
+    <!-- <script src="js/util/currDate.js"></script>
     <script src="js/forum/getTimeAgo.js"></script>
     <script src="js/isSigned/getNotif.js"></script>
-    <script src="js/forum/answer/addAnswer.js"></script>
-    <script src="js/forum/answer/getUserAnswerUpvotes.js"></script>
-    <script src="js/forum/answer/getAnswers.js"></script>
+    <script src="js/forum/getUserUpvotes.js"></script>
+    <script src="js/forum/addQuestion.js"></script>
     <script src="js/forum/getQuestion.js"></script>
-    <script src="js/forum/answer/getQuestionById.js"></script>
-    <script src="js/forum/answer/answer.js"></script>
-    <!-- <script src="js/forum/forum.js"></script> -->
+    <script src="js/forum/getSortedQuestion.js"></script>
+    <script src="js/forum/forum.js"></script> -->
     <script src="js/nav/nav.js"></script>
   </body>
 </html>

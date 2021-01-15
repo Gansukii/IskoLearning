@@ -6,6 +6,9 @@ const arrowLeftCat = document.getElementById("arrowLeftCat");
 const arrowRightCat = document.getElementById("arrowRightCat");
 const myCoursesContainer = document.getElementById("myCourses");
 const btnBadges = document.getElementsByClassName("badgeDev");
+const spinnerMyCourse = document.getElementById("spinnerMyCourse");
+const spinnerLatest = document.getElementById("spinnerLatest");
+const txtNoData = document.getElementById("txtNoData");
 let activeBadge = btnBadges[0];
 let currentUser;
 firebase.auth().onAuthStateChanged(function (user) {
@@ -33,6 +36,7 @@ firebase.auth().onAuthStateChanged(function (user) {
               .then((snapshot) => {
                 let questionsArr = Object.values(snapshot.val()).reverse();
                 // console.log(questionsArr);
+                spinnerLatest.classList.add("d-none");
                 questionsArr.forEach((data) => {
                   let timeAgo = getTimeAgo(
                     Math.abs(currDate - new Date(data.created_datetime)) / 1000
@@ -57,6 +61,14 @@ firebase.auth().onAuthStateChanged(function (user) {
                   latestCourses.push(newNode);
                   latestArrow(latestCourses);
                 });
+                if (allUserCourses.length < 1) {
+                  spinnerMyCourse.classList.add("d-none");
+                  txtNoData.classList.remove("d-none");
+
+                  for (let i = 0; i < btnBadges.length; i++) {
+                    btnBadges[i].onclick = false;
+                  }
+                }
               });
           });
       });
@@ -73,6 +85,8 @@ firebase.auth().onAuthStateChanged(function (user) {
             .ref("courses/" + courseKey)
             .once("value")
             .then((courseMain) => {
+              spinnerMyCourse.classList.add("d-none");
+
               const courseMainData = courseMain.val();
               // console.log(courseMainData);
 
@@ -103,10 +117,6 @@ firebase.auth().onAuthStateChanged(function (user) {
             });
 
           // console.log(allUserCourses);
-        } else {
-          for (let i = 0; i < btnBadges.length; i++) {
-            btnBadges[i].setAttribute("disabled", "");
-          }
         }
       });
   }
@@ -137,26 +147,53 @@ function changePage(element) {
   activeBadge.classList.remove("activeBadge");
   activeBadge = element;
   activeBadge.classList.add("activeBadge");
+  spinnerMyCourse.classList.remove("d-none");
+  txtNoData.classList.add("d-none");
 
   if (element.id === "all") {
     elArrDnone(inProgressUserCourses);
     elArrDnone(completedUserCourses);
     elArrDisplay(allUserCourses);
     myCoursesArrow(allUserCourses);
+    if (allUserCourses.length > 0) {
+      spinnerMyCourse.classList.add("d-none");
+      txtNoData.classList.add("d-none");
+      elArrDisplay(allUserCourses);
+    } else {
+      getInprogress();
+      spinnerMyCourse.classList.add("d-none");
+      txtNoData.classList.remove("d-none");
+    }
   }
 
   if (element.id === "inProgress") {
     elArrDnone(allUserCourses);
     elArrDnone(completedUserCourses);
-    if (inProgressUserCourses.length > 0) elArrDisplay(inProgressUserCourses);
-    else getInprogress();
+    if (inProgressUserCourses.length > 0) {
+      spinnerMyCourse.classList.add("d-none");
+      txtNoData.classList.add("d-none");
+      elArrDisplay(inProgressUserCourses);
+    } else {
+      getInprogress();
+      // spinnerMyCourse.classList.add("d-none");
+      txtNoData.classList.remove("d-none");
+    }
+    // spinnerMyCourse.classList.add("d-none");
+    txtNoData.classList.add("d-none");
   }
 
   if (element.id === "completed") {
     elArrDnone(allUserCourses);
     elArrDnone(inProgressUserCourses);
-    if (completedUserCourses.length > 0) elArrDisplay(completedUserCourses);
-    else getCompleted();
+    if (completedUserCourses.length > 0) {
+      spinnerMyCourse.classList.add("d-none");
+      txtNoData.classList.add("d-none");
+      elArrDisplay(completedUserCourses);
+    } else {
+      getCompleted();
+      spinnerMyCourse.classList.add("d-none");
+      txtNoData.classList.remove("d-none");
+    }
   }
 }
 
@@ -165,6 +202,8 @@ function getInprogress() {
     .database()
     .ref("student_user_course/" + currentUser.uid)
     .on("child_added", (snapshot) => {
+      spinnerMyCourse.classList.add("d-none");
+      txtNoData.classList.add("d-none");
       let data = snapshot.val();
       let courseNode = document.createElement("div");
 
@@ -210,6 +249,8 @@ function getCompleted() {
     .database()
     .ref("student_user_course/" + currentUser.uid)
     .on("child_added", (snapshot) => {
+      spinnerMyCourse.classList.add("d-none");
+      txtNoData.classList.add("d-none");
       let data = snapshot.val();
       let courseNode = document.createElement("div");
 

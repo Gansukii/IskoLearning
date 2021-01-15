@@ -20,6 +20,15 @@ var sm = 768;
 //   console.log(menuPop);
 // });
 
+search.onkeydown = (e) => {
+  if (e.keyCode === 13) {
+    // e.stopPropagation();
+    console.log(search.value);
+    window.location.assign(`../../search?key=${search.value}`);
+    // window.location.assign(`../../search`);
+  }
+};
+
 firebase.auth().onAuthStateChanged(function (user) {
   if (user) {
     if (user.photoURL && avatar) {
