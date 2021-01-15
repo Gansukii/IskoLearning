@@ -948,9 +948,9 @@ function saveToDb(url, newCourseKey) {
   let newCourseChapterKey = firebase.database().ref().child("course_chapters").push().key;
   let courseData = {
     course_id: newCourseKey,
-    course_title: courseTitleInput.value.trim(),
+    course_title: courseTitleInput.value.trim().toLowerCase(),
     course_brief: courseBriefInput.value.trim(),
-    category: categoryInput.value.trim(),
+    category: categoryInput.value.trim().toLowerCase(),
     chapter_number: chapterCount,
     units: unitsInput.value.trim(),
     prerequisite: prerequisiteInput.value.trim(),

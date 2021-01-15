@@ -10,6 +10,7 @@ body {
 .txtCourseTitle {
   font-size: 36px;
   font-weight: 700;
+  text-transform: capitalize;
 }
 
 .txtCourseProf {

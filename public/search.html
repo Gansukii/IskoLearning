@@ -59,23 +59,21 @@
           </li>
 
           <li class="nav-item searchContainer">
-            <form class="my-lg-0">
-              <div class="row d-flex align-items-center">
-                <div class="col-8 pr-0">
-                  <input
-                    class="form-control searchDev"
-                    type="search"
-                    placeholder="What do you want to learn?"
-                    id="search"
-                  />
-                </div>
-                <div class="col-4 px-0">
-                  <button class="btn my-2 my-sm-0" type="submit">
-                    <i class="fas fa-search"></i>
-                  </button>
-                </div>
+            <div class="row d-flex align-items-center">
+              <div class="col-8 pr-0">
+                <input
+                  class="form-control searchDev"
+                  type="search"
+                  placeholder="What do you want to learn?"
+                  id="search"
+                />
               </div>
-            </form>
+              <div class="col-4 px-0">
+                <button class="btn my-2 my-sm-0" type="submit" id="btnSearch">
+                  <i class="fas fa-search"></i>
+                </button>
+              </div>
+            </div>
           </li>
         </ul>
         <div class="d-flex align-items-center">
@@ -163,8 +161,26 @@
           </div>
         </div>
         <div class="row w-100 mx-0">
-          <div class="col-12 px-0 mt-5" id="coursesContainer">
-            <!-- <div class="text-muted">no courses found on <strong id="searchNoData">""</strong></div> -->
+          <div class="text-muted mt-3 d-none" id="searchNoData">
+            no courses found on <strong id="txtSearchNoData">""</strong>
+          </div>
+          <div class="col-12 px-0 mt-4 mt-sm-5" id="coursesContainer">
+            <!-- <div class="row mx-0 courseContainer">
+              <div class="thumb mr-2"></div>
+              <div class="col-12 col-lg-6 py-1 mt-2 mt-lg-0 pr-0 pl-0 pl-lg-2">
+                <div class="row mx-0 w-100">
+                  <div class="col-10 px-0 courseTitle">System Architecture and blah blah</div>
+                  <div class="col-12 px-0 mb-2 courseProf">Prof. Ramos</div>
+                  <div class="col-12 px-0 courseBrief">
+                    Aute adipisicing occaecat non adipisicing in. Qui elit qui fugiat in consectetur
+                    laboris nulla sint consectetur. Excepteur duis ullamco do qui excepteur occaecat
+                    dolore elit veniam ea adipisicing. Enim nostrud anim minim laboris exercitation
+                    ipsum ipsum exercitation.
+                  </div>
+                </div>
+              </div>
+              <hr class="w-75 my-4" />
+            </div> -->
             <div class="row w-75 mx-0">
               <div class="thumb mr-2"></div>
               <div class="col-8 py-1 pr-0">
@@ -204,8 +220,6 @@
           </div>
         </div>
       </div>
-
-      <div class="col-12 col-lg-10 my-0 my-lg-5 txtSearch"></div>
     </div>
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -233,5 +247,6 @@
     <script src="js/forum/getSortedQuestion.js"></script>
     <script src="js/forum/forum.js"></script> -->
     <script src="js/nav/nav.js"></script>
+    <script src="js/search/search.js"></script>
   </body>
 </html>

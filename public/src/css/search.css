@@ -36,24 +36,56 @@
   height: 125px;
   background: #e5e5e5;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .loadingCourseTitle {
   background: linear-gradient(90deg, #a2a2a2, #bdbdbd, #a2a2a2, #bdbdbd, #a2a2a2, #bdbdbd, #a2a2a2);
   height: 14px;
   background-size: 400%;
-  animation: animate 40s linear infinite;
+  animation: animate 20s linear infinite;
 }
 
 .loadingCourseTxt {
   background: linear-gradient(90deg, #e5e5e5, #efefef, #e5e5e5, #efefef, #e5e5e5, #efefef, #e5e5e5);
   height: 12px;
   background-size: 400%;
-  animation: animate 40s linear infinite;
+  animation: animate 20s linear infinite;
+}
+.courseContainer {
+  width: 100%;
+}
+.courseTitle {
+  font-size: 18px;
+  font-weight: 900;
+  line-height: 1;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+.courseTitle:hover {
+  text-decoration: underline;
+}
+.courseProf {
+  font-weight: bold;
+}
+.courseBrief {
+  font-weight: 400;
+  text-align: justify;
 }
 
 @media screen and (max-width: 576px) {
   body {
     font-size: 14px;
+  }
+  .thumb {
+    width: 100%;
+    min-height: 175px;
+    max-height: 200px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .courseContainer {
+    width: 100%;
   }
 }

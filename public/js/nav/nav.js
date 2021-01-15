@@ -1,4 +1,5 @@
 const search = document.getElementById("search");
+const btnSearch = document.getElementById("btnSearch");
 const avatar = document.getElementById("avatar");
 const menuAvatar = document.getElementById("menuAvatar");
 const menuPop = document.getElementById("menuPop");
@@ -23,10 +24,14 @@ var sm = 768;
 search.onkeydown = (e) => {
   if (e.keyCode === 13) {
     // e.stopPropagation();
-    console.log(search.value);
-    window.location.assign(`../../search?key=${search.value}`);
+    const keySearch = search.value;
+    window.location.assign(`../../search?key=${keySearch}`);
     // window.location.assign(`../../search`);
   }
+};
+btnSearch.onclick = () => {
+  const keySearch = search.value;
+  window.location.assign(`../../search?key=${keySearch}`);
 };
 
 firebase.auth().onAuthStateChanged(function (user) {
