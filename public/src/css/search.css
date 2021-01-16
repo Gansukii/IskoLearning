@@ -73,6 +73,39 @@
   text-align: justify;
 }
 
+.avatarForum {
+  height: 35px;
+  width: 35px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  text-align: center;
+}
+.formInfo {
+  color: #555555;
+  line-height: 1;
+  font-weight: 400;
+}
+.formInfoNum {
+  font-size: 20px;
+  font-weight: bold;
+}
+.questionTitle {
+  font-size: 20px;
+}
+.questionBody {
+  font-weight: 400;
+  font-size: 16px;
+}
+.txtTimeAgo {
+  font-size: 14px;
+  font-weight: 400;
+}
+.tag {
+  font-size: 15px;
+  color: #7f0303;
+  border: 1px solid #7f0303;
+}
 @media screen and (max-width: 576px) {
   body {
     font-size: 14px;
@@ -87,5 +120,16 @@
 @media screen and (max-width: 992px) {
   .courseContainer {
     width: 100%;
+  }
+  .questionTitle {
+    font-size: 18px;
+  }
+  .txtTimeAgo,
+  .tag {
+    font-size: 12px;
+  }
+  .avatarForum {
+    height: 30px;
+    width: 30px;
   }
 }

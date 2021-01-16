@@ -47,6 +47,7 @@ firebase
            </div>
            <hr class="w-75 my-4" />`;
         coursesContainer.appendChild(newCourseNode);
+        coursesElement.push(newCourseNode);
         if (!data.course_thumbnail) {
           newCourseNode.firstElementChild.removeAttribute("style");
         }
@@ -70,6 +71,16 @@ function changePage(element) {
   activeBadge.classList.remove("activeBadge");
   activeBadge = element;
   activeBadge.classList.add("activeBadge");
+
+  if (element.id === "all") {
+    elArrDisplay(coursesElement);
+  }
+  if (element.id === "courses") {
+    elArrDisplay(coursesElement);
+  }
+  if (element.id === "forum") {
+    elArrHide(coursesElement);
+  }
 }
 
 function goToCourse(element) {
@@ -87,4 +98,16 @@ function linkTitle(element) {
 
 function goToCourse(id) {
   window.open(`/course?id=${id}`);
+}
+
+function elArrDisplay(elementArr) {
+  for (element of elementArr) {
+    element.classList.remove("d-none");
+  }
+}
+
+function elArrHide(elementArr) {
+  for (element of elementArr) {
+    element.classList.add("d-none");
+  }
 }
