@@ -53,10 +53,8 @@ firebase
         if (!data.course_thumbnail) {
           newCourseNode.firstElementChild.removeAttribute("style");
         }
-        console.log(data.course_thumbnail);
       }
     } else {
-      console.log(searchNoData);
       searchNoData.classList.remove("d-none");
     }
   });
