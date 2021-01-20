@@ -68,10 +68,22 @@
                     ></textarea>
                   </div>
                   <div class="row mb-3">
-                    <div class="col-9">
+                    <div class="col-9 position-relative">
                       <label for="categoryInput">Category</label>
-                      <input type="text" class="form-control" id="categoryInput" />
+                      <!-- <input type="text" class="form-control" id="categoryInput" /> -->
+                      <select class="form-control" id="categoryInput">
+                        <option value="" selected>--</option>
+                        <option value="programming">Programming</option>
+                        <option value="ui_ux_design">UI UX Design</option>
+                        <option value="data_science">Data Science</option>
+                        <option value="machine_learning">Machine Learning</option>
+                        <option value="networking">Networking</option>
+                        <option value="data_structure">Data Structure</option>
+                        <option value="database">Database</option>
+                        <option value="others">Others</option>
+                      </select>
                     </div>
+
                     <div class="col">
                       <label for="unitsInput">Units</label>
                       <input type="number" class="form-control" id="unitsInput" />

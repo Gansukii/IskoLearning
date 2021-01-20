@@ -90,8 +90,13 @@
   font-size: 20px;
   font-weight: bold;
 }
-.questionTitle {
+.questionTitle a {
   font-size: 20px;
+  cursor: pointer;
+  color: #000000;
+}
+.questionTitle a:hover {
+  text-decoration: underline;
 }
 .questionBody {
   font-weight: 400;

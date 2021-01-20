@@ -11,7 +11,7 @@
     <!-- GOOGLE FONTS   -->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600;700&family=Lato:wght@400;700;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600;700&family=Kreon:wght@700&family=Lato:wght@400;700;900&display=swap"
       rel="stylesheet"
     />
     <!--  FONTAWESOME  -->
@@ -20,7 +20,7 @@
 
   <body>
     <nav class="navbar navbar-expand-lg navbar-light" id="nav">
-      <a class="navbar-brand" href="#">Navbar</a>
+      <a class="navbar-brand" href="home.html">Navbar</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -77,7 +77,7 @@
           </li>
         </ul>
         <div class="d-flex align-items-center">
-          <a class="btn mr-2" id="btnNavIn">My Courses</a>
+          <a class="btn mr-2" id="btnNavIn" href="profile.html">My Courses</a>
           <div class="btn-group dropleft" id="notifDrop">
             <button
               class="btn rounded-circle p-1 text-center mr-3 dropdown-toggle"
@@ -171,67 +171,42 @@
       </div>
       <div class="px-3 w-100 h-100">
         <div class="row w-100 mx-0 px-sm-3" id="contentItem">
-          <!-- <div class="row w-100 mx-0 d-none" id="chapInfoContainer1">
-            <div
-              class="col-12 px-0 mt-2 mb-2 mb-sm-3 mt-sm-0 d-none d-flex justify-content-between txtMain"
-            >
-              <span id="txtChapterTitle1">Chapter 1 Title</span>
-              <div class="d-flex align-items-center">
-                <i class="far fa-times-circle c-p" onclick="hideChapText(this)"></i>
-              </div>
-            </div>
-            <div class="col-12 my-3 text-justify px-0" id="chapterDes1">
-              "These lecture notes cover the key ideas involved in designing algorithms. We shall
-              see how\nthey depend on the design of suitable data structures, and how some
-              structures and algorithms\nare more efficient than others for the same task. We will
-              concentrate on a few basic tasks,\nsuch as storing, sorting and searching data, that
-              underlie much of computer science, but the\ntechniques discussed will be applicable
-              much more generally.\nWe will start by studying some key data structures, such as
-              arrays, lists, queues, stacks\nand trees, and then move on to explore their use in a
-              range of different searching and sorting\nalgorithms. This leads on to the
-              consideration of approaches for more efficient storage of\ndata in hash tables.
-              Finally, we will look at graph based representations and cover the kinds\nof
-              algorithms needed to work efficiently with them. Throughout, we will investigate
-              the\ncomputational efficiency of the algorithms we develop, and gain intuitions about
-              the pros and\ncons of the various potential approaches for each task.\nWe will not
-              restrict ourselves to implementing the various data structures and algorithms\nin
-              particular computer programming languages (e.g., Java, C , OCaml), but specify them
-              in\nsimple pseudocode that can easily be implemented in any appropriate language.\n"
-            </div>
-          </div> -->
-          <!-- <div class="col-12 px-0 mt-2 mb-2 mb-sm-3 mt-sm-0 txtMain">Lesson 1 Title</div> -->
+          <div class="w-100" id="questionsContainer"></div>
 
-          <div id="questionsContainer">
-            <!-- <div class="row w-100 mx-0 py-4 px-4 mb-4 paper">
-              <div class="row w-100 mx-0">
-                <div class="itemNumber">1.</div>
-                <div class="col pr-0 txtQuestion">
-                  Lorem ipsum dolor sit amet, et hinc nusquam nec, accusamus iracundia ius eu, vel
-                  utinam soluta timeam ne?
-                </div>
-                <div class="col-12 mt-4 txtQuestion">Answer:</div>
-                <input type="text" class="col-12 col-lg-5 col-md-6 ml-md-4 mt-1 form-control"></input>
-              </div>
-            </div>
-            -->
-          </div>
-
-          <!-- <div class="row w-100 mx-0 py-3 px-4 paper">
-            <div class="col-12 px-0 points" id="points">3 points</div>
-            <div class="col-12 px-0 mt-2 mb-1 txtQuizHead">Instructions</div>
-            <div class="col-12 px-0 txtInstructions" id="intructions">
-              Cras sit amet tortor non leo rutrum ultricies. Maecenas vel libero vitae tortor
-              lobortis iaculis non venenatis diam. Phasellus vitae nisl eget dui varius mollis.
-              Aliquam erat volutpat. Aenean id ornare purus, eu consequat arcu. Proin vulputate
-              ultricies cursus. Nullam maximus non turpis non sodales.
-            </div>
-          </div>
-          <div class="col-12 px-0 mt-4 d-flex justify-content-end">
-            <button class="btn btn-danger px-4 btnStart" id="btnStartQuiz">Start Quiz</button>
-          </div> -->
           <div class="w-100" id="loadingMain">
             <div class="col-12 w-25 my-3 loadingTxtMain"></div>
             <div class="thumbContainer"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="modal fade"
+      id="certModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="row mx-0">
+              <div class="col-12 px-0 text-center modalTitle">Congratulations!</div>
+              <div class="col-12 px-0 text-center mt-3 modalText">
+                You have completed the course <span id="modalCourseTitle"></span>. Please download
+                your certificate below.
+              </div>
+              <div class="col-12 px-0 mt-3 mb-4 d-flex justify-content-center">
+                <button class="btn btn-danger btnCert">Download Completion Certificate</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>

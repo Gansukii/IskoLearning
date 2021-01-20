@@ -11,6 +11,7 @@ const spinnerLatest = document.getElementById("spinnerLatest");
 const txtNoData = document.getElementById("txtNoData");
 let activeBadge = btnBadges[0];
 let currentUser;
+
 firebase.auth().onAuthStateChanged(function (user) {
   if (user) {
     currentUser = user;

@@ -58,8 +58,19 @@ function getQuestions(uid, userUpvotesArr) {
                       <div class='row mt-2'>
                         ${data.question_body}
                       </div>
+                      <div class="col-12 mt-2 col-sm-6 px-0" id="badgeContainer">
+                  </div>
                     </div>
                     <hr class='mb-1' />`;
+                    const tagContainer = node.querySelector("#badgeContainer");
+                    if (data.tags) {
+                      for (tag of data.tags) {
+                        const newTagNode = document.createElement("div");
+                        newTagNode.className = "badge badge-pill mx-1 mb-2 tag";
+                        newTagNode.innerHTML = tag;
+                        tagContainer.appendChild(newTagNode);
+                      }
+                    }
                   }
                 });
 

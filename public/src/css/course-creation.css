@@ -72,6 +72,15 @@
   font-size: 15px;
   color: #8f8f8f;
 }
+/* .categorySearchContainer {
+  max-height: 200%;
+  overflow-y: auto;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  background-color: #ffffff;
+  z-index: 1001;
+} */
+
 .btnAdd {
   font-weight: 900;
   border: 0.75px solid #c4c4c4;

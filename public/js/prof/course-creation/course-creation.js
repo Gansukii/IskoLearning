@@ -820,6 +820,7 @@ function saveQuizChanges(element) {
 }
 
 btnSubmit.onclick = () => {
+  // console.log(categoryInput.value);
   isDetailsDone = checkDetailsFields();
 
   if (!isDetailsDone || formData.chapter1 === undefined) {
@@ -950,7 +951,7 @@ function saveToDb(url, newCourseKey) {
     course_id: newCourseKey,
     course_title: courseTitleInput.value.trim().toLowerCase(),
     course_brief: courseBriefInput.value.trim(),
-    category: categoryInput.value.trim().toLowerCase(),
+    category: categoryInput.value,
     chapter_number: chapterCount,
     units: unitsInput.value.trim(),
     prerequisite: prerequisiteInput.value.trim(),
@@ -985,8 +986,19 @@ function saveToDb(url, newCourseKey) {
   updates["courses/" + newCourseKey] = courseData;
   updates["user_course/" + user.uid + "/" + newCourseKey] = courseData;
   updates["course_chapters/" + newCourseChapterKey] = chapterObj;
+  updates["category_courses/" + categoryInput.value + "/" + newCourseKey] = {
+    course_id: newCourseKey,
+  };
   firebase.database().ref().update(updates);
   setTimeout(() => {
     window.history.back();
   }, 500);
 }
+// updates["category_courses"] = {
+//   data_structure: { "-MPtNlNYUQqDZJwDaerQ": { course_id: "-MPtNlNYUQqDZJwDaerQ" } },
+//   ui_ux_design: { "-MQ0whH25Xfd9GnQgK9T": { course_id: "-MQ0whH25Xfd9GnQgK9T" } },
+//   others: {
+//     "-MPxsSeda6pH5Fx_v-3B": { course_id: "-MPxsSeda6pH5Fx_v-3B" },
+//     "-MQ-qoNxg-ztd4ErdlGr": { course_id: "-MQ-qoNxg-ztd4ErdlGr" },
+//   },
+// };

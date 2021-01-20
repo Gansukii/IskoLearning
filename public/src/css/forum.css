@@ -17,6 +17,11 @@ body {
 .questionIcons {
   color: #a1a1a1;
 }
+.tag {
+  font-size: 12px;
+  color: #7f0303;
+  border: 1px solid #7f0303;
+}
 .tagsPaper {
   max-height: 400px;
   overflow-y: scroll;

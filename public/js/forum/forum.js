@@ -73,14 +73,17 @@ questionTags.onkeyup = (e) => {
 };
 
 function deleteTag(element) {
-  console.log(element.previousSibling.textContent);
+  // console.log(element.previousSibling.textContent);
+  let remove = false;
   tags = tags.filter((data) => {
-    if (data !== element.previousSibling.textContent) {
+    if (data !== element.previousSibling.textContent || remove) {
       return data;
+    } else {
+      remove = true;
     }
   });
   element.parentNode.remove();
-  console.log(tags);
+  // console.log(tags);
 }
 function addTag(element, action) {
   let value = action === "input" ? element.value : element.textContent;

@@ -2,6 +2,7 @@ const textCourseTitle = document.getElementById("textCourseTitle");
 const btnShowChapInfo = document.getElementById("btnShowChapInfo");
 const sideNavDataContainer = document.getElementById("sideNavDataContainer");
 const questionsContainer = document.getElementById("questionsContainer");
+const modalCourseTitle = document.getElementById("modalCourseTitle");
 const btnPrev = document.getElementById("btnPrev");
 const btnNext = document.getElementById("btnNext");
 let btnSideItems = [];
@@ -14,6 +15,8 @@ let totalQuizCount = 0;
 let currentInfo;
 let currentMain;
 let currentUser;
+let courseDone = false;
+let courseTitle = "";
 
 let url = new URL(window.location.href);
 const courseId = url.searchParams.get("id");
@@ -41,10 +44,10 @@ function changeActive(element) {
   //     break;
   //   }
 }
+
 firebase.auth().onAuthStateChanged(function (user) {
   if (user) {
     currentUser = user;
-
     firebase
       .database()
       .ref("course_students/" + courseId)
@@ -66,6 +69,12 @@ firebase.auth().onAuthStateChanged(function (user) {
 });
 
 function verified(user) {
+  firebase
+    .database()
+    .ref("student_user_course/" + currentUser.uid + "/" + courseId)
+    .update({
+      last_opened: firebase.database.ServerValue.TIMESTAMP,
+    });
   document.getElementById("sideLoadingContainer").remove();
   document.getElementById("loadingMain").remove();
   sideNavDataContainer.classList.remove("d-none");
@@ -75,6 +84,16 @@ function verified(user) {
     .once("value")
     .then((snapshot) => {
       const courseData = snapshot.val();
+      courseTitle = courseData.course_title;
+      firebase
+        .database()
+        .ref("student_user_course/" + user.uid + "/" + courseId)
+        .once("value")
+        .then((progress) => {
+          if (progress.val().progress_percent >= 100) {
+            showModal();
+          }
+        });
       textCourseTitle.innerHTML = courseData.course_title;
       firebase
         .database()
@@ -376,6 +395,7 @@ function startQuiz(element) {
               quiz_done[key] = { itemId: key, score: score, over: over };
             }
             let progress_percent = (done_count + 1 / totalQuizCount) * 100;
+            let progress_text = progress_percent >= 100 ? "Completed" : "Resume";
 
             firebase
               .database()
@@ -386,15 +406,18 @@ function startQuiz(element) {
                   current_chapter: currentChap,
                   chapter_name: chapNames[currentChap],
                   quiz_done: quiz_done,
+                  progress_text: progress_text,
                   quiz_done_count: firebase.database.ServerValue.increment(1),
+                  last_opened: firebase.database.ServerValue.TIMESTAMP,
                 },
                 (error) => {
                   if (error) {
                     alert(error);
                     console.log(error);
                   } else {
-                    // let newAnswerKey =
-
+                    if (progress.val().progress_percent >= 100) {
+                      showModal();
+                    }
                     firebase
                       .database()
                       .ref("course_students/" + courseId + "/" + currentUser.uid)
@@ -442,37 +465,8 @@ function disabler(element) {
   element.setAttribute("disabled", "");
 }
 
-{
-  /* <button
-  class="btn w-100 text-left d-flex align-items-center btnSideItem"
-  onclick="changeActive(this)"
->
-  <i class="far fa-play-circle mr-2"></i>Lesson 3: Title
-</button> */
-}
-
-{
-  /* <div class="col-12" id="chapter1">
-  <div class="txtChapter mb-2">Chapter 1: Title</div>
-  <div class="chapterContents1">
-    <button
-      class="btn w-100 text-left d-flex align-items-center btnSideItem btnSideItemActive"
-      onclick="changeActive(this)"
-    >
-      <i class="far fa-play-circle mr-2"></i>Lesson 1: Title
-    </button>
-    <button
-      class="btn w-100 text-left d-flex align-items-center btnSideItem"
-      onclick="changeActive(this)"
-    >
-      <i class="far fa-play-circle mr-2"></i>Lesson 2: Title
-    </button>
-    <button
-      class="btn w-100 text-left d-flex align-items-center btnSideItem"
-      onclick="changeActive(this)"
-    >
-      <i class="far fa-play-circle mr-2"></i>Lesson 3: Title
-    </button>
-  </div>
-</div>; */
+function showModal() {
+  courseDone = true;
+  $("#certModal").modal("show");
+  modalCourseTitle.innerHTML = courseTitle;
 }

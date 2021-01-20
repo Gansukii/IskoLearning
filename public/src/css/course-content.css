@@ -178,6 +178,24 @@ nav {
   font-weight: 900;
   color: #b90000;
 }
+.modalTitle {
+  font-family: "Kreon", serif;
+  font-size: 30px;
+}
+.modalText {
+  font-size: 16px;
+  font-weight: 500;
+}
+#modalCourseTitle {
+  text-transform: capitalize;
+}
+.btnCert {
+  background: #7f0303;
+  width: 200px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
 /* RESPONSIVE */
 @media screen and (max-width: 992px) {
   .thumbContainer {
