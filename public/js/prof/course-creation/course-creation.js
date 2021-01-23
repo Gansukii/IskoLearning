@@ -959,6 +959,7 @@ function saveToDb(url, newCourseKey) {
     student_count: 0,
     created_datetime: firebase.database.ServerValue.TIMESTAMP,
     contents: newCourseChapterKey,
+    prof_id: user.uid,
     prof_name: user.displayName,
     rating: 0,
     review_count: 0,

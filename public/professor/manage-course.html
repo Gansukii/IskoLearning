@@ -7,7 +7,7 @@
 
     <link rel="stylesheet" href="../src/css/bootstrap.css" />
     <link rel="stylesheet" href="../src/css/nav.css" />
-    <link rel="stylesheet" href="../src/css/profHome.css" />
+    <link rel="stylesheet" href="../src/css/manage-course.css" />
     <!-- GOOGLE FONTS   -->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
@@ -133,78 +133,31 @@
       </div>
     </nav>
 
-    <div class="row px-2 p-md-0 mt-5 mx-0 w-100 d-flex justify-content-center">
-      <div class="col-12 col-md-8 px-2 px-md-0">
-        <div class="row w-100 mx-0">
-          <div class="col-12 p-0 d-flex">
-            <div class="txtTitle">My Courses</div>
-            <button class="btn btn-danger btnNewCourse" id="btnNewCourse">
-              + Create New Course
-            </button>
+    <div class="row mx-0">
+      <div
+        class="col-12 col-lg-3 sideNav px-2 px-lg-5 pt-4 pb-0 pb-sm-4 d-flex justify-content-center d-lg-block"
+        id="sideNav"
+      >
+        <div class="row mx-0 w-100">
+          <div
+            class="col-12 d-flex px-0 mb-3 mb-lg-5 justify-content-center txtCourseTitle"
+            id="txtCourseTitle"
+          >
+            web development
+          </div>
+          <div
+            class="col-6 col-lg-12 px-0 py-1 py-sm-2 mb-1 sideTab activeTab"
+            onclick="changeTab(this)"
+          >
+            Quizzes
+          </div>
+          <div class="col-6 col-lg-12 px-0 py-1 py-sm-2 sideTab" onclick="changeTab(this)">
+            Students
           </div>
         </div>
-
-        <div class="row w-100 mx-0 p-0 mt-3">
-          <ul class="w-100 d-flex flex-wrap flex-row p-0 m-0 tabList">
-            <li class="activeTab tabItem text-center" onclick="changePage(this)">ALL COURSES</li>
-            <li class="tabItem text-center" onclick="changePage(this)">DRAFTS</li>
-            <li class="tabItem text-center" onclick="changePage(this)">PUBLISHED</li>
-            <li class="tabItem text-center" onclick="changePage(this)">ON-REVIEW</li>
-          </ul>
-          <hr class="w-100 m-0" />
-        </div>
-        <div class="row w-100 mx-0 p-0 mt-4" id="coursesContainer">
-          <div class="w-100 justify-content-center d-none text-center" id="txtNoCourse">
-            No course found
-          </div>
-
-          <div class="d-flex w-100 justify-content-center" id="courseSpinner">
-            <div class="spinner-border" role="status">
-              <span class="sr-only">Loading...</span>
-            </div>
-          </div>
-          <!-- <div class="col-12 p-0 paperCourse mb-3 mb-md-4 p-2 p-sm-3">
-            <div class="row w-100 m-0">
-              <div class="col-4 col-sm-3 p-0">
-                <div class="d-flex w-100 p-0 thumb"></div>
-              </div>
-              <div class="col ml-2 ml-lg-0 p-0 d-flex align-items-center">
-                <div class="row w-100 m-0">
-                  <div class="col-12 p-0 courseTitle">Database Administration</div>
-                  <div class="badgeDev px-2">Draft</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-12 p-0 paperCourse mb-3 mb-md-4 p-2 p-sm-3">
-            <div class="row w-100 m-0">
-              <div class="col-4 col-sm-3 p-0">
-                <div class="d-flex w-100 p-0 thumb"></div>
-              </div>
-              <div class="col ml-2 ml-lg-0 p-0 d-flex align-items-center">
-                <div class="row w-100 m-0">
-                  <div class="col-12 p-0 courseTitle">Database Administration</div>
-                  <div class="badgeDev px-2">Draft</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-12 p-0 paperCourse mb-3 mb-md-4 p-2 p-sm-3">
-            <div class="row w-100 m-0">
-              <div class="col-4 col-sm-3 p-0">
-                <div class="d-flex w-100 p-0 thumb"></div>
-              </div>
-              <div class="col ml-2 ml-lg-0 p-0 d-flex align-items-center">
-                <div class="row w-100 m-0">
-                  <div class="col-12 p-0 courseTitle">Database Administration</div>
-                  <div class="badgeDev px-2">Draft</div>
-                </div>
-              </div>
-            </div>
-          </div> -->
-        </div>
+      </div>
+      <div class="col-12 col-lg px-4 px-sm-5 mt-5 mx-0 w-100 d-flex justify-content-center">
+        <div class="row mx-0 w-100 d-block" id="quizContainer"></div>
       </div>
     </div>
 
@@ -224,9 +177,8 @@
     <script src="../js/bootstrapJs/bootstrap.bundle.js"></script>
     <script src="../js/bootstrapJs/bootstrap.js"></script>
     <script src="../js/isSigned/isSigned.js"></script>
-    <script src="../js/prof/home/home.js"></script>
     <script src="../js/isSigned/getNotif.js"></script>
     <script src="../js/nav/nav.js"></script>
-    <script src="../js/prof/home/getProfCourse.js"></script>
+    <script src="../js/prof/manage-course/manage-course.js"></script>
   </body>
 </html>

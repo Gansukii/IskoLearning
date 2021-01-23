@@ -1,0 +1,59 @@
+.sideNav {
+  width: 23%;
+  border-right: 0.75px solid #c4c4c4;
+  background-color: #ffffff;
+}
+.txtCourseTitle {
+  font-weight: 900;
+  font-size: 36px;
+}
+.sideTab {
+  font-weight: 900;
+  font-size: 16px;
+  cursor: pointer;
+}
+.sideTab:hover {
+  background-color: #f5f5f5;
+}
+.paperCourse {
+  background: #ffffff;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  cursor: pointer;
+}
+.paperCourse:hover {
+  transform: scale(1.01);
+}
+.quizTitle {
+  font-size: 18px;
+}
+.qNum {
+  font-weight: 400;
+}
+@media screen and (max-width: 576px) {
+  body,
+  .sideTab {
+    font-size: 14px;
+  }
+  .txtCourseTitle {
+    font-size: 25px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .sideTab {
+    text-align: center;
+  }
+  .activeTab {
+    border-bottom: 2px solid #7f0303;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .sideNav {
+    height: 100vh;
+  }
+  .paperCourse {
+    height: 85px;
+  }
+}
