@@ -1,0 +1,144 @@
+@keyframes animate {
+  0% {
+    background-position: 0 0;
+  }
+
+  50% {
+    background-position: 300% 0;
+  }
+
+  100% {
+    background-position: 0 0;
+  }
+}
+.loading {
+  height: 28px;
+  background: linear-gradient(90deg, #e5e5e5, #f4f4f4, #e5e5e5, #f4f4f4, #e5e5e5, #f4f4f4, #e5e5e5);
+  background-size: 400%;
+  animation: animate 40s linear infinite;
+}
+.sideNav {
+  width: 23%;
+  border-right: 0.75px solid #c4c4c4;
+  background-color: #ffffff;
+  height: 100%;
+}
+.txtCourseTitle {
+  font-weight: 900;
+  font-size: 24px;
+  text-transform: capitalize;
+}
+.txtProgress {
+  font-weight: 900;
+  font-size: 22px;
+}
+.sideTab {
+  font-weight: 900;
+  font-size: 16px;
+  cursor: pointer;
+}
+.sideTab:hover {
+  background-color: #f5f5f5;
+}
+.paperCourse {
+  background: #ffffff;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+}
+.txtCurrentChapter {
+  font-weight: 600;
+  font-size: 16px;
+  color: #6d6d6d;
+}
+.txtProgressPercent {
+  font-weight: bold;
+  font-size: 16px;
+}
+.btnResume {
+  color: #000000;
+  font-weight: bold;
+  font-size: 18px;
+  background: #fdca00;
+}
+.accordionHeaderText {
+  font-size: 18px;
+  font-weight: 700;
+}
+.fa-play-circle,
+.fa-file-alt {
+  font-size: 24px;
+  width: 24px;
+}
+.accordionSubItemText {
+  font-size: 18px;
+  font-weight: 700;
+}
+.lh-1 {
+  line-height: 1;
+}
+.activeTab {
+  background-color: #f4f4f7;
+}
+/* .paperCourse:hover {
+  transform: scale(1.01);
+} */
+.quizTitle {
+  font-size: 18px;
+}
+.qNum {
+  font-weight: 400;
+}
+.tableBold {
+  font-size: 16px;
+  font-weight: 700;
+}
+.tableThin {
+  font-size: 15px;
+  font-weight: 500;
+}
+@media screen and (max-width: 576px) {
+  body,
+  .sideTab,
+  .txtProgressPercent,
+  .txtCurrentChapter {
+    font-size: 14px;
+  }
+  .txtCourseTitle,
+  .fa-play-circle,
+  .fa-file-alt {
+    font-size: 20px;
+  }
+  .txtProgress {
+    font-size: 18px;
+  }
+  .btnResume,
+  .accordionHeaderText {
+    font-size: 16px;
+  }
+  .accordionSubItemText,
+  .tableBold {
+    font-size: 15px;
+  }
+  .tableThin {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .sideTab {
+    text-align: center;
+  }
+  .activeTab {
+    background-color: #ffffff;
+    border-bottom: 2px solid #7f0303;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .sideNav {
+    height: auto;
+  }
+  /* .paperCourse {
+    height: 85px;
+  } */
+}

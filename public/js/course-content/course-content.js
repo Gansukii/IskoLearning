@@ -94,7 +94,9 @@ function verified(user) {
             showModal();
           }
         });
-      textCourseTitle.innerHTML = courseData.course_title;
+      textCourseTitle.innerHTML = `
+        <span style='cursor: pointer;' onclick=goToOverview()>${courseData.course_title}</span>
+        <span class='ml-1' style='color: #ffffff;'> > Course Content </span>`;
       firebase
         .database()
         .ref("course_chapters/" + courseData.contents)
@@ -469,4 +471,8 @@ function showModal() {
   courseDone = true;
   $("#certModal").modal("show");
   modalCourseTitle.innerHTML = courseTitle;
+}
+
+function goToOverview() {
+  window.location.assign(`/course-overview?id=${courseId}`);
 }

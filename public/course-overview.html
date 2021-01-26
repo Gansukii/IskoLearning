@@ -7,11 +7,11 @@
 
     <link rel="stylesheet" href="src/css/bootstrap.css" />
     <link rel="stylesheet" href="src/css/nav.css" />
-    <link rel="stylesheet" href="src/css/course-content.css" />
+    <link rel="stylesheet" href="src/css/course-overview.css" />
     <!-- GOOGLE FONTS   -->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600;700&family=Kreon:wght@700&family=Lato:wght@400;700;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600;700&family=Lato:wght@400;700;900&display=swap"
       rel="stylesheet"
     />
     <!--  FONTAWESOME  -->
@@ -19,8 +19,8 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light" id="nav">
-      <a class="navbar-brand" href="home.html">Navbar</a>
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <a class="navbar-brand" href="#">Navbar</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -59,25 +59,27 @@
           </li>
 
           <li class="nav-item searchContainer">
-            <div class="row d-flex align-items-center">
-              <div class="col-8 pr-0">
-                <input
-                  class="form-control searchDev"
-                  type="search"
-                  placeholder="What do you want to learn?"
-                  id="search"
-                />
+            <form class="my-lg-0">
+              <div class="row d-flex align-items-center">
+                <div class="col-8 pr-0">
+                  <input
+                    class="form-control searchDev"
+                    type="search"
+                    placeholder="What do you want to learn?"
+                    id="search"
+                  />
+                </div>
+                <div class="col-4 px-0">
+                  <button class="btn my-2 my-sm-0" type="submit" id="btnSearch">
+                    <i class="fas fa-search"></i>
+                  </button>
+                </div>
               </div>
-              <div class="col-4 px-0">
-                <button class="btn my-2 my-sm-0" type="submit" id="btnSearch">
-                  <i class="fas fa-search"></i>
-                </button>
-              </div>
-            </div>
+            </form>
           </li>
         </ul>
         <div class="d-flex align-items-center">
-          <a class="btn mr-2" id="btnNavIn" href="profile.html">My Courses</a>
+          <a class="btn mr-2" id="btnNavIn">My Courses</a>
           <div class="btn-group dropleft" id="notifDrop">
             <button
               class="btn rounded-circle p-1 text-center mr-3 dropdown-toggle"
@@ -117,7 +119,9 @@
                 </div>
               </div>
               <div class="list-group list-group-flush p-0">
-                <a href="profile" class="list-group-item list-group-item-action px-2">Profile</a>
+                <a href="../profile.html" class="list-group-item list-group-item-action px-2"
+                  >Profile</a
+                >
                 <a href="#" class="list-group-item list-group-item-action px-2">Account Settings</a>
                 <a href="#" class="list-group-item list-group-item-action px-2" id="sign-out"
                   ><i class="fas fa-sign-out-alt mr-1"></i>Sign out</a
@@ -129,83 +133,86 @@
       </div>
     </nav>
 
-    <div class="px-4 py-3 w-100 sticky-top header" id="header">
-      <div class="row w-100 mx-0 d-flex justify-content-between">
-        <div
-          class="col-12 col-sm-8 px-0 px-sm-2 d-sm-flex align-items-sm-center txtCourse text-center text-sm-left"
-          id="textCourseTitle"
-        >
-          <div class="loadingTitle"></div>
-        </div>
-        <div
-          class="col-12 col-sm-4 mt-2 mt-sm-0 d-flex flex-row justify-content-center justify-content-sm-end"
-        >
-          <button class="btn lessonNav px-3 d-flex align-items-center prev" id="btnPrev" disabled>
-            Previous Lesson
-          </button>
-          <button
-            class="btn lessonNav px-3 d-flex align-items-center next lessonNavActive"
-            id="btnNext"
-            disabled
+    <div class="row mx-0">
+      <div
+        class="col-12 col-lg-3 sideNav px-0 pt-4 pb-0 pb-lg-4 d-flex justify-content-center d-lg-block"
+        id="sideNav"
+      >
+        <div class="row mx-0 w-100">
+          <div
+            class="col-12 d-flex px-2 px-lg-5 mb-3 mt-0 mb-lg-5 mt-lg-4 justify-content-center loading txtCourseTitle"
+            id="txtCourseTitle"
+          ></div>
+          <div
+            class="col-6 col-lg-12 px-0 pl-lg-5 py-1 py-sm-2 mb- mb-lg-2 sideTab activeTab"
+            onclick="changeTab(this)"
           >
-            Next Lesson
-          </button>
-        </div>
-      </div>
-    </div>
-    <div class="sideNav px-2 py-4 d-none d-md-block position-fixed" id="sideNav">
-      <div class="w-100 d-flex flex-column" id="sideLoadingContainer">
-        <p class="w-100 sideLoading"></p>
-        <p class="w-100 sideLoading"></p>
-        <p class="w-100 sideLoading"></p>
-        <p class="w-100 sideLoading"></p>
-        <p class="w-100 sideLoading"></p>
-      </div>
-
-      <div class="row w-100 mx-0 d-none" id="sideNavDataContainer"></div>
-    </div>
-
-    <div class="mainContent mx-0 ml-md-auto px-0 py-3 p-sm-5" id="mainContent">
-      <div class="w-100 d-flex justify-content-end">
-        <button class="btn py-0 btnShowChapInfo" id="btnShowChapInfo">Show Chapter Info</button>
-      </div>
-      <div class="px-3 w-100 h-100">
-        <div class="row w-100 mx-0 px-sm-3" id="contentItem">
-          <div class="w-100" id="questionsContainer"></div>
-
-          <div class="w-100" id="loadingMain">
-            <div class="col-12 w-25 my-3 loadingTxtMain"></div>
-            <div class="thumbContainer"></div>
+            Course Overview
+          </div>
+          <div class="col-6 col-lg-12 px-0 pl-lg-5 py-1 py-sm-2 sideTab" onclick="changeTab(this)">
+            Grades
           </div>
         </div>
       </div>
-    </div>
-
-    <div
-      class="modal fade"
-      id="certModal"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="exampleModalCenterTitle"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
+      <div class="row col-lg px-4 px-sm-5 mt-5 mx-0 w-100 d-flex justify-content-center">
+        <div class="col-12 px-0" id="contentContainer">
+          <div class="row mx-0 px-0 px-sm-5 w-100 d-flex">
+            <div class="col-12 px-0 txtCourseTitle">Course Overview</div>
+            <div class="row mx-0 w-100 p-3 my-4 paperCourse">
+              <div class="col-12 px-0 txtProgress">Course Progress</div>
+              <div class="col-12 px-0">
+                <div
+                  class="row mx-0 mt-3 w-100 justify-content-center"
+                  id="courseProgressContainer"
+                >
+                  <div class="row mx-0 w-100 rowChangeWidth">
+                    <div class="col-12 px-0 txtCurrentChapter">
+                      Chapter <span id="txtCurrentChapter"></span>:
+                      <span id="txtChapterName"></span>
+                    </div>
+                    <div class="col-12 px-0 col-sm-9 progress my-1">
+                      <div
+                        class="progress-bar bg-warning"
+                        role="progressbar"
+                        aria-valuenow="100"
+                        aria-valuemin="0"
+                        aria-valuemax="100"
+                        id="courseProgressBar"
+                      ></div>
+                    </div>
+                    <div class="col-12 col-sm px-0 pl-sm-3 mt-1 mt-sm-0 txtProgressPercent">
+                      <span id="txtProgressPercent"></span>% COMPLETE
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 px-0">
+                <button class="btn btnResume mt-3" id="goToCourse" disabled></button>
+              </div>
+            </div>
+            <div class="row mx-0 w-100 p-3 my-3 paperCourse">
+              <div class="col-12 px-0 mb-3 txtProgress">Course Content</div>
+              <div class="col-12 px-0 pl-sm-3" id="accordionContainer"></div>
+            </div>
           </div>
-          <div class="modal-body">
-            <div class="row mx-0">
-              <div class="col-12 px-0 text-center modalTitle">Congratulations!</div>
-              <div class="col-12 px-0 text-center mt-3 modalText">
-                You have completed the course <span id="modalCourseTitle"></span>. Please download
-                your certificate below.
-              </div>
-              <div class="col-12 px-0 mt-3 mb-4 d-flex justify-content-center">
-                <button class="btn btn-danger btnCert">Download Completion Certificate</button>
-              </div>
+        </div>
+        <div class="col-12 px-0 d-none" id="gradeContentContainer">
+          <div class="row mx-0 px-0 px-sm-5 w-100 d-flex">
+            <div class="col-12 px-0 txtCourseTitle">Grades</div>
+            <div class="col-12 px-0 my-4 paperCourse">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col" class="tableThin">ITEM</th>
+                    <th scope="col" class="tableThin">STATUS</th>
+                    <th scope="col" class="tableBold">GRADE</th>
+                  </tr>
+                </thead>
+                <tbody id="tableBody"></tbody>
+              </table>
+            </div>
+            <div class="col-12 py-3 mb-4 tableBold text-center paperCourse">
+              Course Grade: <span style="color: rgb(40, 176, 46)" id="courseGrade"></span>
             </div>
           </div>
         </div>
@@ -229,9 +236,9 @@
     <script src="js/bootstrapJs/bootstrap.js"></script>
     <script src="js/isSigned/isSigned.js"></script>
     <script src="js/forum/getTimeAgo.js"></script>
+
     <script src="js/isSigned/getNotif.js"></script>
     <script src="js/nav/nav.js"></script>
-    <script src="js/course-content/responsive.js"></script>
-    <script src="js/course-content/course-content.js"></script>
+    <script src="js/course-overview/course-overview.js"></script>
   </body>
 </html>

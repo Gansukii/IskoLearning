@@ -1,4 +1,4 @@
-const courseProgressContainer = document.getElementById("courseProgressContainer");
+// const courseProgressContainer = document.getElementById("courseProgressContainer");
 const ratingContainer = document.getElementById("ratingContainer");
 const reviewColumn = document.getElementById("reviewColumn");
 const rowReview = document.getElementById("rowReview");
@@ -48,6 +48,7 @@ firebase.auth().onAuthStateChanged(function (user) {
       .ref("course_students/" + courseId)
       .once("value")
       .then((snapshot) => {
+        btnEnroll.classList.remove("d-none");
         if (snapshot.val()) {
           if (user.uid in snapshot.val()) {
             firebase
@@ -58,14 +59,15 @@ firebase.auth().onAuthStateChanged(function (user) {
                 const data = snapshot.val();
                 // btnEnroll.removeAttribute("disabled");
                 btnEnroll.innerHTML = data.progress_text;
-                courseProgressContainer.classList.remove("d-none");
-                courseProgressContainer.classList.add("d-flex");
-                document.getElementById("txtProgressPercent").innerHTML = data.progress_percent;
-                document.getElementById("txtCurrentChapter").innerHTML = data.current_chapter;
-                document.getElementById("txtChapterName").innerHTML = data.chapter_name;
-                document.getElementById(
-                  "courseProgressBar"
-                ).style = `width: ${data.progress_percent}%;`;
+                btnEnroll.style = "background-color: #FDCA00;";
+                // courseProgressContainer.classList.remove("d-none");
+                // courseProgressContainer.classList.add("d-flex");
+                // document.getElementById("txtProgressPercent").innerHTML = data.progress_percent;
+                // document.getElementById("txtCurrentChapter").innerHTML = data.current_chapter;
+                // document.getElementById("txtChapterName").innerHTML = data.chapter_name;
+                // document.getElementById(
+                //   "courseProgressBar"
+                // ).style = `width: ${data.progress_percent}%;`;
 
                 btnEnroll.onclick = () => {
                   startCourse(user);
@@ -128,21 +130,23 @@ function enrollUser(user) {
 
 function startCourse(user) {
   // console.log(user);
-  firebase
-    .database()
-    .ref("student_user_course/" + user.uid + "/" + courseId)
-    .update(
-      {
-        progress_text: "Resume",
-      },
-      (error) => {
-        if (error) {
-          console.log(error);
-        } else {
-          window.location.assign(`/course-content?id=${courseId}`);
-        }
-      }
-    );
+  window.location.assign(`/course-overview?id=${courseId}`);
+
+  // firebase
+  //   .database()
+  //   .ref("student_user_course/" + user.uid + "/" + courseId)
+  //   .update(
+  //     {
+  //       progress_text: "Resume",
+  //     },
+  //     (error) => {
+  //       if (error) {
+  //         console.log(error);
+  //       } else {
+  //         window.location.assign(`/course-overview?id=${courseId}`);
+  //       }
+  //     }
+  //   );
 }
 
 // ######################## SHOW DATA #########################
