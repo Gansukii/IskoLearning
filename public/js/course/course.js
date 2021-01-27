@@ -13,7 +13,12 @@ const starContainer = document.getElementById("starContainer");
 const reviewBoxStarContainer = document.getElementById("reviewBoxStarContainer");
 const txtChapterCount = document.getElementById("txtChapterCount");
 const txtStudentCount = document.getElementById("txtStudentCount");
+const starsRev = document.getElementsByClassName("starsRev");
 const txtPrereq = document.getElementById("txtPrereq");
+const reviewsContainer = document.getElementById("reviewsContainer");
+let totalRating = 0;
+let totalReview = 0;
+let finalRating = 0;
 let url = new URL(window.location.href);
 const courseId = url.searchParams.get("id");
 
@@ -26,6 +31,81 @@ window.onresize = () => {
     rowReview.appendChild(ratingContainer);
   } else reviewColumn.appendChild(ratingContainer);
 };
+
+firebase
+  .database()
+  .ref("reviews/" + courseId)
+  .once("value")
+  .then((snapshot) => {
+    totalReview = Object.keys(snapshot.val()).length;
+    snapshot.forEach((ratings) => {
+      const reviewData = ratings.val();
+      totalRating += reviewData.review_number;
+      finalRating = 5 * (totalRating / (totalReview * 5));
+      txtRating.innerHTML = finalRating.toFixed(1);
+      document.getElementById("txtReviewBoxNum").innerHTML = finalRating.toFixed(1);
+      starsRev;
+      for (let i = 0; i < 5; i++) {
+        if (i < Math.floor(finalRating)) {
+          starsRev[i].classList.remove("far");
+          starsRev[i].classList.add("fas");
+        } else {
+          starsRev[i].classList.remove("fas");
+          starsRev[i].classList.add("far");
+        }
+      }
+      const monthNames = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+      ];
+      const dateObj = new Date(reviewData.created_datetime);
+      const month = dateObj.getMonth() + 1;
+      const day = String(dateObj.getDate()).padStart(2, "0");
+      const year = dateObj.getFullYear();
+      const dateOutput = month + "/" + day + "/" + year;
+      firebase
+        .database()
+        .ref("users/" + reviewData.user)
+        .once("value")
+        .then((snapshot) => {
+          const user = snapshot.val();
+          const newReviewNode = document.createElement("div");
+          newReviewNode.className = "col-12 mt-3";
+          newReviewNode.innerHTML = `
+            <div class="row py-3 px-4 reviewBox">
+              <div class="col-12 d-flex p-0 reviewStar" id="starsContainer">
+                <i class="far fa-star star1"></i>
+                <i class="far fa-star star2"></i>
+                <i class="far fa-star star3"></i>
+                <i class="far fa-star star4"></i>
+                <i class="far fa-star star5"></i>
+                <div class="reviewDate">${dateOutput}</div>
+              </div>
+              <div class="col-12 p-0 mt-3 text-justify">
+                ${reviewData.review_text}
+              </div>
+              <div class="col-12 p-0 mt-1 reviewName">-${user.fullname}</div>
+            </div>`;
+          reviewsContainer.appendChild(newReviewNode);
+
+          const stars = newReviewNode.querySelectorAll(".fa-star");
+          for (let i = 0; i < reviewData.review_number; i++) {
+            stars[i].classList.remove("far");
+            stars[i].classList.add("fas");
+          }
+        });
+    });
+  });
 
 firebase
   .database()
@@ -166,7 +246,7 @@ firebase
     txtCourseTitle.innerHTML = data.course_title;
     txtCourseProf.innerHTML = "Prof. " + data.prof_name;
     desContainer.innerHTML = data.course_brief;
-    txtRating.innerHTML = data.rating.toFixed(1);
+    // txtRating.innerHTML = data.rating.toFixed(1);
     reviewsCount.innerHTML = data.review_count + (data.review_count < 2 ? " review" : " reviews");
     let starCount = data.rating;
     for (let i = 0; i < 5; i++) {
@@ -177,13 +257,13 @@ firebase
     txtChapterCount.innerHTML = data.chapter_number;
     txtStudentCount.innerHTML = data.student_count;
     txtPrereq.innerHTML = data.prerequisite === "" ? "--" : data.prerequisite;
-    document.getElementById("txtReviewBoxNum").innerHTML = data.rating.toFixed(1);
+    // document.getElementById("txtReviewBoxNum").innerHTML = data.rating.toFixed(1);
     document.getElementById("txtReviewBoxCount").innerHTML = data.review_count;
 
     for (let i = 0; i < 5; i++) {
       const star = document.createElement("i");
       star.className = i < starCount ? "fas fa-star star2" : "far fa-star star2";
-      reviewBoxStarContainer.appendChild(star);
+      // reviewBoxStarContainer.appendChild(star);
     }
     firebase
       .database()

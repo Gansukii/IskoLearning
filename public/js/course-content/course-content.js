@@ -3,8 +3,10 @@ const btnShowChapInfo = document.getElementById("btnShowChapInfo");
 const sideNavDataContainer = document.getElementById("sideNavDataContainer");
 const questionsContainer = document.getElementById("questionsContainer");
 const modalCourseTitle = document.getElementById("modalCourseTitle");
+const reviewInput = document.getElementById("reviewInput");
 const btnPrev = document.getElementById("btnPrev");
 const btnNext = document.getElementById("btnNext");
+const stars = document.getElementsByClassName("fa-star");
 let btnSideItems = [];
 let firstIter = true;
 let chapFirstIter = true;
@@ -17,6 +19,9 @@ let currentMain;
 let currentUser;
 let courseDone = false;
 let courseTitle = "";
+let totalOver = 0;
+let totalScore = 0;
+let starRating;
 
 let url = new URL(window.location.href);
 const courseId = url.searchParams.get("id");
@@ -156,18 +161,19 @@ function verified(user) {
                   </div>
                 `;
               } else {
+                totalOver += chapterContents.questions.length - 1;
                 firebase
                   .database()
                   .ref("student_user_course/" + user.uid + "/" + courseId + "/quiz_done")
                   .once("value")
                   .then((doneKeys) => {
                     let startButton = `<button class="btn btn-danger px-4 btnStart" id="btnStartQuiz" qTitle=" ${chapterContents.title}" chapNum="${chapterContents.chapter}" cKey="${courseData.contents}" key="${chapterContents.itemId}" onclick="startQuiz(this)">Start Quiz</button>`;
-
-                    if (doneKeys.val())
+                    if (doneKeys.val()) {
                       if (chapterContents.itemId in doneKeys.val()) {
+                        totalScore += doneKeys.val()[chapterContents.itemId].score;
                         startButton = `<button class="btn btn-danger px-4 btnStart" disabled><i class="far fa-check-circle"></i> Quiz Done</button>`;
                       }
-
+                    }
                     newMainNode.innerHTML = `
                     <div class="col-12 px-0 mt-2 mb-2 mb-sm-3 mt-sm-0 txtMain">${
                       chapterContents.title
@@ -375,6 +381,7 @@ function startQuiz(element) {
           <div class="col-12 px-0 score">${score}/${over}</div>
           <div class="col-12 px-0">answered correctly</div>`;
         questionsContainer.insertBefore(resultNode, questionsContainer.children[1]);
+        totalScore += score;
         // firebase
         //   .database()
         //   .ref("course_chapters/" + contentKey + `/chapter${chapter}`)
@@ -396,7 +403,7 @@ function startQuiz(element) {
               quiz_done = {};
               quiz_done[key] = { itemId: key, score: score, over: over };
             }
-            let progress_percent = (done_count + 1 / totalQuizCount) * 100;
+            let progress_percent = ((done_count + 1) / totalQuizCount) * 100;
             let progress_text = progress_percent >= 100 ? "Completed" : "Resume";
 
             firebase
@@ -411,14 +418,15 @@ function startQuiz(element) {
                   progress_text: progress_text,
                   quiz_done_count: firebase.database.ServerValue.increment(1),
                   last_opened: firebase.database.ServerValue.TIMESTAMP,
+                  grade: Number(((totalScore / totalOver) * 100).toFixed(1)),
                 },
                 (error) => {
                   if (error) {
                     alert(error);
                     console.log(error);
                   } else {
-                    if (progress.val().progress_percent >= 100) {
-                      showModal();
+                    if (progress_percent >= 100) {
+                      $("#reviewModal").modal("show");
                     }
                     firebase
                       .database()
@@ -475,4 +483,62 @@ function showModal() {
 
 function goToOverview() {
   window.location.assign(`/course-overview?id=${courseId}`);
+}
+
+for (i of stars) {
+  i.onmouseover = (e) => {
+    let end = false;
+    for (j of stars) {
+      if (!end) {
+        j.classList.remove("far");
+        j.classList.add("fas");
+      } else {
+        j.classList.remove("fas");
+        j.classList.add("far");
+      }
+      if (e.target == j) end = true;
+    }
+  };
+  i.onmouseout = () => {
+    if (!starRating) {
+      for (j of stars) {
+        j.classList.remove("fas");
+        j.classList.add("far");
+      }
+    }
+  };
+}
+
+function starCount(element) {
+  starRating = parseInt(element.getAttribute("count"));
+}
+
+function submitReview(element) {
+  firebase
+    .database()
+    .ref("reviews/" + courseId + "/" + currentUser.uid)
+    .update(
+      {
+        user: currentUser.uid,
+        created_datetime: firebase.database.ServerValue.TIMESTAMP,
+        review_number: starRating,
+        review_text: reviewInput.value,
+      },
+      (error) => {
+        if (error) {
+          console.log(error);
+        } else {
+          firebase
+            .database()
+            .ref("courses/" + courseId)
+            .update({
+              review_count: firebase.database.ServerValue.increment(1),
+            });
+
+          element.setAttribute("disabled", "");
+          $("#reviewModal").modal("hide");
+          showModal();
+        }
+      }
+    );
 }

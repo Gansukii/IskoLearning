@@ -212,6 +212,42 @@
       </div>
     </div>
 
+    <div class="modal fade p-0" id="reviewModal" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="reviewTitle">Review Course</div>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="row mx-0">
+              <div class="col-12 px-0">Rating</div>
+              <div class="col-12 px-0 mt-3 modalText">
+                <i class="far fa-star" count="1" onclick="starCount(this)"></i>
+                <i class="far fa-star" count="2" onclick="starCount(this)"></i>
+                <i class="far fa-star" count="3" onclick="starCount(this)"></i>
+                <i class="far fa-star" count="4" onclick="starCount(this)"></i>
+                <i class="far fa-star" count="5" onclick="starCount(this)"></i>
+              </div>
+              <div class="col-12 px-0 mt-3 mb-4">
+                <div class="form-group w-100">
+                  <label for="reviewInput">Write your review</label>
+                  <textarea class="form-control" id="reviewInput" rows="3"></textarea>
+                </div>
+              </div>
+              <div class="col-12 px-0 d-flex justify-content-end">
+                <button class="btn btn-danger btnCert" onclick="submitReview(this)">
+                  Submit Review
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="/__/firebase/8.1.2/firebase-app.js"></script>
     <script src="/__/firebase/8.1.2/firebase-auth.js"></script>

@@ -196,7 +196,15 @@ nav {
   font-size: 16px;
   font-weight: 700;
 }
-
+.reviewTitle {
+  font-weight: 600;
+  font-size: 20px;
+}
+.fa-star {
+  color: #ffc700;
+  font-size: 25px;
+  cursor: pointer;
+}
 /* RESPONSIVE */
 @media screen and (max-width: 992px) {
   .thumbContainer {
@@ -229,5 +237,11 @@ nav {
   }
   .score {
     font-size: 28px;
+  }
+  .reviewTitle {
+    font-size: 18px;
+  }
+  .fa-star {
+    font-size: 20px;
   }
 }
