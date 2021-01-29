@@ -776,6 +776,7 @@ function addQuiz(element, action) {
     title: document.getElementById(`quizTitleInput-${chapterNumber}`).value,
     instructions: document.getElementById(`quizInstructionsInput-${chapterNumber}`).value,
     questions: items,
+    submit_count: 0,
   };
 
   let chapterKey = `chapter${chapterNumber}`;

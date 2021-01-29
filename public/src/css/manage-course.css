@@ -15,20 +15,48 @@
 .sideTab:hover {
   background-color: #f5f5f5;
 }
+.activeTab {
+  background-color: #f5f5f5;
+}
 .paperCourse {
   background: #ffffff;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
   cursor: pointer;
 }
-.paperCourse:hover {
+/* .paperCourse:hover {
   transform: scale(1.01);
-}
+} */
 .quizTitle {
   font-size: 18px;
 }
 .qNum {
   font-weight: 400;
+}
+.tableThin {
+  font-weight: 500;
+  font-size: 14px;
+}
+.tableBold {
+  font-size: 14px;
+  font-weight: 900;
+}
+.gradeTableTxt {
+  font-size: 14px;
+}
+.gradeInProgress {
+  color: #7f0303;
+}
+.gradeComplete {
+  color: #28b02e;
+}
+.studentAvatar {
+  height: 35px;
+  width: 35px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  text-align: center;
 }
 @media screen and (max-width: 576px) {
   body,
@@ -37,6 +65,9 @@
   }
   .txtCourseTitle {
     font-size: 25px;
+  }
+  .gradeTableTxt {
+    font-size: 12px;
   }
 }
 
@@ -53,7 +84,7 @@
   .sideNav {
     height: 100vh;
   }
-  .paperCourse {
+  /* .paperCourse {
     height: 85px;
-  }
+  } */
 }

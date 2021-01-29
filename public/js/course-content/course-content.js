@@ -408,6 +408,21 @@ function startQuiz(element) {
 
             firebase
               .database()
+              .ref("course_chapters/" + contentKey + `/chapter${chapter}/chapter_contents/` + key)
+              .update({
+                submit_count: firebase.database.ServerValue.increment(1),
+              });
+
+            if (progress_percent >= 100) {
+              firebase
+                .database()
+                .ref("course_students/" + courseId + "/" + currentUser.uid)
+                .update({
+                  grade: Number(((totalScore / totalOver) * 100).toFixed(1)),
+                });
+            }
+            firebase
+              .database()
               .ref("student_user_course/" + currentUser.uid + "/" + courseId)
               .update(
                 {

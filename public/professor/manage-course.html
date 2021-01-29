@@ -135,29 +135,80 @@
 
     <div class="row mx-0">
       <div
-        class="col-12 col-lg-3 sideNav px-2 px-lg-5 pt-4 pb-0 pb-sm-4 d-flex justify-content-center d-lg-block"
+        class="col-12 col-lg-3 sideNav px-0 pt-4 pb-0 pb-lg-4 d-flex justify-content-center d-lg-block"
         id="sideNav"
       >
         <div class="row mx-0 w-100">
           <div
-            class="col-12 d-flex px-0 mb-3 mb-lg-5 justify-content-center txtCourseTitle"
+            class="col-12 d-flex px-0 px-lg-5 mb-3 mb-lg-5 justify-content-center txtCourseTitle"
             id="txtCourseTitle"
           >
             web development
           </div>
           <div
-            class="col-6 col-lg-12 px-0 py-1 py-sm-2 mb-1 sideTab activeTab"
+            class="col-4 col-lg-12 px-0 px-lg-5 py-1 py-sm-2 mb-lg-1 sideTab activeTab"
             onclick="changeTab(this)"
           >
             Quizzes
           </div>
-          <div class="col-6 col-lg-12 px-0 py-1 py-sm-2 sideTab" onclick="changeTab(this)">
+          <div
+            class="col-4 col-lg-12 px-0 px-lg-5 py-1 py-sm-2 mb-lg-1 sideTab"
+            onclick="changeTab(this)"
+          >
+            Grades
+          </div>
+          <div class="col-4 col-lg-12 px-0 px-lg-5 py-1 py-sm-2 sideTab" onclick="changeTab(this)">
             Students
           </div>
         </div>
       </div>
       <div class="col-12 col-lg px-4 px-sm-5 mt-5 mx-0 w-100 d-flex justify-content-center">
-        <div class="row mx-0 w-100 d-block" id="quizContainer"></div>
+        <div class="row mx-0 w-100 px-sm-5 d-block" id="quizContainer">
+          <div class="txtCourseTitle">Quizzes</div>
+          <div class="col-12 px-0 my-4 paperCourse">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col" class="tableThin col-10">QUIZ TITLE</th>
+                  <th scope="col" class="tableThin col-2">SUBMISSIONS</th>
+                </tr>
+              </thead>
+              <tbody id="tableBody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="row mx-0 w-100 px-sm-5 d-none" id="gradeContainer">
+          <div class="txtCourseTitle">Grades</div>
+          <div class="col-12 px-0 my-4 paperCourse">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col" class="tableBold col-6">
+                    STUDENTS (<span id="txtStudCount"></span>)
+                  </th>
+                  <th scope="col" class="tableBold col-4">STATUS</th>
+                  <th scope="col" class="tableBold col-1">GRADE</th>
+                </tr>
+              </thead>
+              <tbody id="gradeTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="row mx-0 w-100 px-sm-5 d-none" id="studentContainer">
+          <div class="txtCourseTitle">Students</div>
+          <div class="col-12 px-0 my-4 paperCourse">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col" class="tableBold">STUDENTS (<span id="txtStudCount2"></span>)</th>
+                </tr>
+              </thead>
+              <tbody id="studentTableBody"></tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
 
