@@ -398,10 +398,20 @@ function startQuiz(element) {
             let done_count = snapshot.val().quiz_done_count;
             let quiz_done = snapshot.val().quiz_done;
             if (quiz_done) {
-              quiz_done[key] = { itemId: key, score: score, over: over };
+              quiz_done[key] = {
+                itemId: key,
+                score: score,
+                over: over,
+                submit_datetime: firebase.database.ServerValue.TIMESTAMP,
+              };
             } else {
               quiz_done = {};
-              quiz_done[key] = { itemId: key, score: score, over: over };
+              quiz_done[key] = {
+                itemId: key,
+                score: score,
+                over: over,
+                submit_datetime: firebase.database.ServerValue.TIMESTAMP,
+              };
             }
             let progress_percent = ((done_count + 1) / totalQuizCount) * 100;
             let progress_text = progress_percent >= 100 ? "Completed" : "Resume";
@@ -450,10 +460,20 @@ function startQuiz(element) {
                       .then((snapshot) => {
                         let courseStudentQuiz = snapshot.val().quiz_done;
                         if (courseStudentQuiz) {
-                          courseStudentQuiz[key] = { itemId: key, score: score, over: over };
+                          courseStudentQuiz[key] = {
+                            itemId: key,
+                            score: score,
+                            over: over,
+                            submit_datetime: firebase.database.ServerValue.TIMESTAMP,
+                          };
                         } else {
                           courseStudentQuiz = {};
-                          courseStudentQuiz[key] = { itemId: key, score: score, over: over };
+                          courseStudentQuiz[key] = {
+                            itemId: key,
+                            score: score,
+                            over: over,
+                            submit_datetime: firebase.database.ServerValue.TIMESTAMP,
+                          };
                         }
 
                         firebase

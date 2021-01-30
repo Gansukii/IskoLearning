@@ -140,11 +140,9 @@
       >
         <div class="row mx-0 w-100">
           <div
-            class="col-12 d-flex px-0 px-lg-5 mb-3 mb-lg-5 justify-content-center txtCourseTitle"
+            class="col-12 d-flex px-0 px-lg-5 mb-3 mb-lg-5 justify-content-center txtCourseTitle t-cap"
             id="txtCourseTitle"
-          >
-            web development
-          </div>
+          ></div>
           <div
             class="col-4 col-lg-12 px-0 px-lg-5 py-1 py-sm-2 mb-lg-1 sideTab activeTab"
             onclick="changeTab(this)"
@@ -165,8 +163,8 @@
       <div class="col-12 col-lg px-4 px-sm-5 mt-5 mx-0 w-100 d-flex justify-content-center">
         <div class="row mx-0 w-100 px-sm-5 d-block" id="quizContainer">
           <div class="txtCourseTitle">Quizzes</div>
-          <div class="col-12 px-0 my-4 paperCourse">
-            <table class="table">
+          <div class="col-12 px-0 my-4 paperCourse" id="quizTablePaper">
+            <table class="table" id="quizTable">
               <thead>
                 <tr>
                   <th scope="col" class="tableThin col-10">QUIZ TITLE</th>
@@ -175,12 +173,44 @@
               </thead>
               <tbody id="tableBody"></tbody>
             </table>
+            <div class="d-flex justify-content-center" id="spinnerContainer1">
+              <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+            </div>
+
+            <!-- ##################################### -->
+            <div class="btn col-12 mb-2 d-none close" id="newQuizTableClose">
+              <span>&times; </span>
+            </div>
+            <table class="table d-none" id="newQuizTable">
+              <thead>
+                <tr>
+                  <th scope="col" class="tableBold">
+                    STUDENTS (<span id="txtStudCountNP"></span>)
+                  </th>
+                  <th scope="col" class="tableBold">STATUS</th>
+                  <th scope="col" class="tableBold">TIME SUBMITTED</th>
+                  <th scope="col" class="tableBold">SCORE</th>
+                </tr>
+              </thead>
+              <tbody id="newQuizTableBody"></tbody>
+            </table>
+            <div class="d-none w-100" id="newQuizTableSpinner">
+              <div class="d-flex justify-content-center">
+                <div class="spinner-border" role="status">
+                  <span class="sr-only">Loading...</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- ##################################### -->
           </div>
         </div>
 
         <div class="row mx-0 w-100 px-sm-5 d-none" id="gradeContainer">
           <div class="txtCourseTitle">Grades</div>
-          <div class="col-12 px-0 my-4 paperCourse">
+          <div class="col-12 px-0 my-4 paperCourse" id="gradeTable">
             <table class="table">
               <thead>
                 <tr>
@@ -193,6 +223,11 @@
               </thead>
               <tbody id="gradeTableBody"></tbody>
             </table>
+            <div class="d-flex justify-content-center" id="spinnerContainer2">
+              <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -207,7 +242,39 @@
               </thead>
               <tbody id="studentTableBody"></tbody>
             </table>
+            <div class="d-flex justify-content-center" id="spinnerContainer3">
+              <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+            </div>
           </div>
+          <!-- <div class="paperCourse p-2 p-sm-3" style="cursor: default">
+            <div class="row mx-0">
+              <div class="btn col-12 mb-2 close">
+                <span>&times;</span>
+              </div>
+              <div class="col-12 py-3 mb-3 d-flex align-items-center studentContainer">
+                <div class="studentAvatar mr-2 mr-sm-3"></div>
+                <div class="">${userData.fullname} <i class="${statusClass}">(${status})</i></div>
+              </div>
+              <div class="col-12 px-0 txtCourseGrade">Course Grade</div>
+              <div class="col-12 px-0 numGrade">85.0</div>
+            </div>
+
+            <table class="table mt-4">
+              <thead>
+                <tr>
+                  <th scope="col" class="col-6 gradeTableTxt">ITEM</th>
+                  <th scope="col" class="col-4 gradeTableTxt">STATUS</th>
+                  <th scope="col" class="col gradeTableTxt">GRADE</th>
+                </tr>
+              </thead>
+              <tbody id="gradeTableBody"></tbody>
+            </table>
+            <div class="col-12 py-3 mb-4 tableBold text-center paperCourse">
+              Course Grade: <span style="color: rgb(40, 176, 46)" id="courseGrade"></span>
+            </div>
+          </div> -->
         </div>
       </div>
     </div>
