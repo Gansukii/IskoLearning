@@ -338,6 +338,7 @@ function startQuiz(element) {
           answersArr.push(question.answer);
         }
       }
+
       let submitButton = document.createElement("div");
       submitButton.className = "col-12 px-0 mt-4 d-flex justify-content-end";
       submitButton.innerHTML = `<button class="btn btn-danger px-4 btnStart" id="btnSubmitQuiz">Submit Quiz</button>`;
@@ -351,10 +352,12 @@ function startQuiz(element) {
                         </div>
                       </div>`;
 
+        let userAnswersArr = [];
         let score = 0;
         for (let i = 1; i < questionsContainer.children.length - 1; i++) {
           const questionElement = questionsContainer.children[i];
           const userAnswer = questionElement.firstElementChild.lastElementChild.value;
+          userAnswersArr.push(userAnswer);
           const correctAns = answersArr[i - 1];
           if (userAnswer.toString().toLowerCase() == correctAns.toString().toLowerCase()) {
             score++;
@@ -403,6 +406,7 @@ function startQuiz(element) {
                 score: score,
                 over: over,
                 submit_datetime: firebase.database.ServerValue.TIMESTAMP,
+                answers: userAnswersArr,
               };
             } else {
               quiz_done = {};
@@ -411,6 +415,7 @@ function startQuiz(element) {
                 score: score,
                 over: over,
                 submit_datetime: firebase.database.ServerValue.TIMESTAMP,
+                answers: userAnswersArr,
               };
             }
             let progress_percent = ((done_count + 1) / totalQuizCount) * 100;
@@ -431,6 +436,7 @@ function startQuiz(element) {
                   grade: Number(((totalScore / totalOver) * 100).toFixed(1)),
                 });
             }
+
             firebase
               .database()
               .ref("student_user_course/" + currentUser.uid + "/" + courseId)
@@ -465,6 +471,7 @@ function startQuiz(element) {
                             score: score,
                             over: over,
                             submit_datetime: firebase.database.ServerValue.TIMESTAMP,
+                            answers: userAnswersArr,
                           };
                         } else {
                           courseStudentQuiz = {};
@@ -473,6 +480,7 @@ function startQuiz(element) {
                             score: score,
                             over: over,
                             submit_datetime: firebase.database.ServerValue.TIMESTAMP,
+                            answers: userAnswersArr,
                           };
                         }
 

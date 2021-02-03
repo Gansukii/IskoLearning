@@ -19,8 +19,8 @@ firebase.auth().onAuthStateChanged(function (user) {
       });
     // localStorage.setItem("photoURL", user.photoURL);
   } else {
-    // alert("Please sign-up or sign-in to an existing account");
-    // localStorage.clear();
-    // window.location.assign("../../sign-in");
+    alert("Please sign-up or sign-in to an existing account");
+    localStorage.clear();
+    window.location.assign("../../sign-in");
   }
 });

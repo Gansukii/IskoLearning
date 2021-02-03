@@ -80,11 +80,32 @@
 .close:hover {
   background-color: #f5f5f5;
 }
+.modalBread {
+  font-weight: 500;
+  font-size: 15px;
+  color: #8f8f8f;
+}
+.modalTitle {
+  font-weight: 900;
+  font-size: 24px;
+}
+.txtQuestion {
+  font-size: 17px;
+}
+.itemNumber {
+  font-size: 17px;
+  font-weight: 900;
+}
 @media screen and (max-width: 576px) {
   body,
   .sideTab,
-  .txtCourseGrade {
+  .txtCourseGrade,
+  .modalBread {
     font-size: 14px;
+  }
+  .txtQuestion,
+  .itemNumber {
+    font-size: 15px;
   }
   .txtCourseTitle {
     font-size: 25px;
@@ -94,6 +115,9 @@
   }
   .numGrade {
     font-size: 28px;
+  }
+  .modalTitle {
+    font-size: 20px;
   }
 }
 

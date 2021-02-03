@@ -106,6 +106,7 @@ firebase
             }
 
             const starsReview = reviewBoxStarContainer.cloneNode(true);
+            starContainer.innerHTML = "";
             starContainer.appendChild(starsReview);
           });
       });
