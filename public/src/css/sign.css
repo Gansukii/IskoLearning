@@ -43,6 +43,7 @@ option {
   font-family: "Lato", sans-serif;
   text-align: center;
   color: #7f0303;
+  cursor: pointer;
 }
 
 .txtNoAcc {

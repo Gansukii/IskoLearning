@@ -85,6 +85,9 @@
   font-size: 15px;
   color: #8f8f8f;
 }
+#txtCourseS {
+  text-transform: capitalize;
+}
 .modalTitle {
   font-weight: 900;
   font-size: 24px;

@@ -52,8 +52,8 @@ firebase.auth().onAuthStateChanged(function (user) {
       .once("value")
       .then((snapshot) => {
         document.getElementById("spinnerContainer1").remove();
-
         const courseData = snapshot.val();
+        document.getElementById("txtCourseS").innerHTML = courseData.course_title;
         if (courseData.prof_id === user.uid) {
           txtCourseTitle.innerHTML = courseData.course_title;
           firebase
@@ -314,11 +314,12 @@ function getScores(element) {
 }
 // Fri Jan 29 2021 02:05
 function showSpecStud(element) {
-  // console.log(element.id);
   const itemId = element.getAttribute("key");
   for (quiz of quizArr) {
     if (quiz.itemId === itemId) {
       const questions = quiz.questions;
+      document.getElementById("txtQuizS").innerHTML = quiz.title;
+      document.getElementById("modalQTitleS").innerHTML = quiz.title;
       firebase
         .database()
         .ref("student_user_course/" + element.id + "/" + courseId)
@@ -337,6 +338,7 @@ function showSpecStud(element) {
               document.getElementById("txtNameS").innerHTML = userData.fullname;
             });
           const userData = studUser.val();
+          document.getElementById("questionsContainerS").innerHTML = "";
           if (userData.quiz_done) {
             //exists
             if (userData.quiz_done[itemId]) {

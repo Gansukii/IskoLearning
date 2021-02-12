@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/GansukiiStud/WebAppProj/issues"
   },
-  "homepage": "https://github.com/GansukiiStud/WebAppProj#readme"
+  "homepage": "https://github.com/GansukiiStud/WebAppProj#readme",
+  "dependencies": {
+    "pdf-lib": "^1.16.0"
+  }
 }
