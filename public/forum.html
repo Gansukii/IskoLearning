@@ -20,7 +20,7 @@
 
   <body>
     <nav class="navbar navbar-expand-lg navbar-light">
-      <a class="navbar-brand" href="home.html">Navbar</a>
+      <a class="navbar-brand" id="homeNav">Navbar</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -48,9 +48,14 @@
                 Categories
               </button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
+                <a class="dropdown-item" href="#" onclick="navCategory(this)">Programming</a>
+                <a class="dropdown-item" href="#" onclick="navCategory(this)">UI UX Design</a>
+                <a class="dropdown-item" href="#" onclick="navCategory(this)"> Data Science</a>
+                <a class="dropdown-item" href="#" onclick="navCategory(this)"> Machine Learning</a>
+                <a class="dropdown-item" href="#" onclick="navCategory(this)">Networking</a>
+                <a class="dropdown-item" href="#" onclick="navCategory(this)">Data Structure</a>
+                <a class="dropdown-item" href="#" onclick="navCategory(this)">Database</a>
+                <a class="dropdown-item" href="#" onclick="navCategory(this)">Others</a>
               </div>
             </div>
           </li>
@@ -239,7 +244,7 @@
     <script src="js/jquery/jquery-3.5.1.min.js"></script>
     <script src="js/bootstrapJs/bootstrap.bundle.js"></script>
     <script src="js/bootstrapJs/bootstrap.js"></script>
-    <!-- <script src="js/isSigned/isSigned.js"></script> -->
+    <script src="js/isSigned/isSigned.js"></script>
     <script src="js/util/currDate.js"></script>
     <script src="js/forum/getTimeAgo.js"></script>
     <script src="js/isSigned/getNotif.js"></script>

@@ -12,6 +12,7 @@ const notifDrop = document.getElementById("notifDrop");
 // const removeNotif = document.getElementById("removeNotif");
 const btnNotifItem = document.getElementById("btnNotifItem");
 const notifBoxContainer = document.getElementById("notifBoxContainer");
+const homeNav = document.getElementById("homeNav");
 let isOpen = false;
 var lg = 992;
 var sm = 768;
@@ -110,3 +111,19 @@ signOut
         });
     })
   : null;
+
+function navCategory(element) {
+  const category = element.textContent.toLowerCase().trim();
+  window.location.assign(`../../category.html?search=${category}`);
+}
+
+if (homeNav) {
+  homeNav.onclick = () => {
+    console.log(localStorage.getItem("user_type"));
+    if (localStorage.getItem("user_type") === "Professor") {
+      window.location.assign(`../../professor/home.html`);
+    } else {
+      window.location.assign(`../../home.html`);
+    }
+  };
+}

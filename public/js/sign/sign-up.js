@@ -10,10 +10,7 @@ const auth = firebase.auth();
 var database = firebase.database();
 
 const handleConfirm = () => {
-  if (
-    confirmPassword.value == password.value &&
-    (password.value != "" || password.value != "")
-  ) {
+  if (confirmPassword.value == password.value && (password.value != "" || password.value != "")) {
     match.classList.remove("d-none");
     passMatch = true;
   } else {
@@ -40,14 +37,8 @@ signUp.onclick = (e) => {
     auth
       .createUserWithEmailAndPassword(email.value, password.value)
       .then((user) => {
-        let randomDisplayName =
-          "user" + Math.floor(Math.random() * 999).toString();
-        writeUserData(
-          user.user.uid,
-          randomDisplayName,
-          user.user.email,
-          selectType.value
-        );
+        let randomDisplayName = "user" + Math.floor(Math.random() * 999).toString();
+        writeUserData(user.user.uid, randomDisplayName, user.user.email, selectType.value);
         verifyEmail();
       })
       .catch((error) => {
@@ -68,6 +59,9 @@ function writeUserData(userId, name, email, userType) {
     username: name,
     email: email,
     user_type: userType,
+  });
+  firebase.auth().currentUser.updateProfile({
+    displayName: name,
   });
   localStorage.setItem("fullname", name);
   localStorage.setItem("username", name);

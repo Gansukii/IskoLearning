@@ -48,14 +48,19 @@
                 Categories
               </button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
+                <a class="dropdown-item" href="#" onclick="navCategory(this)">Programming</a>
+                <a class="dropdown-item" href="#" onclick="navCategory(this)">UI UX Design</a>
+                <a class="dropdown-item" href="#" onclick="navCategory(this)"> Data Science</a>
+                <a class="dropdown-item" href="#" onclick="navCategory(this)"> Machine Learning</a>
+                <a class="dropdown-item" href="#" onclick="navCategory(this)">Networking</a>
+                <a class="dropdown-item" href="#" onclick="navCategory(this)">Data Structure</a>
+                <a class="dropdown-item" href="#" onclick="navCategory(this)">Database</a>
+                <a class="dropdown-item" href="#" onclick="navCategory(this)">Others</a>
               </div>
             </div>
           </li>
           <li class="nav-item mx-3">
-            <a class="nav-link" href="/dashboard">Forum</a>
+            <a class="nav-link" href="/forum">Forum</a>
           </li>
 
           <li class="nav-item searchContainer">
@@ -126,20 +131,18 @@
       </div>
     </div>
 
-    <!-- <iframe id="pdf" style="width: 100%; height: 100%"></iframe> -->
-    <button class="btn" id="dl">qwerqwe</button>
-
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="/__/firebase/8.1.2/firebase-app.js"></script>
     <script src="/__/firebase/8.1.2/firebase-auth.js"></script>
+    <script src="/__/firebase/8.1.2/firebase-storage.js"></script>
 
     <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
     <script src="/__/firebase/8.1.2/firebase-analytics.js"></script>
     <script src="/__/firebase/8.1.2/firebase-database.js"></script>
+    <script src="/__/firebase/8.1.2/firebase-storage.js"></script>
 
     <!-- Initialize Firebase -->
-    <!--    <script src="/__/firebase/init.js"></script>-->
     <script src="/__/firebase/init.js?useEmulator=true"></script>
 
     <script src="js/jquery/jquery-3.5.1.min.js"></script>
@@ -147,7 +150,5 @@
     <script src="js/bootstrapJs/bootstrap.js"></script>
     <script src="js/sign/sign-in.js"></script>
     <script src="js/nav/nav.js"></script>
-
-    <!--index.html,1605829165551,128b85c34c2aa902d86381b8174da0c08fa09cf96609b9e3689a2ee90b189561-->
   </body>
 </html>

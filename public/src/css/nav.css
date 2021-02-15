@@ -133,6 +133,9 @@ nav {
   display: inline-block;
   text-align: center;
 }
+#homeNav {
+  cursor: pointer;
+}
 
 #navUserType {
   text-transform: uppercase;

@@ -15,10 +15,7 @@
       rel="stylesheet"
     />
     <!--  FONTAWESOME  -->
-    <script
-      src="https://kit.fontawesome.com/7d591f1481.js"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://kit.fontawesome.com/7d591f1481.js" crossorigin="anonymous"></script>
   </head>
 
   <body>
@@ -51,9 +48,14 @@
                 Categories
               </button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
+                <a class="dropdown-item" href="#" onclick="navCategory(this)">Programming</a>
+                <a class="dropdown-item" href="#" onclick="navCategory(this)">UI UX Design</a>
+                <a class="dropdown-item" href="#" onclick="navCategory(this)"> Data Science</a>
+                <a class="dropdown-item" href="#" onclick="navCategory(this)"> Machine Learning</a>
+                <a class="dropdown-item" href="#" onclick="navCategory(this)">Networking</a>
+                <a class="dropdown-item" href="#" onclick="navCategory(this)">Data Structure</a>
+                <a class="dropdown-item" href="#" onclick="navCategory(this)">Database</a>
+                <a class="dropdown-item" href="#" onclick="navCategory(this)">Others</a>
               </div>
             </div>
           </li>
@@ -80,12 +82,8 @@
             </form>
           </li>
         </ul>
-        <a class="btn sign-in mt-2 mt-lg-0 mr-3" href="sign-in" id="btnNavIn"
-          >Sign in</a
-        >
-        <a class="btn sign-up mt-2 mt-lg-0" href="sign-up" id="btnNavUp"
-          >Sign up</a
-        >
+        <a class="btn sign-in mt-2 mt-lg-0 mr-3" href="sign-in" id="btnNavIn">Sign in</a>
+        <a class="btn sign-up mt-2 mt-lg-0" href="sign-up" id="btnNavUp">Sign up</a>
       </div>
     </nav>
     <div class="row h-100 rowContainer w-100 m-0 d-flex">
@@ -97,20 +95,10 @@
             <div class="col-md-12 signInTxt p-0 mt-5 mb-4">Sign Up</div>
             <div class="row">
               <div class="col-md-12 form-group">
-                <input
-                  type="email"
-                  id="email"
-                  class="form-control"
-                  placeholder="Email"
-                />
+                <input type="email" id="email" class="form-control" placeholder="Email" />
               </div>
               <div class="col-md-12 mt-1 form-group">
-                <input
-                  type="password"
-                  id="password"
-                  class="form-control"
-                  placeholder="Password"
-                />
+                <input type="password" id="password" class="form-control" placeholder="Password" />
               </div>
               <div class="col-md-12 mt-1 mb-0 form-group">
                 <input
@@ -120,9 +108,7 @@
                   placeholder="Confirm Password"
                 />
               </div>
-              <div class="col-md-12 small mt-0 d-none" id="match">
-                passwords match!
-              </div>
+              <div class="col-md-12 small mt-0 d-none" id="match">passwords match!</div>
               <div class="col-md-12 mt-3 mb-0 form-group">
                 <select class="form-control" id="selectType">
                   <option>Student</option>
@@ -131,11 +117,7 @@
               </div>
             </div>
             <div class="col-md-12 p-0 mt-4">
-              <button
-                class="btn btn-danger btn-block py-2 m-0 btnSign"
-                id="sign-up"
-                type="submit"
-              >
+              <button class="btn btn-danger btn-block py-2 m-0 btnSign" id="sign-up" type="submit">
                 Sign Up
               </button>
             </div>

@@ -205,6 +205,28 @@ nav {
   font-size: 25px;
   cursor: pointer;
 }
+
+.test {
+  font-family: Helvetica, sans-serif;
+  position: absolute;
+  visibility: hidden;
+  height: auto;
+  width: auto;
+  white-space: nowrap;
+}
+.test1 {
+  font-size: 25px;
+}
+.test2 {
+  font-size: 25px;
+}
+.test3 {
+  font-size: 15px;
+}
+.test4 {
+  font-size: 15px;
+}
+
 /* RESPONSIVE */
 @media screen and (max-width: 992px) {
   .thumbContainer {
