@@ -609,7 +609,6 @@ var rgb = PDFLib.rgb;
 var StandardFonts = PDFLib.StandardFonts;
 
 async function modifyPdf(url, profName) {
-  console.log(url);
   const existingPdfBytes = await fetch(url).then((res) => res.arrayBuffer());
 
   const pdfDoc = await PDFDocument.load(existingPdfBytes);
