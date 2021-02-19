@@ -22,11 +22,13 @@ function addQuestion(user, title, body, tags) {
       let finalTags = [];
       var j = 0;
       for (let i = 0; i < newTags.length; i++) {
-        var item = newTags[i].toLowerCase();
-        if (seen[item] !== 1) {
-          seen[item] = 1;
-          finalTags[j] = item;
-          j++;
+        if (newTags[i]) {
+          var item = newTags[i].toLowerCase();
+          if (seen[item] !== 1) {
+            seen[item] = 1;
+            finalTags[j] = item;
+            j++;
+          }
         }
       }
       return finalTags.sort();

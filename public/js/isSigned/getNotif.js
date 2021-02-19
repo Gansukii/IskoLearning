@@ -44,7 +44,7 @@ firebase.auth().onAuthStateChanged(function (user) {
               .then(() => {
                 firebase
                   .database()
-                  .ref("users/" + user.uid)
+                  .ref("users/" + notifData.user)
                   .once("value")
                   .then((userSnapshot) => {
                     let timeAgo = getTimeAgo((currDate - data.val().notif_datetime) / 1000);
